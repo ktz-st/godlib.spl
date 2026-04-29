@@ -1,9 +1,9 @@
-CC = m68k-atari-mint-gcc
-CXX = m68k-atari-mint-g++
-LD = m68k-atari-mint-gcc
+CC = m68k-atari-mintelf-gcc
+CXX = m68k-atari-mintelf-g++
+LD = m68k-atari-mintelf-gcc
 AS = vasmm68k_mot
-AR = m68k-atari-mint-ar
-STRIP = m68k-atari-mint-strip
+AR = m68k-atari-mintelf-ar
+STRIP = m68k-atari-mintelf-strip
 
 CMINI_DIR = ../../libcmini
 GODLIB_DIR = ../../godlib
@@ -42,7 +42,7 @@ LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static \
 OUT = PICSHOW.PRG
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(OBJECTS_CPP)
-	$(LD) $(LDFLAGS) -o $(OUT) $(CMINI_DIR)/lib/minicrt0.o \
+	$(LD) $(LDFLAGS) -o $(OUT) $(CMINI_DIR)/lib/crt0.o \
 	$(OBJECTS_S) $(OBJECTS_C) $(OBJECTS_CPP) \
 	-Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 	$(STRIP) --strip-unneeded $(OUT)
@@ -54,7 +54,7 @@ $(OBJECTS_CPP): %.o: %.cpp
 	 $(CXX) -c $(CXXFLAGS) $< -o $@
 
 $(OBJECTS_S): %.o: %.s
-	$(AS) -nosym -devpac -Faout $< -o $@
+	$(AS) -nosym -devpac -Felf $< -o $@
 
 clean:
 	rm -rf $(OBJECTS_S) $(OBJECTS_C) $(OBJECTS_CPP) $(OUT) *.map

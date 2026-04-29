@@ -8,7 +8,7 @@ STRIP = m68k-atari-mintelf-strip
 CMINI_DIR = ../../libcmini
 GODLIB_DIR = ../../godlib
 
-SOURCES_C = sprite1.c
+SOURCES_C = graphic.c
 SOURCES_CPP =
 SOURCES_S =
 
@@ -25,21 +25,21 @@ CFLAGS += -fno-jump-tables -fno-tree-switch-conversion \
           -fomit-frame-pointer -fno-unwind-tables -fno-asynchronous-unwind-tables \
           -fmerge-constants -fno-ident \
           -fno-inline-functions -fno-inline-small-functions \
-		  -fpack-struct=2 \
-		  $(DEFS)
+          -fpack-struct=2 \
+          $(DEFS)
 
 CXXFLAGS = $(CFLAGS) -std=gnu++17 \
            -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit \
            -ffreestanding -fno-builtin \
-		   $(DEFS)
+           $(DEFS)
 
 LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static \
           -mshort -mfastcall -m68000 \
           -Wl,--gc-sections -Wl,--relax \
           -L$(CMINI_DIR)/lib/mshort/mfastcall \
-		  -L$(GODLIB_DIR)
+          -L$(GODLIB_DIR)
 
-OUT = SPRITE.PRG
+OUT = GRAPHIC.PRG
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(OBJECTS_CPP)
 	$(LD) $(LDFLAGS) -o $(OUT) $(CMINI_DIR)/lib/crt0.o \
@@ -51,7 +51,7 @@ $(OBJECTS_C): %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 $(OBJECTS_CPP): %.o: %.cpp
-	 $(CXX) -c $(CXXFLAGS) $< -o $@
+	$(CXX) -c $(CXXFLAGS) $< -o $@
 
 $(OBJECTS_S): %.o: %.s
 	$(AS) -nosym -devpac -Felf $< -o $@
@@ -59,11 +59,5 @@ $(OBJECTS_S): %.o: %.s
 clean:
 	rm -rf $(OBJECTS_S) $(OBJECTS_C) $(OBJECTS_CPP) $(OUT) *.map
 
-map:
-	$(LD) $(LDFLAGS) -Wl,-Map=link.map -o $(OUT) $(CMINI_DIR)/lib/minicrt0.o \
-	$(OBJECTS_S) $(OBJECTS_C) $(OBJECTS_CPP) \
-	-lgcc -lcmini -lgod  -lgcc
-
 run: $(OUT)
-	hatari  -w --monitor rgb --fastfdc true --fastfdc true $(OUT) &
-
+	hatari -w --monitor rgb --fastfdc true $(OUT) &

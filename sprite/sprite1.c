@@ -20,6 +20,7 @@
 #include	<godlib/sprite/sprite.h>
 #include	<godlib/vbl/vbl.h>
 #include	<godlib/video/video.h>
+#include	<godlib/system/system.h>
 
 
 /* ###################################################################################
@@ -91,6 +92,7 @@ void	Test_Loop( void )
 
 	Video_SetPalST( &gpPicture->mHeader.mPalette[ 0 ] );
 
+	Graphic_SetBlitterEnable( BLT_BLITTER );
 	lPos.mX = 0;
 	lPos.mY = 0;
 

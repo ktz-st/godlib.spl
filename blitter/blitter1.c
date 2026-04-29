@@ -3,8 +3,8 @@
  * 
  * Demonstrates basic blitter functionality
  *
- *  Note: Blitter has to be enable in GEM [OPTIONS->BLITTER] for this to work
- *  If no blitter is found, or it is disable in GEM, this resorts to CPU rendering
+ *  Note: Blitter has to be enabled in GEM [OPTIONS->BLITTER] for this to work
+ *  F1 toggles between direct Blitter_* calls and the old CPU drawing path
  * 
  * PINK 05.01.18
  *************************************************************************************
@@ -32,6 +32,8 @@
 ################################################################################### */
 
 void	Test_Loop( void );
+void	Test_DrawCopyBoxPattern( U16 * apScreen, U8 aUseBlitter );
+void	Test_DrawBox( U16 * apScreen, U16 aX, U16 aY, U16 aWidth, U16 aHeight, U16 aColour, U8 aUseBlitter );
 
 
 /* ###################################################################################
@@ -39,6 +41,67 @@ void	Test_Loop( void );
 ################################################################################### */
 
 sDegas *		gpPicture;
+
+
+/*-----------------------------------------------------------------------------------*
+* FUNCTION : Test_DrawBox( U16 * apScreen, U16 aX, U16 aY, U16 aWidth, U16 aHeight, U16 aColour, U8 aUseBlitter )
+* ACTION   : draws a small low-res box using either the blitter API or the old CPU path
+* CREATION : 29.04.2026
+*-----------------------------------------------------------------------------------*/
+
+void	Test_DrawBox( U16 * apScreen, U16 aX, U16 aY, U16 aWidth, U16 aHeight, U16 aColour, U8 aUseBlitter )
+{
+	sGraphicRect	lRect;
+	sBlitterBox		lBox;
+
+	if( aUseBlitter )
+	{
+		lBox.Width  = aWidth;
+		lBox.Height = aHeight;
+		lBox.Colour = aColour;
+		Blitter_DrawBox( &lBox, apScreen, aX, aY );
+	}
+	else
+	{
+		lRect.mX      = aX;
+		lRect.mY      = aY;
+		lRect.mWidth  = aWidth;
+		lRect.mHeight = aHeight;
+		Screen_Logic_DrawBox_Clip( &lRect, aColour );
+	}
+}
+
+
+/*-----------------------------------------------------------------------------------*
+* FUNCTION : Test_DrawCopyBoxPattern( U16 * apScreen, U8 aUseBlitter )
+* ACTION   : exercises Blitter_CopyBox with a non word-aligned destination
+* CREATION : 29.04.2026
+*-----------------------------------------------------------------------------------*/
+
+void	Test_DrawCopyBoxPattern( U16 * apScreen, U8 aUseBlitter )
+{
+	Test_DrawBox( apScreen, 216,  32, 72, 96, 0, aUseBlitter );
+	Test_DrawBox( apScreen, 224,  40, 48,  8, 2, aUseBlitter );
+	Test_DrawBox( apScreen, 224,  48, 48,  8, 3, aUseBlitter );
+	Test_DrawBox( apScreen, 224,  56, 48,  8, 4, aUseBlitter );
+	Test_DrawBox( apScreen, 224,  64, 48,  8, 5, aUseBlitter );
+
+	if( aUseBlitter )
+	{
+		Blitter_CopyBox( apScreen, apScreen, 224, 40, 231, 88, 48, 32 );
+	}
+	else
+	{
+		sGraphicRect	lRect;
+
+		lRect.mX      = 231;
+		lRect.mY      = 88;
+		lRect.mWidth  = 48;
+		lRect.mHeight = 32;
+		Screen_Logic_DrawBox_Clip( &lRect, 1 );
+		Font8x8_Print( "CPU", apScreen, 240, 100 );
+	}
+}
 
 
 /* ###################################################################################
@@ -83,7 +146,7 @@ void	Test_Loop( void )
 	sSprite *		lpSprite;
 	U16 *			lpMsk;
 	U8				exitFlag = 0;
-	sBlitterBox		apBox;
+	U8				lUseBlitter = 1;
 
 	/* turn the blitter on */
 	/* NOTE: blitter must be enabled in GEM (OPTIONS->BLITTER on desktop) */
@@ -103,7 +166,7 @@ void	Test_Loop( void )
 	Video_SetPalST( &gpPicture->mHeader.mPalette[ 0 ] );
 
 	lPos.mX = 0;
-	lPos.mY = 0;
+	lPos.mY = 24;
 
 	lPosSaved[ 0 ] = lPos;
 	lPosSaved[ 1 ] = lPos;
@@ -134,9 +197,6 @@ void	Test_Loop( void )
 
 	lAddX = 1;
 	lAddY = 1;
-	apBox.Width = 16;
-	apBox.Height = 16;
-	apBox.Colour = 0;
 
 	while( !exitFlag )
 	{
@@ -151,22 +211,31 @@ void	Test_Loop( void )
 			}
 			else if( eIKBDSCAN_F1 == key )
 			{
-				/* toggle blitter on/off if F1 is pressed */
-				Graphic_SetBlitterEnable( (Graphic_GetBlitterEnable()&1) ^ 1 );
+				/* toggle the sample between CPU drawing and direct Blitter_* calls */
+				lUseBlitter ^= 1;
+				Graphic_SetBlitterEnable( lUseBlitter );
 			}
 		}
 
 		Screen_Update();
 		IKBD_Update();
 
-		Font8x8_Print( "F1: BLITTER [ O", Screen_GetpLogic(), 0, 0 );
-		if( Graphic_GetBlitterEnable() )
+		Font8x8_Print( "F1: BLITTER API [ O", Screen_GetpLogic(), 0, 0 );
+		if( lUseBlitter )
 		{
-			Font8x8_Print( "N ] ", Screen_GetpLogic(), onOffX, 0 );
+			Font8x8_Print( "N ] ", Screen_GetpLogic(), onOffX + 4 * 8, 0 );
 		}
 		else
 		{
-			Font8x8_Print( "FF ]", Screen_GetpLogic(), onOffX, 0 );
+			Font8x8_Print( "FF ]", Screen_GetpLogic(), onOffX + 4 * 8, 0 );
+		}
+		Font8x8_Print( "SPACE: EXIT", Screen_GetpLogic(), 0, 8 );
+
+		Test_DrawCopyBoxPattern( Screen_GetpLogic(), lUseBlitter );
+		if( lUseBlitter )
+		{
+			Blitter_DrawOpaqueSprite( (sBlitterSprite *)lpSprite, Screen_GetpLogic(), 196, 136 );
+			Blitter_DrawColouredSprite( (sBlitterSprite *)lpSprite, Screen_GetpLogic(), 196, 160, 12 );
 		}
 
 		/* clear old sprite */
@@ -174,19 +243,31 @@ void	Test_Loop( void )
 		lRect.mY = lPosSaved[ Screen_GetLogicIndex() ].mY;
 		lRect.mWidth = 16;
 		lRect.mHeight = 16;
-		Screen_Logic_DrawBox_Clip( &lRect, 0 );
-		// Blitter_DrawBox( &apBox, Screen_GetpLogic(), lRect.mX, lRect.mY );
+		if( lUseBlitter )
+		{
+			Test_DrawBox( Screen_GetpLogic(), lRect.mX, lRect.mY, lRect.mWidth, lRect.mHeight, 0, 1 );
+		}
+		else
+		{
+			Screen_Logic_DrawBox_Clip( &lRect, 0 );
+		}
 
 		/* save current sprite position*/
 		lPosSaved[ Screen_GetLogicIndex() ] = lPos;
 
 		/* draw new sprite to logical screen (backbuffer) */
-		Screen_Logic_DrawSprite_Clip( &lPos, lpSprite );
-		// Blitter_DrawSprite( (sBlitterSprite *)lpSprite , Screen_GetpLogic(), lPos.mX, lPos.mY );
+		if( lUseBlitter )
+		{
+			Blitter_DrawSprite( (sBlitterSprite *)lpSprite , Screen_GetpLogic(), lPos.mX, lPos.mY );
+		}
+		else
+		{
+			Screen_Logic_DrawSprite_Clip( &lPos, lpSprite );
+		}
 		/* calculate new sprite pos */
 		lPos.mX += lAddX;
 
-		if( lPos.mX >= (320-16) )
+		if( lPos.mX >= (188-16) )
 			lAddX  = -1;
 		else if( lPos.mX < 0 )
 			lAddX  = 1;
@@ -195,7 +276,7 @@ void	Test_Loop( void )
 
 		if( lPos.mY >= (200-16) )
 			lAddY  = -1;
-		else if( lPos.mY < 9 )
+		else if( lPos.mY < 24 )
 			lAddY  = 1;
 	}
 
