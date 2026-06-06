@@ -5,7 +5,7 @@ STRIP = m68k-atari-mintelf-strip
 CMINI_DIR = ../../libcmini
 GODLIB_DIR = ../../godlib
 
-SOURCES_C = mod.c
+SOURCES_C = wizzcat.c
 OBJECTS_C = $(SOURCES_C:.c=.o)
 
 DEFS = -DdGODLIB_FADE
@@ -26,7 +26,7 @@ LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(CMINI_DIR)/lib/mshort/mfastcall \
           -L$(GODLIB_DIR)
 
-OUT = MOD.TOS
+OUT = WIZZCAT.TOS
 
 $(OUT): $(OBJECTS_C)
 	$(LD) $(LDFLAGS) -o $(OUT) $(CMINI_DIR)/lib/crt0.o \
