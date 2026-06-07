@@ -25,19 +25,19 @@ CFLAGS += -fno-jump-tables -fno-tree-switch-conversion \
           -fomit-frame-pointer -fno-unwind-tables -fno-asynchronous-unwind-tables \
           -fmerge-constants -fno-ident \
           -fno-inline-functions -fno-inline-small-functions \
-          -fpack-struct=2 \
-          $(DEFS)
+		  -fpack-struct=2 \
+		  $(DEFS)
 
 CXXFLAGS = $(CFLAGS) -std=gnu++17 \
            -fno-exceptions -fno-rtti -fno-threadsafe-statics -fno-use-cxa-atexit \
            -ffreestanding -fno-builtin \
-           $(DEFS)
+		   $(DEFS)
 
 LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static \
           -mshort -mfastcall -m68000 \
           -Wl,--gc-sections -Wl,--relax \
           -L$(CMINI_DIR)/lib/mshort/mfastcall \
-          -L$(GODLIB_DIR)
+		  -L$(GODLIB_DIR)
 
 OUT = FONT.PRG
 
@@ -51,7 +51,7 @@ $(OBJECTS_C): %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 $(OBJECTS_CPP): %.o: %.cpp
-	$(CXX) -c $(CXXFLAGS) $< -o $@
+	 $(CXX) -c $(CXXFLAGS) $< -o $@
 
 $(OBJECTS_S): %.o: %.s
 	$(AS) -nosym -devpac -Felf $< -o $@
@@ -60,4 +60,4 @@ clean:
 	rm -rf $(OBJECTS_S) $(OBJECTS_C) $(OBJECTS_CPP) $(OUT) *.map
 
 run: $(OUT)
-	hatari -w --monitor rgb --fastfdc true $(OUT) &
+	hatari  -w --monitor rgb --fastfdc true $(OUT) &
