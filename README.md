@@ -36,13 +36,16 @@ own controls on screen or in the console.
 | --- | --- | --- |
 | `audio` | `AUDIO.TOS` | Basic sample playback through GodLib audio. |
 | `blitter` | `BLITTER.PRG` | Blitter API, sprite drawing, CPU/blitter toggle. |
+| `chunky` | `CHUNKY.TOS` | Draw into a byte-per-pixel buffer, then convert to ST four-plane graphics. |
 | `cookiejar` | `COOKIJAR.TOS` | Reading Atari cookie jar values. |
 | `font` | `FONT.PRG` | `Font8x8_Print` and coloured 8x8 font output. |
 | `graphic` | `GRAPHIC.PRG` | `GraphicCanvas` primitives: pixels, lines, boxes and blits. |
+| `hscroll` | `HSCROLL.PRG` | STE pixel-accurate horizontal scrolling on a larger virtual canvas, with vertical scrolling and sprite stride checks. |
 | `iff` | `IFFSHOW.TOS` | IFF ILBM picture loading/display. |
 | `joy` | `JOY.TOS` | IKBD joystick packets for joy0/joy1. |
 | `lancemod` | `LANCEMOD.TOS` | ProTracker MOD playback through Lance Paula replay. |
 | `mixer` | `MIXER.TOS` | GodLib software audio mixer and panning controls. |
+| `slugmix` | `SLUGMIX.TOS` | Metal Slug three-channel SFX mixer, overlap and looping. |
 | `mouse` | `MOUSE.TOS` | IKBD mouse position and button state. |
 | `music` | `MUSIC.TOS` | Legacy SSD/music sample playback. |
 | `picshow` | `PICSHOW.PRG` | Degas `.PI1` loading and screen copy. |
@@ -50,7 +53,10 @@ own controls on screen or in the console.
 | `screen` | `SCREEN.PRG` | Screen setup, palette and buffer update basics. |
 | `sprite` | `SPRITE.PRG` | Basic sprite creation, mask creation and clipped drawing. |
 | `spriteinput` | `SPRINP.PRG` | Sprite controlled by mouse or joy1, switchable with `1`/`2`. |
+| `spritechunk` | `SPRCHUNK.PRG` | Sprite background restoration with separate chunk lists for both screen pages. |
 | `spritebg` | `SPRBG.PRG` | Sprite over a background with back-buffer restore and per-buffer dirty rect tracking. |
+| `vscroll` | `VSCROLL.PRG` | STE vertical scrolling over a generated 320x400 tower with a flying masked bird. |
+| `wipe` | `WIPE.TOS` | Three generated pictures, individual ST palettes and 39 wipe effects in a slideshow. |
 | `wizzcat` | `WIZZCAT.TOS` | ProTracker MOD playback through Wizzcat STE replay. |
 
 ## Notes
@@ -208,3 +214,7 @@ Useful defaults:
   per-buffer state; logical, physical and back buffers can intentionally differ.
 - Prefer ASCII text in source and README files unless existing content needs
   otherwise.
+
+- `sgdlmix`: SGDL four-channel PCM mixer, 25/12.5 kHz selection, per-channel triggers, loops and an on-target ASM self-test.
+
+- `desertmix`: Desert gameplay PCM mixer, four layers at 12.5 kHz; F9 raster CPU display.

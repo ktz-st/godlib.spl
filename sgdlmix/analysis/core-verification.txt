@@ -1,0 +1,3 @@
+Original TEXT $015e..$0299: 316 bytes.
+Matches the last 316 bytes of ported .text exactly, including zero external relocation operands.
+Both have two external absolute-long relocation operands at core +2 and +12.

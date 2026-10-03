@@ -1,0 +1,5 @@
+2026-10-02: build and Hatari STE 8 MHz / 4 MB / TOS 2.06 / PAL RGB tests passed.
+Playback, channel state, stop, loop (where supported), raster toggle, palette restoration and ESC checked.
+Desert/SGDL also execute target-side PCM self-tests; live DMA buffers matched reference PCM.
+Final UI uses a static display page and updates changed status fields. Logs and screenshots are retained beside this file.
+No listening assessment or real hardware test performed.

@@ -1,0 +1,6 @@
+*.o
+*.PRG
+analysis/shots/
+analysis/hatari.log
+analysis/actual.bin
+analysis/expected.bin

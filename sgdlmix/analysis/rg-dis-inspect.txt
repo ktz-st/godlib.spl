@@ -1,0 +1,13 @@
+=== ELF32-BE m68k ET_REL object ===
+sections: 3  symbols: 14  relocs: 13
+
+=== Sections ===
+.text        TEXT       668 bytes  align 2  flags 0x6
+.data        DATA         0 bytes  align 2  flags 0x2
+.bss         BSS          0 bytes  align 2  flags 0x2
+
+symbols:        14  (pass --inspect symbols for the table)
+relocs:         13  (pass --inspect relocs for the table)
+functions:       7  (pass --inspect functions for sizes)
+cycles:          7  (pass --inspect cycles for M68000 totals)
+strings:         0  (pass --inspect strings for the table)

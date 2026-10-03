@@ -1,0 +1,6 @@
+*.o
+*.PRG
+analysis/*.map
+analysis/shots/
+analysis/hatari.log
+analysis/panorama-shots/

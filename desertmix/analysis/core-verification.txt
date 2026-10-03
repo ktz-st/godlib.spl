@@ -1,0 +1,3 @@
+PASS: 718 bytes match game.ovl TEXT $1F78..$2245 exactly with original state addresses.
+Command: vasmm68k_mot -devpac -Fbin -DVERIFY_ORIGINAL godlib/audio/desertmix_s.s -o /tmp/desert-core.bin
+Original slice: game.ovl file $1F94..$2261 (28-byte header + TEXT offsets).

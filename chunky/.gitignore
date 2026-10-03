@@ -1,0 +1,5 @@
+*.o
+*.TOS
+analysis/*.map
+analysis/shots/
+analysis/hatari.log
