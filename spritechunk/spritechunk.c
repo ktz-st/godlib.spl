@@ -126,7 +126,7 @@ static void SpriteChunk_CopyBackgroundToScreens( const sDegas * apPicture )
 	Memory_Copy( SCREEN_BYTES, &apPicture->mPixels[ 0 ], Screen_GetpBack() );
 	Font8x8_PrintColour( "CHUNK RESTORE / 1: MOUSE", Screen_GetpBack(), 8, 8, 14 );
 	Font8x8_PrintColour( "2: JOY1 / 3: ARROW KEYS", Screen_GetpBack(), 8, 18, 14 );
-	Font8x8_PrintColour( "SPACE: EXIT (CPU RESTORE)", Screen_GetpBack(), 8, 28, 14 );
+	Font8x8_PrintColour( "SPACE: EXIT (ASM RESTORE)", Screen_GetpBack(), 8, 28, 14 );
 	Memory_Copy( SCREEN_BYTES, Screen_GetpBack(), Screen_GetpLogic() );
 	Memory_Copy( SCREEN_BYTES, Screen_GetpBack(), Screen_GetpPhysic() );
 }

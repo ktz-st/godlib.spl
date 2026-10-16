@@ -1,10 +1,10 @@
-#include <godlib/audio/pacmadmix.h>
+#include <godlib/audio/pcmvoice.h>
 /* ABI-level core tests run before the public mixer owns DMA. */
 typedef struct {const S8 *data;U32 length;U8 priority,pad;} Sample;
 typedef struct {const Sample *sample;const S8 *current,*end;const Sample *next;U8 loop,active,priority,pad;} Channel;
 typedef struct {Channel *channels;S8 *dst,*silence;U16 count,saturate;} Params;
-extern void PacmadMixer_CoreFill(Params*);
-extern U16 PacmadMixer_RefillCount(U16 write,U16 offset);
+extern void PcmVoiceMixer_CoreFill(Params*);
+extern U16 PcmVoiceMixer_RefillCount(U16 write,U16 offset);
 static U16 buffer[514],silent[125],large[33000],small[3][5];
 static U16 saturate;
 static Sample samples[4];static Channel channels[3];
@@ -16,11 +16,11 @@ static void reset(void)
 static void source(U16 ch,Sample *s,U8 loop)
 {channels[ch].sample=s;channels[ch].current=s->data;channels[ch].end=s->data+s->length;channels[ch].loop=loop;channels[ch].active=1;}
 static void fill(U16 count)
-{Params p;U16 i;for(i=0;i<514;++i)buffer[i]=0xa55a;p.channels=channels;p.dst=(S8*)(buffer+1);p.silence=(S8*)silent;p.count=count;p.saturate=saturate;PacmadMixer_CoreFill(&p);}
+{Params p;U16 i;for(i=0;i<514;++i)buffer[i]=0xa55a;p.channels=channels;p.dst=(S8*)(buffer+1);p.silence=(S8*)silent;p.count=count;p.saturate=saturate;PcmVoiceMixer_CoreFill(&p);}
 static void check(U16 count,U8 value)
 {U16 i;if(buffer[0]!=0xa55a || buffer[1+count/2]!=0xa55a)++gPacmadVerifyFailures;for(i=0;i<count;++i)if(((U8*)(buffer+1))[i]!=value){++gPacmadVerifyFailures;break;}
  ++gPacmadVerifyCases;}
-U16 PacmadMix_Verify(void)
+U16 PcmVoiceMix_Verify(void)
 {
  U16 i,ch,count;U32 f,sum,consumed;U16 write,n;
  for(i=0;i<125;++i)silent[i]=0;
@@ -81,6 +81,6 @@ U16 PacmadMix_Verify(void)
  /* 40 seconds of 12517-Hz consumption, with one missed VBL every 101.
   * Total source advancement must equal consumed bytes, rather than 250/VBL. */
  write=640;sum=0;
- for(f=1;f<=2000;++f){if(f%101==0)continue;consumed=f*12517UL/50UL;n=PacmadMixer_RefillCount(write,(U16)(consumed&1023UL));if(n>576)++gPacmadVerifyFailures;sum+=n;write=(write+n)&1023;if(sum!=(consumed&~1UL))++gPacmadVerifyFailures;}
+ for(f=1;f<=2000;++f){if(f%101==0)continue;consumed=f*12517UL/50UL;n=PcmVoiceMixer_RefillCount(write,(U16)(consumed&1023UL));if(n>576)++gPacmadVerifyFailures;sum+=n;write=(write+n)&1023;if(sum!=(consumed&~1UL))++gPacmadVerifyFailures;}
  ++gPacmadVerifyCases;return gPacmadVerifyFailures;
 }

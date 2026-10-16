@@ -1,4 +1,4 @@
-# Desert gameplay mixer example
+# PcmLayerMixer example
 
 ```sh
 make -C ../../godlib
@@ -6,7 +6,7 @@ make
 make run
 ```
 
-Copy DESERTMX.TOS and VOICE.RAW together to an STE/MegaSTE. The first screen
+Copy PCMLAYER.TOS and VOICE.RAW together to an STE/MegaSTE. The first screen
 must show ASM self-test PASS. The example prepares a signed 12517-Hz voice at
 quarter amplitude from the existing mixer demo and pads it to four bytes.
 
@@ -17,15 +17,15 @@ quarter amplitude from the existing mixer demo and pads it to four bytes.
 - F9: toggle the red raster CPU meter, matching LanceMod.
 - ESC: stop DMA, remove the callback and return to TOS.
 
-SGDL and SlugMix examples also use F9 for their audio CPU raster. This is a
-visual duration indicator, not a numeric CPU percentage. For SGDL select
+PCM Block and PCM Frame examples also use F9 for their audio CPU raster. This is a
+visual duration indicator, not a numeric CPU percentage. For PCM Block select
 12.5 kHz with F8 before comparing; its 512-byte refill happens roughly every
 second VBL. Compare several frames with the same active channel count. For
-Desert, F1/F2 + F3 gives three simultaneous sources to compare with SlugMix;
-F5 exercises Desert's four-layer case.
+PCM Layer, F1/F2 + F3 gives three simultaneous sources to compare with PCM Frame;
+F5 exercises PCM Layer's four-layer case.
 
-See ../../godlib/audio/desertmix.md for API restrictions and provenance.
-`make debug` creates an unstripped analysis/DESERTDBG.TOS and linker map.
+See ../../godlib/audio/pcmlayer.md for API restrictions and provenance.
+`make debug` creates an unstripped analysis/PCMLYDBG.TOS and linker map.
 
 The included `analysis/verify-hatari.py` uses the local hatari-debugging skill
 helper and symbols from `make debug` for repeatable target checks.

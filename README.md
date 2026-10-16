@@ -44,9 +44,11 @@ own controls on screen or in the console.
 | `iff` | `IFFSHOW.TOS` | IFF ILBM picture loading/display. |
 | `joy` | `JOY.TOS` | IKBD joystick packets for joy0/joy1. |
 | `lancemod` | `LANCEMOD.TOS` | ProTracker MOD playback through Lance Paula replay. |
+| `pcmblock` | `PCMBLOCK.TOS` | Four-channel block mixer at 12.5/25 kHz, loops and ASM self-test. |
+| `pcmlayer` | `PCMLAYER.TOS` | Four-layer mixer at 12.5 kHz: two loops and two one-shots. |
 | `mixer` | `MIXER.TOS` | GodLib software audio mixer and panning controls. |
-| `pacmadmix` | `PACMADMX.TOS` | PacMad three-channel PCM mixer, loops, queued one-shots, CPU raster and core self-tests. |
-| `slugmix` | `SLUGMIX.TOS` | Metal Slug three-channel SFX mixer, overlap and looping. |
+| `pcmvoice` | `PCMVOICE.TOS` | PCM Voice three-channel mixer, loops, queued one-shots, CPU raster and core self-tests. |
+| `pcmframe` | `PCMFRAME.TOS` | PCM Frame three-channel SFX mixer, overlap and looping. |
 | `mouse` | `MOUSE.TOS` | IKBD mouse position and button state. |
 | `music` | `MUSIC.TOS` | Legacy SSD/music sample playback. |
 | `picshow` | `PICSHOW.PRG` | Degas `.PI1` loading and screen copy. |
@@ -216,6 +218,7 @@ Useful defaults:
 - Prefer ASCII text in source and README files unless existing content needs
   otherwise.
 
-- `sgdlmix`: SGDL four-channel PCM mixer, 25/12.5 kHz selection, per-channel triggers, loops and an on-target ASM self-test.
 
-- `desertmix`: Desert gameplay PCM mixer, four layers at 12.5 kHz; F9 raster CPU display.
+
+PCM mixer names and migration from the historical names are documented in
+[`godlib/audio/pcm-mixers.md`](../godlib/audio/pcm-mixers.md).

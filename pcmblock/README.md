@@ -1,4 +1,4 @@
-# SGDL four-channel mixer example
+# PcmBlockMixer example
 
 ```sh
 make -C ../../godlib
@@ -6,7 +6,7 @@ make
 make run
 ```
 
-Copy `SGDLMIX.TOS`, `VOICE12.RAW` and `VOICE25.RAW` together to the Atari drive.
+Copy `PCMBLOCK.TOS`, `VOICE12.RAW` and `VOICE25.RAW` together to the Atari drive.
 The example uses normal GodLib Platform, Screen and IKBD lifecycle. It first
 runs a self-test of the actual 68000 mixer; the screen must report PASS.
 
@@ -23,13 +23,13 @@ and pads each to 512 bytes. Upsampling preserves timing but cannot restore
 high-frequency detail absent from the original recording. To assess quality,
 use a higher-rate original recording and prepare both outputs offline.
 
-See `../../godlib/audio/sgdlmix.md` for source provenance, API, buffer ownership
+See `../../godlib/audio/pcmblock.md` for source provenance, API, buffer ownership
 and overflow semantics. `analysis/original-snd_asm.txt` contains the original
 relocated disassembly; `analysis/core-verification.txt` records byte identity.
 
 F9 toggles the red raster CPU meter used by LanceMod. Palette colour zero
 is red only while the audio callback executes, then its old value is restored.
-This shows callback duration, not a numeric CPU percentage. SGDL at 12.5 kHz
+This shows callback duration, not a numeric CPU percentage. PCM Block at 12.5 kHz
 mixes only on half-buffer changes, so compare multiple frames.
 
 The included `analysis/verify-hatari.py` uses the local hatari-debugging skill

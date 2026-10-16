@@ -1,4 +1,4 @@
-# Metal Slug SFX mixer
+# PCM Frameer example
 
 Build GodLib, then this example:
 
@@ -14,13 +14,13 @@ F5 toggles looping on channel 2, F6 stops all sources and ESC exits.
 
 `prepare_sample.py` converts `../mixer/voice.raw` (signed 12517 Hz mono) to
 `VOICE.RAW`: gain 1/4, padded to 23500 bytes / 94 blocks. No game assets are
-required. Keep `VOICE.RAW` beside `SLUGMIX.TOS` when copying the example.
-Use STE at 50 Hz; the module owns DMA playback exclusively. See
-`../../godlib/audio/slugmix.md` for the API and scheduling limitations.
+required. Keep `VOICE.RAW` beside `PCMFRAME.TOS` when copying the example.
+Use a PAL STE at nominal 50 Hz VBL (audio is 12517 Hz, not 50 kHz); the module owns DMA playback exclusively. See
+`../../godlib/audio/pcmframe.md` for the API and scheduling limitations.
 
 F9 toggles the red raster CPU meter used by LanceMod. Palette colour zero
 is red only while the audio callback executes, then its old value is restored.
-This shows callback duration, not a numeric CPU percentage. For comparison with SGDL at 12.5 kHz, remember that SGDL mixes only on
+This shows callback duration, not a numeric CPU percentage. For comparison with PCM Block at 12.5 kHz, remember that PCM Block mixes only on
 half-buffer changes, so inspect multiple frames.
 
 The included `analysis/verify-hatari.py` uses the local hatari-debugging skill

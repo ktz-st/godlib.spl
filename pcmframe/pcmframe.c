@@ -1,4 +1,4 @@
-#include <godlib/audio/slugmix.h>
+#include <godlib/audio/pcmframe.h>
 #include <godlib/font8x8/font8x8.h>
 #include <godlib/file/file.h>
 #include <godlib/gemdos/gemdos.h>
@@ -31,7 +31,7 @@ S16 GodLib_Game_Main(S16 argc, char ** argv)
     }
     Screen_Init(320,200,eGRAPHIC_COLOURMODE_4PLANE,eSCREEN_SCROLL_NONE);
     Video_SetPalST(sPalette);
-    ready=sSample && SlugMixer_Init();
+    ready=sSample && PcmFrameMixer_Init();
     /* Static menu in both buffers: keep drawing cost out of audio comparisons. */
     {
         U16 page;
@@ -39,7 +39,7 @@ S16 GodLib_Game_Main(S16 argc, char ** argv)
             U16 *screen;
             if(page) { Screen_Physic_ClearScreen();screen=Screen_GetpPhysic(); }
             else { Screen_Logic_ClearScreen();screen=Screen_GetpLogic(); }
-            Font8x8_Print("Metal Slug mixer / GodLib",screen,8,8);
+            Font8x8_Print("PCM Frame mixer / GodLib",screen,8,8);
             Font8x8_Print("3 channels - 12.5 kHz mono",screen,8,24);
             Font8x8_Print(ready ? "F1/F2/F3: voice on channel 1/2/3" : "Sample or DMA init failed",screen,8,48);
             Font8x8_Print("F4: play all three",screen,8,64);
@@ -55,7 +55,7 @@ S16 GodLib_Game_Main(S16 argc, char ** argv)
         Vbl_WaitVbl();
         screen=Screen_GetpPhysic();
         for(i=0;i<3;++i) {
-            U8 active=SlugMixer_IsPlaying(i);
+            U8 active=PcmFrameMixer_IsPlaying(i);
             U16 page=gScreenClass.mPhysicIndex;
             if(sShown[page][i]!=active) {
                 char line[]="CH1: STOP";line[2]=(char)('1'+i);
@@ -68,30 +68,30 @@ S16 GodLib_Game_Main(S16 argc, char ** argv)
         while (IKBD_GetKbdBytesWaiting()) {
             U8 key=IKBD_PopKbdByte();
             U16 j;
-            if (key==eIKBDSCAN_F9) { sRaster^=1; SlugMixer_SetRasterDebug(sRaster); }
+            if (key==eIKBDSCAN_F9) { sRaster^=1; PcmFrameMixer_SetRasterDebug(sRaster); }
             if (key==eIKBDSCAN_ESC) quit=1;
             if (!ready) continue;
             if (key>=eIKBDSCAN_F1 && key<=eIKBDSCAN_F3) {
                 j=key-eIKBDSCAN_F1;
-                SlugMixer_Play(j,sSample,sBlocks,0);
+                PcmFrameMixer_Play(j,sSample,sBlocks,0);
                 if (j==1) loop=0;
             }
             if (key==eIKBDSCAN_F4) {
-                for (j=0;j<3;++j) SlugMixer_Play(j,sSample,sBlocks,0);
+                for (j=0;j<3;++j) PcmFrameMixer_Play(j,sSample,sBlocks,0);
                 loop=0;
             }
             if (key==eIKBDSCAN_F5) {
                 loop^=1;
-                if (loop) SlugMixer_Play(1,sSample,sBlocks,1);
-                else SlugMixer_Stop(1);
+                if (loop) PcmFrameMixer_Play(1,sSample,sBlocks,1);
+                else PcmFrameMixer_Stop(1);
             }
             if (key==eIKBDSCAN_F6) {
-                for (j=0;j<3;++j) SlugMixer_Stop(j);
+                for (j=0;j<3;++j) PcmFrameMixer_Stop(j);
                 loop=0;
             }
         }
     }
-    SlugMixer_DeInit();
+    PcmFrameMixer_DeInit();
     if (sSample) File_UnLoad(sSample);
     File_DeInit();
     Screen_DeInit();

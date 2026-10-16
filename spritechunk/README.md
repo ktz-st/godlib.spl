@@ -32,14 +32,17 @@ Graphic_ChunkList_Store(&sChunkLists[index],
 ```
 
 `Store` saves offsets and heights, not pixel data. The 16x16 sprite occupies
-one 16-pixel chunk when aligned, or two when shifted. `ReStore` copies four
-words per row from the clean background and empties that page's list. If the
+one 16-pixel chunk when aligned, or two when shifted. `ReStore` merges adjacent
+chunks of equal height and copies their rows using unrolled 68000 `MOVE.L`
+instructions, then empties that page's list. Offsets are 32-bit, allowing virtual
+buffers larger than 64 KiB. If the
 sprite position already matches the page, no restore or draw is needed.
 
 The sprite stays fully inside the canvas: `Store` does not clip rectangles.
 Source and destination canvases have the same 160-byte stride and memory
-layout. Restoration is the existing C routine; sprite rendering automatically
-uses the blitter when available and CPU otherwise. GodLib is not modified.
+layout. Background restoration uses the CPU assembly kernel on both ST and STE;
+sprite rendering automatically uses the blitter when available and CPU otherwise.
+The new chunk layout requires recompilation of programs using the list.
 
 `gRestoredChunks[2]` counts processed chunks per page for debugger inspection.
 It is diagnostic bookkeeping, not a cycle-cost measurement.
@@ -50,3 +53,5 @@ helper and runs ST/STE sessions. It checks both lists, motion, four edges,
 stationary redraw skipping, and compares every pixel outside the current
 sprite against the clean background in both screen pages. Keyboard input is
 tested; injected scancodes do not test real mouse/joystick packets.
+
+Kernel correctness and C/ASM timings: `godlib/graphic/tests/chunk`.

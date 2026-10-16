@@ -6,3 +6,4 @@ analysis/*.log
 analysis/*.bin
 analysis/shots/
 analysis/rasters/
+__pycache__/

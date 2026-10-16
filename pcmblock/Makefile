@@ -5,13 +5,13 @@ GODLIB_DIR = ../../godlib
 CFLAGS = -Wall -Os -mshort -mfastcall -m68000 -fpack-struct=2 -I../.. -I$(CMINI_DIR)/include
 LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static -mshort -mfastcall -m68000 -Wl,--gc-sections -Wl,--relax -L$(CMINI_DIR)/lib/mshort/mfastcall -L$(GODLIB_DIR)
 
-all: SGDLMIX.TOS VOICE12.RAW VOICE25.RAW
+all: PCMBLOCK.TOS VOICE12.RAW VOICE25.RAW
 
-SGDLMIX.TOS: sgdlmix.o verify.o $(GODLIB_DIR)/libgod.a
-	$(CC) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/crt0.o sgdlmix.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
+PCMBLOCK.TOS: pcmblock.o verify.o $(GODLIB_DIR)/libgod.a
+	$(CC) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/crt0.o pcmblock.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 	$(STRIP) --strip-unneeded $@
 
-sgdlmix.o: sgdlmix.c $(GODLIB_DIR)/audio/sgdlmix.h
+pcmblock.o: pcmblock.c $(GODLIB_DIR)/audio/pcmblock.h
 	$(CC) $(CFLAGS) -c $< -o $@
 verify.o: verify.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -23,14 +23,14 @@ VOICE25.RAW: VOICE12.RAW
 	test -f $@ || python3 prepare_sample.py ../mixer/voice.raw
 
 run: all
-	hatari -w --machine ste --memsize 4 --monitor rgb --fast-boot true SGDLMIX.TOS
+	hatari -w --machine ste --memsize 4 --monitor rgb --fast-boot true PCMBLOCK.TOS
 clean:
-	rm -f sgdlmix.o verify.o SGDLMIX.TOS
+	rm -f pcmblock.o verify.o PCMBLOCK.TOS
 .PHONY: all run clean
 
 # Unstripped target for Hatari symbol-based validation.
-debug: all analysis/SGDLDBG.TOS
-analysis/SGDLDBG.TOS: sgdlmix.o verify.o $(GODLIB_DIR)/libgod.a
+debug: all analysis/PCMBLDBG.TOS
+analysis/PCMBLDBG.TOS: pcmblock.o verify.o $(GODLIB_DIR)/libgod.a
 	mkdir -p analysis
-	$(CC) $(filter-out -s,$(LDFLAGS)) -Wl,-Map=analysis/sgdlmix.map -o $@ $(CMINI_DIR)/lib/crt0.o sgdlmix.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
+	$(CC) $(filter-out -s,$(LDFLAGS)) -Wl,-Map=analysis/pcmblock.map -o $@ $(CMINI_DIR)/lib/crt0.o pcmblock.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 .PHONY: debug
