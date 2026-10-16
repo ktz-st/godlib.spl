@@ -45,6 +45,7 @@ own controls on screen or in the console.
 | `joy` | `JOY.TOS` | IKBD joystick packets for joy0/joy1. |
 | `lancemod` | `LANCEMOD.TOS` | ProTracker MOD playback through Lance Paula replay. |
 | `mixer` | `MIXER.TOS` | GodLib software audio mixer and panning controls. |
+| `pacmadmix` | `PACMADMX.TOS` | PacMad three-channel PCM mixer, loops, queued one-shots, CPU raster and core self-tests. |
 | `slugmix` | `SLUGMIX.TOS` | Metal Slug three-channel SFX mixer, overlap and looping. |
 | `mouse` | `MOUSE.TOS` | IKBD mouse position and button state. |
 | `music` | `MUSIC.TOS` | Legacy SSD/music sample playback. |

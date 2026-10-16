@@ -1,0 +1,6 @@
+*.o
+*.TOS
+analysis/*.map
+analysis/*.log
+analysis/*.png
+__pycache__/

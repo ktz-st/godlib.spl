@@ -1,0 +1,11 @@
+{
+  "core_cases": 491,
+  "failures": 0,
+  "live_loops_seconds": 18,
+  "underruns": 0,
+  "queue": true,
+  "one_shots": true,
+  "stop": true,
+  "exit": true,
+  "machine": "Hatari STE 8 MHz"
+}

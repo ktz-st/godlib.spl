@@ -1,0 +1,38 @@
+[
+  {
+    "active": 0,
+    "vbl_calls": 68,
+    "core_cycles": 402960,
+    "wrapper_cycles": 56848,
+    "cycles_per_vbl": 6761.882352941177,
+    "cpu_pct": 4.219425389964292,
+    "ms_per_vbl": 0.8452352941176471
+  },
+  {
+    "active": 1,
+    "vbl_calls": 72,
+    "core_cycles": 420644,
+    "wrapper_cycles": 60080,
+    "cycles_per_vbl": 6676.722222222223,
+    "cpu_pct": 4.166285332357117,
+    "ms_per_vbl": 0.8345902777777778
+  },
+  {
+    "active": 2,
+    "vbl_calls": 72,
+    "core_cycles": 411036,
+    "wrapper_cycles": 60080,
+    "cycles_per_vbl": 6543.277777777777,
+    "cpu_pct": 4.083015785853745,
+    "ms_per_vbl": 0.8179097222222221
+  },
+  {
+    "active": 3,
+    "vbl_calls": 72,
+    "core_cycles": 400372,
+    "wrapper_cycles": 60192,
+    "cycles_per_vbl": 6396.722222222223,
+    "cpu_pct": 3.9915648850727723,
+    "ms_per_vbl": 0.7995902777777778
+  }
+]
