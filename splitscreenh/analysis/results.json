@@ -1,0 +1,35 @@
+{
+  "machine": "Hatari STE 68000 8 MHz PAL, TOS 2.06",
+  "pixel_checked_scroll_x": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    31,
+    32,
+    319,
+    320
+  ],
+  "terrain_rows": 184,
+  "hud_rows": 16,
+  "split_frames": 2501,
+  "controls_and_exit": "passed",
+  "all_five_write_cycles": [
+    436,
+    500
+  ]
+}

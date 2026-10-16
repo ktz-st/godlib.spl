@@ -51,9 +51,13 @@ own controls on screen or in the console.
 | `pcmframe` | `PCMFRAME.TOS` | PCM Frame three-channel SFX mixer, overlap and looping. |
 | `mouse` | `MOUSE.TOS` | IKBD mouse position and button state. |
 | `music` | `MUSIC.TOS` | Legacy SSD/music sample playback. |
+| `palsplit` | `PALFX.PRG` | ST/STE Timer B palette split: colour top half, greyscale bottom half, preloaded MOVEM palette write. |
 | `picshow` | `PICSHOW.PRG` | Degas `.PI1` loading and screen copy. |
+| `rasters` | `RASTR.PRG` | ST/STE animated raster bars: VBL-prepared list and 49 Timer B single-colour changes per frame. |
 | `raw` | `RAWSHOW.PRG` | Uncompressed Amiga RAW picture display. |
 | `screen` | `SCREEN.PRG` | Screen setup, palette and buffer update basics. |
+| `splitscreen` | `SPLIT.PRG` | STE Timer B split: 160 scrolling terrain rows and an independent fixed 40-row HUD. |
+| `splitscreenh` | `SPLITH.PRG` | STE top HUD: fixed 16 rows above 184 horizontally scrolling rows, with independent fine scroll and stride. |
 | `sprite` | `SPRITE.PRG` | Basic sprite creation, mask creation and clipped drawing. |
 | `spriteinput` | `SPRINP.PRG` | Sprite controlled by mouse or joy1, switchable with `1`/`2`. |
 | `spritechunk` | `SPRCHUNK.PRG` | Sprite background restoration with separate chunk lists for both screen pages. |

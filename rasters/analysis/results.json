@@ -1,0 +1,62 @@
+[
+  {
+    "machine": "st",
+    "tos": "2.06",
+    "cpu": "68000 8 MHz PAL",
+    "bands": 50,
+    "interrupts_per_active_frame": 49,
+    "pixel_phases": [
+      0,
+      1,
+      17,
+      32,
+      63
+    ],
+    "complete_raster_frames": 1559,
+    "write_cycles": [
+      424,
+      448
+    ],
+    "controls_and_exit": "passed"
+  },
+  {
+    "machine": "ste",
+    "tos": "2.06",
+    "cpu": "68000 8 MHz PAL",
+    "bands": 50,
+    "interrupts_per_active_frame": 49,
+    "pixel_phases": [
+      0,
+      1,
+      17,
+      32,
+      63
+    ],
+    "complete_raster_frames": 1561,
+    "write_cycles": [
+      424,
+      448
+    ],
+    "controls_and_exit": "passed"
+  },
+  {
+    "machine": "ste",
+    "tos": "1.62",
+    "cpu": "68000 8 MHz PAL",
+    "bands": 50,
+    "interrupts_per_active_frame": 49,
+    "pixel_phases": [
+      0,
+      1,
+      17,
+      32,
+      63
+    ],
+    "complete_raster_frames": 1501,
+    "write_cycles": [
+      424,
+      448
+    ],
+    "controls_and_exit": "passed"
+  }
+]
