@@ -39,33 +39,16 @@ The source notices/hashes are in `../../godlib/music/leonard-source.json`.
 UGH uses Leonard + **TFMX**; this example uses Leonard + **ProTracker** and its
 `mt_Visualizer`. They are different replay frontends.
 
-For native playback/rendering verification on German TOS 1.62, STE / 8 MHz /
-1 MiB, run:
-
-```sh
-make debug
-python3 analysis/verify-hatari.py
-make RATE=12 OUT=LEO12.TOS DEBUG_OUT=analysis/LEO12DBG.PRG debug
-python3 analysis/verify-hatari.py 1.62-de 12
-python3 analysis/verify-audio.py  # both native rates and workspace free
-```
-
-The tests compare complete rendered pages against the original bar artwork,
-cover both pages/all four channels, V/F1 controls, nonzero mixed DMA audio and
-clean exit. Each rate passed 84 framebuffer comparisons. Memory guards, rate
-switching, high-note/loop PCM and baseline regression checks live in
-`../../godlib/music/tests/leonardmod-memory/`.
-
-Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY; **V** hides/shows the selected
+Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY → stereo L/R → mono; **V** hides/shows the selected
 visualizer. The four 64-point traces use current channel sample position,
 pitch and volume, drawn in ASM with independent history for both screen pages.
 They are read-only source previews, not extracted stereo DMA channels. The
 Leonard variant also works at 12.5 kHz. See
-[shared oscilloscope API and verification](../../godlib/music/modscope.md).
+[shared oscilloscope API](../../godlib/music/modscope.md).
 
 The third mode contains two ICE/Techwave `MODOSC.S` XY plots, using actual native
 stereo PCM with a 64-frame delay, 100 points per side and ASM OR plotting.
-V hides/shows any selected mode. Its source attribution, algorithm and tests are
+V hides/shows any selected mode. Its source attribution and algorithm are
 in the [shared scope documentation](../../godlib/music/modscope.md#ice-delayed-stereo-xy-plots).
 
 Two additional time-domain modes are available: **separate L/R** and a
@@ -73,5 +56,4 @@ Two additional time-domain modes are available: **separate L/R** and a
 four channel traces → ICE XY → stereo L/R → mono. V hides/shows the selected
 mode. Each trace has 128 points from native PCM; stereo uses green/cyan and
 mono uses white. Drawing and averaging are ASM and reuse existing PCM/history
-buffers. Audio playback stays stereo. These modes are included in the shared
-`lancemod/analysis/verify-scopes.py` full-frame tests.
+buffers. Audio playback stays stereo.

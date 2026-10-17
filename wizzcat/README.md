@@ -25,30 +25,18 @@ freed. Reload raw MOD data before a second Init/Start because preparation is in
 place. Only one DMA player may own the hardware at a time.
 
 See [Wizzcat memory and lifecycle](../../godlib/music/wizzcat.md) for API details,
-limits, initialization timings and baseline tests.
+limits and initialization timings.
 
-```sh
-make debug
-python3 analysis/verify-hatari.py
-```
-
-The native verifier defaults to German TOS 1.62 / STE / 8 MHz / 1 MiB. It compares
-complete screen pages against the original artwork, checks all four channels,
-both buffers, V/F1 controls, nonzero DMA PCM and clean exit.
-
-Verified: 60 complete framebuffer comparisons, both pages/all channels, controls
-and clean exit on German TOS 1.62.
-
-Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY; **V** hides/shows the selected
+Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY → stereo L/R → mono; **V** hides/shows the selected
 visualizer. The four 64-point traces use current channel sample position,
 pitch and volume, drawn in ASM with independent history for both screen pages.
 They are read-only source previews, not extracted stereo DMA channels. The
 Leonard variant also works at 12.5 kHz. See
-[shared oscilloscope API and verification](../../godlib/music/modscope.md).
+[shared oscilloscope API](../../godlib/music/modscope.md).
 
 The third mode contains two ICE/Techwave `MODOSC.S` XY plots, using actual native
 stereo PCM with a 64-frame delay, 100 points per side and ASM OR plotting.
-V hides/shows any selected mode. Its source attribution, algorithm and tests are
+V hides/shows any selected mode. Its source attribution and algorithm are
 in the [shared scope documentation](../../godlib/music/modscope.md#ice-delayed-stereo-xy-plots).
 
 Two additional time-domain modes are available: **separate L/R** and a
@@ -56,5 +44,4 @@ Two additional time-domain modes are available: **separate L/R** and a
 four channel traces → ICE XY → stereo L/R → mono. V hides/shows the selected
 mode. Each trace has 128 points from native PCM; stereo uses green/cyan and
 mono uses white. Drawing and averaging are ASM and reuse existing PCM/history
-buffers. Audio playback stays stereo. These modes are included in the shared
-`lancemod/analysis/verify-scopes.py` full-frame tests.
+buffers. Audio playback stays stereo.

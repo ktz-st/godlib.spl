@@ -37,43 +37,23 @@ copied only during initialization.
 hashes. The shipped originals allow regeneration without the source collection;
 Pillow is needed only for this asset preparation, not a normal build.
 
-For target verification, run `make debug` and
-`python3 analysis/verify-hatari.py`. The script uses the Hatari skill helper,
-checks entire rendered framebuffers against the original artwork on both pages,
-observes all four channels during actual MOD playback, and exercises hide/show,
-the CPU indicator and exit. ROMs and the helper are local development dependencies.
-Results are saved in `analysis/results.json`.
-
-Validation: STE, 8 MHz, 1 MiB: TOS 2.06 and German TOS 1.62 pass rendering,
-controls and exit with the original `LANCEMOD.TOS` filename. German 1.62 passed
-60 complete framebuffer comparisons, covering both pages and all four channels.
-British TOS 1.62 Rev 2 (GB) fails on exit with `LANCEMOD.TOS`, including the
-original console-only example, but the identical binary renamed `LM.TOS` exits
-cleanly on both GB and German ROMs. See `analysis/exit-1.62.md`.
-Run `python3 analysis/verify-hatari.py 1.62-de` for the German ROM, and
-`python3 analysis/verify-tos-names.py` for the short-name comparison.
+Use German TOS 1.62 for STE testing. British TOS 1.62 Rev 2 has an exit issue
+with the long `LANCEMOD.TOS` filename; renaming the program to `LM.TOS` avoids it.
 
 The replay now allocates its tables/code/DMA workspace for the selected frequency;
 module loading adds guards only for nonempty samples. Shutdown frees the complete
-workspace. See `godlib/music/lancemod.md` for memory accounting and the PCM/guard
-test matrix, including `BOOTUP.MOD` and `CANNONFO.MOD`.
+workspace. See `godlib/music/lancemod.md` for memory accounting.
 
-`python3 analysis/verify-live-mods.py` runs the three supplied modules through the
-normal 25 kHz VBL/DMA example, using temporary filename aliases so the source
-assets are unchanged. All three passed on STE / 8 MHz / 1 MiB / German TOS 1.62:
-activity advances, no missed VBLs, clean exit and DMA stopped. Results are in
-`analysis/live-memory-results.json`.
-
-Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY; **V** hides/shows the selected
+Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY → stereo L/R → mono; **V** hides/shows the selected
 visualizer. The four 64-point traces use current channel sample position,
 pitch and volume, drawn in ASM with independent history for both screen pages.
 They are read-only source previews, not extracted stereo DMA channels. The
 Leonard variant also works at 12.5 kHz. See
-[shared oscilloscope API and verification](../../godlib/music/modscope.md).
+[shared oscilloscope API](../../godlib/music/modscope.md).
 
 The third mode contains two ICE/Techwave `MODOSC.S` XY plots, using actual native
 stereo PCM with a 64-frame delay, 100 points per side and ASM OR plotting.
-V hides/shows any selected mode. Its source attribution, algorithm and tests are
+V hides/shows any selected mode. Its source attribution and algorithm are
 in the [shared scope documentation](../../godlib/music/modscope.md#ice-delayed-stereo-xy-plots).
 
 Two additional time-domain modes are available: **separate L/R** and a
@@ -81,5 +61,4 @@ Two additional time-domain modes are available: **separate L/R** and a
 four channel traces → ICE XY → stereo L/R → mono. V hides/shows the selected
 mode. Each trace has 128 points from native PCM; stereo uses green/cyan and
 mono uses white. Drawing and averaging are ASM and reuse existing PCM/history
-buffers. Audio playback stays stereo. These modes are included in the shared
-`lancemod/analysis/verify-scopes.py` full-frame tests.
+buffers. Audio playback stays stereo.
