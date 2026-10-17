@@ -1,0 +1,21 @@
+{
+  "original": "/Users/kriss/GCC.ELF/Atari_ST_Sources/STOS/A. C. Porritt/STOSSER 8/FLAGWAVE.ACB",
+  "sha256": "fbe66c58584177d68a22293744843708b0eed2c42f0faffc7a9b36d5aedaabe5",
+  "format": "Tokenized STOS BASIC, Lionpoulos header; not a TOS machine-code extension",
+  "width": 320,
+  "height": 200,
+  "strips": 20,
+  "strip_width": 16,
+  "delay_queue_entries": 21,
+  "mouse_formula": "(mouseY-100)/10",
+  "original_screen_clear": "CLS logic every iteration",
+  "mouse_queue_order": "draw 0..19; shift 1..20 left; append current input at 20",
+  "source_listing": "original-basic.txt",
+  "port_adaptations": [
+    "68000 ASM copies with clipped edges",
+    "Per-page unchanged-column reuse",
+    "Clear exposed edges instead of full CLS",
+    "Signed integer mouse division toward zero, with 0..199 input clamp",
+    "Added automatic sine with independent temporal and spatial phase"
+  ]
+}

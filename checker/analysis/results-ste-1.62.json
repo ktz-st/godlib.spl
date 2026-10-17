@@ -1,0 +1,12 @@
+{
+  "machine": "ste",
+  "tos": "1.62",
+  "cpu_mhz": 8,
+  "ram_mb": 1,
+  "full_screen_checks": 71,
+  "unique_phases": 67,
+  "both_pages": true,
+  "pause_speed_direction_raster_exit": true,
+  "missed_vbl": 0,
+  "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/checker/analysis/shots/ste-1.62/1792257310/grab0001.png"
+}

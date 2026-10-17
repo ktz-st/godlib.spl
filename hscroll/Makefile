@@ -33,7 +33,7 @@ analysis/hscroll-grid.o: hscroll.c $(GODLIB_DIR)/screen/screen.h
 	$(CC) $(CFLAGS) -DHSCROLL_VERIFY_PATTERN -c $< -o $@
 analysis/PANDBG.PRG: hscroll.o verify.o $(GODLIB_DIR)/libgod.a
 	$(CC) $(LDFLAGS) -o $@ $(CRT) hscroll.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
-PANORAMA.BIN: assets/panorama-original.png prepare_assets.py
+PANORAMA.BIN: assets/panorama-original.png prepare_assets.py ../tools/abc2_assets.py
 	python3 prepare_assets.py
 assets: PANORAMA.BIN
 .PHONY: assets

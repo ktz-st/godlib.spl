@@ -1,0 +1,21 @@
+{
+  "machine": "st",
+  "tos": "2.06",
+  "cpu_mhz": 8,
+  "ram_mb": 1,
+  "viewport": [
+    320,
+    96
+  ],
+  "kernel_costs": [
+    {
+      "kernel": "Checker_Draw",
+      "calls": 322,
+      "cycles_per_frame": 90223.6397515528,
+      "ms": 11.2779549689441,
+      "pal_frame_percent": 56.29969533218899
+    }
+  ],
+  "total_cycles_per_frame": 90223.6397515528,
+  "updates_per_second_from_vbl": 50.10964912280702
+}

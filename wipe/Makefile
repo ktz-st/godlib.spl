@@ -19,11 +19,11 @@ analysis/WIPEDBG.TOS: wipe.o $(GODLIB_DIR)/libgod.a
 	mkdir -p analysis
 	$(CC) $(LDFLAGS) -Wl,-Map=analysis/wipe.map -o $@ $(CRT) wipe.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 assets: COAST.PI1 SPACE.PI1 FOREST.PI1
-COAST.PI1: assets/coast.png prepare_assets.py
+COAST.PI1: assets/coast.png prepare_assets.py ../tools/abc2_assets.py
 	python3 prepare_assets.py coast
-SPACE.PI1: assets/space.png prepare_assets.py
+SPACE.PI1: assets/space.png prepare_assets.py ../tools/abc2_assets.py
 	python3 prepare_assets.py space
-FOREST.PI1: assets/forest.png prepare_assets.py
+FOREST.PI1: assets/forest.png prepare_assets.py ../tools/abc2_assets.py
 	python3 prepare_assets.py forest
 clean:
 	rm -f wipe.o WIPE.TOS analysis/WIPEDBG.TOS analysis/wipe.map

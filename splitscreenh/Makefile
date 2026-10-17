@@ -25,3 +25,9 @@ split_s.o: split_s.s PANORAMA.BIN
 clean:
 	rm -f *.o SPLITH.PRG analysis/SPLITHDB.PRG
 .PHONY: all run debug clean
+
+# Refresh this embedded copy from its original-RGB ABC2 asset pipeline.
+PANORAMA.BIN: ../hscroll/PANORAMA.BIN
+	cp $< $@
+../hscroll/PANORAMA.BIN: ../hscroll/assets/panorama-original.png ../hscroll/prepare_assets.py ../tools/abc2_assets.py
+	$(MAKE) -C ../hscroll PANORAMA.BIN

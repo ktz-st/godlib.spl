@@ -6,7 +6,8 @@
 #include <godlib/vbl/vbl.h>
 #include "split.h"
 #include <godlib/video/video.h>
-volatile U32 gHSplitPanel,gHSplitHudEnd,gHSplitTerrain;
+extern U16 gHSplitHudPalette[16];
+volatile U32 gHSplitPanel,gHSplitTerrain;
 volatile U16 gHSplitFine,gHSplitLineWords;
 volatile U16 gHSplitTimerCMask,gHSplitHasBlitter;
 volatile U8 gHSplitReload=14;
@@ -27,13 +28,13 @@ static void HSplit_Video(void)
     gHSplitFine=*(volatile U8*)0xffff8265UL & 15;
     gHSplitLineWords=80-(gHSplitFine?4:0);
     HSplit_SetHud((void*)gHSplitPanel);
+    Video_SetPalST(gHSplitHudPalette);
 }
 void HSplit_Init(void *panel)
 {
     sMfpTimer timer;U16 iml=System_GetIML();
     System_SetIML(7);
     gHSplitPanel=(U32)panel;
-    gHSplitHudEnd=(U32)panel+2560UL;
     gHSplitHasBlitter=System_GetBLT()==BLT_BLITTER;
     sVideoFunc=Vbl_GetpVbl()->mfVideoFunc;
     sTimerFunc=Vbl_GetpVbl()->mfTimerBFunc;

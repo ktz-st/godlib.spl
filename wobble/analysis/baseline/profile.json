@@ -1,0 +1,41 @@
+[
+  {
+    "amplitude_pixels": 0,
+    "draw_calls": 58,
+    "commands_calls": 58,
+    "draw_cycles_per_call": 357943.8620689655,
+    "command_cycles_per_call": 59457.31034482759,
+    "draw_and_commands_ms_at_8mhz": 52.17514655172414,
+    "equivalent_percent_of_one_50hz_pal_frame": 260.4589983612427,
+    "draw_and_commands_share_of_profile_cycles_percent": 87.82943928658136,
+    "target_vbl_delta": 255,
+    "target_frame_delta": 84,
+    "updates_per_second_from_vbl_counters": 16.470588235294116
+  },
+  {
+    "amplitude_pixels": 8,
+    "draw_calls": 28,
+    "commands_calls": 28,
+    "draw_cycles_per_call": 856405.4285714285,
+    "command_cycles_per_call": 60717.0,
+    "draw_and_commands_ms_at_8mhz": 114.64030357142856,
+    "equivalent_percent_of_one_50hz_pal_frame": 572.2858604803743,
+    "draw_and_commands_share_of_profile_cycles_percent": 93.16309840665785,
+    "target_vbl_delta": 252,
+    "target_frame_delta": 42,
+    "updates_per_second_from_vbl_counters": 8.333333333333334
+  },
+  {
+    "amplitude_pixels": 16,
+    "draw_calls": 34,
+    "commands_calls": 34,
+    "draw_cycles_per_call": 728987.0588235294,
+    "command_cycles_per_call": 57728.23529411765,
+    "draw_and_commands_ms_at_8mhz": 98.33941176470587,
+    "equivalent_percent_of_one_50hz_pal_frame": 490.91160026310837,
+    "draw_and_commands_share_of_profile_cycles_percent": 97.04097497803653,
+    "target_vbl_delta": 255,
+    "target_frame_delta": 51,
+    "updates_per_second_from_vbl_counters": 10.0
+  }
+]

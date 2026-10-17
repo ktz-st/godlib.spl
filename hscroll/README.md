@@ -78,3 +78,11 @@ Legacy allocation/clamp checks are available with
 `make analysis/MODES.PRG && python3 analysis/verify-modes.py`: NONE, V, H and
 H+V, explicit 640x200/320x400/640x400 geometry, buffer alignment, X/Y bounds,
 line offset and invalid widths.
+
+## Artwork conversion update
+
+Generated scene artwork now uses **ABC2, STE RGB444, without dithering**.
+See the [shared artwork guide](../tools/ARTWORK.md) for reserved colours,
+regeneration, shared copies and validation. Snowfall retains eight background
+colours to leave its snow bitplane free. Older ST screenshots and CPU results
+above refer to their original artwork revision.

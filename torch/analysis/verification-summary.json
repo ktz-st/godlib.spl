@@ -1,0 +1,40 @@
+{
+  "all_passed": true,
+  "total_full_screen_checks": 294,
+  "configurations": [
+    {
+      "machine": "st",
+      "tos": "2.06",
+      "cpu_mhz": 8,
+      "ram_mb": 1,
+      "full_screen_checks": 98,
+      "both_pages": true,
+      "controls_and_exit": true,
+      "missed_vbl": 0,
+      "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/torch/analysis/shots/st-2.06/1792258088/grab0001.png"
+    },
+    {
+      "machine": "ste",
+      "tos": "2.06",
+      "cpu_mhz": 8,
+      "ram_mb": 1,
+      "full_screen_checks": 98,
+      "both_pages": true,
+      "controls_and_exit": true,
+      "missed_vbl": 0,
+      "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/torch/analysis/shots/ste-2.06/1792258124/grab0001.png"
+    },
+    {
+      "machine": "ste",
+      "tos": "1.62",
+      "cpu_mhz": 8,
+      "ram_mb": 1,
+      "full_screen_checks": 98,
+      "both_pages": true,
+      "controls_and_exit": true,
+      "missed_vbl": 0,
+      "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/torch/analysis/shots/ste-1.62/1792258159/grab0001.png"
+    }
+  ],
+  "prg_sha256": "54a55246fff537058f5da5f239c63a06b1918d60b8086a7a8c6aacb72120d700"
+}

@@ -1,0 +1,7 @@
+*.o
+*.PRG
+analysis/shots/
+analysis/__pycache__/
+tools/__pycache__/
+analysis/*.bin
+assets/BUGSY.BIN

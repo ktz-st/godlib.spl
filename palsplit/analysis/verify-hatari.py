@@ -2,6 +2,7 @@
 from pathlib import Path
 import json, os, re, shutil, struct, subprocess, sys, tempfile
 from PIL import Image
+os.environ.setdefault('SDL_VIDEODRIVER','dummy')
 sys.path.insert(0,str(Path.home()/'.codex/skills/hatari-debugging/scripts'))
 from hatari_session import HatariSession
 root=Path(__file__).resolve().parents[1]
@@ -9,23 +10,30 @@ nm=subprocess.check_output(['m68k-atari-mintelf-nm',str(root/'analysis/PALDBG.PR
 syms={p[2]:int(p[0],16) for line in nm.splitlines() if len(p:=line.split())==3}
 rom=os.environ.get('HATARI_TOS','/Users/kriss/Atari/tos/TOS v2.06 (1991)(Atari Corp)(Mega-STE)(UK).img')
 data=(root/'COAST.PI1').read_bytes();palette=struct.unpack_from('>16H',data,2)
-grey=[]
-for c in palette:
- r,g,b=[(c>>s)&7 for s in (8,4,0)];y=(77*r+150*g+29*b+128)//256
- grey.append(y*0x111)
-def colours(pal):return [tuple(((c>>s)&7)*34 for s in (8,4,0)) for c in pal]
+def grey_palette(ste):
+ out=[]
+ for c in palette:
+  if ste:
+   r,g,b=[((((c>>s)&7)<<1)|(((c>>s)>>3)&1)) for s in (8,4,0)]
+   y=(77*r+150*g+29*b+128)//256;y=(y>>1)|((y&1)<<3)
+  else:
+   r,g,b=[(c>>s)&7 for s in (8,4,0)];y=(77*r+150*g+29*b+128)//256
+  out.append(y*0x111)
+ return out
+def colours(pal,ste):return [tuple((((((c>>s)&7)<<1)|(((c>>s)>>3)&1))*17) if ste else ((c>>s)&7)*34 for s in (8,4,0)) for c in pal]
 indices=[]
 for row in range(200):
  for group in range(20):
   planes=struct.unpack_from('>4H',data,34+row*160+group*8)
   indices.extend(sum(((planes[p]>>(15-x))&1)<<p for p in range(4)) for x in range(16))
-colour=colours(palette);gray=colours(grey)
-expected_colour=bytes(v for i in indices for v in colour[i])
-expected_split=bytes(v for pos,i in enumerate(indices) for v in (colour if pos<32000 else gray)[i])
 results=[]
 rom162=os.environ.get('HATARI_TOS162','/Users/kriss/Atari/tos/TOS v1.62 (1990)(Atari Corp)(STE)(GB)[STE TOS, Rev 2].img')
 for machine,version,testrom in (('st','2.06',rom),('ste','2.06',rom),('ste','1.62',rom162)):
  label=machine+'-'+version
+ ste=machine=='ste';grey=grey_palette(ste)
+ colour=colours(palette,ste);gray=colours(grey,ste)
+ expected_colour=bytes(v for i in indices for v in colour[i])
+ expected_split=bytes(v for pos,i in enumerate(indices) for v in (colour if pos<32000 else gray)[i])
  trace=root/('analysis/'+label+'-video.log')
  with tempfile.TemporaryDirectory(prefix='pal-test-') as td:
   program=Path(td)/'PALFX.PRG';shutil.copy2(root/'PALFX.PRG',program)
@@ -63,7 +71,7 @@ for machine,version,testrom in (('st','2.06',rom),('ste','2.06',rom),('ste','1.6
    m=re.search(r'write col addr=(\w+) col=(\w+).*line_cyc_w=(\d+).*nHBL=(\d+).*pc=(\w+)',line)
    if m and addr('PalSplit_TimerB')<=int(m[5],16)<addr('PalSplit_TimerBEnd'):
     assert int(m[4])==162 and 376<=int(m[3])<512,line
-    writes.append((int(m[1],16),int(m[2],16)&0x777,int(m[3])))
+    writes.append((int(m[1],16),int(m[2],16)&(0xfff if ste else 0x777),int(m[3])))
   assert len(writes)>=1600 and len(writes)%16==0,len(writes)
   for i in range(0,len(writes),16):
    assert [w[0] for w in writes[i:i+16]]==list(range(0xff8240,0xff8260,2))

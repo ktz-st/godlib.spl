@@ -1,0 +1,20 @@
+[
+  {
+    "speed_pixels": 4,
+    "draw_calls": 172,
+    "profile_cycles": 27563944,
+    "shift_cycles_per_frame": 29020.837209302324,
+    "draw_cycles_per_frame": 11698.093023255815,
+    "shift_draw_insert_cycles_per_frame": 40872.93023255814,
+    "kernel_percent_of_50hz_budget": 25.545581395348837
+  },
+  {
+    "speed_pixels": 8,
+    "draw_calls": 172,
+    "profile_cycles": 34134534,
+    "shift_cycles_per_frame": 33783.90697674418,
+    "draw_cycles_per_frame": 11697.116279069767,
+    "shift_draw_insert_cycles_per_frame": 45782.023255813954,
+    "kernel_percent_of_50hz_budget": 28.613764534883718
+  }
+]

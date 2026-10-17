@@ -26,10 +26,15 @@
   ],
   "terrain_rows": 184,
   "hud_rows": 16,
-  "split_frames": 2501,
-  "controls_and_exit": "passed",
+  "independent_palettes": true,
+  "split_frames": 2605,
   "all_five_write_cycles": [
-    436,
-    500
-  ]
+    428,
+    484
+  ],
+  "palette_write_cycles_from_hbl78_start": [
+    480,
+    556
+  ],
+  "controls_and_exit": "passed"
 }

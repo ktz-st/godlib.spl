@@ -8,11 +8,11 @@ root=Path(__file__).resolve().parents[1]
 nm=subprocess.check_output(['m68k-atari-mintelf-nm',str(root/'analysis/PANDBG.PRG')],text=True)
 syms={p[2]:int(p[0],16) for line in nm.splitlines() if len(p:=line.split())==3}
 data=(root/'PANORAMA.BIN').read_bytes();palette=struct.unpack_from('>16H',data)
-colours=[tuple(((v>>s)&7)*34 for s in (8,4,0)) for v in palette]
+colours=[tuple((((((v>>s)&7)<<1)|(((v>>s)>>3)&1))*17) for s in (8,4,0)) for v in palette]
 def pixel(x,y):
  p=struct.unpack_from('>4H',data,32+y*320+(x//16)*8)
  return sum(((p[i]>>(15-x%16))&1)<<i for i in range(4))
-with HatariSession(str(root/'HSCROLL.PRG'),machine='ste',screenshot_dir=str(root/'analysis/panorama-shots'),sound=False,
+with HatariSession(str(root/'HSCROLL.PRG'),machine='ste',screenshot_dir=str(root/'analysis/panorama-shots'),sound=False,tos=str(Path.home()/'Atari/tos/TOS v2.06 (1991)(Atari Corp)(Mega-STE)(UK).img'),
  debug_except='bus,address,illegal',extra_args=['--memsize','4','--monitor','rgb']) as h:
  h.wait(20);base=h.basepage()['text']
  def addr(n):return base+syms[n]

@@ -97,3 +97,11 @@ normal image test now includes STE/TOS 1.62 and watches for faults for five
 seconds after exit, in addition to checking callback removal and freed VRAM.
 Use the newly built `PALFX.PRG`; an old downloaded `PALSPLIT.PRG` keeps its old
 name and can still trigger this failure when autostarted.
+
+## Artwork conversion update
+
+Generated scene artwork now uses **ABC2, STE RGB444, without dithering**.
+See the [shared artwork guide](../tools/ARTWORK.md) for reserved colours,
+regeneration, shared copies and validation. Snowfall retains eight background
+colours to leave its snow bitplane free. Older ST screenshots and CPU results
+above refer to their original artwork revision.

@@ -1,0 +1,63 @@
+{
+  "machine": "ste",
+  "tos": "1.62",
+  "cpu_mhz": 8,
+  "ram_mb": 1,
+  "map_comparisons": 629,
+  "fine_phases": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "speeds": [
+    0,
+    1,
+    2,
+    4,
+    8
+  ],
+  "directions": [
+    -1,
+    0,
+    1
+  ],
+  "min_x": 0,
+  "max_x": 1984,
+  "displayed_pixel_checked_x": [
+    252,
+    244,
+    236,
+    228,
+    0,
+    1984,
+    0,
+    389
+  ],
+  "hud_unchanged": true,
+  "bank_alignment_and_guard": true,
+  "missed_vbl": 0,
+  "controls_and_exit": true,
+  "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/phasescroll/analysis/shots/ste-1.62/1792227614/grab0008.png",
+  "split_frames": 1213,
+  "all_five_write_cycles": [
+    428,
+    484
+  ],
+  "palette_write_cycles_from_hbl102_start": [
+    480,
+    556
+  ]
+}

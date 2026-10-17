@@ -3,3 +3,4 @@
 analysis/shots/
 analysis/*.log
 analysis/__pycache__/
+analysis/shots-tos162/

@@ -1,0 +1,49 @@
+{
+  "converter": "AmigAtari Bitmap Converter v2.11 by Leonard/Oxygene",
+  "arguments": [
+    "source.png",
+    "-bpc",
+    "4",
+    "-atari",
+    "-ste",
+    "-quantize",
+    "-cpu",
+    "-forcecolor",
+    "15",
+    "fff",
+    "-b",
+    "image.gfx",
+    "-p",
+    "image.pal",
+    "-preview",
+    "preview.png"
+  ],
+  "source_rgb_sha256": "e325fc469c0736564b53cdd99739369d8b2c100a448cd16d5dc03d793eb8b81f",
+  "size": [
+    320,
+    400
+  ],
+  "planes": 4,
+  "gamut": "STE RGB444 / 4096 colours",
+  "dithering": false,
+  "palette_words": [
+    "0x0",
+    "0x12b",
+    "0x3bc",
+    "0x812",
+    "0x2a9",
+    "0x9a5",
+    "0x5c4",
+    "0x9b",
+    "0x191",
+    "0x88",
+    "0xbba",
+    "0x235",
+    "0x13",
+    "0x82c",
+    "0x893",
+    "0xfff"
+  ],
+  "used_colours": 16,
+  "all_exported_pixels_verified": true
+}

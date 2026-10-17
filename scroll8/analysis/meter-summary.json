@@ -1,0 +1,41 @@
+{
+  "configurations": [
+    {
+      "machine": "st",
+      "tos": "2.06",
+      "tested_modes": [
+        "mcoder",
+        "griff",
+        "both",
+        "paused",
+        "off"
+      ],
+      "verified_colour_sequences": 147
+    },
+    {
+      "machine": "ste",
+      "tos": "2.06",
+      "tested_modes": [
+        "mcoder",
+        "griff",
+        "both",
+        "paused",
+        "off"
+      ],
+      "verified_colour_sequences": 151
+    },
+    {
+      "machine": "ste",
+      "tos": "1.62",
+      "tested_modes": [
+        "mcoder",
+        "griff",
+        "both",
+        "paused",
+        "off"
+      ],
+      "verified_colour_sequences": 152
+    }
+  ],
+  "all_passed": true
+}

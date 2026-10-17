@@ -1,0 +1,6 @@
+*.o
+analysis/S8DBG.PRG
+analysis/shots/
+analysis/*.bin
+analysis/profile-raw-*.json
+analysis/meter*.log

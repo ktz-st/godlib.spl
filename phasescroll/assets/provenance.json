@@ -1,0 +1,11 @@
+{
+  "source": "Atari_ST_Sources/ASM/Various/Jeffrey Young (TheNameOfTheGame)/Atari-STE-Hardware-Phase-Scrolling",
+  "algorithm_author": "Jeffrey Young / TheNameOfTheGame",
+  "artwork": "Simon Phipps / Core Design; included solely for demonstration, as in upstream",
+  "sha256": {
+    "HPSCROLL.S": "103542d331c356c6cdfc68ee23a6ba7a8fd62a1a5e3cc34a09d9fc20b1b226ce",
+    "SYSTEM.EQU": "eb914aabe4003a430611622bbfc360c60c378ae5f2d6fd67930b9977ebf0072d",
+    "TDATA.BIN": "4730261ca94d50a58720beb31d3e1fb72f570fc444a39910ee6e25869f7eedc8",
+    "LMAP.BIN": "2c62e0a950f1729611e8d0c790a8bfc13b3f3d0c6267309d9bf81e152297de77"
+  }
+}

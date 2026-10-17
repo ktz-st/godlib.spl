@@ -1,0 +1,47 @@
+[
+  {
+    "machine": "ste",
+    "tos": "2.06",
+    "ram_mb": 1,
+    "asset": "chart",
+    "distinct_displayed_colours": 4096,
+    "cpu": "68000 8 MHz, PAL",
+    "checks": [
+      {
+        "ste_palette": true,
+        "rasters": true,
+        "all_64000_pixels_match": true,
+        "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/spectrum/analysis/shots/ste-2.06/1792220863/grab0001.png"
+      },
+      {
+        "ste_palette": false,
+        "rasters": true,
+        "all_64000_pixels_match": true,
+        "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/spectrum/analysis/shots/ste-2.06/1792220863/grab0002.png"
+      },
+      {
+        "ste_palette": true,
+        "rasters": true,
+        "all_64000_pixels_match": true,
+        "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/spectrum/analysis/shots/ste-2.06/1792220863/grab0003.png"
+      },
+      {
+        "ste_palette": true,
+        "rasters": false,
+        "all_64000_pixels_match": true,
+        "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/spectrum/analysis/shots/ste-2.06/1792220863/grab0004.png"
+      },
+      {
+        "ste_palette": true,
+        "rasters": true,
+        "all_64000_pixels_match": true,
+        "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/spectrum/analysis/shots/ste-2.06/1792220863/grab0005.png"
+      }
+    ],
+    "complete_timing_frames": 5,
+    "palette_words_per_frame": 9552,
+    "first_palette_write": "line 63 cycle 404",
+    "scanline_period_cycles": 512,
+    "timer_a_hbl_restored_and_exit": true
+  }
+]

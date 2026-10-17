@@ -1,0 +1,109 @@
+{
+  "label": "baseline",
+  "total_cycles": 51602360,
+  "snow_calls": 64,
+  "snow_cycles": 34949588,
+  "copy_calls": 65,
+  "copy_cycles": 9601112,
+  "elapsed_wall_seconds": 8.030110040999716,
+  "top_symbols": [
+    [
+      "__etext",
+      34949588
+    ],
+    [
+      "Graphic_4BP_CopyScreen",
+      9601112
+    ],
+    [
+      "TOS/interrupts",
+      5984884
+    ],
+    [
+      "Mfp_StandardTimerC",
+      211324
+    ],
+    [
+      "GodLib_Game_Main",
+      210200
+    ],
+    [
+      "Vbl_Handler",
+      189616
+    ],
+    [
+      "Graphic_4BP_DrawPixel",
+      176964
+    ],
+    [
+      "Snow_Random",
+      87524
+    ],
+    [
+      "Screen_Update",
+      57924
+    ],
+    [
+      "Mfp_StcNewJump",
+      36036
+    ],
+    [
+      "Video_UpdateRegsST",
+      32952
+    ],
+    [
+      "Mfp_StcOldJump",
+      15444
+    ],
+    [
+      "Fade_Vbl",
+      14168
+    ],
+    [
+      "Vbl_WaitVbl",
+      6204
+    ],
+    [
+      "Vbl_GetCounter",
+      4152
+    ],
+    [
+      "IKBD_GetKeyStatus",
+      3900
+    ],
+    [
+      "IKBD_GetKbdBytesWaiting",
+      3840
+    ],
+    [
+      "Video_SetPhysic",
+      3640
+    ],
+    [
+      "IKBD_GetMouseButtonLeft",
+      3072
+    ],
+    [
+      "IKBD_GetMouseButtonRight",
+      2560
+    ],
+    [
+      "System_GetMCH",
+      2136
+    ],
+    [
+      "IKBD_GetMouseX",
+      2048
+    ],
+    [
+      "IKBD_GetMouseY",
+      2048
+    ],
+    [
+      "IKBD_Update",
+      1024
+    ]
+  ],
+  "snow_cycles_per_call": 546087.3125,
+  "copy_cycles_per_call": 147709.4153846154
+}

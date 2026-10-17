@@ -1,0 +1,12 @@
+[
+  {
+    "machine": "ste",
+    "tos": "1.62",
+    "ram_mb": 1,
+    "frames": 2773,
+    "missed_vbl": 0,
+    "all_four_speeds_and_message_wrap": true,
+    "glyph_and_planar_comparison": true,
+    "exit": true
+  }
+]

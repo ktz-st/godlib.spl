@@ -1,0 +1,12 @@
+*.o
+*.PRG
+analysis/shots/
+analysis/__pycache__/
+tools/__pycache__/
+analysis/*.bin
+assets/PLANES.BIN
+assets/sine.h
+assets/PRESHIFT.BIN
+assets/PALETTE.BIN
+assets/LOOKUP.BIN
+analysis/profile-raw-*.json

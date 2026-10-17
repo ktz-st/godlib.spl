@@ -1,0 +1,6 @@
+*.o
+analysis/WDBG.PRG
+analysis/shots/
+analysis/profile-raw-*.json
+__pycache__/
+analysis/*.bin

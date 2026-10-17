@@ -1,0 +1,17 @@
+{
+  "gOracleDone": 1,
+  "gOracleFailure": 0,
+  "gOracleCase": 9,
+  "gOracleTick": 39,
+  "gOracleCompared": 400,
+  "gOracleOffset": 0,
+  "machine": "st",
+  "cpu_mhz": 8,
+  "ram_mb": 1,
+  "tos": "2.06",
+  "cases": 10,
+  "calls_per_case": 40,
+  "bytes_compared_per_call": 32000,
+  "state_compared": true,
+  "original_code_exit_patch": "TEXT $16fc: 41f9 -> 4e75 (STOS exit to RTS)"
+}

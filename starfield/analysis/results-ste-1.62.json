@@ -1,0 +1,53 @@
+[
+  {
+    "machine": "ste",
+    "tos": "1.62",
+    "ram_mb": 1,
+    "projection_and_all_24320_frame_bytes_match": true,
+    "both_pages_verified": true,
+    "checks": [
+      {
+        "count": 768,
+        "visible_stars": 766,
+        "page": 406784
+      },
+      {
+        "count": 768,
+        "visible_stars": 760,
+        "page": 438784
+      },
+      {
+        "count": 96,
+        "visible_stars": 96,
+        "page": 406784
+      },
+      {
+        "count": 96,
+        "visible_stars": 96,
+        "page": 438784
+      },
+      {
+        "count": 384,
+        "visible_stars": 382,
+        "page": 438784
+      },
+      {
+        "count": 384,
+        "visible_stars": 381,
+        "page": 406784
+      },
+      {
+        "count": 192,
+        "visible_stars": 191,
+        "page": 406784
+      },
+      {
+        "count": 192,
+        "visible_stars": 192,
+        "page": 438784
+      }
+    ],
+    "pause_resume_exit": true,
+    "screenshot_after_debugger": "/Users/kriss/GCC.ELF/godlib.spl/starfield/analysis/shots/ste-1.62/1792195792/grab0001.png"
+  }
+]

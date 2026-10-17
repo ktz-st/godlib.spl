@@ -1,0 +1,84 @@
+[
+  {
+    "mode": "mouse",
+    "machine": "st",
+    "tos": "2.06",
+    "cpu_mhz": 8,
+    "ram_mb": 1,
+    "kernel_costs": [
+      {
+        "kernel": "Lens_Render",
+        "calls": 322,
+        "cycles_per_frame": 252.34782608695653,
+        "ms": 0.03154347826086957,
+        "pal_frame_percent": 0.15746544658980413
+      },
+      {
+        "kernel": "Lens_Clear",
+        "calls": 322,
+        "cycles_per_frame": 11435.652173913044,
+        "ms": 1.4294565217391304,
+        "pal_frame_percent": 7.135865224336714
+      },
+      {
+        "kernel": "Lens_Draw",
+        "calls": 322,
+        "cycles_per_frame": 82801.70186335404,
+        "ms": 10.350212732919255,
+        "pal_frame_percent": 51.66839423382216
+      },
+      {
+        "kernel": "Lens_Record",
+        "calls": 322,
+        "cycles_per_frame": 364.6832298136646,
+        "ms": 0.04558540372670807,
+        "pal_frame_percent": 0.2275629179647967
+      }
+    ],
+    "cycles_per_frame": 94854.3850931677,
+    "ms": 11.856798136645963,
+    "pal_frame_percent": 59.189287822713474,
+    "updates_per_second_from_vbl": 50.10964912280702
+  },
+  {
+    "mode": "auto",
+    "machine": "st",
+    "tos": "2.06",
+    "cpu_mhz": 8,
+    "ram_mb": 1,
+    "kernel_costs": [
+      {
+        "kernel": "Lens_Render",
+        "calls": 322,
+        "cycles_per_frame": 252.34782608695653,
+        "ms": 0.03154347826086957,
+        "pal_frame_percent": 0.15746544658980413
+      },
+      {
+        "kernel": "Lens_Clear",
+        "calls": 322,
+        "cycles_per_frame": 13284.95652173913,
+        "ms": 1.6606195652173912,
+        "pal_frame_percent": 8.289834091540492
+      },
+      {
+        "kernel": "Lens_Draw",
+        "calls": 322,
+        "cycles_per_frame": 85657.93788819876,
+        "ms": 10.707242236024845,
+        "pal_frame_percent": 53.450690076002616
+      },
+      {
+        "kernel": "Lens_Record",
+        "calls": 322,
+        "cycles_per_frame": 365.04347826086956,
+        "ms": 0.0456304347826087,
+        "pal_frame_percent": 0.22778771357132938
+      }
+    ],
+    "cycles_per_frame": 99560.28571428572,
+    "ms": 12.445035714285716,
+    "pal_frame_percent": 62.125777327704256,
+    "updates_per_second_from_vbl": 50.10989010989011
+  }
+]

@@ -1,0 +1,9 @@
+*.o
+analysis/RDBG.PRG
+analysis/original.bin
+analysis/original-core.bin
+analysis/ORACLE.PRG
+analysis/shots/
+analysis/*.bin
+analysis/profile-raw.json
+__pycache__/

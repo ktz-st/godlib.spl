@@ -17,7 +17,7 @@ video counter and is not an STF sync-scrolling implementation.
 - Esc exits and restores the previous handlers before releasing screen memory.
 
 `TOWER.BIN` is a copy of the generated image in `../vscroll`; it consists of
-16 ST palette words followed by four-plane pixels. Both display regions use
+16 STE palette words followed by four-plane pixels. Both display regions use
 the same palette and the same 160-byte stride. The white first/last HUD rows
 make the exact split boundary easy to inspect.
 
@@ -75,3 +75,11 @@ all displayed pixels matched at Y=0,1,7,8,15,31,239,240; auto/manual control,
 were in horizontal blank (cycles 436..508, nHBL=222) in 1491 traced split frames.
 
 For a fixed top HUD and horizontal fine scroll, see [splitscreenh](../splitscreenh/README.md).
+
+## Artwork conversion update
+
+Generated scene artwork now uses **ABC2, STE RGB444, without dithering**.
+See the [shared artwork guide](../tools/ARTWORK.md) for reserved colours,
+regeneration, shared copies and validation. Snowfall retains eight background
+colours to leave its snow bitplane free. Older ST screenshots and CPU results
+above refer to their original artwork revision.

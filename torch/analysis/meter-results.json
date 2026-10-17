@@ -1,0 +1,10 @@
+{
+  "machine": "st",
+  "tos": "2.06",
+  "green_pixels_on": 40896,
+  "green_pixels_off": 0,
+  "restored_colour_zero": 0,
+  "on_screenshot": "/Users/kriss/GCC.ELF/godlib.spl/torch/analysis/shots/meter/grab0001.png",
+  "off_screenshot": "/Users/kriss/GCC.ELF/godlib.spl/torch/analysis/shots/meter/grab0002.png",
+  "clean_exit": true
+}

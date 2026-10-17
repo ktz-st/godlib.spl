@@ -1,0 +1,6 @@
+{
+  "source": "stsys10/spec512/pic.spu",
+  "palette_words": 9552,
+  "distinct_ste_palette_words": 205,
+  "distinct_st_palette_words": 204
+}

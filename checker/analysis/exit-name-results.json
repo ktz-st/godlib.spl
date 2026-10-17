@@ -1,0 +1,10 @@
+{
+  "payload_sha256": "a2b23aa44995e203728c57cade406309e28f9c33572d67d95746231429b7c469",
+  "same_payload": true,
+  "long_name": "CHECKER.PRG",
+  "long_name_fault": "Bus Error reading at address $455288f2, PC=$e1fc9c",
+  "short_name": "CHKFX.PRG",
+  "short_name_verified": true,
+  "existing_regression_reference": "../../palsplit/README.md#tos-162-exit-and-filename-regression",
+  "short_name_faults": []
+}

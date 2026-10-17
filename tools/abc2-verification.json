@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-17",
+  "conversion": "ABC2 STE, no dithering",
+  "source_images": 7,
+  "affected_examples": 10,
+  "tests": {
+    "wipe": {
+      "passed": true,
+      "log": "tools/artwork-validation/wipe.log"
+    },
+    "hscroll": {
+      "passed": true,
+      "log": "tools/artwork-validation/hscroll.log"
+    },
+    "vscroll": {
+      "passed": true,
+      "log": "tools/artwork-validation/vscroll.log"
+    },
+    "palsplit": {
+      "passed": true,
+      "log": "tools/artwork-validation/palsplit.log"
+    },
+    "splitscreen": {
+      "passed": true,
+      "log": "tools/artwork-validation/splitscreen.log"
+    },
+    "splitscreenh": {
+      "passed": true,
+      "log": "tools/artwork-validation/splitscreenh.log"
+    },
+    "wobble": {
+      "passed": true,
+      "log": "tools/artwork-validation/wobble.log"
+    },
+    "water": {
+      "passed": true,
+      "log": "tools/artwork-validation/water.log"
+    },
+    "reflect": {
+      "passed": true,
+      "log": "tools/artwork-validation/reflect.log"
+    },
+    "snowfall": {
+      "passed": true,
+      "log": "tools/artwork-validation/snowfall.log"
+    }
+  },
+  "asset_sha256": {
+    "wipe/COAST.PI1": "36b487a57d57fbac6928806de1b0e2a0346f03699ce0400e15cfe9c9cac4ed5e",
+    "wipe/SPACE.PI1": "1828346d36f2e6c8d1f264aaf697dac3415f7780425774e172de6dff419c7a8a",
+    "wipe/FOREST.PI1": "0dba355f754ed925179acf9ba9b7a6a4f2c14233cddba16bbca853e5ed6ffe09",
+    "hscroll/PANORAMA.BIN": "7907983bdcc45b9f4310b1df0e3a11f5107ae72bd2cd3364767a631f492e5828",
+    "vscroll/TOWER.BIN": "dc49b4ba842e3cdbb434a073fae2f8a5aebee5295f54756e848e5984b84b8557",
+    "water/assets/CASTLE.PI1": "50d149f9c6d7cad64bfa241156dd6228e0ff3762155ba5d8106d6ab57036cd38",
+    "snowfall/assets/WINTER.BIN": "aab094bf582adeaca19b63ae7541e749ee4f40d06ef399b2b4118ac832d85b90"
+  },
+  "program_sha256": {
+    "wipe/WIPE.TOS": "95a24744769ce2f3d373c3fd1a13a58689980927e460c6cd3e3d79f0cd57bc6c",
+    "hscroll/HSCROLL.PRG": "e72a215665024293f6a912ed13b306ad8a516dd6606c6d822c678968daff851d",
+    "vscroll/VSCROLL.PRG": "47b347ae75a4af71866937985377812d791ed79f484ac8a0e1fdc9ad7ebc4e02",
+    "palsplit/PALFX.PRG": "cb4fe3b1b1a8d022ee466dd59dfb4d8d8be0b1b643dbd536c96a01b5c4158dc9",
+    "splitscreen/SPLIT.PRG": "299c1ee454a237f5fb0e4581272e806bfe15d643ddf8fb10f8cc1dfb95b8a1c3",
+    "splitscreenh/SPLITH.PRG": "566d7d8d1ee98b2f948cd9e99c923ffa0d1767bd73b7339c34100f1c49f15af3",
+    "wobble/WOBBLE.PRG": "590b5fd903253f919ac4ab7f8c359a35c2bda6dd68e3b707b969fb31152930de",
+    "water/WATER.PRG": "756192445e90e883aa117a9855db6e3357d526cb8485b93023308a75b6700e7c",
+    "reflect/REFL.PRG": "52077289d1d4bbbb342459e1d6d2d42043ff64a065a2db5b575ce02af50ff2c8",
+    "snowfall/SNOW.PRG": "bb8e3b348f07fbdcaae7d90802d85b8e5200911758926e1863fcc3d3542811f2"
+  },
+  "approved_castle_match": true,
+  "snow_collision_silhouette_preserved": true,
+  "snow_reference_steps": 1200,
+  "snow_reference_mismatches": 0,
+  "configuration_note": "STE tests use TOS 2.06; palsplit also passes ST/TOS 2.06 and STE/TOS 1.62. Initial hscroll/vscroll runs inherited a TOS configuration with a ROM bus error on autostart termination. Explicit TOS 2.06 full reruns pass; rendering, sprite restore and scrolling already passed in the initial runs."
+}

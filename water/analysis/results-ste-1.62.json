@@ -1,0 +1,116 @@
+[
+  {
+    "machine": "ste",
+    "tos": "1.62",
+    "ram_mb": 1,
+    "all_32000_bytes_match": true,
+    "castle_rows_0_to_110_unchanged": true,
+    "both_pages_and_vbl_animation_passed": true,
+    "pause_step_speed_toggle_exit_passed": true,
+    "checks": [
+      {
+        "tick": 0,
+        "enabled": true,
+        "surface": 0,
+        "page": 266496
+      },
+      {
+        "tick": 1,
+        "enabled": true,
+        "surface": 0,
+        "page": 298496
+      },
+      {
+        "tick": 5,
+        "enabled": true,
+        "surface": 1,
+        "page": 266496
+      },
+      {
+        "tick": 9,
+        "enabled": true,
+        "surface": 1,
+        "page": 298496
+      },
+      {
+        "tick": 17,
+        "enabled": true,
+        "surface": 1,
+        "page": 266496
+      },
+      {
+        "tick": 41,
+        "enabled": true,
+        "surface": 0,
+        "page": 298496
+      },
+      {
+        "tick": 63,
+        "enabled": true,
+        "surface": 0,
+        "page": 266496
+      },
+      {
+        "tick": 83,
+        "enabled": true,
+        "surface": 0,
+        "page": 298496
+      },
+      {
+        "tick": 83,
+        "enabled": false,
+        "surface": 3,
+        "page": 298496
+      },
+      {
+        "tick": 83,
+        "enabled": true,
+        "surface": 0,
+        "page": 266496
+      },
+      {
+        "tick": 0,
+        "enabled": true,
+        "surface": 0,
+        "page": 266496
+      },
+      {
+        "tick": 81,
+        "enabled": true,
+        "surface": 1,
+        "page": 298496
+      },
+      {
+        "tick": 82,
+        "enabled": true,
+        "surface": 1,
+        "page": 266496
+      },
+      {
+        "tick": 83,
+        "enabled": true,
+        "surface": 1,
+        "page": 298496
+      },
+      {
+        "tick": 0,
+        "enabled": true,
+        "surface": 1,
+        "page": 266496
+      },
+      {
+        "tick": 1,
+        "enabled": true,
+        "surface": 1,
+        "page": 298496
+      },
+      {
+        "tick": 2,
+        "enabled": true,
+        "surface": 2,
+        "page": 266496
+      }
+    ],
+    "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/water/analysis/shots/ste-1.62/1792222317/grab0001.png"
+  }
+]

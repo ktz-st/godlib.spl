@@ -1,0 +1,8 @@
+*.o
+*.PRG
+analysis/*.PRG
+analysis/profile-raw-*.json
+analysis/temp-*.bin
+analysis/shots/
+analysis/*.log
+__pycache__/

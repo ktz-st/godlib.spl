@@ -1,7 +1,7 @@
 # Wipe slideshow
 
 Three generated pixel-art scenes (coast, space and forest), converted to
-320x200 Degas PI1 with individual 16-colour ST palettes.
+320x200 Degas PI1 with individual 16-colour STE palettes.
 
 ```sh
 make
@@ -33,15 +33,15 @@ Every palette reserves index 0 for black and index 15 for white captions.
 Palettes are swapped after the black frame reaches the physical screen, so
 colours in the old picture do not change during its wipe-out.
 
-`assets/` contains the generated original PNGs and the final ST PNG previews.
-`prepare_assets.py` uses Pillow to resize, select each picture's palette,
-quantize to the ST's 3-bit RGB channels and pack four interleaved bitplanes.
+`assets/` contains the generated original PNGs and the final STE PNG previews.
+`prepare_assets.py` uses Pillow to resize, then ABC2 to select each picture's
+16-colour STE RGB444 palette without dithering and export Atari bitplanes.
 The script independently decodes the output and checks every pixel. Rebuild
 assets with `make assets`; rebuild one explicitly with
 `python3 prepare_assets.py coast`. The PI1 files are supplied ready to run.
 Image generation used the built-in image tool; prompts are in `assets/PROMPTS.md`.
 
-For the ST smoke test:
+For the STE smoke test:
 
 ```sh
 make debug
@@ -51,3 +51,11 @@ python3 analysis/verify-hatari.py
 The test uses the local hatari-debugging skill's session helper. It checks all
 three completed planar pictures against their PI1 data, hardware palettes,
 auto/manual advance, pause and clean exit. It does not exhaust all 39 effects.
+
+## Artwork conversion update
+
+Generated scene artwork now uses **ABC2, STE RGB444, without dithering**.
+See the [shared artwork guide](../tools/ARTWORK.md) for reserved colours,
+regeneration, shared copies and validation. Snowfall retains eight background
+colours to leave its snow bitplane free. Older ST screenshots and CPU results
+above refer to their original artwork revision.

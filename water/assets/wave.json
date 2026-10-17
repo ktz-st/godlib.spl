@@ -1,0 +1,397 @@
+{
+  "source": "ugh.agt/src/openugh/intro_water_wave.h",
+  "water_top": 112,
+  "height": 88,
+  "surface_y": 111,
+  "hold_y": 197,
+  "lengths": [
+    6,
+    1,
+    4,
+    1,
+    6,
+    1,
+    4,
+    1,
+    7,
+    1,
+    5,
+    1,
+    7,
+    1,
+    5,
+    1,
+    8,
+    1,
+    6,
+    1,
+    8,
+    1,
+    6,
+    1
+  ],
+  "advance": [
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    1,
+    2,
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    1,
+    2,
+    1,
+    0,
+    1,
+    0,
+    1,
+    2,
+    1,
+    2
+  ],
+  "states": [
+    {
+      "phase": 0,
+      "remaining": 1
+    },
+    {
+      "phase": 1,
+      "remaining": 1
+    },
+    {
+      "phase": 2,
+      "remaining": 4
+    },
+    {
+      "phase": 2,
+      "remaining": 3
+    },
+    {
+      "phase": 2,
+      "remaining": 2
+    },
+    {
+      "phase": 2,
+      "remaining": 1
+    },
+    {
+      "phase": 3,
+      "remaining": 1
+    },
+    {
+      "phase": 4,
+      "remaining": 6
+    },
+    {
+      "phase": 4,
+      "remaining": 5
+    },
+    {
+      "phase": 4,
+      "remaining": 4
+    },
+    {
+      "phase": 4,
+      "remaining": 3
+    },
+    {
+      "phase": 4,
+      "remaining": 2
+    },
+    {
+      "phase": 4,
+      "remaining": 1
+    },
+    {
+      "phase": 5,
+      "remaining": 1
+    },
+    {
+      "phase": 6,
+      "remaining": 4
+    },
+    {
+      "phase": 6,
+      "remaining": 3
+    },
+    {
+      "phase": 6,
+      "remaining": 2
+    },
+    {
+      "phase": 6,
+      "remaining": 1
+    },
+    {
+      "phase": 7,
+      "remaining": 1
+    },
+    {
+      "phase": 8,
+      "remaining": 7
+    },
+    {
+      "phase": 8,
+      "remaining": 6
+    },
+    {
+      "phase": 8,
+      "remaining": 5
+    },
+    {
+      "phase": 8,
+      "remaining": 4
+    },
+    {
+      "phase": 8,
+      "remaining": 3
+    },
+    {
+      "phase": 8,
+      "remaining": 2
+    },
+    {
+      "phase": 8,
+      "remaining": 1
+    },
+    {
+      "phase": 9,
+      "remaining": 1
+    },
+    {
+      "phase": 10,
+      "remaining": 5
+    },
+    {
+      "phase": 10,
+      "remaining": 4
+    },
+    {
+      "phase": 10,
+      "remaining": 3
+    },
+    {
+      "phase": 10,
+      "remaining": 2
+    },
+    {
+      "phase": 10,
+      "remaining": 1
+    },
+    {
+      "phase": 11,
+      "remaining": 1
+    },
+    {
+      "phase": 12,
+      "remaining": 7
+    },
+    {
+      "phase": 12,
+      "remaining": 6
+    },
+    {
+      "phase": 12,
+      "remaining": 5
+    },
+    {
+      "phase": 12,
+      "remaining": 4
+    },
+    {
+      "phase": 12,
+      "remaining": 3
+    },
+    {
+      "phase": 12,
+      "remaining": 2
+    },
+    {
+      "phase": 12,
+      "remaining": 1
+    },
+    {
+      "phase": 13,
+      "remaining": 1
+    },
+    {
+      "phase": 14,
+      "remaining": 5
+    },
+    {
+      "phase": 14,
+      "remaining": 4
+    },
+    {
+      "phase": 14,
+      "remaining": 3
+    },
+    {
+      "phase": 14,
+      "remaining": 2
+    },
+    {
+      "phase": 14,
+      "remaining": 1
+    },
+    {
+      "phase": 15,
+      "remaining": 1
+    },
+    {
+      "phase": 16,
+      "remaining": 8
+    },
+    {
+      "phase": 16,
+      "remaining": 7
+    },
+    {
+      "phase": 16,
+      "remaining": 6
+    },
+    {
+      "phase": 16,
+      "remaining": 5
+    },
+    {
+      "phase": 16,
+      "remaining": 4
+    },
+    {
+      "phase": 16,
+      "remaining": 3
+    },
+    {
+      "phase": 16,
+      "remaining": 2
+    },
+    {
+      "phase": 16,
+      "remaining": 1
+    },
+    {
+      "phase": 17,
+      "remaining": 1
+    },
+    {
+      "phase": 18,
+      "remaining": 6
+    },
+    {
+      "phase": 18,
+      "remaining": 5
+    },
+    {
+      "phase": 18,
+      "remaining": 4
+    },
+    {
+      "phase": 18,
+      "remaining": 3
+    },
+    {
+      "phase": 18,
+      "remaining": 2
+    },
+    {
+      "phase": 18,
+      "remaining": 1
+    },
+    {
+      "phase": 19,
+      "remaining": 1
+    },
+    {
+      "phase": 20,
+      "remaining": 8
+    },
+    {
+      "phase": 20,
+      "remaining": 7
+    },
+    {
+      "phase": 20,
+      "remaining": 6
+    },
+    {
+      "phase": 20,
+      "remaining": 5
+    },
+    {
+      "phase": 20,
+      "remaining": 4
+    },
+    {
+      "phase": 20,
+      "remaining": 3
+    },
+    {
+      "phase": 20,
+      "remaining": 2
+    },
+    {
+      "phase": 20,
+      "remaining": 1
+    },
+    {
+      "phase": 21,
+      "remaining": 1
+    },
+    {
+      "phase": 22,
+      "remaining": 6
+    },
+    {
+      "phase": 22,
+      "remaining": 5
+    },
+    {
+      "phase": 22,
+      "remaining": 4
+    },
+    {
+      "phase": 22,
+      "remaining": 3
+    },
+    {
+      "phase": 22,
+      "remaining": 2
+    },
+    {
+      "phase": 22,
+      "remaining": 1
+    },
+    {
+      "phase": 23,
+      "remaining": 1
+    },
+    {
+      "phase": 0,
+      "remaining": 6
+    },
+    {
+      "phase": 0,
+      "remaining": 5
+    },
+    {
+      "phase": 0,
+      "remaining": 4
+    },
+    {
+      "phase": 0,
+      "remaining": 3
+    },
+    {
+      "phase": 0,
+      "remaining": 2
+    }
+  ]
+}

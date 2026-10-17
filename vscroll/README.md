@@ -39,3 +39,11 @@ Run `make debug`, then `python3 analysis/verify-hatari.py` with the local
 hatari-debugging helper. It checks automatic movement, manual up/down, every
 visible pixel at Y=0/1/7/8/15/16/31/32/199/200, both sprite pages, transparency,
 background restore, reserve rows and exit to TOS. Real hardware is untested.
+
+## Artwork conversion update
+
+Generated scene artwork now uses **ABC2, STE RGB444, without dithering**.
+See the [shared artwork guide](../tools/ARTWORK.md) for reserved colours,
+regeneration, shared copies and validation. Snowfall retains eight background
+colours to leave its snow bitplane free. Older ST screenshots and CPU results
+above refer to their original artwork revision.

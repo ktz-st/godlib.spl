@@ -18,7 +18,7 @@ debug: all analysis/VSCDBG.PRG
 analysis/VSCDBG.PRG: vscroll.o $(GODLIB_DIR)/libgod.a
 	mkdir -p analysis
 	$(CC) $(LDFLAGS) -o $@ $(CRT) vscroll.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
-TOWER.BIN: assets/tower-original.png prepare_assets.py
+TOWER.BIN: assets/tower-original.png prepare_assets.py ../tools/abc2_assets.py
 	python3 prepare_assets.py
 assets: TOWER.BIN
 clean:

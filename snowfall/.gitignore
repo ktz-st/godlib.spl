@@ -1,0 +1,9 @@
+*.o
+*.PRG
+analysis/shots/
+analysis/*.log
+analysis/__pycache__/
+analysis/*.bin
+tools/__pycache__/
+assets/WINTER.BIN
+assets/palette.h

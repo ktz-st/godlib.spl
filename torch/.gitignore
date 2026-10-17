@@ -1,0 +1,6 @@
+*.o
+analysis/TCHDB.PRG
+analysis/shots/
+analysis/*.bin
+analysis/*.log
+analysis/profile-raw*.json

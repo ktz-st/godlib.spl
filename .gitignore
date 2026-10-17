@@ -1,0 +1,4 @@
+__pycache__/
+
+# Transient emulator/converter logs; compact reports remain versioned.
+*.log

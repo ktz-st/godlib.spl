@@ -14,9 +14,16 @@ static void BuildGreyPalette(void)
     U16 i;
     for(i=0;i<16;++i) {
         U16 c=gPalSplitPicture[i+1];
-        U16 r=(c>>8)&7,g=(c>>4)&7,b=c&7;
-        /* Integer luminance approximation, rounded to ST's eight grey levels. */
-        U16 y=(77*r+150*g+29*b+128)>>8;
+        U16 r=(c>>8)&15,g=(c>>4)&15,b=c&15,y;
+        if(System_GetVDO()==VDO_STE) {
+            /* STE nibbles store the least significant bit in bit 3. */
+            r=((r&7)<<1)|(r>>3);g=((g&7)<<1)|(g>>3);b=((b&7)<<1)|(b>>3);
+            y=(77*r+150*g+29*b+128)>>8;
+            y=(y>>1)|((y&1)<<3);
+        } else {
+            r&=7;g&=7;b&=7;
+            y=(77*r+150*g+29*b+128)>>8;
+        }
         gPalSplitGrey[i]=y*0x111;
     }
 }

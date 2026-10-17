@@ -1,0 +1,6 @@
+*.o
+analysis/PDBG.PRG
+analysis/shots/
+analysis/*.trace
+analysis/profile-raw*.json
+__pycache__/

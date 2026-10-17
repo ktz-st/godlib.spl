@@ -1,0 +1,56 @@
+[
+  {
+    "variant": "plain",
+    "unique_colours": 16,
+    "palette_st_words": [
+      "0x1",
+      "0x13",
+      "0x112",
+      "0x24",
+      "0x222",
+      "0x125",
+      "0x224",
+      "0x336",
+      "0x531",
+      "0x534",
+      "0x730",
+      "0x535",
+      "0x436",
+      "0x745",
+      "0x751",
+      "0x764"
+    ],
+    "source": "Original RGB castle resized to 320x200, not previously reduced art",
+    "native_tool": "PhotoChrome/CryptoChrome v6.44, -cd st -pc 4 -ccmode 1",
+    "ccfields": 1,
+    "shown_output": "pic_f0.pi1, one actual four-plane static field",
+    "pixel_data_unchanged": true
+  },
+  {
+    "variant": "dither",
+    "unique_colours": 16,
+    "palette_st_words": [
+      "0x1",
+      "0x13",
+      "0x101",
+      "0x15",
+      "0x124",
+      "0x121",
+      "0x126",
+      "0x323",
+      "0x336",
+      "0x630",
+      "0x435",
+      "0x536",
+      "0x645",
+      "0x744",
+      "0x750",
+      "0x774"
+    ],
+    "source": "Original RGB castle resized to 320x200, not previously reduced art",
+    "native_tool": "PhotoChrome/CryptoChrome v6.44, -cd st -pc 4 -ccmode 1",
+    "ccfields": 2,
+    "shown_output": "pic_f0.pi1, one actual four-plane static field",
+    "pixel_data_unchanged": true
+  }
+]

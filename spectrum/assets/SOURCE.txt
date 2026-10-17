@@ -1,0 +1,17 @@
+PICTURE.SPU is copied unchanged from:
+  GCC.ELF/stsys10/spec512/pic.spu
+Dead Hackers Society Synclock Demosystem v1.0, September 2011 (ae / DHS).
+The original file was already supplied with the local source archive.
+No new license or authorship claim is made for the picture.
+
+The display kernel is adapted from the same archive:
+  spec512/spec512.s (September 4, 2011)
+  sys/common.s (do_hardsync)
+
+CHART.SPU and CHART*.BIN are generated locally by tools/chart.py.
+PIXELS.BIN, PALST.BIN, PALSTE.BIN and reference-*.png are generated from
+PICTURE.SPU by tools/prepare.py.
+
+SPU palette-index reference: Steve Belczyk, public domain, December 1990;
+ST Picture Formats documentation reproduced by ST NEWS:
+https://st-news.com/issues/st-news-volume-7-issue-3/ed-lit/st-picture-formats

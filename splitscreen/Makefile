@@ -25,3 +25,9 @@ split_s.o: split_s.s TOWER.BIN
 clean:
 	rm -f *.o SPLIT.PRG analysis/SPLITDBG.PRG
 .PHONY: all run debug clean
+
+# Refresh this embedded copy from its original-RGB ABC2 asset pipeline.
+TOWER.BIN: ../vscroll/TOWER.BIN
+	cp $< $@
+../vscroll/TOWER.BIN: ../vscroll/assets/tower-original.png ../vscroll/prepare_assets.py ../tools/abc2_assets.py
+	$(MAKE) -C ../vscroll TOWER.BIN

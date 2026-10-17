@@ -1,0 +1,54 @@
+[
+  {
+    "stars": 96,
+    "draw_calls": 222,
+    "erase_calls": 222,
+    "draw_cycles_per_call": 15674.432432432432,
+    "erase_cycles_per_call": 4006.054054054054,
+    "total_kernel_cycles_per_frame": 19680.486486486487,
+    "kernel_ms_at_8mhz": 2.460060810810811,
+    "kernel_percent_of_pal_frame": 12.280655006044384,
+    "vbl_delta": 305,
+    "frame_delta": 305,
+    "updates_per_second_from_vbl_counters": 50.0
+  },
+  {
+    "stars": 192,
+    "draw_calls": 222,
+    "erase_calls": 222,
+    "draw_cycles_per_call": 30878.64864864865,
+    "erase_cycles_per_call": 7851.603603603604,
+    "total_kernel_cycles_per_frame": 38730.252252252256,
+    "kernel_ms_at_8mhz": 4.841281531531532,
+    "kernel_percent_of_pal_frame": 24.16773927481795,
+    "vbl_delta": 305,
+    "frame_delta": 304,
+    "updates_per_second_from_vbl_counters": 49.83606557377049
+  },
+  {
+    "stars": 384,
+    "draw_calls": 222,
+    "erase_calls": 222,
+    "draw_cycles_per_call": 61306.59459459459,
+    "erase_cycles_per_call": 15543.207207207208,
+    "total_kernel_cycles_per_frame": 76849.8018018018,
+    "kernel_ms_at_8mhz": 9.606225225225225,
+    "kernel_percent_of_pal_frame": 47.95439908758599,
+    "vbl_delta": 305,
+    "frame_delta": 304,
+    "updates_per_second_from_vbl_counters": 49.83606557377049
+  },
+  {
+    "stars": 768,
+    "draw_calls": 222,
+    "erase_calls": 222,
+    "draw_cycles_per_call": 122195.00900900901,
+    "erase_cycles_per_call": 30922.126126126128,
+    "total_kernel_cycles_per_frame": 153117.13513513515,
+    "kernel_ms_at_8mhz": 19.139641891891895,
+    "kernel_percent_of_pal_frame": 95.54533692038684,
+    "vbl_delta": 305,
+    "frame_delta": 304,
+    "updates_per_second_from_vbl_counters": 49.83606557377049
+  }
+]

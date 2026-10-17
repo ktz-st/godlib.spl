@@ -7,7 +7,7 @@
     "video": "PAL 320x200",
     "split_line": 100,
     "pixel_checked_frames": 5,
-    "palette_split_frames": 787,
+    "palette_split_frames": 829,
     "palette_write_cycles": [
       428,
       504
@@ -23,7 +23,7 @@
     "video": "PAL 320x200",
     "split_line": 100,
     "pixel_checked_frames": 5,
-    "palette_split_frames": 794,
+    "palette_split_frames": 807,
     "palette_write_cycles": [
       428,
       504
@@ -39,7 +39,7 @@
     "video": "PAL 320x200",
     "split_line": 100,
     "pixel_checked_frames": 5,
-    "palette_split_frames": 689,
+    "palette_split_frames": 746,
     "palette_write_cycles": [
       428,
       504

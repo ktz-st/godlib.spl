@@ -1,0 +1,26 @@
+[
+  {
+    "machine": "st",
+    "tos": "2.06",
+    "cpu_mhz": 8,
+    "timer_a_calls": 222,
+    "palette_stream_cycles_per_frame": 101904.0,
+    "timer_a_wrapper_and_sync_cycles_per_frame": 2776.4144144144143,
+    "total_handler_cycles_per_frame": 104680.41441441441,
+    "total_handler_ms_at_8mhz": 13.085051801801802,
+    "pal_frame_budget_percent": 65.32074581570387,
+    "nominal_palette_stream_cycles_including_rts": 101904
+  },
+  {
+    "machine": "ste",
+    "tos": "2.06",
+    "cpu_mhz": 8,
+    "timer_a_calls": 222,
+    "palette_stream_cycles_per_frame": 101904.0,
+    "timer_a_wrapper_and_sync_cycles_per_frame": 2769.4954954954956,
+    "total_handler_cycles_per_frame": 104673.4954954955,
+    "total_handler_ms_at_8mhz": 13.084186936936938,
+    "pal_frame_budget_percent": 65.3164283992459,
+    "nominal_palette_stream_cycles_including_rts": 101904
+  }
+]

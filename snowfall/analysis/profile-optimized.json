@@ -1,0 +1,85 @@
+{
+  "label": "optimized",
+  "total_cycles": 51602360,
+  "snow_calls": 114,
+  "snow_cycles": 37457284,
+  "copy_calls": 0,
+  "copy_cycles": 0,
+  "elapsed_wall_seconds": 8.074165500001982,
+  "top_symbols": [
+    [
+      "__etext",
+      37457284
+    ],
+    [
+      "TOS/interrupts",
+      12788680
+    ],
+    [
+      "GodLib_Game_Main",
+      359324
+    ],
+    [
+      "Graphic_4BP_DrawPixel",
+      310532
+    ],
+    [
+      "Mfp_StandardTimerC",
+      211324
+    ],
+    [
+      "Vbl_Handler",
+      189616
+    ],
+    [
+      "Snow_Random",
+      153392
+    ],
+    [
+      "Mfp_StcNewJump",
+      36036
+    ],
+    [
+      "Video_UpdateRegsST",
+      29624
+    ],
+    [
+      "Mfp_StcOldJump",
+      15444
+    ],
+    [
+      "Fade_Vbl",
+      14168
+    ],
+    [
+      "Vbl_WaitVbl",
+      10944
+    ],
+    [
+      "IKBD_GetKbdBytesWaiting",
+      6840
+    ],
+    [
+      "IKBD_GetMouseButtonLeft",
+      5472
+    ],
+    [
+      "IKBD_GetMouseButtonRight",
+      4560
+    ],
+    [
+      "IKBD_GetMouseX",
+      3648
+    ],
+    [
+      "IKBD_GetMouseY",
+      3648
+    ],
+    [
+      "IKBD_Update",
+      1824
+    ]
+  ],
+  "snow_cycles_per_call": 328572.6666666667,
+  "copy_cycles_per_call": 0.0
+}

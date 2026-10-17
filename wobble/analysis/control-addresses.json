@@ -1,0 +1,17 @@
+{
+  "source": "/Users/kriss/GCC.ELF/stos/CONTROL/EXTENSIO.NS/CONTROL.EXW",
+  "sha256": "b5ca4a523c58c5887ba159cda2806975af579d74b0643bd018570f324c8c1159",
+  "tos_header_bytes": 28,
+  "text_bytes": 26290,
+  "keyword_prefix": 167,
+  "basic_command_token": 168,
+  "jump_table_file_offset": 614,
+  "entry_text_offset": 6700,
+  "entry_file_offset": 6728,
+  "left_text_offset": 6824,
+  "left_one_pixel_text_offset": 7178,
+  "right_text_offset": 7280,
+  "right_one_pixel_text_offset": 7706,
+  "core_end_text_offset": 7806,
+  "runtime_mapping": "extension_text_load_address + text_offset; runtime address not observed here"
+}

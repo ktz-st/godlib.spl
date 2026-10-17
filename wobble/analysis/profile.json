@@ -1,0 +1,47 @@
+[
+  {
+    "amplitude_pixels": 0,
+    "phase_speed_per_vbl": 8,
+    "draw_calls": 222,
+    "commands_calls": 222,
+    "draw_cycles_per_call": 11517.153153153153,
+    "command_cycles_per_call": 284.5045045045045,
+    "draw_and_commands_ms_at_8mhz": 1.475207207207207,
+    "equivalent_percent_of_one_50hz_pal_frame": 7.364253230866649,
+    "average_rows_copied_per_call": 0.0,
+    "average_rows_reused_per_call": 200.0,
+    "target_vbl_delta": 303,
+    "target_frame_delta": 303,
+    "updates_per_second_from_vbl_counters": 50.0
+  },
+  {
+    "amplitude_pixels": 8,
+    "phase_speed_per_vbl": 8,
+    "draw_calls": 222,
+    "commands_calls": 222,
+    "draw_cycles_per_call": 147301.54954954956,
+    "command_cycles_per_call": 316.4864864864865,
+    "draw_and_commands_ms_at_8mhz": 18.452254504504506,
+    "equivalent_percent_of_one_50hz_pal_frame": 92.11389029804565,
+    "average_rows_copied_per_call": 181.27027027027026,
+    "average_rows_reused_per_call": 18.72972972972973,
+    "target_vbl_delta": 304,
+    "target_frame_delta": 304,
+    "updates_per_second_from_vbl_counters": 50.0
+  },
+  {
+    "amplitude_pixels": 16,
+    "phase_speed_per_vbl": 8,
+    "draw_calls": 111,
+    "commands_calls": 111,
+    "draw_cycles_per_call": 159042.63063063062,
+    "command_cycles_per_call": 316.5045045045045,
+    "draw_and_commands_ms_at_8mhz": 19.91989189189189,
+    "equivalent_percent_of_one_50hz_pal_frame": 99.44035489163284,
+    "average_rows_copied_per_call": 196.87387387387386,
+    "average_rows_reused_per_call": 3.126126126126126,
+    "target_vbl_delta": 304,
+    "target_frame_delta": 152,
+    "updates_per_second_from_vbl_counters": 25.0
+  }
+]

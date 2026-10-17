@@ -1,0 +1,47 @@
+{
+  "converter": "AmigAtari Bitmap Converter v2.11 by Leonard/Oxygene",
+  "arguments": [
+    "source.png",
+    "-bpc",
+    "3",
+    "-atari",
+    "-ste",
+    "-quantize",
+    "-cpu",
+    "-forcecolor",
+    "4",
+    "9bc",
+    "-forcecolor",
+    "7",
+    "fff",
+    "-b",
+    "image.gfx",
+    "-p",
+    "image.pal",
+    "-preview",
+    "preview.png"
+  ],
+  "source_rgb_sha256": "bc2e59e926a68f962c062d468d9febd2c369a2d1e60c885c8bf46f77b5327b98",
+  "size": [
+    320,
+    200
+  ],
+  "planes": 3,
+  "gamut": "STE RGB444 / 4096 colours",
+  "dithering": false,
+  "palette_words": [
+    "0x0",
+    "0xcde",
+    "0x81",
+    "0x12a",
+    "0xcd6",
+    "0xeee",
+    "0xb5e",
+    "0xfff"
+  ],
+  "used_colours": 8,
+  "all_exported_pixels_verified": true,
+  "collision_silhouette_preserved": true,
+  "snow_plane_3_clear": true,
+  "postprocess": "Preserve original air/solid mask, clear header, close screen edges; no dithering"
+}

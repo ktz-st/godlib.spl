@@ -9,7 +9,7 @@ nm=subprocess.check_output(['m68k-atari-mintelf-nm',str(root/'analysis/SPLITDBG.
 syms={p[2]:int(p[0],16) for line in nm.splitlines() if len(p:=line.split())==3}
 rom=os.environ.get('HATARI_TOS','/Users/kriss/Atari/tos/TOS v2.06 (1991)(Atari Corp)(Mega-STE)(UK).img')
 data=(root/'TOWER.BIN').read_bytes();palette=struct.unpack_from('>16H',data)
-colours=[tuple(((v>>s)&7)*34 for s in (8,4,0)) for v in palette]
+colours=[tuple((((((v>>s)&7)<<1)|(((v>>s)>>3)&1))*17) for s in (8,4,0)) for v in palette]
 def decode(raw,height):
  pixels=[]
  for y in range(height):

@@ -1,0 +1,170 @@
+{
+  "machine": "ste",
+  "tos": "1.62",
+  "visible_timing_and_screenshots": true,
+  "checks": [
+    {
+      "mode": "mcoder",
+      "verified_frames": 38,
+      "green_pixels": 21876,
+      "orange_pixels": 0,
+      "grey_pixels": 0,
+      "sample_segments": [
+        {
+          "lines": [
+            95,
+            108
+          ],
+          "cycles": [
+            6820
+          ]
+        },
+        {
+          "lines": [
+            95,
+            108
+          ],
+          "cycles": [
+            6656
+          ]
+        },
+        {
+          "lines": [
+            95,
+            108
+          ],
+          "cycles": [
+            6688
+          ]
+        }
+      ],
+      "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/scroll8/analysis/shots/meter/ste-1.62/1792255756/grab0001.png"
+    },
+    {
+      "mode": "griff",
+      "verified_frames": 38,
+      "green_pixels": 0,
+      "orange_pixels": 15840,
+      "grey_pixels": 0,
+      "sample_segments": [
+        {
+          "lines": [
+            95,
+            103
+          ],
+          "cycles": [
+            4324
+          ]
+        },
+        {
+          "lines": [
+            95,
+            103
+          ],
+          "cycles": [
+            4356
+          ]
+        },
+        {
+          "lines": [
+            95,
+            103
+          ],
+          "cycles": [
+            4388
+          ]
+        }
+      ],
+      "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/scroll8/analysis/shots/meter/ste-1.62/1792255756/grab0002.png"
+    },
+    {
+      "mode": "both",
+      "verified_frames": 38,
+      "green_pixels": 21764,
+      "orange_pixels": 13948,
+      "grey_pixels": 0,
+      "sample_segments": [
+        {
+          "lines": [
+            95,
+            108,
+            117
+          ],
+          "cycles": [
+            6724,
+            4728
+          ]
+        },
+        {
+          "lines": [
+            95,
+            108,
+            117
+          ],
+          "cycles": [
+            6824,
+            4760
+          ]
+        },
+        {
+          "lines": [
+            95,
+            108,
+            116
+          ],
+          "cycles": [
+            6660,
+            4420
+          ]
+        }
+      ],
+      "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/scroll8/analysis/shots/meter/ste-1.62/1792255756/grab0003.png"
+    },
+    {
+      "mode": "paused",
+      "verified_frames": 38,
+      "green_pixels": 0,
+      "orange_pixels": 0,
+      "grey_pixels": 23296,
+      "sample_segments": [
+        {
+          "lines": [
+            94,
+            108
+          ],
+          "cycles": [
+            7116
+          ]
+        },
+        {
+          "lines": [
+            95,
+            108
+          ],
+          "cycles": [
+            7116
+          ]
+        },
+        {
+          "lines": [
+            95,
+            108
+          ],
+          "cycles": [
+            7116
+          ]
+        }
+      ],
+      "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/scroll8/analysis/shots/meter/ste-1.62/1792255756/grab0004.png"
+    },
+    {
+      "mode": "off",
+      "verified_frames": 0,
+      "green_pixels": 0,
+      "orange_pixels": 0,
+      "grey_pixels": 0,
+      "sample_segments": [],
+      "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/scroll8/analysis/shots/meter/ste-1.62/1792255756/grab0005.png"
+    }
+  ]
+}

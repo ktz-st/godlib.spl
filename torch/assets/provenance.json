@@ -1,0 +1,54 @@
+{
+  "converter": "AmigAtari Bitmap Converter v2.11 by Leonard/Oxygene",
+  "arguments": [
+    "source.png",
+    "-bpc",
+    "3",
+    "-atari",
+    "-ste",
+    "-quantize",
+    "-cpu",
+    "-forcecolor",
+    "7",
+    "fff",
+    "-b",
+    "image.gfx",
+    "-p",
+    "image.pal",
+    "-preview",
+    "preview.png"
+  ],
+  "source_rgb_sha256": "0a9a41f8251221ba9bf2633637eb59c8670e04810772c2cfcc64ba9307628964",
+  "size": [
+    320,
+    200
+  ],
+  "planes": 3,
+  "gamut": "STE RGB444 / 4096 colours",
+  "dithering": false,
+  "palette_words": [
+    "0x0",
+    "0x2a5",
+    "0xdb5",
+    "0x89b",
+    "0xb3d",
+    "0x1a",
+    "0x7cc",
+    "0xfff"
+  ],
+  "used_colours": 8,
+  "all_exported_pixels_verified": true,
+  "source": "water/assets/castle-source.png",
+  "file_sha256": "58fdca6d7f23f1ca15381deacd10353ab4683def9a34e7ac69f293f54d1b0dcb",
+  "radius": 48,
+  "dark_palette": [
+    "0x0",
+    "0x889",
+    "0x919",
+    "0x81",
+    "0x119",
+    "0x88",
+    "0x211",
+    "0x222"
+  ]
+}

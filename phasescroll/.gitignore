@@ -1,0 +1,6 @@
+*.o
+analysis/PDBG.PRG
+analysis/shots/
+analysis/*.bin
+analysis/profile-raw-*.json
+analysis/video*.log

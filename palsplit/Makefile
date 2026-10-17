@@ -25,3 +25,9 @@ raster_s.o: raster_s.s COAST.PI1
 clean:
 	rm -f *.o PALFX.PRG PALSPLIT.PRG analysis/PALDBG.PRG
 .PHONY: all run debug clean
+
+# Refresh this embedded copy from its original-RGB ABC2 asset pipeline.
+COAST.PI1: ../wipe/COAST.PI1
+	cp $< $@
+../wipe/COAST.PI1: ../wipe/assets/coast.png ../wipe/prepare_assets.py ../tools/abc2_assets.py
+	$(MAKE) -C ../wipe COAST.PI1

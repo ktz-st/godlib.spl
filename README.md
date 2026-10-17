@@ -30,40 +30,59 @@ make -C sprite clean
 Most examples exit with `Space`. Input-oriented samples usually print their
 own controls on screen or in the console.
 
+See the [demo effects guide](DEMO-EFFECTS.md) for rendering techniques, hardware
+requirements and links to controls, CPU measurements and verification.
+
 ## Examples
 
 | Directory | Output | Shows |
 | --- | --- | --- |
 | `audio` | `AUDIO.TOS` | Basic sample playback through GodLib audio. |
 | `blitter` | `BLITTER.PRG` | Blitter API, sprite drawing, CPU/blitter toggle. |
+| [`checker`](checker/README.md) | `CHKFX.PRG` | ST/STE rotating and zooming checkerboard, 68000 span renderer, gradient, speed/reverse controls and CPU profiling. |
 | `chunky` | `CHUNKY.TOS` | Draw into a byte-per-pixel buffer, then convert to ST four-plane graphics. |
 | `cookiejar` | `COOKIJAR.TOS` | Reading Atari cookie jar values. |
+| [`fastscroll`](fastscroll/README.md) | `FSCRL.PRG` | ST/STE plain BUGSY text scroll, one ASM shift pass and a 27-line planar strip, four speeds. |
 | `font` | `FONT.PRG` | `Font8x8_Print` and coloured 8x8 font output. |
 | `graphic` | `GRAPHIC.PRG` | `GraphicCanvas` primitives: pixels, lines, boxes and blits. |
 | `hscroll` | `HSCROLL.PRG` | STE pixel-accurate horizontal scrolling on a larger virtual canvas, with vertical scrolling and sprite stride checks. |
 | `iff` | `IFFSHOW.TOS` | IFF ILBM picture loading/display. |
 | `joy` | `JOY.TOS` | IKBD joystick packets for joy0/joy1. |
 | `lancemod` | `LANCEMOD.TOS` | ProTracker MOD playback through Lance Paula replay. |
+| [`lens`](lens/README.md) | `LENS.PRG` | ST/STE 64x64 mouse/automatic magnifying lens over the castle, ASM inverse sampling and lookup C2P, measured CPU cost. |
 | `pcmblock` | `PCMBLOCK.TOS` | Four-channel block mixer at 12.5/25 kHz, loops and ASM self-test. |
 | `pcmlayer` | `PCMLAYER.TOS` | Four-layer mixer at 12.5 kHz: two loops and two one-shots. |
 | `mixer` | `MIXER.TOS` | GodLib software audio mixer and panning controls. |
 | `pcmvoice` | `PCMVOICE.TOS` | PCM Voice three-channel mixer, loops, queued one-shots, CPU raster and core self-tests. |
 | `pcmframe` | `PCMFRAME.TOS` | PCM Frame three-channel SFX mixer, overlap and looping. |
 | `mouse` | `MOUSE.TOS` | IKBD mouse position and button state. |
+| [`nibble`](nibble/README.md) | `NIBBLE.PRG` | ST/STE original TLB NIBBLE sine scroller: 68000 ASM, LOST16 font, two waveforms, straight mode and measured CPU cost. |
 | `music` | `MUSIC.TOS` | Legacy SSD/music sample playback. |
 | `palsplit` | `PALFX.PRG` | ST/STE Timer B palette split: colour top half, greyscale bottom half, preloaded MOVEM palette write. |
+| [`phasescroll`](phasescroll/README.md) | `PHASE.PRG` | STE tile-map phase scrolling: original scanwalk ASM, BLiTTER phase blocks, four speeds and a fixed HUD. |
+| [`planemix`](planemix/README.md) | `LAYFX.PRG` | ST/STE two independent checkerboard bitplanes, palette translucency, per-layer freeze and measured CPU cost. |
 | `picshow` | `PICSHOW.PRG` | Degas `.PI1` loading and screen copy. |
 | `rasters` | `RASTR.PRG` | ST/STE animated raster bars: VBL-prepared list and 49 Timer B single-colour changes per frame. |
 | `raw` | `RAWSHOW.PRG` | Uncompressed Amiga RAW picture display. |
+| [`scroll8`](scroll8/README.md) | `SCROLL8.PRG` | ST/STE ASM 8x8 text scrollers using the GodLib font at 2 px/frame: MCoder 2560-byte cache / 4.12% CPU; optimized Griff 5376 bytes / 2.69% CPU on ST 8 MHz. |
 | `screen` | `SCREEN.PRG` | Screen setup, palette and buffer update basics. |
+| [`snowfall`](snowfall/README.md) | `SNOW.PRG` | ST/STE falling and accumulating snow over a generated winter scene, using Jason J Railton's planar ASM simulation. |
+| [`spectrum`](spectrum/README.md) | `SPEC.PRG`, `SPEC4K.PRG` | ST/STE Spectrum 512/4096: original picture, full-colour test card, cycle-exact ASM palette stream. |
 | `splitscreen` | `SPLIT.PRG` | STE Timer B split: 160 scrolling terrain rows and an independent fixed 40-row HUD. |
-| `splitscreenh` | `SPLITH.PRG` | STE top HUD: fixed 16 rows above 184 horizontally scrolling rows, with independent fine scroll and stride. |
+| `splitscreenh` | `SPLITH.PRG` | STE top HUD: fixed 16 rows above 184 horizontally scrolling rows, with independent palettes, fine scroll and stride. |
 | `sprite` | `SPRITE.PRG` | Basic sprite creation, mask creation and clipped drawing. |
 | `spriteinput` | `SPRINP.PRG` | Sprite controlled by mouse or joy1, switchable with `1`/`2`. |
 | `spritechunk` | `SPRCHUNK.PRG` | Sprite background restoration with separate chunk lists for both screen pages. |
+| [`spritemask`](spritemask/README.md) | `MOON.PRG` | Dithered bitmap night sky, orange/yellow crescent and twinkling stars using GodLib CPU/blitter sprites, independent ABC2 foreground mask and per-page restore. |
 | `spritebg` | `SPRBG.PRG` | Sprite over a background with back-buffer restore and per-buffer dirty rect tracking. |
+| [`starfield`](starfield/README.md) | `STARS.PRG` | ST/STE demOS three-plane 3D stars: generated ASM pixel routines, sparse erase, 96–768 stars and CPU profiling. |
+| [`torch`](torch/README.md) | `TORCH.PRG` | ST/STE mouse-controlled light mask over an ABC2 eight-colour castle, per-page plane restore and CPU profiling. |
 | `vscroll` | `VSCROLL.PRG` | STE vertical scrolling over a generated 320x400 tower with a flying masked bird. |
+| [`flagwave`](flagwave/README.md) | `FLAG.PRG` | ST/STE ASM waving picture: mouse delay queue, automatic sine, per-page column reuse and measured CPU cost. |
+| [`reflect`](reflect/README.md) | `REFL.PRG` | ST/STE Missing Link REFLECT: original 68000 row-wave algorithm and a live reflection of the castle above the lake. |
+| [`water`](water/README.md) | `WATER.PRG` | ST/STE Ugh intro-style lake waves: repeated/skipped rows under a generated castle, full-width water and surface glints. |
 | `wipe` | `WIPE.TOS` | Three generated pictures, individual ST palettes and 39 wipe effects in a slideshow. |
+| [`wobble`](wobble/README.md) | `WOBBLE.PRG` | ST/STE dynamic picture waves: cached fine shifts, MOVEM row copies, per-page reuse and CPU profiling. |
 | `wizzcat` | `WIZZCAT.TOS` | ProTracker MOD playback through Wizzcat STE replay. |
 
 ## Notes
@@ -226,3 +245,7 @@ Useful defaults:
 
 PCM mixer names and migration from the historical names are documented in
 [`godlib/audio/pcm-mixers.md`](../godlib/audio/pcm-mixers.md).
+
+Generated RGB scene artwork normally uses [ABC2, STE colours, no dithering](tools/ARTWORK.md).
+The [moon example](spritemask/README.md) uses an intentionally dithered sky
+and an independent ABC2 foreground mask.

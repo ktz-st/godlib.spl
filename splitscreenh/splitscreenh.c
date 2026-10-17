@@ -11,20 +11,27 @@
 #include <stdio.h>
 #include "split.h"
 extern U16 gHSplitPicture[];
+/* Independent HUD colours: blue/cyan swatches, orange rule, yellow text. */
+U16 gHSplitHudPalette[16]={0x012,0x024,0x036,0x047,0x057,0x067,0x077,0x177,
+                         0x277,0x377,0x477,0x577,0x677,0x777,0x750,0x770};
 static U8 sPanelMemory[2560+255];
 sGraphicCanvas gHSplitPanelCanvas;
 volatile U16 gHSplitReady,gHSplitExited;
 U16 gHSplitX,gHSplitAuto=1,gHSplitSpeed=1;
 static void DrawPanel(void)
 {
-    sGraphicRect line={0,0,320,1};
+    sGraphicRect line={0,0,20,3};
+    U16 i;
     sGraphicCanvas *canvas=&gHSplitPanelCanvas;
     GraphicCanvas_Init(&gHSplitPanelCanvas,eGRAPHIC_COLOURMODE_4PLANE,320,16);
     gHSplitPanelCanvas.mpVRAM=(void*)(((U32)sPanelMemory+255UL)&~255UL);
     GraphicCanvas_ClearScreen(canvas);
-    GraphicCanvas_DrawBox(canvas,&line,15);
-    line.mY=15;GraphicCanvas_DrawBox(canvas,&line,15);
-    Font8x8_PrintColourCanvas("FIXED HUD / SPACE PAUSE / ESC EXIT",&gHSplitPanelCanvas,8,4,15);
+    for(i=0;i<16;++i) {
+        line.mX=i*20;GraphicCanvas_DrawBox(canvas,&line,i);
+    }
+    line.mX=0;line.mY=15;line.mWidth=320;line.mHeight=1;
+    GraphicCanvas_DrawBox(canvas,&line,14);
+    Font8x8_PrintColourCanvas("HUD PALETTE / SPACE PAUSE / ESC",canvas,8,5,15);
 }
 S16 GodLib_Game_Main(S16 argc,char **argv)
 {
