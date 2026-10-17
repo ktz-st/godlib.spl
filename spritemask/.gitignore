@@ -5,3 +5,6 @@ analysis/temp-*.bin
 analysis/shots/
 analysis/*.log
 __pycache__/
+
+# Include the standalone release executable.
+!/MOON.PRG

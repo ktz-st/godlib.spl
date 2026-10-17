@@ -5,3 +5,6 @@ analysis/__pycache__/
 tools/__pycache__/
 analysis/*.bin
 assets/BUGSY.BIN
+
+# Include the standalone release executable.
+!/FSCRL.PRG

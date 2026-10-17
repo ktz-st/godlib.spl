@@ -3,3 +3,6 @@
 analysis/*.map
 analysis/shots/
 analysis/hatari.log
+
+# Include the standalone release executable.
+!/SPRCHUNK.PRG

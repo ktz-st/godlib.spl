@@ -10,3 +10,6 @@ assets/PRESHIFT.BIN
 assets/PALETTE.BIN
 assets/LOOKUP.BIN
 analysis/profile-raw-*.json
+
+# Include the standalone release executable.
+!/WOBBLE.PRG

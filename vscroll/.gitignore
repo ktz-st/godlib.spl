@@ -4,3 +4,6 @@ analysis/shots/
 analysis/hatari.log
 analysis/actual.bin
 analysis/expected.bin
+
+# Include the standalone release executable.
+!/VSCROLL.PRG

@@ -3,3 +3,6 @@
 analysis/shots/
 analysis/*.log
 analysis/__pycache__/
+
+# Include the standalone release executable.
+!/PALFX.PRG

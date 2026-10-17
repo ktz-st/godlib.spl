@@ -4,3 +4,6 @@ analysis/shots/
 analysis/*.log
 analysis/__pycache__/
 analysis/shots-tos162/
+
+# Include the standalone release executable.
+!/SPLITH.PRG

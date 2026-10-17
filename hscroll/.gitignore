@@ -4,3 +4,6 @@ analysis/*.map
 analysis/shots/
 analysis/hatari.log
 analysis/panorama-shots/
+
+# Include the standalone release executable.
+!/HSCROLL.PRG

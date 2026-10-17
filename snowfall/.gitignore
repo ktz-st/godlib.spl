@@ -7,3 +7,6 @@ analysis/*.bin
 tools/__pycache__/
 assets/WINTER.BIN
 assets/palette.h
+
+# Include the standalone release executable.
+!/SNOW.PRG
