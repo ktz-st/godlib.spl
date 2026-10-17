@@ -1,0 +1,17 @@
+{
+  "source": "Atari_ST_Sources/ASM/Inner Circuit Explorers (ICE)/digital world II/MODOSC.S",
+  "sha256": "35880c438e547630194bce6934fd05f78b02d1e480ffc872b1918213573fb374",
+  "author": "Techwave / Inner Circuit Explorers (ICE)",
+  "routines": [
+    "pixels_clear",
+    "pixels_out / oscillo_l / oscillo_r",
+    "xyput"
+  ],
+  "adaptations": [
+    "GodLib/GCC fastcall, shared vasm renderer in xy_s.s",
+    "completed native stereo block copy instead of raw DMA read pointer",
+    "100 points per side; 64-stereo-frame delay and original axis scaling",
+    "word offsets instead of absolute clear addresses; per-screen history",
+    "bounded 320x200 geometry; no shifter, DMA or VBL takeover by renderer"
+  ]
+}

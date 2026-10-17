@@ -1,0 +1,9 @@
+*.o
+LOSTPARO.MOD
+analysis/*.PRG
+analysis/*.log
+analysis/shots/
+analysis/temp-*.bin
+__pycache__/
+
+.rate-*

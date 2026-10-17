@@ -1,0 +1,20 @@
+[
+  {
+    "rom": "TOS v1.62 (1990)(Atari Corp)(STE)(GB)[STE TOS, Rev 2].img",
+    "program": "LM.TOS",
+    "frames_advance": true,
+    "app_cleanup_returned": true,
+    "clean_tos_exit": true,
+    "faults": [],
+    "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/lancemod/analysis/shots/short-gb/grab0001.png"
+  },
+  {
+    "rom": "TOS v1.62 (1990)(Atari Corp)(STE)(De).img",
+    "program": "LM.TOS",
+    "frames_advance": true,
+    "app_cleanup_returned": true,
+    "clean_tos_exit": true,
+    "faults": [],
+    "screenshot": "/Users/kriss/GCC.ELF/godlib.spl/lancemod/analysis/shots/short-de/grab0001.png"
+  }
+]

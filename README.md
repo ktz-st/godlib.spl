@@ -48,7 +48,8 @@ requirements and links to controls, CPU measurements and verification.
 | `hscroll` | `HSCROLL.PRG` | STE pixel-accurate horizontal scrolling on a larger virtual canvas, with vertical scrolling and sprite stride checks. |
 | `iff` | `IFFSHOW.TOS` | IFF ILBM picture loading/display. |
 | `joy` | `JOY.TOS` | IKBD joystick packets for joy0/joy1. |
-| `lancemod` | `LANCEMOD.TOS` | ProTracker MOD playback through Lance Paula replay. |
+| `lancemod` | `LANCEMOD.TOS` | ProTracker MOD playback with four activity bars in Amiga LRRL stereo order. |
+| `leonard` | `LEONARD.TOS` | LeonardMod 12.5/25 kHz playback with four channel activity bars. |
 | [`lens`](lens/README.md) | `LENS.PRG` | ST/STE 64x64 mouse/automatic magnifying lens over the castle, ASM inverse sampling and lookup C2P, measured CPU cost. |
 | `pcmblock` | `PCMBLOCK.TOS` | Four-channel block mixer at 12.5/25 kHz, loops and ASM self-test. |
 | `pcmlayer` | `PCMLAYER.TOS` | Four-layer mixer at 12.5 kHz: two loops and two one-shots. |
@@ -83,7 +84,7 @@ requirements and links to controls, CPU measurements and verification.
 | [`water`](water/README.md) | `WATER.PRG` | ST/STE Ugh intro-style lake waves: repeated/skipped rows under a generated castle, full-width water and surface glints. |
 | `wipe` | `WIPE.TOS` | Three generated pictures, individual ST palettes and 39 wipe effects in a slideshow. |
 | [`wobble`](wobble/README.md) | `WOBBLE.PRG` | ST/STE dynamic picture waves: cached fine shifts, MOVEM row copies, per-page reuse and CPU profiling. |
-| `wizzcat` | `WIZZCAT.TOS` | ProTracker MOD playback through Wizzcat STE replay. |
+| `wizzcat` | `WIZZCAT.TOS` | Wizzcat MOD playback with four ASM activity bars and automatic workspace sizing. |
 
 ## Notes
 
@@ -93,7 +94,7 @@ Some samples need local assets in the same directory as the program. Examples:
 - `sprite/SPRITE.PI1`
 - `spriteinput/SPRITE.PI1`
 - `spritebg/RGLOGO.PI1` and `spritebg/SPRITE.PI1`
-- `lancemod/LOSTPARO.MOD`
+- `lancemod/LOSTPARO.MOD` (copied by the `leonard` build as well)
 - `wizzcat/QUICKIE.MOD`
 - `raw/1.RAW`
 
@@ -213,8 +214,9 @@ The important installed files for these examples are:
 
 - `spriteinput`: `1` selects mouse, `2` selects joy1, joy fire recentres, `Space` exits.
 - `spritebg`: same input as `spriteinput`, plus background restore from the back buffer.
-- `wizzcat`: `1` jumps to the first song position, `2` jumps to the last one, `Space` exits.
-- `lancemod`: plays a MOD through Lance Paula; use the on-screen/console prompts.
+- `wizzcat`: four ASM activity bars, `V` hides/shows them, `F1` shows replay time, `1`/`2` jump to first/last song position, `Space`/`Esc` exit. See [its README](wizzcat/README.md).
+- `lancemod`: plays a MOD through Lance Paula with STF_DEMO activity bars; F1 toggles the replay CPU indicator, V hides/shows bars, Space/Esc exits. See `lancemod/README.md`.
+- `leonard`: uses the same four-bar display with GodLib LeonardMod + ProTracker; 12.5/25 kHz, dynamic ST-RAM workspace, F1 CPU/V bars/Space or Esc exit. See `leonard/README.md`.
 
 ## Project style
 
@@ -249,3 +251,8 @@ PCM mixer names and migration from the historical names are documented in
 Generated RGB scene artwork normally uses [ABC2, STE colours, no dithering](tools/ARTWORK.md).
 The [moon example](spritemask/README.md) uses an intentionally dithered sky
 and an independent ABC2 foreground mask.
+
+LanceMod, Leonard and Wizzcat also support **O** to switch between their four
+activity bars, four ASM traces, two ICE XY plots, separate stereo traces and
+a single mono trace `(L+R)/2`; **V** hides/shows the selected visualizer.
+See [oscilloscope API and verification](../godlib/music/modscope.md).
