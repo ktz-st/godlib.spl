@@ -1,0 +1,67 @@
+{
+  "machine": "STE, 68000, 8 MHz, 1 MiB, RGB PAL, German TOS 1.62",
+  "method": "HRDB per-instruction cycle attribution. Includes C update/random generation, ASM wrapper, changed image blits and their shared-mode busy/restart wait, and dark-mask update. Excludes Screen_Update/VBL/input/OS wrappers; 160000 cycles per 50 Hz frame.",
+  "program_sha256": "db07ce1c92299bbebdb698166292155e4d3e108d3779da48ea6ce23427ae859e",
+  "windows": [
+    {
+      "mode": "steady",
+      "frames": 423,
+      "cycles": {
+        "Crt_Update": 368100,
+        "Crt_Render": 106876,
+        "Crt_ImageUpdate": 684664,
+        "Crt_MaskUpdate": 871480,
+        "CrtRand": 1860
+      },
+      "cycles_per_frame": {
+        "Crt_Update": 870.21,
+        "Crt_Render": 252.66,
+        "Crt_ImageUpdate": 1618.59,
+        "Crt_MaskUpdate": 2060.24,
+        "CrtRand": 4.4
+      },
+      "cycles_total_per_frame": 4806.1,
+      "percent_160000_cycle_frame": 3.004
+    },
+    {
+      "mode": "tearing",
+      "frames": 422,
+      "cycles": {
+        "Crt_Update": 652836,
+        "Crt_Render": 106456,
+        "Crt_ImageUpdate": 36523608,
+        "Crt_MaskUpdate": 869148,
+        "CrtRand": 631136
+      },
+      "cycles_per_frame": {
+        "Crt_Update": 1547.0,
+        "Crt_Render": 252.27,
+        "Crt_ImageUpdate": 86548.83,
+        "Crt_MaskUpdate": 2059.59,
+        "CrtRand": 1495.58
+      },
+      "cycles_total_per_frame": 91903.28,
+      "percent_160000_cycle_frame": 57.44
+    },
+    {
+      "mode": "automatic",
+      "frames": 422,
+      "cycles": {
+        "Crt_Update": 423636,
+        "Crt_Render": 106512,
+        "Crt_ImageUpdate": 3713220,
+        "Crt_MaskUpdate": 891372,
+        "CrtRand": 14596
+      },
+      "cycles_per_frame": {
+        "Crt_Update": 1003.88,
+        "Crt_Render": 252.4,
+        "Crt_ImageUpdate": 8799.1,
+        "Crt_MaskUpdate": 2112.26,
+        "CrtRand": 34.59
+      },
+      "cycles_total_per_frame": 12202.22,
+      "percent_160000_cycle_frame": 7.626
+    }
+  ]
+}

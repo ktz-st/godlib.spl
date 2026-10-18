@@ -40,6 +40,7 @@ requirements and links to controls, CPU measurements and verification.
 | `audio` | `AUDIO.TOS` | Basic sample playback through GodLib audio. |
 | `blitter` | `BLITTER.PRG` | Blitter API, sprite drawing, CPU/blitter toggle. |
 | [`checker`](checker/README.md) | `CHKFX.PRG` | ST/STE rotating and zooming checkerboard, 68000 span renderer, gradient, speed/reverse controls and CPU profiling. |
+| [`crt`](crt/README.md) | `CRT.PRG` | STE/BLiTTER CRT image: scanlines, moving bright band, pixel jitter, torn strips and N-key TV off/on transitions between two scenes; ASM and measured CPU cost. |
 | `chunky` | `CHUNKY.TOS` | Draw into a byte-per-pixel buffer, then convert to ST four-plane graphics. |
 | `cookiejar` | `COOKIJAR.TOS` | Reading Atari cookie jar values. |
 | [`fastscroll`](fastscroll/README.md) | `FSCRL.PRG` | ST/STE plain BUGSY text scroll, one ASM shift pass and a 27-line planar strip, four speeds. |
@@ -71,6 +72,7 @@ requirements and links to controls, CPU measurements and verification.
 | [`spectrum`](spectrum/README.md) | `SPEC.PRG`, `SPEC4K.PRG` | ST/STE Spectrum 512/4096: original picture, full-colour test card, cycle-exact ASM palette stream. |
 | `splitscreen` | `SPLIT.PRG` | STE Timer B split: 160 scrolling terrain rows and an independent fixed 40-row HUD. |
 | `splitscreenh` | `SPLITH.PRG` | STE top HUD: fixed 16 rows above 184 horizontally scrolling rows, with independent palettes, fine scroll and stride. |
+| [`sndh`](sndh/README.md) | `SNDH.TOS` | Popcorn SNDH playback; PSG VU bars, 80 note bands, piano, three synthetic scopes, expanding rings and palette-only RGB colour organ; ASM and CPU measurements. |
 | `sprite` | `SPRITE.PRG` | Basic sprite creation, mask creation and clipped drawing. |
 | `spriteinput` | `SPRINP.PRG` | Sprite controlled by mouse or joy1, switchable with `1`/`2`. |
 | `spritechunk` | `SPRCHUNK.PRG` | Sprite background restoration with separate chunk lists for both screen pages. |

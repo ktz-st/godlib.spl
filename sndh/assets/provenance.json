@@ -1,0 +1,49 @@
+{
+  "references": [
+    {
+      "file": "Atari_ST_Sources/ASM/Various/James Boulton/STF_DEMO/STF_DEMO.S",
+      "sha256": "e8cad58255fbeecb05b017408fd298d8da58b7cfa4fb08380004e309b319cc0e"
+    },
+    {
+      "file": "Atari_ST_Sources/ASM/Adrenalin U.K (ADR)/NORTH/MENU.S",
+      "sha256": "a8b604f6f1ebd7b658b688ae66bafcfb2091cd091b200b0a90e7a38adfd19e1a"
+    },
+    {
+      "file": "Atari_ST_Sources/ASM/Persistence of Vision (POV)/POV93/source/POV93.S",
+      "sha256": "cce69c4c0da2115a49cf67a94394092cac12b04d15bf2c8f2a9fc60908e520d9"
+    }
+  ],
+  "tune": {
+    "file": "popcorn.snd",
+    "source": "user-supplied local file",
+    "title": "Popcorn",
+    "composer": "mOdmate",
+    "year": 1996,
+    "converter": "Grazey",
+    "sha256": "67ca4d6a3ddbd67f6a3a97581b808515dae873fb8ab8bda6381aa841b7b1aaba"
+  },
+  "changes": [
+    "Three centered bars, 16px width and 16px gaps, per-page delta rendering",
+    "General chromatic lookup replaces song-specific NORTH table",
+    "80 pitch bands with per-page delta rendering; fixed volume and envelope handling documented",
+    "80-key piano: prepared planar ownership masks and channel colour combinations",
+    "Synthetic PSG square waves, cached parameters and horizontal word runs",
+    "Per-channel expanding circles on quantized note changes, four slots per channel",
+    "Direct quotient/remainder PSG run synthesis; no sampled waveform buffers; unrolled vertical spans",
+    "Generated 68000 ring kernels with fused per-page two-frame XOR deltas and common register masks",
+    "Sixth visualization: three static one-plane RGB discs, PSG-volume palette-only brightness; V toggles the palette without VRAM writes"
+  ],
+  "spectrum_layout": {
+    "bands": 80,
+    "bar_width": 3,
+    "gap": 1,
+    "axis_between_rows": [
+      99,
+      100
+    ],
+    "centered_in_viewport": [
+      320,
+      200
+    ]
+  }
+}

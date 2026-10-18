@@ -1,0 +1,544 @@
+{
+  "machine": "STE, 68000, 8 MHz, 1 MiB, RGB PAL 50 Hz",
+  "tos": "TOS v1.62 (1990)(Atari Corp)(STE)(De).img",
+  "tune": "popcorn.snd",
+  "method": "Hatari-hrdb per-instruction cycle profiles; both versions measured with the same script, boot/input schedule and separate steady-state windows. 160000-cycle frame budget, SndVis_FrameDone counter, F1 off. Includes PSG snapshot, note/animation updates and active ASM renderer; excludes C dispatch, mode changes and OS wrappers. Song passages can differ slightly due to frame deadline misses/debugger timing. First five optimized windows refer to the earlier five-mode binary; the colour-organ window refers to the six-mode binary, identified by its per-window program hash.",
+  "windows": [
+    {
+      "mode": 0,
+      "frames": 322,
+      "cycles": {
+        "PsgVis_Snapshot": 211548,
+        "PsgVis_Update": 1426688,
+        "PsgBars_Draw": 5262116,
+        "PsgSpectrum_Draw": 0,
+        "PsgExtra_Update": 657732,
+        "PsgPiano_Draw": 0,
+        "PsgScope_Prepare": 0,
+        "PsgScope_Draw": 0,
+        "PsgCircles_Draw": 0,
+        "music": 2363640
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 656.98,
+        "PsgVis_Update": 4430.71,
+        "PsgBars_Draw": 16341.98,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 2042.65,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 0.0,
+        "music": 7340.5
+      },
+      "percent_frame": {
+        "PsgVis_Snapshot": 0.4106,
+        "PsgVis_Update": 2.7692,
+        "PsgBars_Draw": 10.2137,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 1.2767,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 0.0,
+        "music": 4.5878
+      },
+      "name": "Three VU bars",
+      "visual_cycles_per_frame": 23472.31,
+      "visual_percent_frame": 14.6702,
+      "program_sha256": "6ced31eb236813de2197fce3fb2a9ee97305da67119371d4445115bc7592141f"
+    },
+    {
+      "mode": 1,
+      "frames": 322,
+      "cycles": {
+        "PsgVis_Snapshot": 213528,
+        "PsgVis_Update": 1433480,
+        "PsgBars_Draw": 0,
+        "PsgSpectrum_Draw": 2872980,
+        "PsgExtra_Update": 687984,
+        "PsgPiano_Draw": 0,
+        "PsgScope_Prepare": 0,
+        "PsgScope_Draw": 0,
+        "PsgCircles_Draw": 0,
+        "music": 2468980
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 663.13,
+        "PsgVis_Update": 4451.8,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 8922.3,
+        "PsgExtra_Update": 2136.6,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 0.0,
+        "music": 7667.64
+      },
+      "percent_frame": {
+        "PsgVis_Snapshot": 0.4145,
+        "PsgVis_Update": 2.7824,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 5.5764,
+        "PsgExtra_Update": 1.3354,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 0.0,
+        "music": 4.7923
+      },
+      "name": "80 note bands",
+      "visual_cycles_per_frame": 16173.83,
+      "visual_percent_frame": 10.1086,
+      "program_sha256": "6ced31eb236813de2197fce3fb2a9ee97305da67119371d4445115bc7592141f"
+    },
+    {
+      "mode": 2,
+      "frames": 322,
+      "cycles": {
+        "PsgVis_Snapshot": 213528,
+        "PsgVis_Update": 1442856,
+        "PsgBars_Draw": 0,
+        "PsgSpectrum_Draw": 0,
+        "PsgExtra_Update": 702704,
+        "PsgPiano_Draw": 10835196,
+        "PsgScope_Prepare": 0,
+        "PsgScope_Draw": 0,
+        "PsgCircles_Draw": 0,
+        "music": 2466576
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 663.13,
+        "PsgVis_Update": 4480.92,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 2182.31,
+        "PsgPiano_Draw": 33649.68,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 0.0,
+        "music": 7660.17
+      },
+      "percent_frame": {
+        "PsgVis_Snapshot": 0.4145,
+        "PsgVis_Update": 2.8006,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 1.3639,
+        "PsgPiano_Draw": 21.031,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 0.0,
+        "music": 4.7876
+      },
+      "name": "Piano",
+      "visual_cycles_per_frame": 40976.04,
+      "visual_percent_frame": 25.61,
+      "program_sha256": "6ced31eb236813de2197fce3fb2a9ee97305da67119371d4445115bc7592141f"
+    },
+    {
+      "mode": 3,
+      "frames": 322,
+      "cycles": {
+        "PsgVis_Snapshot": 214480,
+        "PsgVis_Update": 1451552,
+        "PsgBars_Draw": 0,
+        "PsgSpectrum_Draw": 0,
+        "PsgExtra_Update": 717420,
+        "PsgPiano_Draw": 0,
+        "PsgScope_Prepare": 138720,
+        "PsgScope_Draw": 5631840,
+        "PsgCircles_Draw": 0,
+        "music": 2480404
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 666.09,
+        "PsgVis_Update": 4507.93,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 2228.01,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 430.81,
+        "PsgScope_Draw": 17490.19,
+        "PsgCircles_Draw": 0.0,
+        "music": 7703.12
+      },
+      "percent_frame": {
+        "PsgVis_Snapshot": 0.4163,
+        "PsgVis_Update": 2.8175,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 1.3925,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.2693,
+        "PsgScope_Draw": 10.9314,
+        "PsgCircles_Draw": 0.0,
+        "music": 4.8144
+      },
+      "name": "Three synthetic scopes",
+      "visual_cycles_per_frame": 25323.02,
+      "visual_percent_frame": 15.8269,
+      "program_sha256": "6ced31eb236813de2197fce3fb2a9ee97305da67119371d4445115bc7592141f"
+    },
+    {
+      "mode": 4,
+      "frames": 322,
+      "cycles": {
+        "PsgVis_Snapshot": 213584,
+        "PsgVis_Update": 1437572,
+        "PsgBars_Draw": 0,
+        "PsgSpectrum_Draw": 0,
+        "PsgExtra_Update": 695316,
+        "PsgPiano_Draw": 0,
+        "PsgScope_Prepare": 0,
+        "PsgScope_Draw": 0,
+        "PsgCircles_Draw": 7606408,
+        "music": 2482500
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 663.3,
+        "PsgVis_Update": 4464.51,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 2159.37,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 23622.39,
+        "music": 7709.63
+      },
+      "percent_frame": {
+        "PsgVis_Snapshot": 0.4146,
+        "PsgVis_Update": 2.7903,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 1.3496,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 14.764,
+        "music": 4.8185
+      },
+      "name": "Expanding rings",
+      "visual_cycles_per_frame": 30909.57,
+      "visual_percent_frame": 19.3185,
+      "program_sha256": "6ced31eb236813de2197fce3fb2a9ee97305da67119371d4445115bc7592141f"
+    },
+    {
+      "mode": 5,
+      "frames": 322,
+      "cycles": {
+        "PsgVis_Snapshot": 211776,
+        "PsgVis_Update": 1427556,
+        "PsgBars_Draw": 0,
+        "PsgSpectrum_Draw": 0,
+        "PsgExtra_Update": 668012,
+        "PsgPiano_Draw": 0,
+        "PsgScope_Prepare": 0,
+        "PsgScope_Draw": 0,
+        "PsgCircles_Draw": 0,
+        "PsgOrgan_Update": 46704,
+        "music": 2402164
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 657.69,
+        "PsgVis_Update": 4433.4,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 2074.57,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 0.0,
+        "PsgOrgan_Update": 145.04,
+        "music": 7460.14
+      },
+      "percent_frame": {
+        "PsgVis_Snapshot": 0.4111,
+        "PsgVis_Update": 2.7709,
+        "PsgBars_Draw": 0.0,
+        "PsgSpectrum_Draw": 0.0,
+        "PsgExtra_Update": 1.2966,
+        "PsgPiano_Draw": 0.0,
+        "PsgScope_Prepare": 0.0,
+        "PsgScope_Draw": 0.0,
+        "PsgCircles_Draw": 0.0,
+        "PsgOrgan_Update": 0.0907,
+        "music": 4.6626
+      },
+      "name": "RGB colour organ",
+      "visual_cycles_per_frame": 7310.71,
+      "visual_percent_frame": 4.5692,
+      "program_sha256": "22cedec73623f76e88aaa5f1c5f2bdeefc4e8784dca013bffbdae16dbd203332"
+    }
+  ],
+  "before_optimization": {
+    "windows": [
+      {
+        "mode": 0,
+        "frames": 322,
+        "cycles": {
+          "PsgVis_Snapshot": 211544,
+          "PsgVis_Update": 1426676,
+          "PsgBars_Draw": 5269272,
+          "PsgSpectrum_Draw": 0,
+          "PsgExtra_Update": 657940,
+          "PsgPiano_Draw": 0,
+          "PsgScope_Prepare": 0,
+          "PsgScope_Draw": 0,
+          "PsgCircles_Draw": 0,
+          "music": 2364140
+        },
+        "cycles_per_frame": {
+          "PsgVis_Snapshot": 656.97,
+          "PsgVis_Update": 4430.67,
+          "PsgBars_Draw": 16364.2,
+          "PsgSpectrum_Draw": 0.0,
+          "PsgExtra_Update": 2043.29,
+          "PsgPiano_Draw": 0.0,
+          "PsgScope_Prepare": 0.0,
+          "PsgScope_Draw": 0.0,
+          "PsgCircles_Draw": 0.0,
+          "music": 7342.05
+        },
+        "percent_frame": {
+          "PsgVis_Snapshot": 0.4106,
+          "PsgVis_Update": 2.7692,
+          "PsgBars_Draw": 10.2276,
+          "PsgSpectrum_Draw": 0.0,
+          "PsgExtra_Update": 1.2771,
+          "PsgPiano_Draw": 0.0,
+          "PsgScope_Prepare": 0.0,
+          "PsgScope_Draw": 0.0,
+          "PsgCircles_Draw": 0.0,
+          "music": 4.5888
+        },
+        "name": "Three VU bars",
+        "visual_cycles_per_frame": 23495.13,
+        "visual_percent_frame": 14.6845
+      },
+      {
+        "mode": 1,
+        "frames": 322,
+        "cycles": {
+          "PsgVis_Snapshot": 213640,
+          "PsgVis_Update": 1433212,
+          "PsgBars_Draw": 0,
+          "PsgSpectrum_Draw": 2869164,
+          "PsgExtra_Update": 688712,
+          "PsgPiano_Draw": 0,
+          "PsgScope_Prepare": 0,
+          "PsgScope_Draw": 0,
+          "PsgCircles_Draw": 0,
+          "music": 2472268
+        },
+        "cycles_per_frame": {
+          "PsgVis_Snapshot": 663.48,
+          "PsgVis_Update": 4450.97,
+          "PsgBars_Draw": 0.0,
+          "PsgSpectrum_Draw": 8910.45,
+          "PsgExtra_Update": 2138.86,
+          "PsgPiano_Draw": 0.0,
+          "PsgScope_Prepare": 0.0,
+          "PsgScope_Draw": 0.0,
+          "PsgCircles_Draw": 0.0,
+          "music": 7677.85
+        },
+        "percent_frame": {
+          "PsgVis_Snapshot": 0.4147,
+          "PsgVis_Update": 2.7819,
+          "PsgBars_Draw": 0.0,
+          "PsgSpectrum_Draw": 5.569,
+          "PsgExtra_Update": 1.3368,
+          "PsgPiano_Draw": 0.0,
+          "PsgScope_Prepare": 0.0,
+          "PsgScope_Draw": 0.0,
+          "PsgCircles_Draw": 0.0,
+          "music": 4.7987
+        },
+        "name": "80 note bands",
+        "visual_cycles_per_frame": 16163.75,
+        "visual_percent_frame": 10.1023
+      },
+      {
+        "mode": 2,
+        "frames": 322,
+        "cycles": {
+          "PsgVis_Snapshot": 213584,
+          "PsgVis_Update": 1440756,
+          "PsgBars_Draw": 0,
+          "PsgSpectrum_Draw": 0,
+          "PsgExtra_Update": 699300,
+          "PsgPiano_Draw": 10479688,
+          "PsgScope_Prepare": 0,
+          "PsgScope_Draw": 0,
+          "PsgCircles_Draw": 0,
+          "music": 2467104
+        },
+        "cycles_per_frame": {
+          "PsgVis_Snapshot": 663.3,
+          "PsgVis_Update": 4474.4,
+          "PsgBars_Draw": 0.0,
+          "PsgSpectrum_Draw": 0.0,
+          "PsgExtra_Update": 2171.74,
+          "PsgPiano_Draw": 32545.61,
+          "PsgScope_Prepare": 0.0,
+          "PsgScope_Draw": 0.0,
+          "PsgCircles_Draw": 0.0,
+          "music": 7661.81
+        },
+        "percent_frame": {
+          "PsgVis_Snapshot": 0.4146,
+          "PsgVis_Update": 2.7965,
+          "PsgBars_Draw": 0.0,
+          "PsgSpectrum_Draw": 0.0,
+          "PsgExtra_Update": 1.3573,
+          "PsgPiano_Draw": 20.341,
+          "PsgScope_Prepare": 0.0,
+          "PsgScope_Draw": 0.0,
+          "PsgCircles_Draw": 0.0,
+          "music": 4.7886
+        },
+        "name": "Piano",
+        "visual_cycles_per_frame": 39855.06,
+        "visual_percent_frame": 24.9094
+      },
+      {
+        "mode": 3,
+        "frames": 311,
+        "cycles": {
+          "PsgVis_Snapshot": 214592,
+          "PsgVis_Update": 1400912,
+          "PsgBars_Draw": 0,
+          "PsgSpectrum_Draw": 0,
+          "PsgExtra_Update": 693696,
+          "PsgPiano_Draw": 0,
+          "PsgScope_Prepare": 2991008,
+          "PsgScope_Draw": 16854936,
+          "PsgCircles_Draw": 0,
+          "music": 2479768
+        },
+        "cycles_per_frame": {
+          "PsgVis_Snapshot": 690.01,
+          "PsgVis_Update": 4504.54,
+          "PsgBars_Draw": 0.0,
+          "PsgSpectrum_Draw": 0.0,
+          "PsgExtra_Update": 2230.53,
+          "PsgPiano_Draw": 0.0,
+          "PsgScope_Prepare": 9617.39,
+          "PsgScope_Draw": 54195.94,
+          "PsgCircles_Draw": 0.0,
+          "music": 7973.53
+        },
+        "percent_frame": {
+          "PsgVis_Snapshot": 0.4313,
+          "PsgVis_Update": 2.8153,
+          "PsgBars_Draw": 0.0,
+          "PsgSpectrum_Draw": 0.0,
+          "PsgExtra_Update": 1.3941,
+          "PsgPiano_Draw": 0.0,
+          "PsgScope_Prepare": 6.0109,
+          "PsgScope_Draw": 33.8725,
+          "PsgCircles_Draw": 0.0,
+          "music": 4.9835
+        },
+        "name": "Three synthetic scopes",
+        "visual_cycles_per_frame": 71238.41,
+        "visual_percent_frame": 44.524
+      },
+      {
+        "mode": 4,
+        "frames": 321,
+        "cycles": {
+          "PsgVis_Snapshot": 213640,
+          "PsgVis_Update": 1438124,
+          "PsgBars_Draw": 0,
+          "PsgSpectrum_Draw": 0,
+          "PsgExtra_Update": 698824,
+          "PsgPiano_Draw": 0,
+          "PsgScope_Prepare": 0,
+          "PsgScope_Draw": 0,
+          "PsgCircles_Draw": 25571968,
+          "music": 2481292
+        },
+        "cycles_per_frame": {
+          "PsgVis_Snapshot": 665.55,
+          "PsgVis_Update": 4480.14,
+          "PsgBars_Draw": 0.0,
+          "PsgSpectrum_Draw": 0.0,
+          "PsgExtra_Update": 2177.02,
+          "PsgPiano_Draw": 0.0,
+          "PsgScope_Prepare": 0.0,
+          "PsgScope_Draw": 0.0,
+          "PsgCircles_Draw": 79663.45,
+          "music": 7729.88
+        },
+        "percent_frame": {
+          "PsgVis_Snapshot": 0.416,
+          "PsgVis_Update": 2.8001,
+          "PsgBars_Draw": 0.0,
+          "PsgSpectrum_Draw": 0.0,
+          "PsgExtra_Update": 1.3606,
+          "PsgPiano_Draw": 0.0,
+          "PsgScope_Prepare": 0.0,
+          "PsgScope_Draw": 0.0,
+          "PsgCircles_Draw": 49.7897,
+          "music": 4.8312
+        },
+        "name": "Expanding rings",
+        "visual_cycles_per_frame": 86986.16,
+        "visual_percent_frame": 54.3664
+      }
+    ],
+    "program_sha256": "71feaffbb6038737ca2c260e8c028556b93f8be2c24ae8c72686bc8f1d8454b7"
+  },
+  "optimization_comparison": [
+    {
+      "name": "Three synthetic scopes",
+      "before_percent": 44.524,
+      "after_percent": 15.8269,
+      "speedup": 2.813,
+      "reduction_percent": 64.45
+    },
+    {
+      "name": "Expanding rings",
+      "before_percent": 54.3664,
+      "after_percent": 19.3185,
+      "speedup": 2.814,
+      "reduction_percent": 64.47
+    }
+  ],
+  "memory": {
+    "before_prg_bytes": 151462,
+    "after_prg_bytes": 172471,
+    "before_text_data_bss": 158612,
+    "after_text_data_bss": 178028,
+    "resident_delta_bytes": 19416,
+    "scope_state_before_bytes": 2304,
+    "scope_state_after_bytes": 36
+  },
+  "verification": {
+    "scope_reference_frames": 60,
+    "ring_reference_frames": 84,
+    "display_pages": 2,
+    "checks": [
+      "Full 32000-byte planar comparison against independent scalar PSG waveform and midpoint-circle reference",
+      "Periods 0,6,7,8,9,10,11,12,13 and deterministic random 12-bit periods, mute/fixed/envelope volumes",
+      "Forward/reverse phase, aliasing, shared words, all 24 ring ages, fused two-frame deltas and arbitrary frame jumps",
+      "O/V mode and visibility switching and clean TOS exit",
+      "Prior integrated five-mode check: 136 full frames before final arithmetic and register-mask substitutions"
+    ]
+  },
+  "profiled_program_sha256": "6ced31eb236813de2197fce3fb2a9ee97305da67119371d4445115bc7592141f",
+  "tune_sha256": "67ca4d6a3ddbd67f6a3a97581b808515dae873fb8ab8bda6381aa841b7b1aaba",
+  "colour_organ": {
+    "palette_cycles_per_frame": 145.04,
+    "palette_percent_frame": 0.0907,
+    "full_visual_percent_frame": 4.5692,
+    "verification_palette_states": 43,
+    "verification": "All fixed volumes 0..15, envelope and mixer/noise gating; analytical disc geometry; all 3 screen buffers remain byte-identical during running effect and V toggles; six-mode cycle; clean Esc exit",
+    "profiled_program_sha256": "22cedec73623f76e88aaa5f1c5f2bdeefc4e8784dca013bffbdae16dbd203332",
+    "program_bytes": 173317,
+    "program_text_data_bss": 178860
+  }
+}

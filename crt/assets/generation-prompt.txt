@@ -1,0 +1,8 @@
+Generation: built-in image_gen tool, 2026-10-18.
+Original saved copy: assets/postapoc-source.png.
+
+Use case: stylized-concept. Asset type: full-screen background artwork for an Atari STE 320x200 CRT demo. Primary request: a beautiful atmospheric post-apocalyptic landscape. Scene: an abandoned overgrown city avenue, ruined buildings with broken silhouettes framing the view, a distant radio tower, warm amber dusk light breaking through cool teal haze, cracked road and creeping vegetation. Pixel-art adventure-game background aesthetic, confident clustered pixel shapes, visually rich yet readable at 320x200; landscape 8:5 composition, no frame or margins. Restricted 8-colour visual palette, deep blue-black shadows, muted teal greenery, dusty warm gold sky, high contrast readable silhouettes; no dithering, no text, no logos, no watermark. This will be quantized to 8 colours for Atari and animated with scanlines and horizontal glitch strips.
+
+Asset preparation: crop/resize into 320x176 artwork viewport, ABC2 2.11,
+STE RGB444, 3 bitplanes, no dithering, locked black index 0 and white index 7.
+Actual conversion arguments and hashes are in provenance.json.

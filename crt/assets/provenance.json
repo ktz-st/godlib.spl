@@ -1,0 +1,64 @@
+{
+  "converter": "AmigAtari Bitmap Converter v2.11 by Leonard/Oxygene",
+  "arguments": [
+    "source.png",
+    "-bpc",
+    "3",
+    "-atari",
+    "-ste",
+    "-quantize",
+    "-cpu",
+    "-forcecolor",
+    "0",
+    "000",
+    "-forcecolor",
+    "7",
+    "fff",
+    "-b",
+    "image.gfx",
+    "-p",
+    "image.pal",
+    "-preview",
+    "preview.png"
+  ],
+  "source_rgb_sha256": "136256afcc415498a4b6f8a16270d29af1b104f2421190ff2ada8ee998ee5acc",
+  "size": [
+    320,
+    176
+  ],
+  "planes": 3,
+  "gamut": "STE RGB444 / 4096 colours",
+  "dithering": false,
+  "palette_words": [
+    "0x0",
+    "0xc43",
+    "0x122",
+    "0x75a",
+    "0x19",
+    "0xa3a",
+    "0x81",
+    "0xfff"
+  ],
+  "used_colours": 8,
+  "all_exported_pixels_verified": true,
+  "source": "postapoc-source.png",
+  "source_sha256": "4e076519accb0d23091044b54c0ecf233750633307c2a2a2d58758c03f882a66",
+  "artwork_viewport": [
+    0,
+    16,
+    320,
+    176
+  ],
+  "palette_locks": {
+    "0": "black",
+    "7": "white"
+  },
+  "dark_bank_scale": "floor(channel / 2)",
+  "source_planes": [
+    3,
+    204,
+    22
+  ],
+  "source_bytes": 26928,
+  "reference": "superhex_ste/src/main.c:891 rbt_band; CRT adapted to three image planes plus independent dim mask"
+}

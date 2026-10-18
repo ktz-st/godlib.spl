@@ -1,0 +1,10 @@
+*.o
+__pycache__/
+analysis/CRTDBG.PRG
+analysis/*-raw.json
+analysis/shots/
+analysis/hatari.log
+analysis/dump.bin
+analysis/tv-dump.bin
+analysis/tv-actual.bin
+analysis/tv-expected.bin

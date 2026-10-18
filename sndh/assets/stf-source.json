@@ -1,0 +1,18 @@
+{
+  "author": "James Boulton",
+  "source": "ST Format Demo V1.0, (C) 1993 James Boulton",
+  "original_directory": "Atari_ST_Sources/ASM/Various/James Boulton/STF_DEMO",
+  "original_vu_sha256": "89af91c022502f487ebaa86bf503cf0fee7dfae59d20794ccb2376f0f894e72c",
+  "original_palette_sha256": "079715dc44faa4c87c203cdcac5e4baa9ebe93ff9a08e7fdd06a7bb399a96325",
+  "original_state_count": 16,
+  "original_state_size": 1200,
+  "original_dimensions": [
+    16,
+    150
+  ],
+  "original_colour_planes": 4,
+  "added_state": 0,
+  "mapping": "output 0 blank; output 1..16 = original 0..15",
+  "span_record": "destination byte offset, source byte offset, row count; U16 big-endian",
+  "span_index": "(newLevel*17+oldLevel)*6"
+}

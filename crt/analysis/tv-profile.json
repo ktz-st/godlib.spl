@@ -1,0 +1,16 @@
+{
+  "machine": "STE, 68000, 8 MHz, 1 MiB, RGB PAL, German TOS 1.62",
+  "program_sha256": "59465ab6c0b021d85df2e7b49f1b23da4ed4bf41ceb00f48ef6e922dbf74ef07",
+  "method": "HRDB measured N-key off/on cycle. Only ASM renderer and TV command update; Screen_Update/VBL/input excluded. Palette swap, scene preparation/Memory_Copy/font calls are outside these address ranges. This is an average over transition frames, not a worst-case bound.",
+  "transition_frames": 90,
+  "cycles": {
+    "Crt_TvRender": 3074568,
+    "Crt_TvUpdate": 22908
+  },
+  "cycles_per_transition_frame": {
+    "Crt_TvRender": 34161.87,
+    "Crt_TvUpdate": 254.53
+  },
+  "total_cycles_per_transition_frame": 34416.4,
+  "percent_160000_cycle_frame": 21.51
+}
