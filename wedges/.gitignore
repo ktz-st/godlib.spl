@@ -1,0 +1,6 @@
+*.o
+analysis/WEDGESDBG.PRG
+analysis/shots/
+analysis/*.bin
+__pycache__/
+analysis/RTDBG.PRG

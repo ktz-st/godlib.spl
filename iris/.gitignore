@@ -1,0 +1,5 @@
+*.o
+analysis/IRISDBG.PRG
+analysis/shots/
+analysis/*.bin
+__pycache__/

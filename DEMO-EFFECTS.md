@@ -23,6 +23,8 @@ Pillow and ABC2. Source artwork and conversion scripts are included. REFLECT req
 
 | Example | Hardware | Technique |
 | --- | --- | --- |
+| [SuperHex wedges](wedges/README.md) | ST/STE | Six rotating light/dark sectors from the title screen; cached CPU/blitter copy or 50 FPS differential live ASM without frame cache; inverted on odd sectors. |
+| [SuperHex iris](iris/README.md) | ST/STE | Growing and shrinking rotating hexagon in plane 3, ASM horizontal spans, white edge and a picture swap under black. |
 | [CRT / Wasteland Relay](crt/README.md) | STE / BLiTTER | Two eight-colour scenes, bright scan band, strip tearing and NIEZW-style glowing thin-line TV off/on transitions; ASM per-page updates. |
 | [Wobble](wobble/README.md) | ST/STE | Preshifted rows, MOVEM copies and reuse of unchanged rows on each page. |
 | [FLAGWAVE](flagwave/README.md) | ST/STE | Vertical strips with a mouse delay queue or automatic sine. |

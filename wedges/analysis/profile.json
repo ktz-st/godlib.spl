@@ -1,0 +1,38 @@
+{
+  "program_sha256": "48f4a64b7530685a5c63d927c7f564f51aac24667b330369d43315ffceb115f0",
+  "configuration": "STE, 68000, 8 MHz, 1 MiB, PAL RGB, German TOS 1.62",
+  "method": "Fresh hatari-hrdb session per backend, default speed 6, 8-second sample wait plus protocol settling (>one full turn). Instruction-cycle sums for Wedges_Render and Wedges_Copy. Includes shared-bus blitter stalls/polling, excludes VBL/input/Screen_Update and animation update. Percent uses nominal 160000 cycles at 8 MHz / 50 Hz. CPU normal/inverse body costs separately measured and equally weighted for the balanced complete-rotation figure; actual window mean also retained.",
+  "frame_cache_bytes": 256000,
+  "results": [
+    {
+      "backend": "blitter",
+      "rendered_frames": 422,
+      "bitplane_copies": 422,
+      "copies_per_rendered_frame": 1.0,
+      "copy_cycles_per_call": 36457.99052132702,
+      "copy_ms_per_call_at_8mhz": 4.557248815165877,
+      "render_controller_cycles_per_frame": 580.7867298578199,
+      "total_renderer_cycles_per_frame": 37038.77725118483,
+      "total_renderer_ms_per_frame": 4.629847156398104,
+      "total_renderer_percent_of_160000_cycle_frame": 23.14923578199052
+    },
+    {
+      "backend": "CPU",
+      "rendered_frames": 423,
+      "bitplane_copies": 423,
+      "copies_per_rendered_frame": 1.0,
+      "copy_cycles_per_call": 84084.21749408984,
+      "copy_ms_per_call_at_8mhz": 10.51052718676123,
+      "render_controller_cycles_per_frame": 580.7848699763593,
+      "total_renderer_cycles_per_frame": 84665.0023640662,
+      "total_renderer_ms_per_frame": 10.583125295508275,
+      "total_renderer_percent_of_160000_cycle_frame": 52.91562647754137,
+      "normal_copy_equivalents": 213.0,
+      "inverse_copy_equivalents": 210.0,
+      "normal_copy_cycles": 68172.03369626745,
+      "inverse_copy_cycles": 100223.7182033097,
+      "balanced_full_rotation_copy_cycles": 84197.87594978858,
+      "balanced_full_rotation_renderer_percent": 52.986663012353084
+    }
+  ]
+}

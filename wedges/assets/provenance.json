@@ -1,0 +1,21 @@
+{
+  "source": "superhex_ste/src/main.c bg_render/bg_copy",
+  "frames": 32,
+  "frame_bytes": 8000,
+  "total_bytes": 256000,
+  "viewport": [
+    320,
+    200
+  ],
+  "centre": [
+    160,
+    100
+  ],
+  "angle_units_per_turn": 1536,
+  "sector_units": 256,
+  "frame_angle": "f*8+4",
+  "other_sectors": "invert on odd sectors",
+  "original_crop_row": 23,
+  "sine": "SuperHex Q14, positive clamp 16383",
+  "runtime": "Generate 256000-byte mask cache at startup; ASM copy into plane 2; FRAMES.BIN is verification fixture only"
+}

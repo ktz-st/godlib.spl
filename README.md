@@ -42,6 +42,8 @@ requirements and links to controls, CPU measurements and verification.
 | [`checker`](checker/README.md) | `CHKFX.PRG` | ST/STE rotating and zooming checkerboard, 68000 span renderer, gradient, speed/reverse controls and CPU profiling. |
 | [`crt`](crt/README.md) | `CRT.PRG` | STE/BLiTTER CRT image: scanlines, moving bright band, pixel jitter, torn strips and N-key TV off/on transitions between two scenes; ASM and measured CPU cost. |
 | `chunky` | `CHUNKY.TOS` | Draw into a byte-per-pixel buffer, then convert to ST four-plane graphics. |
+| [`wedges`](wedges/README.md) | `WEDGES.PRG`, `WEDGERT.PRG` | SuperHex title background: six rotating alternating wedges in bitplane 2, original masks generated in RAM at startup, measured CPU/blitter copy or 50 FPS differential live ASM without a frame cache; no logo. |
+| [`iris`](iris/README.md) | `IRIS.PRG` | SuperHex rotating hexagon shutter: ASM horizontal spans in a separate bitplane, white edge and two-picture transitions on ST/STE. |
 | `cookiejar` | `COOKIJAR.TOS` | Reading Atari cookie jar values. |
 | [`fastscroll`](fastscroll/README.md) | `FSCRL.PRG` | ST/STE plain BUGSY text scroll, one ASM shift pass and a 27-line planar strip, four speeds. |
 | `font` | `FONT.PRG` | `Font8x8_Print` and coloured 8x8 font output. |

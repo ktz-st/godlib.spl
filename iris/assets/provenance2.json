@@ -1,0 +1,60 @@
+{
+  "converter": "AmigAtari Bitmap Converter v2.11 by Leonard/Oxygene",
+  "arguments": [
+    "source.png",
+    "-bpc",
+    "3",
+    "-atari",
+    "-ste",
+    "-quantize",
+    "-cpu",
+    "-forcecolor",
+    "0",
+    "000",
+    "-forcecolor",
+    "7",
+    "000",
+    "-b",
+    "image.gfx",
+    "-p",
+    "image.pal",
+    "-preview",
+    "preview.png"
+  ],
+  "source_rgb_sha256": "00ae7851a53c536a252549d201c871492b633d69f2ec8d38da3d5728ba8b5975",
+  "size": [
+    320,
+    200
+  ],
+  "planes": 3,
+  "gamut": "STE RGB444 / 4096 colours",
+  "dithering": false,
+  "palette_words": [
+    "0x0",
+    "0xb45",
+    "0x92a",
+    "0xd66",
+    "0x347",
+    "0xcc2",
+    "0x23b",
+    "0x0"
+  ],
+  "used_colours": 7,
+  "all_exported_pixels_verified": true,
+  "source": "wipe/assets/forest.png",
+  "source_file_sha256": "292bbd503c0561e5ffe0ebd98abf5463c26fb7ee5df87d5ec019ad169e1e0151",
+  "reserved": {
+    "7": "white edge only, never in source",
+    "8..14": "black shutter",
+    "15": "white edge under shutter"
+  },
+  "used_image_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ]
+}
