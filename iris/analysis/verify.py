@@ -89,15 +89,25 @@ for machine,cycles in [('ste',2),('st',1)]:
    data=dump(lo,hi-lo);return {n:struct.unpack_from('>I'if n=='gIrisScreen'else '>H',data,a(n)-lo)[0]for n in names}
   def key(k):h.control('hatari-event keydown '+k);step();h.control('hatari-event keyup '+k)
   stop();assert u16('gIrisReady')==1 and u16('gIrisStage')==0
-  assert u16('gIrisUsingBlitter')==(machine=='ste')
-  sources={0:dump(pointer('gScreenBackGraphic'),32000)} # mpVRAM is the first canvas field
+  assert u16('gIrisHasBlitter')==(machine=='ste')
+  sources={0:dump(pointer('gIrisBackground'),32000)}
   pages=set();displayed={};checks=0
   for cycle in range(cycles):
    key('49');seen=False;stages=set();steps=set()
    for frame in range(90):
     s=state();mode=s['gIrisDrawStage'];pic=s['gIrisDrawPicture'];tick=s['gIrisDrawStep'];angle=s['gIrisDrawAngle'];height=s['gIrisDrawH'];screen=s['gIrisScreen']
-    if pic not in sources:sources[pic]=dump(pointer('gScreenBackGraphic'),32000)
+    if pic not in sources:sources[pic]=dump(pointer('gIrisBackground'),32000)
+    assert 0<=pointer('gIrisLogEnd')-pointer('gIrisLogBase')<=3072
     actual=dump(screen,32000);expected=oracle(sources[pic],height,angle)if mode else sources[pic]
+    # During the closed shutter, planes 0..2 change in 50-row strips.
+    # Raw hidden image bits may differ, but every displayed pixel must match.
+    progress=struct.unpack('>2H',dump(a('gIrisCopyRow'),4))
+    pending=any(row<200 for row in progress)
+    if actual!=expected and pending:
+     assert all(actual[pos:pos+2]==b'\xff\xff' for pos in range(6,32000,8)),('copy exposed',s,progress)
+     palette=(root/('assets/PALETTE2.BIN'if pic else 'assets/PALETTE.BIN')).read_bytes()
+     assert image(actual,palette).tobytes()==image(expected,palette).tobytes(),('visible copy difference',s,progress)
+     expected=actual
     if actual!=expected:
      (out/'actual.bin').write_bytes(actual);(out/'expected.bin').write_bytes(expected)
      raise AssertionError((machine,cycle,s,next((i,x,y)for i,(x,y)in enumerate(zip(actual,expected))if x!=y)))
@@ -121,6 +131,11 @@ for machine,cycles in [('ste',2),('st',1)]:
    print('PASS native',machine,'cycle',cycle+1,'frames',checks,flush=True)
   # Pause must leave the same rendered frame on BOTH pages.
   key('49');step();key('25')
+  for _ in range(5):
+   if u16('gIrisPause')==1:break
+   step()
+  assert u16('gIrisPause')==1
+  step()
   frozen=state();data=dump(frozen['gIrisScreen'],32000)
   for _ in range(3):
    step();now=state();assert now['gIrisDrawAngle']==frozen['gIrisDrawAngle']and now['gIrisDrawStep']==frozen['gIrisDrawStep'];assert dump(now['gIrisScreen'],32000)==data
@@ -134,6 +149,6 @@ if previews:
  sheet=Image.new('RGB',(320*len(previews),200))
  for i,im in enumerate(previews):sheet.paste(im,(i*320,0))
  sheet.save(out/'preview.png')
-(out/'verification.json').write_text(json.dumps({'program_sha256':hashlib.sha256((root/'IRIS.PRG').read_bytes()).hexdigest(),'TOS':'STE: German 1.62; ST: UK 2.06 (1.62 is STE-only)','configuration':'68000, 8 MHz, 1 MiB, RGB PAL','checks':'Complete VRAM vs independent SuperHex half-plane/edge oracle; all 41 steps in each direction, two pages, palette synchronized with physical page, 7-colour sources and independent plane-3 mask, pause, exit. STE uses GodLib blitter background copy; ST uses CPU.','results':results},indent=2)+'\n')
+(out/'verification.json').write_text(json.dumps({'program_sha256':hashlib.sha256((root/'IRIS.PRG').read_bytes()).hexdigest(),'TOS':'STE: German 1.62; ST: UK 2.06 (1.62 is STE-only)','configuration':'68000, 8 MHz, 1 MiB, RGB PAL','checks':'Complete VRAM vs independent SuperHex half-plane/edge oracle; all 41 steps in each direction, two pages, palette synchronized with physical page, 7-colour sources and independent plane-3 mask, pause, exit. CPU ASM on both ST and STE: differential plane-3 spans, sparse reverse undo of white word groups. Hidden 50-row image strips are checked by displayed colours under a fully set mask; remaining frames compare all VRAM bytes.','results':results},indent=2)+'\n')
 (out/'dump.bin').unlink(missing_ok=True)
 print('PASS all native iris tests',results,flush=True)

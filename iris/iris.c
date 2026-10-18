@@ -11,25 +11,40 @@
 #include <godlib/video/video.h>
 U16 gIrisStage,gIrisStep,gIrisPicture,gIrisAngle,gIrisPause,gIrisAuto;
 U16 gIrisDrawStage,gIrisDrawStep,gIrisDrawPicture,gIrisDrawAngle,gIrisDrawH;
-U16 gIrisUsingBlitter;
+U16 gIrisHasBlitter;
 void *gIrisScreen;
 volatile U16 gIrisReady,gIrisExited;
+volatile U16 gIrisLate[2][41];
+volatile U32 gIrisActiveFrames,gIrisActiveVbls;
 volatile U32 gIrisFrames,gIrisLastVbl,gIrisMissedVbl;
+U16 gIrisHistory[2][400];
+U16 gIrisLogs[2][1536]; /* <=450 word groups for a clipped convex hexagon */
+U16 *gIrisLogBase,*gIrisLogEnd;
+const U8 *gIrisBackground;
+U16 gIrisCopyRow[2];
+static U16 *sLogEnd[2];
+static U16 sDrawStep[2]={65535,65535},sDrawAngle[2]={65535,65535};
 static U16 sPhase,sHold,sPages[2]={65535,65535};
 static const U16 *sPalette=Iris_Palette;
-static void LoadPicture(void)
+static void PreparePicture(U16 picture)
 {
+ sGraphicCanvas canvas=*Screen_GetpBackGraphic();
+ canvas.mpVRAM=(void*)(picture?Iris_Image2:Iris_Image);
  U16 i,ink=1;U32 best=0;
- sPalette=gIrisPicture?Iris_Palette2:Iris_Palette;
- Memory_Copy(32000,gIrisPicture?Iris_Image2:Iris_Image,Screen_GetpBack());
+ sPalette=picture?Iris_Palette2:Iris_Palette;
  for(i=1;i<7;++i){
   U16 c=sPalette[i];U32 light=0;U16 shift;
   for(shift=0;shift<12;shift+=4){U16 n=(c>>shift)&15;light+=((n&7)<<1)|(n>>3);}
   if(light>best){best=light;ink=i;}
  }
- Font8x8_PrintColourCanvas("SUPERHEX / ROTATING HEXAGON IRIS",Screen_GetpBackGraphic(),24,0,ink);
- Font8x8_PrintColourCanvas("N NEXT  A AUTO  P PAUSE  ESC EXIT",Screen_GetpBackGraphic(),24,192,ink);
- sPages[0]=sPages[1]=65535;
+ Font8x8_PrintColourCanvas("SUPERHEX / ROTATING HEXAGON IRIS",&canvas,24,0,ink);
+ Font8x8_PrintColourCanvas("N NEXT  A AUTO  P PAUSE  ESC EXIT",&canvas,24,192,ink);
+}
+static void LoadPicture(void)
+{
+ sPalette=gIrisPicture?Iris_Palette2:Iris_Palette;
+ gIrisBackground=gIrisPicture?Iris_Image2:Iris_Image;
+ sPages[0]=sPages[1]=65535;gIrisCopyRow[0]=gIrisCopyRow[1]=0;
 }
 /* Clip before calling the fast, wholly visible GodLib ASM line path.
    Matches SuperHex's Cohen-Sutherland clipping; no off-screen pixel walks. */
@@ -45,7 +60,7 @@ static void Edge(S32 x0,S32 y0,S32 x1,S32 y1)
   if(!(c0|c1)){
    sGraphicBox line;
    line.mX0=(S16)x0;line.mX1=(S16)x1;line.mY0=(S16)y0;line.mY1=(S16)y1;
-   GraphicCanvas_DrawLine_Clip(Screen_GetpLogicGraphic(),&line,15);return;
+   Iris_WhiteLine(Screen_GetpLogic(),&line);return;
   }
   if(c0&c1)return;
   c=c0?c0:c1;
@@ -64,16 +79,22 @@ void Iris_Render(void)
  gIrisScreen=Screen_GetpLogic();
  gIrisDrawStage=gIrisStage;gIrisDrawStep=gIrisStep;gIrisDrawPicture=gIrisPicture;
  gIrisDrawAngle=gIrisAngle;gIrisDrawH=(U16)((U32)gIrisStep*220/40);
- if(gIrisStage || sPages[page]!=gIrisPicture){
-  GraphicCanvas_CopyScreen(Screen_GetpLogicGraphic(),Screen_GetpBack());
-  sPages[page]=gIrisStage?65535:gIrisPicture;
+ if(sPages[page]==gIrisPicture && sDrawStep[page]==gIrisStep && sDrawAngle[page]==gIrisAngle)return;
+ sDrawStep[page]=gIrisStep;sDrawAngle[page]=gIrisAngle;
+ if(sPages[page]!=gIrisPicture){
+  Iris_CopyRows(gIrisScreen,gIrisBackground,gIrisCopyRow[page],50);
+  gIrisCopyRow[page]+=50;
+  if(gIrisCopyRow[page]==200)sPages[page]=gIrisPicture;
  }
+ gIrisLogBase=gIrisLogs[page];gIrisLogEnd=sLogEnd[page];
+ Iris_Restore(gIrisScreen,gIrisBackground);
+ Iris_Delta(gIrisScreen,gIrisHistory[page]);
  if(gIrisStage && gIrisDrawH>2){
-  Iris_Fill(gIrisScreen,gIrisSpans);
   for(k=0;k<6;++k){
    Edge(gIrisX[k],gIrisY[k],gIrisX[k+1],gIrisY[k+1]);
   }
  }
+ sLogEnd[page]=gIrisLogEnd;
 }
 void Iris_RenderEnd(void){}
 void Iris_FrameDone(void) __attribute__((noinline));
@@ -92,13 +113,20 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
  GemDos_Super(0);Platform_Init();
  Screen_Init(320,200,eGRAPHIC_COLOURMODE_4PLANE,0);
  if(!Screen_GetpMemBase()){Platform_DeInit();return 1;}
- gIrisUsingBlitter=System_GetBLT()==BLT_BLITTER;
- Graphic_SetBlitterEnable(gIrisUsingBlitter);
- LoadPicture();Memory_Clear(32000,Screen_GetpLogic());Memory_Clear(32000,Screen_GetpPhysic());
+ gIrisHasBlitter=System_GetBLT()==BLT_BLITTER;
+ Graphic_SetBlitterEnable(gIrisHasBlitter);
+ PreparePicture(0);PreparePicture(1);LoadPicture();
+ Memory_Copy(32000,gIrisBackground,Screen_GetpLogic());Memory_Copy(32000,gIrisBackground,Screen_GetpPhysic());
+ {U16 page,k;for(page=0;page<2;++page){
+  for(k=0;k<400;k+=2){gIrisHistory[page][k]=0;gIrisHistory[page][k+1]=65535;}
+  sLogEnd[page]=gIrisLogs[page];sPages[page]=0;gIrisCopyRow[page]=200;
+ }}
+ Iris_Prepare(0,0);
  gIrisReady=1;
  while(!quit){
   U32 now;Video_SetNextPalST(sPalette);Screen_Update();IKBD_Update();now=Vbl_GetCounter();
-  if(gIrisFrames && now-gIrisLastVbl>1)gIrisMissedVbl+=now-gIrisLastVbl-1;
+  if(gIrisFrames && now-gIrisLastVbl>1){gIrisMissedVbl+=now-gIrisLastVbl-1;if(gIrisDrawStage)++gIrisLate[gIrisDrawStage-1][gIrisDrawStep];}
+  if(gIrisDrawStage){++gIrisActiveFrames;gIrisActiveVbls+=now-gIrisLastVbl;}
   gIrisLastVbl=now;
   while(IKBD_GetKbdBytesWaiting()){
    U8 key=IKBD_PopKbdByte();

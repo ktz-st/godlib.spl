@@ -1,0 +1,43 @@
+{
+  "program_sha256": "68238895ac67d5bab16ab648b0eac0187e7acd31ccd10b888bb83616dc3adbd7",
+  "configuration": "STE, 68000, 8 MHz, 1 MiB, PAL RGB, German TOS 1.62",
+  "method": "HRDB instruction cycles. Automatic complete transitions; costs divided by Iris_Prepare calls. Includes both growing and shrinking and some idle dispatch; 32-bit helpers shared by C geometry/clipping are a separate bucket. VBL/Screen_Update/input, outer Prepare/Outcode helpers and picture/font setup excluded.",
+  "geometry_calls": 164,
+  "render_calls": 523,
+  "fill_calls": 166,
+  "components": {
+    "geometry_direct": {
+      "cycles_per_geometry_update": 21816.19512195122,
+      "ms_per_geometry_update": 2.727024390243902
+    },
+    "render_dispatch_and_C_clip": {
+      "cycles_per_geometry_update": 5966.731707317073,
+      "ms_per_geometry_update": 0.7458414634146342
+    },
+    "fill_ASM": {
+      "cycles_per_geometry_update": 63794.95121951219,
+      "ms_per_geometry_update": 7.974368902439024
+    },
+    "scan_ASM": {
+      "cycles_per_geometry_update": 21659.951219512193,
+      "ms_per_geometry_update": 2.7074939024390243
+    },
+    "sparse_restore_ASM": {
+      "cycles_per_geometry_update": 22509.90243902439,
+      "ms_per_geometry_update": 2.813737804878049
+    },
+    "background_copy": {
+      "cycles_per_geometry_update": 4839.804878048781,
+      "ms_per_geometry_update": 0.6049756097560975
+    },
+    "outline_ASM": {
+      "cycles_per_geometry_update": 39728.170731707316,
+      "ms_per_geometry_update": 4.9660213414634145
+    },
+    "shared_32bit_math": {
+      "cycles_per_geometry_update": 3842.4634146341464,
+      "ms_per_geometry_update": 0.4803079268292683
+    }
+  },
+  "renderer_ms_per_update": 23.019771341463418
+}
