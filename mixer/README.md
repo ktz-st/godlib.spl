@@ -1,6 +1,6 @@
 # AMIXER: volume, pan and 12.5/25 kHz
 
-`MIXER.TOS` plays the included signed 8-bit `voice.raw` at 12.517 kHz through
+`MIXER.PRG` plays the included signed 8-bit `voice.raw` at 12.517 kHz through
 GodLib's two-voice AMIXER. Keep `voice.raw` beside the executable. Output is
 selectable 12.517 or 25.033 kHz signed 8-bit stereo (25 kHz by default).
 Source sample rates are retained in both modes. A generated looping triangle

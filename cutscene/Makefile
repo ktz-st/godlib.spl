@@ -12,12 +12,14 @@ CUTSCENE.PRG: $(OBJECTS) $(GODLIB_DIR)/libgod.a
 	m68k-atari-mintelf-strip --strip-unneeded $@
 cutscene.o: cutscene.c
 	$(CC) $(CFLAGS) -c $< -o $@
-assets_s.o: assets_s.s scene.txt assets/CASTLE.PI1 assets/FOREST.PI1 assets/FONT.BIN assets/STAR.BIN assets/ARRIVAL.RAW assets/PATH.RAW assets/FOREST.RAW assets/JOURNEY.RAW
+assets_s.o: assets_s.s assets/SCENE.CUT assets/CASTLE.PI1 assets/FOREST.PI1 assets/FONT.BIN assets/STAR.BIN assets/ARRIVAL.RAW assets/PATH.RAW assets/FOREST.RAW assets/JOURNEY.RAW
 	vasmm68k_mot -Felf -devpac $< -o $@
 debug: CUTSCENE.PRG
 	mkdir -p analysis
 	$(CC) $(LDFLAGS) -o analysis/CUTDBG.PRG $(CRT) $(OBJECTS) -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
-assets:
+assets/SCENE.CUT: scene.txt $(GODLIB_DIR)/tools/cutbuild/cutbuild.py $(GODLIB_DIR)/cutscene/cutscene.h $(GODLIB_DIR)/cutscene/cutscene.c
+	python3 $(GODLIB_DIR)/tools/cutbuild/cutbuild.py $< $@
+assets: assets/SCENE.CUT
 	python3 prepare.py
 run: CUTSCENE.PRG
 	hatari --tos "$(TOS)" --machine ste --memsize 1 --monitor rgb --confirm-quit false --fast-boot true CUTSCENE.PRG

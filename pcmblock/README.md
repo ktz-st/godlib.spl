@@ -6,7 +6,7 @@ make
 make run
 ```
 
-Copy `PCMBLOCK.TOS`, `VOICE12.RAW` and `VOICE25.RAW` together to the Atari drive.
+Copy `PCMBLOCK.PRG`, `VOICE12.RAW` and `VOICE25.RAW` together to the Atari drive.
 The example uses normal GodLib Platform, Screen and IKBD lifecycle. It first
 runs a self-test of the actual 68000 mixer; the screen must report PASS.
 

@@ -1,6 +1,6 @@
 # Chunky to ST four-plane example
 
-Build with `make`, run with `make run` or launch `CHUNKY.TOS` on an Atari ST/STE.
+Build with `make`, run with `make run` or launch `CHUNKY.PRG` on an Atari ST/STE.
 No external assets are needed. Space pauses/resumes the animation; Esc exits.
 
 The sample draws a palette strip, checkerboard, moving box and lines into a

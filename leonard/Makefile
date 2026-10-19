@@ -35,7 +35,7 @@ LDFLAGS = -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(CMINI_DIR)/lib/mshort/mfastcall \
           -L$(GODLIB_DIR)
 
-OUT = $(if $(filter 12,$(RATE)),LEO12.TOS,LEONARD.TOS)
+OUT = $(if $(filter 12,$(RATE)),LEO12.PRG,LEONARD.PRG)
 DEBUG_OUT ?= $(if $(filter 12,$(RATE)),analysis/LEO12DBG.PRG,analysis/LEODBG.PRG)
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a | LOSTPARO.MOD
@@ -48,7 +48,7 @@ $(OBJECTS_C): leonard.c $(GODLIB_DIR)/music/leonardmod.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f leonard.o leonard12.o leonard25.o leonard_s.o $(OUT) analysis/*DBG.PRG LEONARD.TOS LEO12.TOS .rate-* *.map
+	rm -f leonard.o leonard12.o leonard25.o leonard_s.o $(OUT) analysis/*DBG.PRG LEONARD.PRG LEO12.PRG .rate-* *.map
 
 run: $(OUT)
 	hatari -w --machine ste --memsize 1 --monitor rgb --confirm-quit false --fast-boot true $(OUT)

@@ -26,7 +26,7 @@ LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(CMINI_DIR)/lib/mshort/mfastcall \
           -L$(GODLIB_DIR)
 
-OUT = MIXER.TOS
+OUT = MIXER.PRG
 
 all: $(OUT)
 

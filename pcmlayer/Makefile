@@ -5,9 +5,9 @@ GODLIB_DIR = ../../godlib
 CFLAGS = -fno-strict-aliasing -Wall -Os -mshort -mfastcall -m68000 -fpack-struct=2 -I../.. -I$(CMINI_DIR)/include
 LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static -mshort -mfastcall -m68000 -Wl,--gc-sections -Wl,--relax -L$(CMINI_DIR)/lib/mshort/mfastcall -L$(GODLIB_DIR)
 
-all: PCMLAYER.TOS VOICE.RAW
+all: PCMLAYER.PRG VOICE.RAW
 
-PCMLAYER.TOS: pcmlayer.o verify.o $(GODLIB_DIR)/libgod.a
+PCMLAYER.PRG: pcmlayer.o verify.o $(GODLIB_DIR)/libgod.a
 	$(CC) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/crt0.o pcmlayer.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 	$(STRIP) --strip-unneeded $@
 
@@ -21,15 +21,15 @@ VOICE.RAW: ../mixer/voice.raw prepare_sample.py
 	python3 prepare_sample.py $< $@
 
 run: all
-	hatari -w --machine ste --memsize 4 --monitor rgb --fast-boot true PCMLAYER.TOS
+	hatari -w --machine ste --memsize 4 --monitor rgb --fast-boot true PCMLAYER.PRG
 
 clean:
-	rm -f pcmlayer.o verify.o PCMLAYER.TOS
+	rm -f pcmlayer.o verify.o PCMLAYER.PRG
 .PHONY: all run clean
 
 # Unstripped target for Hatari symbol-based validation.
-debug: all analysis/PCMLYDBG.TOS
-analysis/PCMLYDBG.TOS: pcmlayer.o verify.o $(GODLIB_DIR)/libgod.a
+debug: all analysis/PCMLYDBG.PRG
+analysis/PCMLYDBG.PRG: pcmlayer.o verify.o $(GODLIB_DIR)/libgod.a
 	mkdir -p analysis
 	$(CC) $(filter-out -s,$(LDFLAGS)) -Wl,-Map=analysis/pcmlayer.map -o $@ $(CMINI_DIR)/lib/crt0.o pcmlayer.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 .PHONY: debug

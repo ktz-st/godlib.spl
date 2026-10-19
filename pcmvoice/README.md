@@ -1,6 +1,6 @@
 # PcmVoiceMixer example
 
-Build with `make`, run `PCMVOICE.TOS` on an STE/MegaSTE. Synthetic PCM is embedded;
+Build with `make`, run `PCMVOICE.PRG` on an STE/MegaSTE. Synthetic PCM is embedded;
 there are no external asset files. GodLib Platform is initialized first and the
 mixer is stopped and Platform restores TOS video/removes VBL users before screen
 storage is freed.
@@ -21,7 +21,7 @@ Startup runs the core/scheduler tests and reports PASS or FAILED. See
 
 Set `HATARI_TOS` to a ROM path when the regression must use a specific TOS
 version; otherwise it uses the current Hatari configuration.
-The harness runs a copy named `PCMVOICE.TOS` in a private temporary directory.
+The harness runs a copy named `PCMVOICE.PRG` in a private temporary directory.
 This avoids a TOS 1.62 desktop fault seen after Pterm when the development
 analysis directory itself is exposed as the Hatari GEMDOS drive; the identical
 binary exits correctly from the isolated directory.

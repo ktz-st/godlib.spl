@@ -1,4 +1,4 @@
-SARDONIC.TOS
+SARDONIC.PRG
 
 ;.C [ -Y -W-par -I..\..\TOOLS.RG\PURE_C\INCLUDE -I..\.. ]
 ;.C [ -W-par ]

@@ -1,6 +1,6 @@
 # LanceMod channel activity
 
-Build with `make` and run `LANCEMOD.TOS` beside `LOSTPARO.MOD` on an
+Build with `make` and run `LANCEMOD.PRG` beside `LOSTPARO.MOD` on an
 Atari STE/MegaSTE. Playback uses the 25 kHz Paula backend.
 
 Exactly four indicators follow Amiga stereo panning: CH1/CH4 on the left and
@@ -37,8 +37,9 @@ copied only during initialization.
 hashes. The shipped originals allow regeneration without the source collection;
 Pillow is needed only for this asset preparation, not a normal build.
 
-Use German TOS 1.62 for STE testing. British TOS 1.62 Rev 2 has an exit issue
-with the long `LANCEMOD.TOS` filename; renaming the program to `LM.TOS` avoids it.
+Use German TOS 1.62 for STE testing. British TOS 1.62 Rev 2 previously showed an exit issue
+with the long executable filename; shortening it to `LM` avoided it. The current
+output is `LANCEMOD.PRG`; German TOS remains the test configuration.
 
 The replay now allocates its tables/code/DMA workspace for the selected frequency;
 module loading adds guards only for nonempty samples. Shutdown frees the complete

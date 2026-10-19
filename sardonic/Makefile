@@ -39,7 +39,7 @@ LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(CMINI_DIR)/lib/mshort/mfastcall \
           -L$(GODLIB_DIR)
 
-OUT = SARDONIC.TOS
+OUT = SARDONIC.PRG
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(OBJECTS_CPP)
 	$(LD) $(LDFLAGS) -o $(OUT) $(CMINI_DIR)/lib/crt0.o \

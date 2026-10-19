@@ -1,6 +1,6 @@
-*.TOS
+*.PRG
 *.o
-analysis/*.TOS
+analysis/*.PRG
 analysis/*.map
 analysis/*.log
 analysis/*.bin

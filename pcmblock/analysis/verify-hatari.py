@@ -3,9 +3,9 @@ from pathlib import Path
 sys.path.insert(0,str(Path.home()/'.codex/skills/hatari-debugging/scripts'))
 from hatari_session import HatariSession
 root=Path(__file__).resolve().parents[1]
-nm=subprocess.check_output(['m68k-atari-mintelf-nm','-n',str(root/'analysis/PCMBLDBG.TOS')],text=True)
+nm=subprocess.check_output(['m68k-atari-mintelf-nm','-n',str(root/'analysis/PCMBLDBG.PRG')],text=True)
 syms={line.split()[2]:int(line.split()[0],16) for line in nm.splitlines() if len(line.split())==3}
-with HatariSession(str(root/'PCMBLOCK.TOS'),screenshot_dir=str(root/'analysis/shots'),sound=False,tos=os.environ.get('HATARI_TOS'),debug_except='bus,address,illegal',extra_args=['--confirm-quit','false','--memsize','4','--monitor','rgb']) as h:
+with HatariSession(str(root/'PCMBLOCK.PRG'),screenshot_dir=str(root/'analysis/shots'),sound=False,tos=os.environ.get('HATARI_TOS'),debug_except='bus,address,illegal',extra_args=['--confirm-quit','false','--memsize','4','--monitor','rgb']) as h:
  h.wait(7)
  base=h.basepage(); print('basepage',base,flush=True)
  text=base['text']; a=lambda name:text+syms[name]

@@ -23,7 +23,7 @@ Cut_Voice2End:
 Cut_Voice3: incbin 'assets/JOURNEY.RAW'
 Cut_Voice3End:
         even
-Cut_Script: incbin 'scene.txt'
+Cut_Script: incbin 'assets/SCENE.CUT'
 Cut_ScriptEnd:
         dc.b 0
         even

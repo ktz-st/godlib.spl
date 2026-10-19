@@ -11,7 +11,7 @@ make
 make run
 ```
 
-Keep `popcorn.snd` beside `SNDH.TOS`. The shipped assets allow ordinary builds
+Keep `popcorn.snd` beside `SNDH.PRG`. The shipped assets allow ordinary builds
 without Python. `make assets` regenerates the note lookup, eight-pixel VU phase, keyboard masks,
 scope phase increments, compiled circle kernels and colour-organ discs/palettes; `make debug` produces `build/SNDBG.PRG` with symbols.
 

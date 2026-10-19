@@ -5,7 +5,8 @@ Small example programs for [GodLib](../godlib), built for Atari ST/STE with
 
 The examples are intentionally compact: each directory is a standalone sample
 with its own `Makefile`, source file, assets when needed, and a `run` target for
-Hatari.
+Hatari. All example executables use the `.PRG` extension, including debug and
+alternate-rate variants, so TOS launches them as graphical applications.
 
 ## Quick start
 
@@ -37,32 +38,33 @@ requirements and links to controls, CPU measurements and verification.
 
 | Directory | Output | Shows |
 | --- | --- | --- |
-| `audio` | `AUDIO.TOS` | Basic sample playback through GodLib audio. |
+| `audio` | `AUDIO.PRG` | Basic sample playback through GodLib audio. |
 | `blitter` | `BLITTER.PRG` | Blitter API, sprite drawing, CPU/blitter toggle. |
 | [`checker`](checker/README.md) | `CHKFX.PRG` | ST/STE rotating and zooming checkerboard, 68000 span renderer, gradient, speed/reverse controls and CPU profiling. |
 | [`crt`](crt/README.md) | `CRT.PRG` | STE/BLiTTER CRT image: scanlines, moving bright band, pixel jitter, torn strips and N-key TV off/on transitions between two scenes; ASM and measured CPU cost. |
-| `chunky` | `CHUNKY.TOS` | Draw into a byte-per-pixel buffer, then convert to ST four-plane graphics. |
+| `chunky` | `CHUNKY.PRG` | Draw into a byte-per-pixel buffer, then convert to ST four-plane graphics. |
 | [`wedges`](wedges/README.md) | `WEDGES.PRG`, `WEDGERT.PRG` | SuperHex title background: six rotating alternating wedges in bitplane 2, original masks generated in RAM at startup, measured CPU/blitter copy or 50 FPS differential live ASM without a frame cache; no logo. |
 | [`iris`](iris/README.md) | `IRIS.PRG` | SuperHex rotating hexagon shutter: ASM horizontal spans in a separate bitplane, white edge and two-picture transitions on ST/STE. |
-| `cookiejar` | `COOKIJAR.TOS` | Reading Atari cookie jar values. |
-| [`cutscene`](cutscene/README.md) | `CUTSCENE.PRG` | Native cutscene player: two scenes, animated sprite, spoken narration through AMIXER, captions/fades and skip/replay. |
+| `cookiejar` | `COOKIJAR.PRG` | Reading Atari cookie jar values. |
+| [`cutscene`](cutscene/README.md) | `CUTSCENE.PRG` | Host-compiled CUT player: two scenes, animated sprite, spoken narration through AMIXER, typewriter captions/fades and skip/replay. |
 | [`fastscroll`](fastscroll/README.md) | `FSCRL.PRG` | ST/STE plain BUGSY text scroll, one ASM shift pass and a 27-line planar strip, four speeds. |
+| [`fileselect`](fileselect/README.md) | `FILESEL.PRG` | GodLib GEM/AES file selector: filters, directories, repeated selection/cancel and read-only file preview. |
 | `font` | `FONT.PRG` | `Font8x8_Print` and coloured 8x8 font output. |
 | `graphic` | `GRAPHIC.PRG` | `GraphicCanvas` primitives: pixels, lines, boxes and blits. |
 | `hscroll` | `HSCROLL.PRG` | STE pixel-accurate horizontal scrolling on a larger virtual canvas, with vertical scrolling and sprite stride checks. |
-| `iff` | `IFFSHOW.TOS` | IFF ILBM picture loading/display. |
-| `joy` | `JOY.TOS` | IKBD joystick packets for joy0/joy1. |
-| `lancemod` | `LANCEMOD.TOS` | ProTracker MOD playback with four activity bars in Amiga LRRL stereo order. |
-| `leonard` | `LEONARD.TOS` | LeonardMod 12.5/25 kHz playback with four channel activity bars. |
+| `iff` | `IFFSHOW.PRG` | IFF ILBM picture loading/display. |
+| `joy` | `JOY.PRG` | IKBD joystick packets for joy0/joy1. |
+| `lancemod` | `LANCEMOD.PRG` | ProTracker MOD playback with four activity bars in Amiga LRRL stereo order. |
+| `leonard` | `LEONARD.PRG` | LeonardMod 12.5/25 kHz playback with four channel activity bars. |
 | [`lens`](lens/README.md) | `LENS.PRG` | ST/STE 64x64 mouse/automatic magnifying lens over the castle, ASM inverse sampling and lookup C2P, measured CPU cost. |
-| `pcmblock` | `PCMBLOCK.TOS` | Four-channel block mixer at 12.5/25 kHz, loops and ASM self-test. |
-| `pcmlayer` | `PCMLAYER.TOS` | Four-layer mixer at 12.5 kHz: two loops and two one-shots. |
-| `mixer` | `MIXER.TOS` | Two-voice AMIXER with volume, pan, loops and switchable 12.5/25 kHz stereo output. |
-| `pcmvoice` | `PCMVOICE.TOS` | PCM Voice three-channel mixer, loops, queued one-shots, CPU raster and core self-tests. |
-| `pcmframe` | `PCMFRAME.TOS` | PCM Frame three-channel SFX mixer, overlap and looping. |
-| `mouse` | `MOUSE.TOS` | IKBD mouse position and button state. |
+| `pcmblock` | `PCMBLOCK.PRG` | Four-channel block mixer at 12.5/25 kHz, loops and ASM self-test. |
+| `pcmlayer` | `PCMLAYER.PRG` | Four-layer mixer at 12.5 kHz: two loops and two one-shots. |
+| `mixer` | `MIXER.PRG` | Two-voice AMIXER with volume, pan, loops and switchable 12.5/25 kHz stereo output. |
+| `pcmvoice` | `PCMVOICE.PRG` | PCM Voice three-channel mixer, loops, queued one-shots, CPU raster and core self-tests. |
+| `pcmframe` | `PCMFRAME.PRG` | PCM Frame three-channel SFX mixer, overlap and looping. |
+| `mouse` | `MOUSE.PRG` | IKBD mouse position and button state. |
 | [`nibble`](nibble/README.md) | `NIBBLE.PRG` | ST/STE original TLB NIBBLE sine scroller: 68000 ASM, LOST16 font, two waveforms, straight mode and measured CPU cost. |
-| `music` | `MUSIC.TOS` | Legacy SSD/music sample playback. |
+| `music` | `MUSIC.PRG` | Legacy SSD/music sample playback. |
 | `palsplit` | `PALFX.PRG` | ST/STE Timer B palette split: colour top half, greyscale bottom half, preloaded MOVEM palette write. |
 | [`phasescroll`](phasescroll/README.md) | `PHASE.PRG` | STE tile-map phase scrolling: original scanwalk ASM, BLiTTER phase blocks, four speeds and a fixed HUD. |
 | [`planemix`](planemix/README.md) | `LAYFX.PRG` | ST/STE two independent checkerboard bitplanes, palette translucency, per-layer freeze and measured CPU cost. |
@@ -75,7 +77,7 @@ requirements and links to controls, CPU measurements and verification.
 | [`spectrum`](spectrum/README.md) | `SPEC.PRG`, `SPEC4K.PRG` | ST/STE Spectrum 512/4096: original picture, full-colour test card, cycle-exact ASM palette stream. |
 | `splitscreen` | `SPLIT.PRG` | STE Timer B split: 160 scrolling terrain rows and an independent fixed 40-row HUD. |
 | `splitscreenh` | `SPLITH.PRG` | STE top HUD: fixed 16 rows above 184 horizontally scrolling rows, with independent palettes, fine scroll and stride. |
-| [`sndh`](sndh/README.md) | `SNDH.TOS` | Popcorn SNDH playback; PSG VU bars, 80 note bands, piano, three synthetic scopes, expanding rings and palette-only RGB colour organ; ASM and CPU measurements. |
+| [`sndh`](sndh/README.md) | `SNDH.PRG` | Popcorn SNDH playback; PSG VU bars, 80 note bands, piano, three synthetic scopes, expanding rings and palette-only RGB colour organ; ASM and CPU measurements. |
 | `sprite` | `SPRITE.PRG` | Basic sprite creation, mask creation and clipped drawing. |
 | `spriteinput` | `SPRINP.PRG` | Sprite controlled by mouse or joy1, switchable with `1`/`2`. |
 | `spritechunk` | `SPRCHUNK.PRG` | Sprite background restoration with separate chunk lists for both screen pages. |
@@ -87,9 +89,9 @@ requirements and links to controls, CPU measurements and verification.
 | [`flagwave`](flagwave/README.md) | `FLAG.PRG` | ST/STE ASM waving picture: mouse delay queue, automatic sine, per-page column reuse and measured CPU cost. |
 | [`reflect`](reflect/README.md) | `REFL.PRG` | ST/STE Missing Link REFLECT: original 68000 row-wave algorithm and a live reflection of the castle above the lake. |
 | [`water`](water/README.md) | `WATER.PRG` | ST/STE Ugh intro-style lake waves: repeated/skipped rows under a generated castle, full-width water and surface glints. |
-| `wipe` | `WIPE.TOS` | Three generated pictures, individual ST palettes and 39 wipe effects in a slideshow. |
+| `wipe` | `WIPE.PRG` | Three generated pictures, individual ST palettes and 39 wipe effects in a slideshow. |
 | [`wobble`](wobble/README.md) | `WOBBLE.PRG` | ST/STE dynamic picture waves: cached fine shifts, MOVEM row copies, per-page reuse and CPU profiling. |
-| `wizzcat` | `WIZZCAT.TOS` | Wizzcat MOD playback with four ASM activity bars and automatic workspace sizing. |
+| `wizzcat` | `WIZZCAT.PRG` | Wizzcat MOD playback with four ASM activity bars and automatic workspace sizing. |
 
 ## Notes
 

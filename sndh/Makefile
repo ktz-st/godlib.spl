@@ -27,7 +27,7 @@ LDFLAGS = -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(CMINI_DIR)/lib/mshort/mfastcall \
           -L$(GODLIB_DIR)
 
-OUT = SNDH.TOS
+OUT = SNDH.PRG
 TOS ?= /Users/kriss/Atari/tos/TOS v1.62 (1990)(Atari Corp)(STE)(De).img
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a

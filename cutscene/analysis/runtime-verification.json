@@ -1,8 +1,13 @@
 {
   "result": "PASS",
-  "program_sha256": "57c9b253c0de945d1e8da7057a899c7f5c50594958937b83cb41ae596d945a01",
-  "full_frame_checks": 8,
+  "program_sha256": "bdae498b4eba970823cc813744354bcb5b6904ef368851bebe5b310f717a8ad9",
+  "full_frame_checks": 28,
   "tests": [
+    "BG disable clears both pages and preserves text; selecting a new hidden asset stays black; enable restores it",
+    "background waits retain the other page after repeated Render",
+    "typewriter delay, empty first frame, partial glyph prefixes and stable word wrap",
+    "TEXT_ANIM_WAIT blocks until final glyph is rendered on both pages",
+    "page change restarts reveal, zero delay shows full text, empty/disabled waits and restart reset",
     "background set/clear on both pages without callbacks or external copies",
     "repeated Render on one page retains dirty state for other page",
     "CRLF LF TAB consumption and bounded text rectangle",

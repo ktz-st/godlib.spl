@@ -3,12 +3,12 @@ import json,subprocess,sys,time,os,shutil,tempfile
 sys.path.insert(0,str(Path.home()/'.codex/skills/hatari-debugging/scripts'))
 from hatari_session import HatariSession
 root=Path(__file__).resolve().parent
-exe=root/'PCMVODBG.TOS'
+exe=root/'PCMVODBG.PRG'
 out=subprocess.check_output(['m68k-atari-mintelf-nm',str(exe)],text=True)
 syms={p[2]:int(p[0],16) for l in out.splitlines() if len(p:=l.split())==3}
 # Keep GEMDOS directory enumeration and 8.3 aliases independent of build files.
 with tempfile.TemporaryDirectory(prefix='pcmvoice-hatari-') as run_dir:
- run_exe=Path(run_dir)/'PCMVOICE.TOS';shutil.copy2(exe,run_exe)
+ run_exe=Path(run_dir)/'PCMVOICE.PRG';shutil.copy2(exe,run_exe)
  with HatariSession(str(run_exe),machine='ste',sound=False,tos=os.environ.get('HATARI_TOS'),debug_except='bus,address,illegal',extra_args=['--confirm-quit','false','--memsize','4','--cpuclock','8']) as h:
   h.wait(15);base=h.basepage()['text']
   def integer(name,size=2):

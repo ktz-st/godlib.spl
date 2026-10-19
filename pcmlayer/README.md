@@ -6,7 +6,7 @@ make
 make run
 ```
 
-Copy PCMLAYER.TOS and VOICE.RAW together to an STE/MegaSTE. The first screen
+Copy PCMLAYER.PRG and VOICE.RAW together to an STE/MegaSTE. The first screen
 must show ASM self-test PASS. The example prepares a signed 12517-Hz voice at
 quarter amplitude from the existing mixer demo and pads it to four bytes.
 
@@ -25,7 +25,7 @@ PCM Layer, F1/F2 + F3 gives three simultaneous sources to compare with PCM Frame
 F5 exercises PCM Layer's four-layer case.
 
 See ../../godlib/audio/pcmlayer.md for API restrictions and provenance.
-`make debug` creates an unstripped analysis/PCMLYDBG.TOS and linker map.
+`make debug` creates an unstripped analysis/PCMLYDBG.PRG and linker map.
 
 The included `analysis/verify-hatari.py` uses the local hatari-debugging skill
 helper and symbols from `make debug` for repeatable target checks.

@@ -8,7 +8,7 @@ make
 make run
 ```
 
-On Atari ST/STE, keep `WIPE.TOS`, `COAST.PI1`, `SPACE.PI1` and `FOREST.PI1`
+On Atari ST/STE, keep `WIPE.PRG`, `COAST.PI1`, `SPACE.PI1` and `FOREST.PI1`
 in the same directory. No blitter is required. All pictures are preloaded.
 
 - Space: next picture (queued if a transition is still running).

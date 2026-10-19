@@ -1,7 +1,6 @@
-/* Native GodLib text cutscene parser + script player; self-contained assets. */
-#include <godlib/cutscene/cutparse.h>
-#include <godlib/audio/amixer.h>
+/* Precompiled GodLib CUT scene + script player; self-contained assets. */
 #include <godlib/cutscene/cut_sys.h>
+#include <godlib/audio/amixer.h>
 #include <godlib/fade/fade.h>
 #include <godlib/font/font.h>
 #include <godlib/font8x8/font8x8.h>
@@ -115,8 +114,10 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
  Graphic_SetBlitterEnable(System_GetBLT()==BLT_BLITTER);
  AudioMixer_Init();AudioMixer_SetFrequency(eAUDIO_FREQ_12);AudioMixer_Enable();
  CutScene_System_AppInit();
- PrepareBackdrops();gCutFont=MakeFont();gCutStars=MakeStars();
- gCutScene=CutScene_Parse(Cut_Script,(U32)(Cut_ScriptEnd-Cut_Script));
+ PrepareBackdrops();
+ /* Embedded CUT is writable and relocated exactly once at startup. */
+ gCutScene=(sCutScene*)Cut_Script;CutScene_Relocate(gCutScene);
+ gCutFont=MakeFont();gCutStars=MakeStars();
  if(!gCutFont||!gCutStars||!gCutScene||!BindAssets()){error=1;goto cleanup;}
  StartScene();gCutReady=1;
  while(!quit){
@@ -145,7 +146,7 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
  }
 cleanup:
  CutScene_System_AppInit();CutScene_System_AppDeInit();
- if(gCutScene){mMEMFREE(gCutScene);gCutScene=0;}
+ gCutScene=0; /* Embedded CUT storage belongs to the executable. */
  if(gCutStars){Sprite_BlockDestroy(gCutStars);gCutStars=0;}
  if(gCutFont){Font_Destroy(gCutFont);gCutFont=0;}
  AudioMixer_DeInit();Screen_DeInit();Platform_DeInit();gCutExited=1;

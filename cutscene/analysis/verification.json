@@ -1,12 +1,13 @@
 {
-  "program_sha256": "a4f995fb62d583e302d977237aae5d5a9ea0625b542105f7a71bd44f231af300",
+  "program_sha256": "23bc8f342b10d994cbf7be5572aefb58821378639b6580a5a36584bb9666d10b",
   "configuration": "68000, 8 MHz, 1 MiB, PAL RGB",
-  "method": "Native CutScene_Parse text and actual script runtime. Full 32000-byte logical frame comparisons against independent source image + selected twinkle frame + 6x6 caption compositor, adjacent display-page pairs every eighth script update; both scenes/pages, all captions/animation frames. Natural return plus real keyboard restart/replay/skip/exit.",
+  "method": "Host CUTBUILD binary relocated by native CutScene_Relocate and actual script runtime. Full 32000-byte logical frame comparisons against independent source image + selected twinkle frame + 6x6 caption compositor, adjacent display-page pairs every eighth script update; both scenes/pages, all captions/animation frames. Natural return plus real keyboard restart/replay/skip/exit.",
   "results": [
     {
       "machine": "ste",
       "TOS": "TOS v1.62 (1990)(Atari Corp)(STE)(De).img",
-      "full_frame_checks": 188,
+      "full_frame_checks": 180,
+      "partial_caption_checks": 70,
       "captions": [
         "A LIGHT APPEARS ABOVE THE OLD CASTLE.",
         "EVERY JOURNEY STARTS WITH ONE STEP.",
@@ -33,6 +34,7 @@
       "machine": "st",
       "TOS": "TOS v2.06 (1991)(Atari Corp)(Mega-STE)(UK).img",
       "full_frame_checks": 170,
+      "partial_caption_checks": 71,
       "captions": [
         "A LIGHT APPEARS ABOVE THE OLD CASTLE.",
         "EVERY JOURNEY STARTS WITH ONE STEP.",

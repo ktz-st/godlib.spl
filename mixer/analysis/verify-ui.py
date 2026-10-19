@@ -7,7 +7,7 @@ sys.path.insert(0,str(Path.home()/'.agents/skills/hatari-debugging/scripts'))
 from hatari_session import HatariSession,nm_symbols
 r=Path(__file__).resolve().parents[1];out=r/'analysis'
 sy=nm_symbols(str(out/'AMIXUI.PRG'),nm='m68k-atari-mintelf-nm')
-release=r/'MIXER.TOS';debug=(out/'AMIXUI.PRG').read_bytes();binary=release.read_bytes()
+release=r/'MIXER.PRG';debug=(out/'AMIXUI.PRG').read_bytes();binary=release.read_bytes()
 # The first 128 startup bytes contain symbol-size metadata adjusted by strip.
 # Remaining executable text/data and all runtime symbol offsets are identical.
 size=sum(struct.unpack_from('>2I',binary,2));assert binary[28+128:28+size]==debug[28+128:28+size]

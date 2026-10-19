@@ -3,8 +3,10 @@
 #include "../cutscene.c"
 #undef GodLib_Game_Main
 #include <godlib/vbl/vbl.h>
+#include <godlib/cutscene/cutparse.h>
 extern sAmixerSpl gAudioMixerSamples[2];
 volatile U16 gTestStage,gTestAdvance,gTestError,gTestDone;
+volatile U32 gTestFeatureError;
 static sCutScene test;
 static sCutScript script;
 static sCutCommand commands[16];
@@ -49,6 +51,64 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
  for(i=0;i<259;++i)longword[i]='A';
  longword[259]=0;pages[0].mpText=longword;
  command(0,eCUT_CMD_TEXT_ENABLE,&caption,0);command(1,eCUT_CMD_CALLBACK,0,0);begin(2);CutScene_System_Update();renderBoth();mark(4);
+ /* Background visibility preserves the selected asset and all overlays. */
+ pages[0].mpText="AB CD EFGH";pages[1].mpText="HI JK";
+ caption.mInitialDef.mRect.mWidth=42;assets[3].mpData=&Cut_Forest;
+ command(0,eCUT_CMD_BG_GFX_SET,&assets[0],0);command(1,eCUT_CMD_TEXT_ENABLE,&caption,0);command(2,eCUT_CMD_CALLBACK,0,0);
+ begin(3);CutScene_System_Update();renderBoth();CutScene_System_Update();renderBoth();mark(6);
+ command(3,eCUT_CMD_BG_GFX_DISABLE,0,0);command(4,eCUT_CMD_CALLBACK,0,0);script.mCommandCount=5;
+ if(CutScene_System_Update()!=0)gTestFeatureError|=1;
+ CutScene_System_Render();CutScene_System_Render();
+ if(CutScene_System_Update()!=0)gTestFeatureError|=2; /* other page still dirty */
+ Screen_Update();CutScene_System_Render();if(CutScene_System_Update()!=2)gTestFeatureError|=4;
+ renderBoth();mark(7);
+ command(5,eCUT_CMD_BG_GFX_SET,&assets[3],0);command(6,eCUT_CMD_CALLBACK,0,0);script.mCommandCount=7;
+ CutScene_System_Update();renderBoth();CutScene_System_Update();renderBoth();mark(8);
+ command(7,eCUT_CMD_BG_GFX_ENABLE,0,0);command(8,eCUT_CMD_CALLBACK,0,0);script.mCommandCount=9;
+ CutScene_System_Update();renderBoth();CutScene_System_Update();renderBoth();mark(9);
+ command(9,eCUT_CMD_BG_GFX_ENABLE,0,0);command(10,eCUT_CMD_CALLBACK,0,0);script.mCommandCount=11;
+ if(CutScene_System_Update()!=2)gTestFeatureError|=8; /* repeated enable is a no-op */
+ /* Letter reveal: delay=2, blank first frame, stable complete-word wrapping. */
+ command(0,eCUT_CMD_BG_GFX_SET,&assets[0],0);command(1,eCUT_CMD_TEXT_ANIM_SET,&caption,(void*)2);
+ command(2,eCUT_CMD_TEXT_ENABLE,&caption,0);command(3,eCUT_CMD_TEXT_ANIM_WAIT,&caption,0);
+ command(4,eCUT_CMD_CALLBACK,0,0);command(5,eCUT_CMD_WAIT,(void*)10000,0);
+ begin(6);CutScene_System_Update();renderBoth();CutScene_System_Update();renderBoth();
+ if(caption.mOffset || caption.mWordPauseConstant!=2)gTestFeatureError|=16;
+ if(CutScene_System_Update()!=0 || caption.mOffset)gTestFeatureError|=32;
+ renderBoth();mark(10);
+ for(i=0;i<13;++i){if(CutScene_System_Update()!=0)gTestFeatureError|=64;renderBoth();}
+ if(caption.mOffset!=7)gTestFeatureError|=128;
+ mark(11);
+ for(i=0;i<5;++i){CutScene_System_Update();renderBoth();}
+ if(CutScene_System_Update()!=0 || caption.mOffset!=10)gTestFeatureError|=256;
+ CutScene_System_Render();CutScene_System_Render();
+ if(CutScene_System_Update()!=0)gTestFeatureError|=512; /* WAIT needs final glyph on both pages */
+ Screen_Update();CutScene_System_Render();
+ if(CutScene_System_Update()!=2)gTestFeatureError|=1024;
+ renderBoth();mark(12);
+ command(5,eCUT_CMD_TEXT_PAGE_SET,&caption,&pages[1]);command(6,eCUT_CMD_TEXT_ANIM_WAIT,&caption,0);
+ command(7,eCUT_CMD_CALLBACK,0,0);command(8,eCUT_CMD_WAIT,(void*)10000,0);script.mCommandCount=9;
+ if(CutScene_System_Update()!=0 || caption.mOffset)gTestFeatureError|=2048;
+ renderBoth();mark(13);
+ for(i=0;i<10;++i){if(CutScene_System_Update()!=0)gTestFeatureError|=4096;renderBoth();}
+ if(CutScene_System_Update()!=2 || caption.mOffset!=5)gTestFeatureError|=8192;
+ renderBoth();mark(14);
+ /* Zero switches a live animation to immediate full text and waits for redraw. */
+ command(0,eCUT_CMD_BG_GFX_SET,&assets[0],0);command(1,eCUT_CMD_TEXT_ANIM_SET,&caption,(void*)3);
+ command(2,eCUT_CMD_TEXT_ENABLE,&caption,0);command(3,eCUT_CMD_CALLBACK,0,0);
+ command(4,eCUT_CMD_TEXT_ANIM_SET,&caption,0);command(5,eCUT_CMD_TEXT_ANIM_WAIT,&caption,0);command(6,eCUT_CMD_CALLBACK,0,0);
+ begin(7);CutScene_System_Update();renderBoth();CutScene_System_Update();renderBoth();
+ if(CutScene_System_Update()!=0 || caption.mWordPauseConstant)gTestFeatureError|=16384;
+ renderBoth();if(CutScene_System_Update()!=2)gTestFeatureError|=32768;
+ renderBoth();mark(15);
+ /* Empty/disabled text cannot deadlock a wait; restart clears animation state. */
+ pages[0].mpText="";
+ command(0,eCUT_CMD_TEXT_ANIM_SET,&caption,(void*)2);command(1,eCUT_CMD_TEXT_ENABLE,&caption,0);
+ command(2,eCUT_CMD_TEXT_ANIM_WAIT,&caption,0);command(3,eCUT_CMD_CALLBACK,0,0);begin(4);
+ if(CutScene_System_Update()!=2)gTestFeatureError|=65536UL;
+ pages[0].mpText="AB CD EFGH";command(1,eCUT_CMD_TEXT_ANIM_WAIT,&caption,0);command(2,eCUT_CMD_CALLBACK,0,0);begin(3);
+ if(caption.mWordPauseConstant || caption.mOffset)gTestFeatureError|=131072UL;
+ if(CutScene_System_Update()!=2)gTestFeatureError|=262144UL;
  CutScene_System_Stop();if(!CutScene_System_IsScriptFinished()||CutScene_System_Update()!=1)gTestError|=4;
  begin(0);if(CutScene_System_Update()!=1 || !CutScene_System_IsScriptFinished())gTestError|=8;
  CutScene_System_ScriptInit(&test,"ABSENT");if(CutScene_System_Update()!=1 || !CutScene_System_IsScriptFinished())gTestError|=16;

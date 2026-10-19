@@ -115,7 +115,7 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
         }
         Screen_DeInit();
     }
-    else printf("Missing/invalid PI1 files. Run WIPE.TOS alongside COAST, SPACE and FOREST.PI1.\n");
+    else printf("Missing/invalid PI1 files. Run WIPE.PRG alongside COAST, SPACE and FOREST.PI1.\n");
     for(i=0;i<SLIDES;++i) if(sPictures[i]) File_UnLoad(sPictures[i]);
     File_DeInit(); Platform_DeInit();
     return valid?0:1;

@@ -27,7 +27,7 @@ LDFLAGS = -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(CMINI_DIR)/lib/mshort/mfastcall \
           -L$(GODLIB_DIR)
 
-OUT = LANCEMOD.TOS
+OUT = LANCEMOD.PRG
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a
 	$(LD) $(LDFLAGS) -s -o $(OUT) $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o \

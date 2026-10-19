@@ -30,25 +30,32 @@ with HatariSession(str(prg),tos=str(Path.home()/'Atari/tos/TOS v1.62 (1990)(Atar
    time.sleep(.01)
   raise AssertionError(('dump timeout',h.lines[-20:]))
  def word(n):return struct.unpack('>H',dump(a(n),2))[0]
- castle=dump(a('Cut_Castle')+34,32000)
- for stage in range(1,6):
+ castle=dump(a('Cut_Castle')+34,32000);forest=dump(a('Cut_Forest')+34,32000)
+ stages=[1,2,3,4,6,7,8,9,10,11,12,13,14,15,5]
+ for stage in stages:
   assert word('gTestStage')==stage,(word('gTestStage'),h.lines[-10:])
   assert word('gTestError')==0,word('gTestError')
-  if stage<5:
-   expected=bytearray(castle if stage in (1,2)else bytes(32000))
+  feature_error=struct.unpack('>I',dump(a('gTestFeatureError'),4))[0];assert not feature_error,(stage,feature_error)
+  if stage!=5:
+   expected=bytearray(forest if stage==9 else castle if stage in (1,2,6,10,11,12,13,14,15)else bytes(32000))
    if stage==1:
     for text,x,y in [('AB',100,30),('CD',100,38),('E',136,38),('FG',100,46)]:label(expected,text,x,y)
    elif stage==2:
     label(expected,'HI JK LM',100,30);label(expected,'NO PQ',100,38)
    elif stage==4:
     label(expected,'A'*10,100,30);label(expected,'A'*10,100,38);label(expected,'A'*5,100,46)
+   elif stage in (6,7,8,9,12,15):
+    label(expected,'AB CD',100,30);label(expected,'EFGH',100,38)
+   elif stage==11:
+    label(expected,'AB CD',100,30);label(expected,'E',100,38)
+   elif stage==14:label(expected,'HI JK',100,30)
    for name in ('gScreenLogicGraphic','gScreenPhysicGraphic'):
     ptr=struct.unpack('>I',dump(a(name),4))[0];actual=dump(ptr,32000)
     assert actual==expected,(stage,name,next((i,u,v)for i,(u,v)in enumerate(zip(actual,expected))if u!=v))
   else:assert word('gTestDone')==1
-  h.stdin_cmd('b pc = $%x :once'%a('CutTest_Marker'),settle=.01)if stage<5 else None
+  h.stdin_cmd('b pc = $%x :once'%a('CutTest_Marker'),settle=.01)if stage!=5 else None
   h.stdin_cmd('w $%x 0 1'%a('gTestAdvance'),settle=.01);h.stdin_cmd('c',settle=.8)
  assert not any(any(x in l for x in ('Bus Error','Address Error','Illegal instruction'))for l in h.lines),h.lines[-20:]
- report={'result':'PASS','program_sha256':hashlib.sha256(prg.read_bytes()).hexdigest(),'full_frame_checks':8,'tests':['background set/clear on both pages without callbacks or external copies','repeated Render on one page retains dirty state for other page','CRLF LF TAB consumption and bounded text rectangle','word wrapping uses X + WIDTH','TEXT_PAGE_SET redraws and removes previous caption while enabled','259-character token without stack overflow or out-of-rectangle writes','Stop/empty/missing/recursive scripts terminate safely','VAR parser member table terminator','two simultaneous samples, volume/pan, third-voice stealing, SAMPLE_DISABLE','looped sample remains active, SAMPLE_WAIT blocks for one-shot and DMA tail','Stop clears both voices and all queued PCM','natural script return and clean teardown']}
+ report={'result':'PASS','program_sha256':hashlib.sha256(prg.read_bytes()).hexdigest(),'full_frame_checks':28,'tests':['BG disable clears both pages and preserves text; selecting a new hidden asset stays black; enable restores it','background waits retain the other page after repeated Render','typewriter delay, empty first frame, partial glyph prefixes and stable word wrap','TEXT_ANIM_WAIT blocks until final glyph is rendered on both pages','page change restarts reveal, zero delay shows full text, empty/disabled waits and restart reset','background set/clear on both pages without callbacks or external copies','repeated Render on one page retains dirty state for other page','CRLF LF TAB consumption and bounded text rectangle','word wrapping uses X + WIDTH','TEXT_PAGE_SET redraws and removes previous caption while enabled','259-character token without stack overflow or out-of-rectangle writes','Stop/empty/missing/recursive scripts terminate safely','VAR parser member table terminator','two simultaneous samples, volume/pan, third-voice stealing, SAMPLE_DISABLE','looped sample remains active, SAMPLE_WAIT blocks for one-shot and DMA tail','Stop clears both voices and all queued PCM','natural script return and clean teardown']}
  (out/'runtime-verification.json').write_text(json.dumps(report,indent=2)+'\n');print(report)
  (out/'runtime-dump.bin').unlink(missing_ok=True)

@@ -4,8 +4,8 @@ This example uses the public `godlib/music/leonardmod.h` API, 8-bit stereo on
 STE/MegaSTE. The replay core, loader and memory management live in `libgod.a`.
 
 ```sh
-make                                      # LEONARD.TOS, 25 kHz
-make RATE=12 OUT=LEO12.TOS                 # LEO12.TOS, 12.5 kHz
+make                                      # LEONARD.PRG, 25 kHz
+make RATE=12 OUT=LEO12.PRG                 # LEO12.PRG, 12.5 kHz
 ```
 
 Both programs use `LOSTPARO.MOD`, copied from `../lancemod`. Keep the MOD next to

@@ -1,4 +1,4 @@
-"""Native text-parser/player integration: complete frames, timeline and controls."""
+"""Precompiled CUT/player integration: complete frames, timeline and controls."""
 from pathlib import Path
 import os,sys,time,struct,json,hashlib
 from PIL import Image
@@ -41,6 +41,7 @@ for machine in ('ste','st'):
    for _ in range(300):
     if path.exists()and path.stat().st_size==size:break
     time.sleep(.005)
+   assert path.exists(),("dump timeout",h.lines[-25:])
    data=path.read_bytes();assert len(data)==size;return data
   def word(n):return struct.unpack('>H',dump(a(n),2))[0]
   def ptr(n):return struct.unpack('>I',dump(a(n),4))[0]
@@ -54,7 +55,7 @@ for machine in ('ste','st'):
   idx=[unpack(data,320,200)for data in source]
   replays=struct.unpack('>I',dump(a('gCutReplays'),4))[0];key('19')
   assert struct.unpack('>I',dump(a('gCutReplays'),4))[0]==replays+1
-  pages=set();frames=set();captions=set();positions={1:set(),2:set()};checks=0;seen_callbacks=set();last_done=False;audio_seen=set()
+  pages=set();frames=set();captions=set();positions={1:set(),2:set()};checks=0;partial_captions=0;seen_callbacks=set();last_done=False;audio_seen=set()
   for tick in range(1800):
    step()
    if tick%8 not in (0,1):continue
@@ -77,7 +78,13 @@ for machine in ('ste','st'):
       if col:expected[(y+yy)*320+x+xx]=col
    if struct.unpack_from('>H',text,52)[0]:
     page=struct.unpack_from('>I',text,32)[0];string=struct.unpack_from('>I',dump(page,8),4)[0]
-    label=dump(string,100).split(b'\0')[0].decode('ascii');label=' '.join(label.split());captions.add(label)
+    raw_label=dump(string,100).split(b'\0')[0]
+    # sCutText runtime reveal fields preserve the existing 66-byte CUT ABI.
+    delay=struct.unpack_from('>H',text,58)[0];offset=struct.unpack_from('>I',text,62)[0]
+    if delay and offset<len(raw_label):partial_captions+=1
+    label=raw_label.decode('ascii');captions.add(' '.join(label.split()))
+    if delay:label=label[:offset]
+    label=' '.join(label.split())
     px,py=struct.unpack_from('>2h',text,24)
     for letter in label:
      c=ord(letter)
@@ -92,6 +99,7 @@ for machine in ('ste','st'):
     preview(actual,dump(0xffff8240,32),out/('castle.png'if display_scene==1 else'forest.png'))
   assert audio_seen==({0,1,2,3}if machine=='ste'else set()),audio_seen
   assert last_done and seen_callbacks>={1,2},(last_done,seen_callbacks)
+  assert partial_captions>10,partial_captions
   assert len(pages)==2 and frames=={0,1,2}and len(captions)==4,(pages,frames,captions)
   assert len(positions[1])>8 and len(positions[2])>5,positions
   for _ in range(4):step()
@@ -105,7 +113,7 @@ for machine in ('ste','st'):
   h.stdin_cmd('c',settle=.1);h.control('hatari-event keydown 01',settle=.15);h.control('hatari-event keyup 01',settle=.5)
   assert h.mem(a('gCutExited'),2).u16(a('gCutExited'))==1
   assert not any(any(msg in l for msg in ('Bus Error','Address Error','Illegal instruction'))for l in h.lines)
-  result={'machine':machine,'TOS':tos,'full_frame_checks':checks,'captions':sorted(captions),'animation_frames':sorted(frames),'display_pages':len(pages),'script_background_callbacks':2,'narration_samples_seen':sorted(audio_seen),'natural_finish':True,'replay_restart_skip_exit':True}
+  result={'machine':machine,'TOS':tos,'full_frame_checks':checks,'partial_caption_checks':partial_captions,'captions':sorted(captions),'animation_frames':sorted(frames),'display_pages':len(pages),'script_background_callbacks':2,'narration_samples_seen':sorted(audio_seen),'natural_finish':True,'replay_restart_skip_exit':True}
   results.append(result);print('PASS',result,flush=True)
 (out/'dump.bin').unlink(missing_ok=True)
-(out/'verification.json').write_text(json.dumps({'program_sha256':hashlib.sha256((r/'CUTSCENE.PRG').read_bytes()).hexdigest(),'configuration':'68000, 8 MHz, 1 MiB, PAL RGB','method':'Native CutScene_Parse text and actual script runtime. Full 32000-byte logical frame comparisons against independent source image + selected twinkle frame + 6x6 caption compositor, adjacent display-page pairs every eighth script update; both scenes/pages, all captions/animation frames. Natural return plus real keyboard restart/replay/skip/exit.','results':results},indent=2)+'\n')
+(out/'verification.json').write_text(json.dumps({'program_sha256':hashlib.sha256((r/'CUTSCENE.PRG').read_bytes()).hexdigest(),'configuration':'68000, 8 MHz, 1 MiB, PAL RGB','method':'Host CUTBUILD binary relocated by native CutScene_Relocate and actual script runtime. Full 32000-byte logical frame comparisons against independent source image + selected twinkle frame + 6x6 caption compositor, adjacent display-page pairs every eighth script update; both scenes/pages, all captions/animation frames. Natural return plus real keyboard restart/replay/skip/exit.','results':results},indent=2)+'\n')

@@ -1,8 +1,9 @@
-# Moonlit Passage — native GodLib cutscene with narration
+# Moonlit Passage — compiled GodLib cutscene with narration
 
 `CUTSCENE.PRG` plays two scenes with castle/forest backgrounds, a moving twinkle,
-four captions, palette fades and **four spoken lines** driven by the actual
-GodLib text parser and cutscene runtime. On STE, AMIXER plays signed 8-bit mono
+four captions revealed letter by letter, palette fades and **four spoken lines**
+driven by the actual
+GodLib cutscene runtime and a host-compiled `.CUT` asset. On STE, AMIXER plays signed 8-bit mono
 samples through **12.517 kHz stereo DMA**. On plain ST the same scene runs
 silently; sample waits do not hang when DMA playback is unavailable.
 
@@ -19,10 +20,11 @@ Everything is embedded in the PRG; no separate files are needed to run it.
 
 ## Script and audio
 
-Edit `scene.txt` and run `make`. `CutScene_Parse()` parses it once at startup;
+Edit `scene.txt` and run `make`. Host CUTBUILD compiles it to `assets/SCENE.CUT`;
+the program relocates that embedded file once at startup.
 `CutScene_System_Update()` and `CutScene_System_Render()` run each display
-update. `MAIN` calls `CASTLE_SCENE` and `FOREST_SCENE`. The native parser appends
-`RETURN` at each script's closing brace.
+update. `MAIN` calls `CASTLE_SCENE` and `FOREST_SCENE`. CUTBUILD appends
+`RETURN 0` at each script's closing brace, matching the native parser.
 
 The script demonstrates ASSET, ANIMATION, SPRITE, PAGE, TEXT, SAMPLE, CALL,
 background changes, fades, sprite movement/animation waits, timed pauses and
@@ -72,7 +74,9 @@ The example stops audio before releasing assets, and has no disk IO during play.
 wrapped in a native `sAudioDmaSound`; the script's FLAG_LOOP overrides the sound
 descriptor's loop flag. An asset loaded from .SPL instead must be relocated by
 the usual audio asset relocator. Native font/sprite objects and the parsed scene
-already contain pointers and must not be relocated again.
+already contain pointers and must not be relocated again. The example now embeds a writable precompiled `.CUT`, relocates it once and
+does not free that embedded storage. Parser code and temporary parser allocations
+are no longer needed in the release program.
 
 ## Narrator and asset generation
 
@@ -115,10 +119,29 @@ sprite-based 6x6 font. Drawing uses GodLib's ASM/blitter APIs.
   call-stack/instruction limits prevent old hangs/stack overwrites.
 - The VAR parser member table now has its missing terminator.
 
-TEXT_ANIM_SET/WAIT still do not implement a typewriter animation. They are not
-used by this example. Original format documentation is
-`../../godlib/docs/cutscene.txt`; the old TOOLBASE CUTBUILD host tool remains
-unavailable in the local Python subset, so this example uses the native parser.
+The example reveals captions with `TEXT_ANIM_SET CAPTION,2` (about 25 source
+bytes/s at 50 updates/s), then `TEXT_ANIM_WAIT CAPTION` before the narration
+wait. `0` selects immediate text. Whole-word measurement keeps wrapping stable;
+page changes and disable/re-enable restart the reveal. The wait includes the final
+redraw on both pages. Empty, missing and disabled text cannot hang it. Existing
+runtime fields store progress, so the serialized `.CUT` layout is unchanged.
+
+BG_GFX_DISABLE clears the background while retaining the selected asset and
+allowing sprites/captions to continue. Setting an asset while hidden keeps it
+hidden; BG_GFX_ENABLE restores the latest selection. Both toggles wait for both
+pages; repeating the current state is a no-op.
+
+`make` compiles `scene.txt` into `assets/SCENE.CUT` with the local host compiler:
+
+```sh
+python3 ../../godlib/tools/cutbuild/cutbuild.py scene.txt assets/SCENE.CUT
+```
+
+Original format documentation is `../../godlib/docs/cutscene.txt`; compiler usage,
+validation and original TOOLBASE compatibility evidence are in
+`../../godlib/tools/cutbuild/README.md`. CutScene_Parse remains covered by the
+runtime regression harness, but is not linked into the release PRG. Switching
+from runtime parsing reduced this build from 325125 to 301592 bytes (23533 bytes).
 
 ## Verification
 
@@ -126,15 +149,17 @@ unavailable in the local Python subset, so this example uses the native parser.
 make check
 ```
 
-`analysis/verify.py` runs the real parser/player at 8 MHz / 1 MiB on STE with
+`analysis/verify.py` runs the compiled CUT/player at 8 MHz / 1 MiB on STE with
 German TOS 1.62 and plain ST with UK TOS 2.06 (1.62 is STE-only). It checks full
 32000-byte frames against an independent background/twinkle/caption compositor,
-both pages, all captions/animation frames, narration activity, natural finish,
+both pages, partial and complete captions/animation frames, narration activity, natural finish,
 and real-key skip/replay/restart/exit. Results/hashes: `analysis/verification.json`.
 
 `analysis/verify-runtime.py` additionally tests both background pages without
 callbacks/manual copies, repeated Render, multiline/tab/wrapped text, live page
 replacement, long tokens, missing/empty/recursive scripts, the VAR parser,
 two overlapping samples, volume/pan, loops, stealing, disable, wait including
-the DMA tail, and clearing nonzero queued audio on Stop. It compares eight full
-frames with an independent text compositor. Results: `analysis/runtime-verification.json`.
+the DMA tail, and clearing nonzero queued audio on Stop. It additionally covers
+background enable/disable and hidden selection changes, typewriter timing, stable
+wrapping, page replacement, immediate mode and final-page waits. It compares 28
+full frames with an independent text compositor. Results: `analysis/runtime-verification.json`.

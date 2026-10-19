@@ -14,7 +14,7 @@ F5 toggles looping on channel 2, F6 stops all sources and ESC exits.
 
 `prepare_sample.py` converts `../mixer/voice.raw` (signed 12517 Hz mono) to
 `VOICE.RAW`: gain 1/4, padded to 23500 bytes / 94 blocks. No game assets are
-required. Keep `VOICE.RAW` beside `PCMFRAME.TOS` when copying the example.
+required. Keep `VOICE.RAW` beside `PCMFRAME.PRG` when copying the example.
 Use a PAL STE at nominal 50 Hz VBL (audio is 12517 Hz, not 50 kHz); the module owns DMA playback exclusively. See
 `../../godlib/audio/pcmframe.md` for the API and scheduling limitations.
 

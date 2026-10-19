@@ -1,6 +1,6 @@
 # Wizzcat: four channel activity bars
 
-Build with `make`, then run **WIZZCAT.TOS** next to **QUICKIE.MOD** on STE/MegaSTE.
+Build with `make`, then run **WIZZCAT.PRG** next to **QUICKIE.MOD** on STE/MegaSTE.
 The native source mixer is 25 kHz; stereo DMA runs at 50 kHz and interleaves
 channels. This is GodLib's Metal Ages/Wizzcat source, not the stlibs4gcc binary.
 

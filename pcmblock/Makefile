@@ -5,9 +5,9 @@ GODLIB_DIR = ../../godlib
 CFLAGS = -Wall -Os -mshort -mfastcall -m68000 -fpack-struct=2 -I../.. -I$(CMINI_DIR)/include
 LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static -mshort -mfastcall -m68000 -Wl,--gc-sections -Wl,--relax -L$(CMINI_DIR)/lib/mshort/mfastcall -L$(GODLIB_DIR)
 
-all: PCMBLOCK.TOS VOICE12.RAW VOICE25.RAW
+all: PCMBLOCK.PRG VOICE12.RAW VOICE25.RAW
 
-PCMBLOCK.TOS: pcmblock.o verify.o $(GODLIB_DIR)/libgod.a
+PCMBLOCK.PRG: pcmblock.o verify.o $(GODLIB_DIR)/libgod.a
 	$(CC) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/crt0.o pcmblock.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 	$(STRIP) --strip-unneeded $@
 
@@ -23,14 +23,14 @@ VOICE25.RAW: VOICE12.RAW
 	test -f $@ || python3 prepare_sample.py ../mixer/voice.raw
 
 run: all
-	hatari -w --machine ste --memsize 4 --monitor rgb --fast-boot true PCMBLOCK.TOS
+	hatari -w --machine ste --memsize 4 --monitor rgb --fast-boot true PCMBLOCK.PRG
 clean:
-	rm -f pcmblock.o verify.o PCMBLOCK.TOS
+	rm -f pcmblock.o verify.o PCMBLOCK.PRG
 .PHONY: all run clean
 
 # Unstripped target for Hatari symbol-based validation.
-debug: all analysis/PCMBLDBG.TOS
-analysis/PCMBLDBG.TOS: pcmblock.o verify.o $(GODLIB_DIR)/libgod.a
+debug: all analysis/PCMBLDBG.PRG
+analysis/PCMBLDBG.PRG: pcmblock.o verify.o $(GODLIB_DIR)/libgod.a
 	mkdir -p analysis
 	$(CC) $(filter-out -s,$(LDFLAGS)) -Wl,-Map=analysis/pcmblock.map -o $@ $(CMINI_DIR)/lib/crt0.o pcmblock.o verify.o -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 .PHONY: debug

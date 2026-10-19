@@ -3,9 +3,9 @@ from pathlib import Path
 sys.path.insert(0,str(Path.home()/'.codex/skills/hatari-debugging/scripts'))
 from hatari_session import HatariSession
 root=Path(__file__).resolve().parents[1]
-lines=subprocess.check_output(['m68k-atari-mintelf-nm','-n',str(root/'analysis/CHUNKDBG.TOS')],text=True)
+lines=subprocess.check_output(['m68k-atari-mintelf-nm','-n',str(root/'analysis/CHUNKDBG.PRG')],text=True)
 syms={p[2]:int(p[0],16) for line in lines.splitlines() if len(p:=line.split())==3}
-with HatariSession(str(root/'CHUNKY.TOS'),screenshot_dir=str(root/'analysis/shots'),sound=False,
+with HatariSession(str(root/'CHUNKY.PRG'),screenshot_dir=str(root/'analysis/shots'),sound=False,
  debug_except='bus,address,illegal',extra_args=['--machine','st','--memsize','4','--monitor','rgb']) as h:
  h.wait(8)
  base=h.basepage()['text']
