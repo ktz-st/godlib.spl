@@ -1,0 +1,7 @@
+*.o
+INPUTS.KIP
+analysis/INDEBUG.PRG
+analysis/INTEST.PRG
+analysis/*.bin
+analysis/shots/
+__pycache__/

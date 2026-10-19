@@ -38,6 +38,8 @@ requirements and links to controls, CPU measurements and verification.
 
 | Directory | Output | Shows |
 | --- | --- | --- |
+| [`achieve`](achieve/README.md) | `ACHIEVE.PRG` | Player profiles, shared TOP FIVE, per-player stats/awards and explicit save/load into a different RAM arena. |
+| [`asset`](asset/README.md) | `ASSETS.PRG` | PI1/BFB/BSB through AssetClient/PackageManager: loose files, raw LNK and whole-GodPack LNK, automatic relocation and unload/reload. |
 | `audio` | `AUDIO.PRG` | Basic sample playback through GodLib audio. |
 | `blitter` | `BLITTER.PRG` | Blitter API, sprite drawing, CPU/blitter toggle. |
 | [`checker`](checker/README.md) | `CHKFX.PRG` | ST/STE rotating and zooming checkerboard, 68000 span renderer, gradient, speed/reverse controls and CPU profiling. |
@@ -49,10 +51,13 @@ requirements and links to controls, CPU measurements and verification.
 | [`cutscene`](cutscene/README.md) | `CUTSCENE.PRG` | Host-compiled CUT player: two scenes, animated sprite, spoken narration through AMIXER, typewriter captions/fades and skip/replay. |
 | [`fastscroll`](fastscroll/README.md) | `FSCRL.PRG` | ST/STE plain BUGSY text scroll, one ASM shift pass and a 27-line planar strip, four speeds. |
 | [`fileselect`](fileselect/README.md) | `FILESEL.PRG` | GodLib GEM/AES file selector: filters, directories, repeated selection/cancel and read-only file preview. |
+| [`fe`](fe/README.md) | `FE.PRG` | FEBUILD-scripted MAIN/OPTIONS menu, native FE lists/sliders, fade transitions and AMIXER volume-test chime. |
 | `font` | `FONT.PRG` | `Font8x8_Print` and coloured 8x8 font output. |
+| [`gui`](gui/README.md) | `GUI.PRG` | Native GodLib window/widgets: buttons, text editor, numeric slider, masked mouse cursor and GuiFS with filtering, directory navigation and scrolling. |
 | `graphic` | `GRAPHIC.PRG` | `GraphicCanvas` primitives: pixels, lines, boxes and blits. |
 | `hscroll` | `HSCROLL.PRG` | STE pixel-accurate horizontal scrolling on a larger virtual canvas, with vertical scrolling and sprite stride checks. |
 | `iff` | `IFFSHOW.PRG` | IFF ILBM picture loading/display. |
+| [`input`](input/README.md) | `INPUT.PRG` | Kernel task with combined keyboard/joystick actions, HELD/HIT/UNHIT, RAM record/replay, KIP save/load and deterministic replay checks. |
 | `joy` | `JOY.PRG` | IKBD joystick packets for joy0/joy1. |
 | `lancemod` | `LANCEMOD.PRG` | ProTracker MOD playback with four activity bars in Amiga LRRL stereo order. |
 | `leonard` | `LEONARD.PRG` | LeonardMod 12.5/25 kHz playback with four channel activity bars. |

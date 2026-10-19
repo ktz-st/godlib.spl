@@ -1,0 +1,5 @@
+*.o
+analysis/GUIDBG.PRG
+analysis/*.bin
+analysis/shots/
+__pycache__/

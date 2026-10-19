@@ -1,0 +1,19 @@
+{
+  "source": "reflect/assets/CASTLE.PI1, ABC2 STE; GodLib 8x8 font; generated masked spark frames",
+  "assets": {
+    "CASTLE.PI1": {
+      "bytes": 32034,
+      "sha256": "50d149f9c6d7cad64bfa241156dd6228e0ff3762155ba5d8106d6ab57036cd38"
+    },
+    "FONT.BFB": {
+      "bytes": 10007,
+      "sha256": "4d2619f1280a2d4b51241ce2475e5010797eb469f184fe5415e550f7b39dd12b"
+    },
+    "SPARKS.BSB": {
+      "bytes": 2088,
+      "sha256": "a438d9e7319449f6493a407872fa82ee9f8e06f3e5ac310d73142568fc60657f"
+    }
+  },
+  "raw_link_bytes": 44328,
+  "packed_link_bytes": 25775
+}

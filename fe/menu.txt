@@ -1,0 +1,385 @@
+# Script compiled offline by host FEBUILD; no runtime parser.
+
+<ASSET name=NORMAL>
+{
+    FILENAME = NORMAL.BFB
+    CONTEXT = FE_DEMO
+}
+
+<ASSET name=ACTIVE>
+{
+    FILENAME = ACTIVE.BFB
+    CONTEXT = FE_DEMO
+}
+
+<ASSET name=TITLEFONT>
+{
+    FILENAME = TITLE.BFB
+    CONTEXT = FE_DEMO
+}
+
+<ASSET name=BGMAIN>
+{
+    FILENAME = MAIN.PI1
+    CONTEXT = FE_DEMO
+}
+
+<ASSET name=BGOPTIONS>
+{
+    FILENAME = OPTIONS.PI1
+    CONTEXT = FE_DEMO
+}
+
+<ASSET name=POINTER>
+{
+    FILENAME = CURSOR.BSB
+    CONTEXT = FE_DEMO
+}
+
+<FONTGROUP name=BODY>
+{
+    FONT_NORMAL = NORMAL
+    FONT_SELECTED = ACTIVE
+    FONT_LOCKED = NORMAL
+    FONT_LOCKEDSELECTED = NORMAL
+}
+
+<FONTGROUP name=HEADING>
+{
+    FONT_NORMAL = TITLEFONT
+    FONT_SELECTED = TITLEFONT
+}
+
+<SPRITE name=CURSOR>
+{
+    ASSET = POINTER
+    X = -16
+    Y = -1
+}
+
+<VAR name=DIFFICULTY>
+{
+    NAME = "FE/DIFFICULTY"
+}
+
+<VAR name=VOLUME>
+{
+    NAME = "FE/VOLUME"
+}
+
+<VAR name=ACTION>
+{
+    NAME = "FE/ACTION"
+}
+
+<TRANSITION name=IN>
+{
+    FADE_TYPE = PAL
+    FADE_FRAME_COUNT = 12
+}
+
+<TRANSITION name=OUT>
+{
+    FADE_TYPE = RGB
+    FADE_COLOUR = 0
+    FADE_FRAME_COUNT = 10
+}
+
+<PAGESTYLE name=MAINSTYLE>
+{
+    PAGE_BG = BGMAIN
+    CONTROL_FONTS = BODY
+    CURSOR = CURSOR
+    INTRO_TRANS = IN
+    OUTRO_TRANS = OUT
+}
+
+<PAGESTYLE name=OPTIONSTYLE>
+{
+    PAGE_BG = BGOPTIONS
+    CONTROL_FONTS = BODY
+    CURSOR = CURSOR
+    INTRO_TRANS = IN
+    OUTRO_TRANS = OUT
+}
+
+<TEXT name=MAIN_TITLE>
+{
+    X = 0
+    Y = 23
+    WIDTH = 320
+    HEIGHT = 10
+    STRING = "FRONT END / MAIN"
+    ALIGN = CENTRE
+    FONT_GROUP = HEADING
+}
+
+<TEXT name=OPTIONS_TITLE>
+{
+    X = 0
+    Y = 23
+    WIDTH = 320
+    HEIGHT = 10
+    STRING = "FRONT END / OPTIONS"
+    ALIGN = CENTRE
+    FONT_GROUP = HEADING
+}
+
+<TEXT name=START_LABEL>
+{
+    X = 0
+    Y = 0
+    WIDTH = 192
+    HEIGHT = 10
+    STRING = "START GAME"
+    ALIGN = CENTRE
+    FONT_GROUP = BODY
+}
+
+<CONTROL name=START>
+{
+    X = 64
+    Y = 68
+    CONTROL_TYPE = CALL
+    TITLE = START_LABEL
+    CALL = START_CALL
+}
+
+<TEXT name=OPTIONS_LABEL>
+{
+    X = 0
+    Y = 0
+    WIDTH = 192
+    HEIGHT = 10
+    STRING = "OPTIONS"
+    ALIGN = CENTRE
+    FONT_GROUP = BODY
+}
+
+<CONTROL name=OPTIONS>
+{
+    X = 64
+    Y = 101
+    CONTROL_TYPE = LINK
+    TITLE = OPTIONS_LABEL
+    LINK = OPTIONS
+}
+
+<TEXT name=QUIT_LABEL>
+{
+    X = 0
+    Y = 0
+    WIDTH = 192
+    HEIGHT = 10
+    STRING = "QUIT TO TOS"
+    ALIGN = CENTRE
+    FONT_GROUP = BODY
+}
+
+<CONTROL name=QUIT>
+{
+    X = 64
+    Y = 134
+    CONTROL_TYPE = CALL
+    TITLE = QUIT_LABEL
+    CALL = QUIT_CALL
+}
+
+<CALL name=START_CALL>
+{
+    CALL_VAR = ACTION
+    CALL_VALUE = 1
+}
+
+<CALL name=QUIT_CALL>
+{
+    CALL_VAR = ACTION
+    CALL_VALUE = 2
+}
+
+<CALL name=SOUND_CALL>
+{
+    CALL_VAR = ACTION
+    CALL_VALUE = 3
+}
+
+<TEXT name=DIFF_LABEL>
+{
+    X = 0
+    Y = 0
+    WIDTH = 100
+    HEIGHT = 10
+    STRING = "DIFFICULTY"
+    ALIGN = LEFT
+    FONT_GROUP = BODY
+}
+
+<TEXT name=VOL_LABEL>
+{
+    X = 0
+    Y = 0
+    WIDTH = 90
+    HEIGHT = 10
+    STRING = "VOLUME"
+    ALIGN = LEFT
+    FONT_GROUP = BODY
+}
+
+<TEXT name=EASY_TEXT>
+{
+    X = 0
+    Y = 0
+    WIDTH = 104
+    HEIGHT = 10
+    STRING = "< EASY >"
+    ALIGN = LEFT
+    FONT_GROUP = BODY
+}
+
+<LISTITEM name=EASY>
+{
+    TEXT = EASY_TEXT
+}
+
+<TEXT name=MEDIUM_TEXT>
+{
+    X = 0
+    Y = 0
+    WIDTH = 104
+    HEIGHT = 10
+    STRING = "< MEDIUM >"
+    ALIGN = LEFT
+    FONT_GROUP = BODY
+}
+
+<LISTITEM name=MEDIUM>
+{
+    TEXT = MEDIUM_TEXT
+}
+
+<TEXT name=HARD_TEXT>
+{
+    X = 0
+    Y = 0
+    WIDTH = 104
+    HEIGHT = 10
+    STRING = "< HARD >"
+    ALIGN = LEFT
+    FONT_GROUP = BODY
+}
+
+<LISTITEM name=HARD>
+{
+    TEXT = HARD_TEXT
+}
+
+<LIST name=DIFFICULTIES>
+{
+    X = 116
+    Y = 0
+    VAR = DIFFICULTY
+    ITEM = EASY
+    ITEM = MEDIUM
+    ITEM = HARD
+}
+
+<SLIDER name=GAIN>
+{
+    X = 116
+    Y = 0
+    WIDTH = 96
+    HEIGHT = 7
+    VAR = VOLUME
+    VALUE_MIN = 0
+    VALUE_MAX = 100
+    VALUE_ADD = 10
+}
+
+<CONTROL name=DIFF>
+{
+    X = 58
+    Y = 65
+    CONTROL_TYPE = LIST
+    TITLE = DIFF_LABEL
+    LIST = DIFFICULTIES
+}
+
+<CONTROL name=VOL>
+{
+    X = 58
+    Y = 91
+    CONTROL_TYPE = SLIDER
+    TITLE = VOL_LABEL
+    SLIDER = GAIN
+}
+
+<TEXT name=SOUND_LABEL>
+{
+    X = 0
+    Y = 0
+    WIDTH = 192
+    HEIGHT = 10
+    STRING = "TEST SOUND"
+    ALIGN = LEFT
+    FONT_GROUP = BODY
+}
+
+<CONTROL name=SOUND>
+{
+    X = 58
+    Y = 117
+    CONTROL_TYPE = CALL
+    TITLE = SOUND_LABEL
+    CALL = SOUND_CALL
+}
+
+<TEXT name=BACK_LABEL>
+{
+    X = 0
+    Y = 0
+    WIDTH = 192
+    HEIGHT = 10
+    STRING = "BACK TO MAIN"
+    ALIGN = LEFT
+    FONT_GROUP = BODY
+}
+
+<CONTROL name=BACK>
+{
+    X = 58
+    Y = 143
+    CONTROL_TYPE = LINK
+    TITLE = BACK_LABEL
+    LINK = MAIN
+}
+
+<CONTROLLIST name=MAIN_CONTROLS>
+{
+    CONTROL = START
+    CONTROL = OPTIONS
+    CONTROL = QUIT
+}
+
+<CONTROLLIST name=OPTION_CONTROLS>
+{
+    CONTROL = DIFF
+    CONTROL = VOL
+    CONTROL = SOUND
+    CONTROL = BACK
+}
+
+<PAGE name=MAIN>
+{
+    TITLE = MAIN_TITLE
+    PAGE_STYLE = MAINSTYLE
+    CONTROL_LIST = MAIN_CONTROLS
+}
+
+<PAGE name=OPTIONS>
+{
+    TITLE = OPTIONS_TITLE
+    PAGE_STYLE = OPTIONSTYLE
+    CONTROL_LIST = OPTION_CONTROLS
+    PAGE_PARENT = MAIN
+}
+

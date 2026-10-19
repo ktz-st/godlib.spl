@@ -1,0 +1,7 @@
+*.o
+ACHDEMO.DAT
+analysis/ACHDBG.PRG
+analysis/*.bin
+analysis/shots/
+
+analysis/ACHTEST.PRG

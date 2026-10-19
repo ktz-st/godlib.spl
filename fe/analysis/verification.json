@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "machine": "STE / 68000 / 8 MHz / 1 MiB / German TOS 1.62",
+  "release_sha256": "18d65741b35ec315ba030e41282474616eadc413aeb020974ec2ae5469ad41eb",
+  "checks": [
+    "FED relocate/delocate byte-exact round trip on 68000",
+    "native keyboard input / Enter / Space",
+    "MAIN/OPTIONS links and palette fades",
+    "difficulty wrap in both directions",
+    "volume stepping, held repeat and endpoint clamps",
+    "volume scales chime gain to 178/255 at 70%",
+    "CALL start and test-sound events",
+    "options persist across pages",
+    "repeated page visits retain valid renderer state",
+    "exit to TOS; no FE variables or asset-context refs remain",
+    "no CPU exceptions"
+  ]
+}

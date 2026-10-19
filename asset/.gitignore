@@ -1,0 +1,6 @@
+*.o
+analysis/ASDEBUG.PRG
+analysis/ASTEST.PRG
+analysis/*.bin
+analysis/shots/
+__pycache__/
