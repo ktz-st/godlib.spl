@@ -1,0 +1,8 @@
+*.o
+analysis/AMIXDBG.PRG
+analysis/dump.bin
+analysis/run.log
+analysis/shots/
+analysis/AMIXUI.PRG
+analysis/BASE.PRG
+analysis/BENCH.PRG

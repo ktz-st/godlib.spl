@@ -45,6 +45,7 @@ requirements and links to controls, CPU measurements and verification.
 | [`wedges`](wedges/README.md) | `WEDGES.PRG`, `WEDGERT.PRG` | SuperHex title background: six rotating alternating wedges in bitplane 2, original masks generated in RAM at startup, measured CPU/blitter copy or 50 FPS differential live ASM without a frame cache; no logo. |
 | [`iris`](iris/README.md) | `IRIS.PRG` | SuperHex rotating hexagon shutter: ASM horizontal spans in a separate bitplane, white edge and two-picture transitions on ST/STE. |
 | `cookiejar` | `COOKIJAR.TOS` | Reading Atari cookie jar values. |
+| [`cutscene`](cutscene/README.md) | `CUTSCENE.PRG` | Native cutscene player: two scenes, animated sprite, spoken narration through AMIXER, captions/fades and skip/replay. |
 | [`fastscroll`](fastscroll/README.md) | `FSCRL.PRG` | ST/STE plain BUGSY text scroll, one ASM shift pass and a 27-line planar strip, four speeds. |
 | `font` | `FONT.PRG` | `Font8x8_Print` and coloured 8x8 font output. |
 | `graphic` | `GRAPHIC.PRG` | `GraphicCanvas` primitives: pixels, lines, boxes and blits. |
@@ -56,7 +57,7 @@ requirements and links to controls, CPU measurements and verification.
 | [`lens`](lens/README.md) | `LENS.PRG` | ST/STE 64x64 mouse/automatic magnifying lens over the castle, ASM inverse sampling and lookup C2P, measured CPU cost. |
 | `pcmblock` | `PCMBLOCK.TOS` | Four-channel block mixer at 12.5/25 kHz, loops and ASM self-test. |
 | `pcmlayer` | `PCMLAYER.TOS` | Four-layer mixer at 12.5 kHz: two loops and two one-shots. |
-| `mixer` | `MIXER.TOS` | GodLib software audio mixer and panning controls. |
+| `mixer` | `MIXER.TOS` | Two-voice AMIXER with volume, pan, loops and switchable 12.5/25 kHz stereo output. |
 | `pcmvoice` | `PCMVOICE.TOS` | PCM Voice three-channel mixer, loops, queued one-shots, CPU raster and core self-tests. |
 | `pcmframe` | `PCMFRAME.TOS` | PCM Frame three-channel SFX mixer, overlap and looping. |
 | `mouse` | `MOUSE.TOS` | IKBD mouse position and button state. |

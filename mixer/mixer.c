@@ -1,252 +1,70 @@
-/*************************************************************************************
- * GodLib Example Progam Suite
- * 
- * Demonstrates audio mixer
- *
- * PINK 13.10.18
- *************************************************************************************
-*/
-
-/* ###################################################################################
-#  INCLUDES
-################################################################################### */
-
-#ifndef dGODLIB_AUDIO_MIXER
-#define dGODLIB_AUDIO_MIXER
-#endif
-
-#include	<godlib/audio/audio.h>
-#include	<godlib/audio/amixer.h>
-#include	<godlib/file/file.h>
-#include	<godlib/font8x8/font8x8.h>
-#include	<godlib/gemdos/gemdos.h>
-#include	<godlib/ikbd/ikbd.h>
-#include	<godlib/platform/platform.h>
-#include	<godlib/screen/screen.h>
-#include	<godlib/system/system.h>
-#include	<godlib/vbl/vbl.h>
-#include	<godlib/video/video.h>
-
-/* ###################################################################################
-#  PROTOTYPES
-################################################################################### */
-
-void	Hardware_Init( void );
-void	Hardware_DeInit( void );
-
-void	Test_Loop( void );
-
-#define	dMIXER_BUFFER_SIZE	(8*1024)
-
-U16				gMyPalette[ 16 ] =
+/* AMIXER: two PCM voices, true volume/pan, saturated stereo output. */
+#include <godlib/audio/amixer.h>
+#include <godlib/file/file.h>
+#include <godlib/font8x8/font8x8.h>
+#include <godlib/ikbd/ikbd.h>
+#include <godlib/platform/platform.h>
+#include <godlib/gemdos/gemdos.h>
+#include <godlib/screen/screen.h>
+#include <godlib/video/video.h>
+#include <godlib/system/system.h>
+#include <stdio.h>
+static S8 tone[128];
+static U16 palette[16]={0,0x777};
+S16 GodLib_Game_Main(S16 argc,char **argv)
 {
-	0x000,0xFFF,0xFFF,0xFFF,0xFFF,0xFFF,0xFFF,0xFFF,
-	0xFFF,0xFFF,0xFFF,0xFFF,0xFFF,0xFFF,0xFFF,0xFFF
-};
-
-void	MixerBuffer_Render( U16 * apScreen, U16 aX, U16 aY, U16 aWidth, U16 aHeight );
-
-/* ###################################################################################
-#  CODE
-################################################################################### */
-
-/*-----------------------------------------------------------------------------------*
-* FUNCTION : main( void )
-* ACTION   : it begins  ...
-* CREATION : 11.08.2018 PNK
-*-----------------------------------------------------------------------------------*/
-
-S16	GodLib_Game_Main( S16 aArgCount, char * apArgs[] )
-{
-	(void)aArgCount;
-	(void)apArgs;
-
-	GemDos_Super( 0 );
-
-	Hardware_Init();
-
-	Test_Loop();
-
-	Hardware_DeInit();
-
-	return( 0 );
+ sAudioDmaSound voice,drone;U16 i,volume=192,pan=128,quit=0,toneOn=0,dirty=2;char line[40];
+ (void)argc;(void)argv;GemDos_Super(0);Platform_Init();AudioMixer_Init();AudioMixer_Enable();
+ Screen_Init(320,200,eGRAPHIC_COLOURMODE_4PLANE,eSCREEN_SCROLL_NONE);
+ Video_SetPalST(palette);
+ voice.mpSound=File_Load("voice.raw");voice.mLength=File_GetSize("voice.raw");
+ voice.mBits=eAUDIO_BITS_8;voice.mFreq=eAUDIO_FREQ_12;voice.mStereoFlag=0;voice.mLoopingFlag=0;
+ for(i=0;i<128;++i)tone[i]=(S8)(i<64?(S16)i*2-64:192-(S16)i*2);
+ drone.mpSound=(U8*)tone;drone.mLength=128;drone.mBits=eAUDIO_BITS_8;
+ drone.mFreq=eAUDIO_FREQ_25;drone.mStereoFlag=0;drone.mLoopingFlag=1;
+ AudioMixer_PlayVoice(0,&voice,volume,pan);
+ while(!quit) {
+  Screen_Update();IKBD_Update();
+  while(IKBD_GetKbdBytesWaiting()) {
+   U8 key=IKBD_PopKbdByte();
+   switch(key) {
+   case eIKBDSCAN_ESC:quit=1;break;
+   case eIKBDSCAN_SPACE:AudioMixer_PlayVoice(0,&voice,volume,pan);break;
+   case eIKBDSCAN_F1:pan=0;break;
+   case eIKBDSCAN_F2:pan=128;break;
+   case eIKBDSCAN_F3:pan=255;break;
+   case eIKBDSCAN_LEFTARROW:pan=pan>16?pan-16:0;break;
+   case eIKBDSCAN_RIGHTARROW:pan=pan<239?pan+16:255;break;
+   case eIKBDSCAN_UPARROW:volume=volume<239?volume+16:255;break;
+   case eIKBDSCAN_DOWNARROW:volume=volume>16?volume-16:0;break;
+   case eIKBDSCAN_F4:
+    AudioMixer_SetFrequency(AudioMixer_GetFrequency()==eAUDIO_FREQ_25?eAUDIO_FREQ_12:eAUDIO_FREQ_25);
+    AudioMixer_PlayVoice(0,&voice,volume,pan);
+    if(toneOn)AudioMixer_PlayVoice(1,&drone,128,128);
+    break;
+   case eIKBDSCAN_2:
+    toneOn^=1;if(toneOn)AudioMixer_PlayVoice(1,&drone,128,128);else AudioMixer_StopVoice(1);break;
+   default:continue;
+   }
+   AudioMixer_SetVoiceParams(0,volume,pan);dirty=2;
+  }
+  if(dirty) {
+   void *screen=Screen_GetpLogic();Screen_Logic_ClearScreen();
+   Font8x8_Print("AMIXER / VOLUME + PAN",screen,0,8);
+   Font8x8_Print("SPACE: PLAY  2: LOOPING SECOND VOICE",screen,0,32);
+   Font8x8_Print("UP/DOWN: VOLUME  LEFT/RIGHT: PAN",screen,0,48);
+   Font8x8_Print("F1: LEFT  F2: CENTRE  F3: RIGHT",screen,0,64);
+   Font8x8_Print("ESC: EXIT",screen,0,80);
+   sprintf(line,"VOLUME %3u / 255   PAN %3u / 255",volume,pan);
+   Font8x8_Print(line,screen,0,104);
+   Font8x8_Print(toneOn?"SECOND VOICE: ON":"SECOND VOICE: OFF",screen,0,120);
+   Font8x8_Print(AudioMixer_GetFrequency()==eAUDIO_FREQ_25?"25 KHZ STEREO / TWO PCM VOICES":"12.5 KHZ STEREO / TWO PCM VOICES",screen,0,144);
+   Font8x8_Print("F4: SWITCH 12.5 / 25 KHZ",screen,0,160);
+   if(!voice.mpSound)Font8x8_Print("MISSING VOICE.RAW",screen,0,176);
+   if(System_GetMCH()==MCH_ST)Font8x8_Print("DMA AUDIO REQUIRES STE",screen,0,184);
+   --dirty;
+  }
+ }
+ AudioMixer_DeInit();if(voice.mpSound)File_UnLoad(voice.mpSound);
+ Screen_DeInit();Platform_DeInit();return 0;
 }
-
-
-/*-----------------------------------------------------------------------------------*
-* FUNCTION : Hardware_Init( void )
-* ACTION   : explicitly initialises platform and mixer services used by this example
-* CREATION : 29.04.2026
-*-----------------------------------------------------------------------------------*/
-
-void	Hardware_Init( void )
-{
-	Platform_Init();
-	File_Init();
-	AudioMixer_Init();
-	AudioMixer_Enable();
-}
-
-
-/*-----------------------------------------------------------------------------------*
-* FUNCTION : Hardware_DeInit( void )
-* ACTION   : explicitly shuts down mixer services before platform deinit
-* CREATION : 29.04.2026
-*-----------------------------------------------------------------------------------*/
-
-void	Hardware_DeInit( void )
-{
-	AudioMixer_Disable();
-	AudioMixer_DeInit();
-	File_DeInit();
-	Platform_DeInit();
-}
-
-
-
-/*-----------------------------------------------------------------------------------*
-* FUNCTION : Test_Loop( void )
-* ACTION   : Test_Loop
-* CREATION : 11.08.2018 PNK
-*-----------------------------------------------------------------------------------*/
-
-void	Menu_Print( void )
-{
-	U16 *	lpScreen;
-
-	lpScreen = Screen_GetpLogic();
-	Font8x8_Print( "GodLib Mixer Example", lpScreen, 0, 0 );
-	Font8x8_Print( "F1: Left", lpScreen, 0, 16 );
-	Font8x8_Print( "F2: Right", lpScreen, 0, 24 );
-	Font8x8_Print( "F3: Centre", lpScreen, 0, 32 );
-	Font8x8_Print( "Space: Quit", lpScreen, 0, 48 );
-	Font8x8_Print( "DMA: 25kHz  Sample: 12kHz", lpScreen, 0, 64 );
-
-}
-
-/*-----------------------------------------------------------------------------------*
-* FUNCTION : Test_Loop( void )
-* ACTION   : Test_Loop
-* CREATION : 11.08.2018 PNK
-*-----------------------------------------------------------------------------------*/
-
-void	Test_Loop( void )
-{
-	char * lpSampleFileName = "voice.raw";
-	sAudioDmaSound	lSound;
-
-	Screen_Init( 320, 200, eGRAPHIC_COLOURMODE_4PLANE, eSCREEN_SCROLL_NONE );
-	Video_SetPalST( &gMyPalette[ 0 ] );
-
-	lSound.mBits = eAUDIO_BITS_8;
-	lSound.mFreq = eAUDIO_FREQ_12;
-	lSound.mLoopingFlag = 0;
-	lSound.mStereoFlag = 0;
-	lSound.mLength = File_GetSize(lpSampleFileName);
-	lSound.mpSound = File_Load(lpSampleFileName);
-	if( !lSound.mpSound )
-	{
-		GemDos_Cconws( "\033E\033fCould not load voice.raw\r\n" );
-		GemDos_Cnecin();
-		return;
-	}
-
-	Audio_MaximiseVolumeSigned( &lSound );
-/*	Audio_ToggleSign( &lSound );*/
-
-	AudioMixer_PlaySample( &lSound, eAMIXER_PAN_LEFT );
-
-	for( ;; )
-	{
-		Screen_Update();
-		Screen_Logic_ClearScreen();
-		Menu_Print();
-		MixerBuffer_Render( Screen_GetpLogic(), 0, 100, 256, 80 );
-
-		IKBD_Update();
-		if( IKBD_GetKbdBytesWaiting() )
-		{
-			U8 lKey = IKBD_PopKbdByte();
-
-			if( eIKBDSCAN_F1 == lKey )
-			{
-				AudioMixer_PlaySample( &lSound, eAMIXER_PAN_LEFT );
-			}
-			else if( eIKBDSCAN_F2 == lKey )
-			{
-				AudioMixer_PlaySample( &lSound, eAMIXER_PAN_RIGHT );
-			}
-			else if( eIKBDSCAN_F3 == lKey )
-			{
-				AudioMixer_PlaySample( &lSound, eAMIXER_PAN_CENTRE );
-			}
-			else if( eIKBDSCAN_SPACE == lKey )
-			{
-				break;
-			}
-		}
-	}
-
-
-	/* unload sound samples */
-	File_UnLoad(lSound.mpSound);
-}
-
-void	MixerBuffer_Render( U16 * apScreen, U16 aX, U16 aY, U16 aWidth, U16 aHeight )
-{
-	U8 * lpBuffer = AudioMixer_GetpBuffer();
-	U32 lBufferSize = dMIXER_BUFFER_SIZE;
-	U32 lChunkSize = (lBufferSize / aWidth) / 2;
-	U16 lMaxH = ( aHeight >> 1 );
-	U16	y0 = (aY)+( lMaxH ) - ( lMaxH >> 1 );
-	U16	y1 = (aY)+( lMaxH ) + ( lMaxH >> 1 );
-	U16 x;
-
-	(void)apScreen;
-
-	for( x = 0; x < aWidth; x++ )
-	{
-		U16 lChunkTotal0=0;
-		U16 lChunkTotal1 = 0;
-		sGraphicRect	lRect;
-/*#ifdef dGODLIB_PLATFORM_ATARI*/
-#if 1
-		lChunkTotal0 = lpBuffer[ 0 ] >> 2;
-		lChunkTotal1 = lpBuffer[ 1 ] >> 2;
-		lpBuffer += lChunkSize;
-		lpBuffer += lChunkSize;
-#else
-		{
-			U16 i;
-			for( i = 0; i < lChunkSize;i++ )
-			{
-				lChunkTotal0 += *lpBuffer++;
-				lChunkTotal1 += *lpBuffer++;
-			}
-		}
-		lChunkTotal0 /= (U16)lChunkSize;
-		lChunkTotal1 /= (U16)lChunkSize;
-
-		lChunkTotal0 *= lMaxH;
-		lChunkTotal1 *= lMaxH;
-
-		lChunkTotal0 >>= 9;
-		lChunkTotal1 >>= 9;
-#endif
-
-		lRect.mX = aX + x;
-		lRect.mWidth = 1;
-		lRect.mY = y0 - lChunkTotal0;
-		lRect.mHeight = lChunkTotal0 << 1;
-
-		Screen_Logic_DrawBox_Clip( &lRect, 1 );
-
-		lRect.mY = y1 - lChunkTotal1;
-		lRect.mHeight = lChunkTotal1 << 1;
-
-		Screen_Logic_DrawBox_Clip( &lRect, 1 );
-	}
-}
-
-
-/* ################################################################################ */

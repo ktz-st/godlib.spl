@@ -1,0 +1,46 @@
+[
+  {
+    "name": "ARRIVAL",
+    "text": "A light appears above the old castle.",
+    "voice": "macOS Daniel (en_GB)",
+    "words_per_minute": 145,
+    "format": "signed 8-bit mono PCM",
+    "sample_rate": 12517,
+    "bytes": 29534,
+    "duration_seconds": 2.3595110649516657,
+    "sha256": "f6a8db7e360dff32dc2d6720a78039d61a8fa2e0688b6b1c6b8e1f17c2168590"
+  },
+  {
+    "name": "PATH",
+    "text": "The light has found a secret path.",
+    "voice": "macOS Daniel (en_GB)",
+    "words_per_minute": 145,
+    "format": "signed 8-bit mono PCM",
+    "sample_rate": 12517,
+    "bytes": 30747,
+    "duration_seconds": 2.4564192697930816,
+    "sha256": "92e6a74e96ed7b893820341536900f6d3f39bbdafbefdee3c4096e9f9fba10e0"
+  },
+  {
+    "name": "FOREST",
+    "text": "Follow it into the silent forest.",
+    "voice": "macOS Daniel (en_GB)",
+    "words_per_minute": 145,
+    "format": "signed 8-bit mono PCM",
+    "sample_rate": 12517,
+    "bytes": 28462,
+    "duration_seconds": 2.2738675401454023,
+    "sha256": "83a55a9cc6a5e7e459ccd66363c939d9f024412a30fd6c45a4b397ed47a10398"
+  },
+  {
+    "name": "JOURNEY",
+    "text": "Every journey starts with one step.",
+    "voice": "macOS Daniel (en_GB)",
+    "words_per_minute": 145,
+    "format": "signed 8-bit mono PCM",
+    "sample_rate": 12517,
+    "bytes": 30266,
+    "duration_seconds": 2.4179915315171367,
+    "sha256": "cd02b19369eadd4162bd7ae07835f3896d65bf41eef8fc299b52e61c53401a7a"
+  }
+]

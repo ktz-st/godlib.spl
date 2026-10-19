@@ -23,6 +23,7 @@ Pillow and ABC2. Source artwork and conversion scripts are included. REFLECT req
 
 | Example | Hardware | Technique |
 | --- | --- | --- |
+| [Moonlit Passage / cutscene](cutscene/README.md) | ST/STE | Native GodLib parser/player: two scenes, sprites, captions/fades and four narrated lines through AMIXER; replay/skip. |
 | [SuperHex wedges](wedges/README.md) | ST/STE | Six rotating light/dark sectors from the title screen; cached CPU/blitter copy or 50 FPS differential live ASM without frame cache; inverted on odd sectors. |
 | [SuperHex iris](iris/README.md) | ST/STE | Growing/shrinking rotating hexagon; ASM active-edge scan, differential plane-3 spans, sparse undo of the white outline and a stripwise picture swap under black. |
 | [CRT / Wasteland Relay](crt/README.md) | STE / BLiTTER | Two eight-colour scenes, bright scan band, strip tearing and NIEZW-style glowing thin-line TV off/on transitions; ASM per-page updates. |

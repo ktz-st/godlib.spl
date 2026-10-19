@@ -1,0 +1,7 @@
+*.o
+__pycache__/
+analysis/CUTDBG.PRG
+analysis/shots/
+analysis/*.bin
+analysis/CUTTEST.PRG
+analysis/runtime-dump.bin

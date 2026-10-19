@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "program_sha256": "57c9b253c0de945d1e8da7057a899c7f5c50594958937b83cb41ae596d945a01",
+  "full_frame_checks": 8,
+  "tests": [
+    "background set/clear on both pages without callbacks or external copies",
+    "repeated Render on one page retains dirty state for other page",
+    "CRLF LF TAB consumption and bounded text rectangle",
+    "word wrapping uses X + WIDTH",
+    "TEXT_PAGE_SET redraws and removes previous caption while enabled",
+    "259-character token without stack overflow or out-of-rectangle writes",
+    "Stop/empty/missing/recursive scripts terminate safely",
+    "VAR parser member table terminator",
+    "two simultaneous samples, volume/pan, third-voice stealing, SAMPLE_DISABLE",
+    "looped sample remains active, SAMPLE_WAIT blocks for one-shot and DMA tail",
+    "Stop clears both voices and all queued PCM",
+    "natural script return and clean teardown"
+  ]
+}

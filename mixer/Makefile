@@ -28,8 +28,10 @@ LDFLAGS = -s -nostdlib -nostartfiles -nodefaultlibs -static \
 
 OUT = MIXER.TOS
 
-$(OUT): $(OBJECTS_C)
-	$(LD) $(LDFLAGS) -o $(OUT) $(CMINI_DIR)/lib/crt0.o \
+all: $(OUT)
+
+$(OUT): $(OBJECTS_C) $(GODLIB_DIR)/libgod.a
+	$(LD) $(LDFLAGS) -o $(OUT) $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o \
 	$(OBJECTS_C) \
 	-Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 	$(STRIP) --strip-unneeded $(OUT)
@@ -40,5 +42,21 @@ $(OBJECTS_C): %.o: %.c
 clean:
 	rm -rf $(OBJECTS_C) $(OUT) *.map
 
+TOS ?= /Users/kriss/Atari/tos/TOS v1.62 (1990)(Atari Corp)(STE)(De).img
 run: $(OUT)
-	hatari -w --monitor rgb --fastfdc true $(OUT) &
+	hatari --tos "$(TOS)" --machine ste --memsize 1 --monitor rgb --confirm-quit false $(OUT)
+
+analysis/AMIXDBG.PRG: analysis/check.c $(GODLIB_DIR)/audio/amixer.c $(GODLIB_DIR)/audio/amixer.h $(GODLIB_DIR)/libgod.a
+	$(CC) $(CFLAGS) $(filter-out -s,$(LDFLAGS)) -o $@ $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o $< -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
+analysis/AMIXUI.PRG: $(OBJECTS_C) $(GODLIB_DIR)/libgod.a
+	$(CC) $(filter-out -s,$(LDFLAGS)) -o $@ $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o $(OBJECTS_C) -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
+check: $(OUT) analysis/AMIXDBG.PRG analysis/AMIXUI.PRG
+	python3 analysis/verify.py
+	python3 analysis/verify-ui.py
+.PHONY: all run check
+
+bench: $(GODLIB_DIR)/libgod.a
+	bash analysis/build-bench.sh
+profile: bench
+	python3 analysis/profile.py
+.PHONY: bench profile
