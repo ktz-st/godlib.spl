@@ -35,6 +35,16 @@ U16 gLeonardVisPageView[2]={0xffff,0xffff};
 U16 gLeonardVisAge[4],gLeonardVisLevel[4],gLeonardVisPrevious[2][4];
 volatile U16 gLeonardVisReady,gLeonardVisExited,gLeonardVisEnabled=1,gLeonardVisRaster;
 volatile U32 gLeonardVisFrames,gLeonardVisLastVbl,gLeonardVisMissedVbl;
+volatile U32 gLeonardVisAudioTicks;
+volatile U16 gLeonardVisAudioAttached,gLeonardVisAudioDetached;
+
+/* One owner, independent of rendering. Tick preserves USP/SR like UGH's
+ * VBL service; do not also call it from the foreground loop. */
+void LeonardVis_AudioVbl(void)
+{
+    LeonardMod_Tick();
+    ++gLeonardVisAudioTicks;
+}
 U16 *gLeonardVisScreen;
 U16 gLeonardVisPage;
 
@@ -68,14 +78,14 @@ static void DrawScene(U16 initial)
     Video_SetPalST(gLeonardVisMode>=3?gStereoVisPalette:gLanceVisPalette);
 }
 
-/* Stable debug/test boundary: frame has been rendered, audio has been mixed by the main loop. */
+/* Stable debug/test boundary: frame rendered; audio has its own VBL owner. */
 void LeonardVis_FrameDone(void) __attribute__((noinline));
 void LeonardVis_FrameDone(void) { __asm__ volatile ("" ::: "memory"); }
 
 S16 GodLib_Game_Main(S16 argc,char **argv)
 {
     void *mod=0;
-    U16 quit=0,i;
+    U16 quit=0,i,mask;
     (void)argc;(void)argv;
     GemDos_Super(0);Platform_Init();File_Init();
     if(System_GetMCH()!=MCH_STE && System_GetMCH()!=MCH_MEGASTE) {
@@ -94,10 +104,14 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
         LeonardMod_Stop();
         goto screen_done;
     }
+    mask=System_GetIML();System_SetIML(7);
+    gLeonardVisAudioAttached=Vbl_AddCall(LeonardVis_AudioVbl);
+    System_SetIML(mask);
+    if(!gLeonardVisAudioAttached)goto screen_done;
     gLeonardVisReady=1;
     while(!quit) {
         U32 now;
-        Screen_Update();LeonardMod_Tick();IKBD_Update();
+        Screen_Update();IKBD_Update();
         now=Vbl_GetCounter();
         if(gLeonardVisFrames && now-gLeonardVisLastVbl>1)gLeonardVisMissedVbl+=now-gLeonardVisLastVbl-1;
         gLeonardVisLastVbl=now;
@@ -149,8 +163,15 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
         ++gLeonardVisFrames;
         LeonardVis_FrameDone();
     }
-    LeonardMod_Stop();
 screen_done:
+    /* Remove the callback before stopping DMA/trap #0 or freeing MOD/workspace. */
+    mask=System_GetIML();System_SetIML(7);
+    if(gLeonardVisAudioAttached) {
+        Vbl_RemoveCall(LeonardVis_AudioVbl);
+        gLeonardVisAudioAttached=0;
+    }
+    gLeonardVisAudioDetached=1;
+    System_SetIML(mask);
     LeonardMod_ShutdownPaula();
     Screen_DeInit();
 unload:

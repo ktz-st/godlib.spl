@@ -50,8 +50,10 @@ $(OBJECTS_C): leonard.c $(GODLIB_DIR)/music/leonardmod.h
 clean:
 	rm -f leonard.o leonard12.o leonard25.o leonard_s.o $(OUT) analysis/*DBG.PRG LEONARD.PRG LEO12.PRG .rate-* *.map
 
+TOS ?= /Users/kriss/Atari/tos/TOS v1.62 (1990)(Atari Corp)(STE)(De).img
+
 run: $(OUT)
-	hatari -w --machine ste --memsize 1 --monitor rgb --confirm-quit false --fast-boot true $(OUT)
+	hatari --tos "$(TOS)" -w --machine ste --memsize 1 --monitor rgb --confirm-quit false --fast-boot true $(OUT)
 
 ../lancemod/visual_s.o: ../lancemod/visual_s.s ../lancemod/assets/FRAMES.BIN ../lancemod/assets/SPANS.BIN ../lancemod/assets/PALETTE.BIN
 	$(MAKE) -C ../lancemod visual_s.o
@@ -76,3 +78,14 @@ $(OBJECTS_C): $(GODLIB_DIR)/music/modscope.h
 
 ../lancemod/stereo_s.o: ../lancemod/stereo_s.s
 	$(MAKE) -C ../lancemod stereo_s.o
+
+analysis/LEOCHECK.PRG: analysis/vbl-check.c $(GODLIB_DIR)/libgod.a
+	mkdir -p analysis
+	$(LD) $(CFLAGS) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o $< -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
+
+check:
+	$(MAKE) RATE=25 debug
+	$(MAKE) RATE=12 debug
+	$(MAKE) analysis/LEOCHECK.PRG
+	python3 analysis/verify-vbl.py
+.PHONY: check

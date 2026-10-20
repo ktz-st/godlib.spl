@@ -25,10 +25,18 @@ levels 16..1; older ages show an empty bar.
 - V: hide/show bars while replay continues.
 - Space / Esc: stop and return to TOS.
 
-`LeonardMod_Tick()` runs from the main loop once per `Screen_Update`. Its bridge
-preserves SR, GCC callee-saved registers and USP. Do not call it from a VBL ISR.
-`LeonardMod_ShutdownPaula()` stops DMA/restores trap #0 before freeing workspace;
-the application then unloads the MOD. No replay callback remains in VBL.
+Audio now runs in a PAL **VBL callback**, independently of the rendering loop,
+following `ugh.agt`'s service. The existing `LeonardMod_Tick()` bridge preserves
+the interrupted caller's USP, SR and registers across the native user-mode
+mixing/trap sequence. The earlier note forbidding VBL use was incorrect.
+The foreground performs Screen_Update, input, scope sampling and drawing;
+it does not call Tick a second time.
+
+Start itself still does not register a callback. The example checks registration
+and protects add/remove with an interrupt mask. It removes its audio callback
+before `LeonardMod_ShutdownPaula()` stops DMA/restores trap #0 and frees the
+workspace, then unloads the MOD. Remove a caller-owned callback before any
+restart/Stop/Shutdown too; the native mixer is not reentrant.
 
 Start prepares writable samples in place, so load a fresh raw MOD before
 starting it again. All per-song tracker channel/effect state is reset on init.
@@ -57,3 +65,19 @@ four channel traces → ICE XY → stereo L/R → mono. V hides/shows the select
 mode. Each trace has 128 points from native PCM; stereo uses green/cyan and
 mono uses white. Drawing and averaging are ASM and reuse existing PCM/history
 buffers. Audio playback stays stereo.
+
+## Verification
+
+`make check` builds and tests both release rates and an 18-check native VBL
+regression. During 64 VBLs at each rate, the foreground deliberately performs
+no rendering or Tick calls and holds `USP=0x12345678`. The test checks one audio
+callback per VBL, restored USP/SR mask, changing/nonzero mixed PCM, then removal
+of the callback, restored trap #0, stopped DMA and complete RAM recovery.
+The sentinel test is a separate diagnostic PRG, not a control in the player.
+
+The release tests cover all five visualizer modes, hide/show, raster indication,
+non-silent stereo WAV captures and clean TOS exit. Audio counters continue in
+all modes; no callbacks remain after shutdown. Evidence is in
+`analysis/verification-vbl.json` and per-rate PNG captures. Tests use STE /
+68000 / 8 MHz / 1 MiB / German TOS 1.62 / PAL. WAV checks verify active stereo,
+not subjective sound quality; these tests are not CPU measurements.

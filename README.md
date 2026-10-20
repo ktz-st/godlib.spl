@@ -60,7 +60,7 @@ requirements and links to controls, CPU measurements and verification.
 | [`input`](input/README.md) | `INPUT.PRG` | Kernel task with combined keyboard/joystick actions, HELD/HIT/UNHIT, RAM record/replay, KIP save/load and deterministic replay checks. |
 | `joy` | `JOY.PRG` | IKBD joystick packets for joy0/joy1. |
 | `lancemod` | `LANCEMOD.PRG` | ProTracker MOD playback with four activity bars in Amiga LRRL stereo order. |
-| `leonard` | `LEONARD.PRG` | LeonardMod 12.5/25 kHz playback with four channel activity bars. |
+| [`leonard`](leonard/README.md) | `LEONARD.PRG`, `LEO12.PRG` | LeonardMod 12.5/25 kHz, PAL VBL playback independent of rendering; bars, four scopes, ICE XY, stereo and mono visualizers. |
 | [`lens`](lens/README.md) | `LENS.PRG` | ST/STE 64x64 mouse/automatic magnifying lens over the castle, ASM inverse sampling and lookup C2P, measured CPU cost. |
 | `pcmblock` | `PCMBLOCK.PRG` | Four-channel block mixer at 12.5/25 kHz, loops and ASM self-test. |
 | `pcmlayer` | `PCMLAYER.PRG` | Four-layer mixer at 12.5 kHz: two loops and two one-shots. |

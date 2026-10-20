@@ -1,0 +1,78 @@
+{
+  "result": "PASS",
+  "machine": "STE / 68000 / 8 MHz / 1 MiB / German TOS 1.62 / PAL",
+  "module_sha256": "61e86fb0e9f9f4b397105d7e9e4ecc93089f6c9c5f5374e632341ca11946ef76",
+  "cases": {
+    "core": {
+      "result": "PASS",
+      "checks": 18,
+      "foreground_hold_audio_ticks": [
+        64,
+        64
+      ],
+      "foreground_hold_pal_vbls": [
+        64,
+        64
+      ],
+      "pcm_nonzero_bytes": [
+        164,
+        151
+      ],
+      "changing_pcm_windows": [
+        1,
+        1
+      ],
+      "USP_sentinel": "0x12345678 preserved while foreground performs no rendering/ticks",
+      "cleanup": "callback count, trap #0, DMA off, workspace and free RAM restored at both rates"
+    },
+    "25k": {
+      "result": "PASS",
+      "release_sha256": "41c75eb3d4981c0e836ce8f1803573d024cce03adc7310d23fd1f9e00520e77d",
+      "views": [
+        "bars",
+        "four scopes",
+        "ICE XY",
+        "stereo L/R",
+        "mono"
+      ],
+      "audio_ticks": 591,
+      "rendered_frames": 572,
+      "wav": {
+        "frames": 411542,
+        "rate": 44100,
+        "peak": 9581,
+        "rms": 1554.12,
+        "channel_peaks": [
+          9581,
+          6129
+        ]
+      },
+      "cleanup": "VBL detached before shutdown; ticks stop and return to TOS"
+    },
+    "12k": {
+      "result": "PASS",
+      "release_sha256": "723e678edd1938a2aad0a2bc34a3489e5e158c45ed044104de91a86c520ab1ff",
+      "views": [
+        "bars",
+        "four scopes",
+        "ICE XY",
+        "stereo L/R",
+        "mono"
+      ],
+      "audio_ticks": 595,
+      "rendered_frames": 578,
+      "wav": {
+        "frames": 409068,
+        "rate": 44100,
+        "peak": 9329,
+        "rms": 1563.12,
+        "channel_peaks": [
+          9329,
+          6151
+        ]
+      },
+      "cleanup": "VBL detached before shutdown; ticks stop and return to TOS"
+    }
+  },
+  "limits": "Functional emulation and non-silent stereo WAV checks; not subjective listening, hardware certification or CPU profiling."
+}
