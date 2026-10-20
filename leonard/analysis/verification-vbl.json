@@ -15,8 +15,8 @@
         64
       ],
       "pcm_nonzero_bytes": [
-        164,
-        151
+        155,
+        164
       ],
       "changing_pcm_windows": [
         1,
@@ -27,7 +27,7 @@
     },
     "25k": {
       "result": "PASS",
-      "release_sha256": "41c75eb3d4981c0e836ce8f1803573d024cce03adc7310d23fd1f9e00520e77d",
+      "release_sha256": "b3483d76b272aa60238438655c18032f8c462ddf93e16551f388dad7b68bb42c",
       "views": [
         "bars",
         "four scopes",
@@ -35,23 +35,23 @@
         "stereo L/R",
         "mono"
       ],
-      "audio_ticks": 591,
-      "rendered_frames": 572,
+      "audio_ticks": 650,
+      "rendered_frames": 629,
       "wav": {
-        "frames": 411542,
+        "frames": 463497,
         "rate": 44100,
-        "peak": 9581,
-        "rms": 1554.12,
+        "peak": 9703,
+        "rms": 1668.74,
         "channel_peaks": [
-          9581,
-          6129
+          9703,
+          8251
         ]
       },
       "cleanup": "VBL detached before shutdown; ticks stop and return to TOS"
     },
     "12k": {
       "result": "PASS",
-      "release_sha256": "723e678edd1938a2aad0a2bc34a3489e5e158c45ed044104de91a86c520ab1ff",
+      "release_sha256": "d379628af0758bcf0f00223eb2cac477135d4c7717e1b1f407f78eb2ddf64284",
       "views": [
         "bars",
         "four scopes",
@@ -59,16 +59,16 @@
         "stereo L/R",
         "mono"
       ],
-      "audio_ticks": 595,
-      "rendered_frames": 578,
+      "audio_ticks": 607,
+      "rendered_frames": 591,
       "wav": {
-        "frames": 409068,
+        "frames": 422264,
         "rate": 44100,
-        "peak": 9329,
-        "rms": 1563.12,
+        "peak": 9915,
+        "rms": 1610.77,
         "channel_peaks": [
-          9329,
-          6151
+          9915,
+          6929
         ]
       },
       "cleanup": "VBL detached before shutdown; ticks stop and return to TOS"

@@ -60,6 +60,8 @@ requirements and links to controls, CPU measurements and verification.
 | [`input`](input/README.md) | `INPUT.PRG` | Kernel task with combined keyboard/joystick actions, HELD/HIT/UNHIT, RAM record/replay, KIP save/load and deterministic replay checks. |
 | `joy` | `JOY.PRG` | IKBD joystick packets for joy0/joy1. |
 | `lancemod` | `LANCEMOD.PRG` | ProTracker MOD playback with four activity bars in Amiga LRRL stereo order. |
+| [`tfmx`](tfmx/README.md) | `TFMX.PRG` | UGH! four-channel native TFMX, selectable Lance/Leonard at 12.5/25 kHz, PAL VBL, seven subsongs and volume bars. |
+| [`rjp1`](rjp1/README.md) | `RJP1.PRG` | Native Richard Joseph / VectorDean SNG+INS, selectable Lance/Leonard, PAL VBL, 12.5/25 kHz (Lance also 50), subsongs and volume bars. |
 | [`leonard`](leonard/README.md) | `LEONARD.PRG`, `LEO12.PRG` | LeonardMod 12.5/25 kHz, PAL VBL playback independent of rendering; bars, four scopes, ICE XY, stereo and mono visualizers. |
 | [`lens`](lens/README.md) | `LENS.PRG` | ST/STE 64x64 mouse/automatic magnifying lens over the castle, ASM inverse sampling and lookup C2P, measured CPU cost. |
 | `pcmblock` | `PCMBLOCK.PRG` | Four-channel block mixer at 12.5/25 kHz, loops and ASM self-test. |
@@ -268,3 +270,7 @@ LanceMod, Leonard and Wizzcat also support **O** to switch between their four
 activity bars, four ASM traces, two ICE XY plots, separate stereo traces and
 a single mono trace `(L+R)/2`; **V** hides/shows the selected visualizer.
 See [oscilloscope API and verification](../godlib/music/modscope.md).
+
+- `rjp1`: native VectorDean music, selectable shared Lance/Leonard Paula mixer,
+  JON/WARX4, automatic PAL VBL playback, 12.5/25 kHz (Lance also 50) and four channel
+  volume bars. See [RJP1 analysis and controls](rjp1/README.md).

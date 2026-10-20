@@ -1,0 +1,5 @@
+{
+  "captured_seconds": 70.522,
+  "constant_nonzero_stereo_runs_over_2ms": [],
+  "method": "First continuous portion of running WAV capture; long held nonzero stereo value can indicate stalled DMA, but this is not a complete perceptual glitch detector."
+}

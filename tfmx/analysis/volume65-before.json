@@ -1,0 +1,34 @@
+{
+  "gTestDone": 1,
+  "gTestPass": 0,
+  "gTestStage": 18,
+  "gTestCase": 0,
+  "gTestTicks": [
+    128,
+    0,
+    0,
+    0
+  ],
+  "gTestVbls": [
+    128,
+    0,
+    0,
+    0
+  ],
+  "gTestSongBytes": [
+    43100,
+    0,
+    0,
+    0
+  ],
+  "gTestWorkspace": [
+    142146,
+    0,
+    0,
+    0
+  ],
+  "free_before": 3828564,
+  "free_after": 0,
+  "result": "FAIL",
+  "test_sha256": "5a68a0b1af9e652cf6fb7e81bb73761b1118ea38bddbcc53f3ba9a04407e1768"
+}

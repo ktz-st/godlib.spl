@@ -1,0 +1,56 @@
+{
+  "gSequenceDone": 1,
+  "gSequencePass": 1,
+  "gSequenceSong": 6,
+  "gSequenceField": 15,
+  "gSequenceSteps": 28000,
+  "gSequenceExpected": 0,
+  "gSequenceActual": 0,
+  "gPeriodMin": [
+    180,
+    120,
+    113,
+    113,
+    151,
+    151,
+    170
+  ],
+  "gPeriodMax": [
+    764,
+    606,
+    480,
+    509,
+    680,
+    680,
+    454
+  ],
+  "gPeriodOutside": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "gVolumeMax": [
+    65,
+    65,
+    65,
+    65,
+    65,
+    44,
+    65
+  ],
+  "gVolumeOutside": [
+    5647,
+    3487,
+    28,
+    18,
+    1888,
+    0,
+    45
+  ],
+  "result": "PASS",
+  "test_sha256": "da339c6617fe175eab80df09712f3f2ae352c90772d415048b5cd019a88a39f4"
+}

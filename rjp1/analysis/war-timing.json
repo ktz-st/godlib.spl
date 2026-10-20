@@ -1,0 +1,57 @@
+{
+  "machine": "STE 8 MHz PAL, 4 MiB, German TOS 1.62",
+  "song": "WARX4 subsong 1",
+  "method": "Instrumentation wraps actual release UI VBL callback. At least 15000 PAL callbacks per rate. Internal HZ200 timestamps, no debugger/disk operations in callback. Fast-forward changes host speed, not emulated CPU frequency. 5ms quantization; cost>=4 is conservatively flagged, gap>=6 is a discontinuity.",
+  "results": {
+    "2": {
+      "gWarTicks": 15000,
+      "gWarMaxGap": 5,
+      "gWarMaxCost": 1,
+      "gWarLongGaps": 0,
+      "gWarOverruns": 0,
+      "gap_bins_hz200": {
+        "3": 126,
+        "4": 14811,
+        "5": 63
+      },
+      "cost_bins_hz200": {
+        "0": 4311,
+        "1": 10689
+      }
+    },
+    "1": {
+      "gWarTicks": 15000,
+      "gWarMaxGap": 5,
+      "gWarMaxCost": 1,
+      "gWarLongGaps": 0,
+      "gWarOverruns": 0,
+      "gap_bins_hz200": {
+        "3": 126,
+        "4": 14811,
+        "5": 63
+      },
+      "cost_bins_hz200": {
+        "0": 6037,
+        "1": 8963
+      }
+    },
+    "3": {
+      "gWarTicks": 15000,
+      "gWarMaxGap": 5,
+      "gWarMaxCost": 2,
+      "gWarLongGaps": 0,
+      "gWarOverruns": 0,
+      "gap_bins_hz200": {
+        "3": 126,
+        "4": 14811,
+        "5": 63
+      },
+      "cost_bins_hz200": {
+        "0": 1880,
+        "1": 12489,
+        "2": 631
+      }
+    }
+  },
+  "test_sha256": "3b3cd0d55a3c8544f21887f060bd03e341dba9cb389c40993c8507b94547fd6d"
+}

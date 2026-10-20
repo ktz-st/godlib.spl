@@ -1,0 +1,75 @@
+{
+  "release_sha256": "61ec5490e932d912401338b288a7584605236be82cda5669c058ea6e3c6e9d4f",
+  "machine": "STE, 68000 8MHz, PAL, 4MiB, German TOS 1.62",
+  "method": "HRDB instruction cycles, identical release and 12s windows starting roughly 20s into UGH title subsong 0; rendering/input/loading excluded. Counts ALL native/adapter/sequencer ranges and generated mixer code in each workspace. Memory is requested resident song+workspace payload, excluding common PRG/screen/allocator overhead. Sequencer calls must equal VBL audio calls for both mixers.",
+  "cases": {
+    "UGH-Lance-1": {
+      "audio_calls": 623,
+      "sequencer_calls": 623,
+      "cycles_per_vbl": 64147.97,
+      "cpu_percent_8mhz_pal": 40.092,
+      "song_bytes": 43100,
+      "workspace_bytes": 142146,
+      "resident_payload_bytes": 185246,
+      "components_cycles_per_vbl": {
+        "sequencer": 4362.41,
+        "outer_tick": 568.81,
+        "native_mixer": 8189.82,
+        "voice_adapter": 8825.93,
+        "generated_mixer": 17654.0,
+        "libc_helpers": 24547.0
+      }
+    },
+    "UGH-Lance-2": {
+      "audio_calls": 622,
+      "sequencer_calls": 622,
+      "cycles_per_vbl": 70305.72,
+      "cpu_percent_8mhz_pal": 43.941,
+      "song_bytes": 43100,
+      "workspace_bytes": 176320,
+      "resident_payload_bytes": 219420,
+      "components_cycles_per_vbl": {
+        "sequencer": 4305.4,
+        "outer_tick": 568.9,
+        "native_mixer": 8186.05,
+        "voice_adapter": 8901.61,
+        "generated_mixer": 23572.21,
+        "libc_helpers": 24771.56
+      }
+    },
+    "UGH-Leonard-1": {
+      "audio_calls": 622,
+      "sequencer_calls": 622,
+      "cycles_per_vbl": 50999.9,
+      "cpu_percent_8mhz_pal": 31.875,
+      "song_bytes": 40412,
+      "workspace_bytes": 61134,
+      "resident_payload_bytes": 101546,
+      "components_cycles_per_vbl": {
+        "sequencer": 4310.94,
+        "outer_tick": 520.99,
+        "native_mixer": 3852.21,
+        "voice_adapter": 470.41,
+        "generated_mixer": 41845.35,
+        "libc_helpers": 0.0
+      }
+    },
+    "UGH-Leonard-2": {
+      "audio_calls": 622,
+      "sequencer_calls": 622,
+      "cycles_per_vbl": 70552.86,
+      "cpu_percent_8mhz_pal": 44.096,
+      "song_bytes": 40412,
+      "workspace_bytes": 91134,
+      "resident_payload_bytes": 131546,
+      "components_cycles_per_vbl": {
+        "sequencer": 4333.65,
+        "outer_tick": 520.72,
+        "native_mixer": 3839.38,
+        "voice_adapter": 472.06,
+        "generated_mixer": 61387.04,
+        "libc_helpers": 0.0
+      }
+    }
+  }
+}
