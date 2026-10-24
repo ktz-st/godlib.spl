@@ -1,0 +1,52 @@
+{
+  "picture": "DCK/extracted/pi1/dessin/TAPIS3_4.PI1",
+  "picture_source_sha256": "6e27aead9885bf8d020456670c6364a1380f8aa30173c642e737b936d5876d7b",
+  "native_sha256": "ce89afaa38eb993a60452ae1ba6614b7239a5129cebeafcfafc441281b99f10c",
+  "palette_source": "DCK/extracted/disk-b/PALETTE/TAPIS.COL",
+  "palette_source_sha256": "3a754b8c5feb7e421a835f2d1257e388d9b89d6233c2a6dfce76ba016d981eb7",
+  "runtime_palette_sha256": "6bcde3bac0d5710a5121425856eabbef1881d5d6480362654ad57656c4522cd3",
+  "col_records": 275,
+  "cycle_records": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "unused_zero_records": [
+    15,
+    274
+  ],
+  "record_0": "saved palette, identical to record 1 and PI1 header",
+  "used_indices": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "hud_index": 1,
+  "original_picture_unchanged": true,
+  "original_palettes_unchanged": true,
+  "original_code": "DCK4/LCK1 TEXT $2C4A / $2E16 / $2EA4 palette base and phasing, $2F2A-$31BA raster palette reloads",
+  "adaptation": "Full original 320x200 bitmap, 14 complete palette records played temporally in GodLib VBL; no HBL/raster/overscan. Legends added only to original black rows."
+}

@@ -1,9 +1,0 @@
-{
-  "original_ugh_source_sha256": "145c9c78695498d9bfe397897cbcee94bd47c77aca5e8b29f6008bc850b8768c",
-  "all_84_states_match_independent_copper_events": true,
-  "water_top": 112,
-  "water_rows": 88,
-  "hold_y": 197,
-  "all_reads_inside_water_region": true,
-  "identity_and_invalid_tables_passed": true
-}

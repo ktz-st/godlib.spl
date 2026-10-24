@@ -1,0 +1,141 @@
+{
+  "source": "DCK disk B / SPRITE/BALLS.PC1, TRAJ_SPR.ITE/*.DAT",
+  "picture_sha256": "0af49910660a2164327c50d955ad263b914a2bf03eff0e31f2c4f6a66d7fbb1e",
+  "sprites": [
+    {
+      "colour": "red",
+      "source_rect": [
+        0,
+        0,
+        32,
+        27
+      ],
+      "gfx_bytes": 432,
+      "mask_bytes": 108
+    },
+    {
+      "colour": "blue",
+      "source_rect": [
+        0,
+        27,
+        32,
+        27
+      ],
+      "gfx_bytes": 432,
+      "mask_bytes": 108
+    },
+    {
+      "colour": "green",
+      "source_rect": [
+        0,
+        54,
+        32,
+        27
+      ],
+      "gfx_bytes": 432,
+      "mask_bytes": 108
+    }
+  ],
+  "paths": [
+    {
+      "name": "NOEUD",
+      "points": 360,
+      "offset": 0,
+      "source_sha256": "a6760cc4e14a45cd56e88e95dd0d506be6b98251f1530569e1f352d4d9febb6b",
+      "source_bounds": [
+        20,
+        20,
+        300,
+        180
+      ]
+    },
+    {
+      "name": "CERCLE",
+      "points": 180,
+      "offset": 1440,
+      "source_sha256": "2246a753504c57e0e8f5bcacfd36d628ea225f10522babd483b32ef872dab138",
+      "source_bounds": [
+        0,
+        50,
+        280,
+        130
+      ]
+    },
+    {
+      "name": "2CERCLES",
+      "points": 360,
+      "offset": 2160,
+      "source_sha256": "e8f6f1910c2adec1b56b6172b84ed5d3b28516650b96e51a9a6826c5b953dc5c",
+      "source_bounds": [
+        0,
+        10,
+        280,
+        170
+      ]
+    },
+    {
+      "name": "DOUBLE45",
+      "points": 360,
+      "offset": 3600,
+      "source_sha256": "0aa404a58eba474d8e4cc61fa3e32d32b20e8dc2fb406897c0918ec8692932bc",
+      "source_bounds": [
+        0,
+        10,
+        279,
+        170
+      ]
+    },
+    {
+      "name": "CER-45",
+      "points": 180,
+      "offset": 5040,
+      "source_sha256": "7a78a1284e0f7c4a8bd5a4869a9d9c1fafebe1fbe3b4328f20732c9582bc9453",
+      "source_bounds": [
+        0,
+        40,
+        279,
+        140
+      ]
+    },
+    {
+      "name": "CER_45~1",
+      "points": 180,
+      "offset": 5760,
+      "source_sha256": "e84c5b99a5214550a00ce8fbd8dd7be93382f522a43e996522df5640dea5f442",
+      "source_bounds": [
+        0,
+        40,
+        279,
+        140
+      ]
+    },
+    {
+      "name": "GROS_CER",
+      "points": 180,
+      "offset": 6480,
+      "source_sha256": "5aca408115e751a4d8ab4e00803d2b9417514d276a053f56fc59707f5f76cea7",
+      "source_bounds": [
+        0,
+        0,
+        280,
+        180
+      ]
+    },
+    {
+      "name": "REBOND",
+      "points": 180,
+      "offset": 7200,
+      "source_sha256": "045cc7dfcef76f81a49bd6c6db6d1dc307a7991a0496801a6e89bbd6f7a361d3",
+      "source_bounds": [
+        1,
+        40,
+        1,
+        140
+      ]
+    }
+  ],
+  "coordinate_transform": "x=floor(rawX*24/25); y=32+floor(rawY*3/5); source point order/cadence retained",
+  "phase_separation_points": 12,
+  "palette": "original 16 ST RGB333 entries; index 0 transparent",
+  "embedded_bytes": 9572
+}

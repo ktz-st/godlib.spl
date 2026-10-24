@@ -1,0 +1,344 @@
+{
+  "full_buffer_checks": 4324,
+  "byte_mismatches": 0,
+  "cases": [
+    {
+      "image": 0,
+      "effect": "instant",
+      "closing": 0,
+      "targets": 5
+    },
+    {
+      "image": 0,
+      "effect": "instant",
+      "closing": 1,
+      "targets": 5
+    },
+    {
+      "image": 0,
+      "effect": "colours",
+      "closing": 0,
+      "targets": 12
+    },
+    {
+      "image": 0,
+      "effect": "colours",
+      "closing": 1,
+      "targets": 12
+    },
+    {
+      "image": 0,
+      "effect": "centre",
+      "closing": 0,
+      "targets": 84
+    },
+    {
+      "image": 0,
+      "effect": "centre",
+      "closing": 1,
+      "targets": 84
+    },
+    {
+      "image": 0,
+      "effect": "smear",
+      "closing": 0,
+      "targets": 164
+    },
+    {
+      "image": 0,
+      "effect": "smear",
+      "closing": 1,
+      "targets": 164
+    },
+    {
+      "image": 0,
+      "effect": "interrows",
+      "closing": 0,
+      "targets": 84
+    },
+    {
+      "image": 0,
+      "effect": "interrows",
+      "closing": 1,
+      "targets": 84
+    },
+    {
+      "image": 0,
+      "effect": "curtaincols",
+      "closing": 0,
+      "targets": 181
+    },
+    {
+      "image": 0,
+      "effect": "curtaincols",
+      "closing": 1,
+      "targets": 181
+    },
+    {
+      "image": 0,
+      "effect": "intercols",
+      "closing": 0,
+      "targets": 181
+    },
+    {
+      "image": 0,
+      "effect": "intercols",
+      "closing": 1,
+      "targets": 181
+    },
+    {
+      "image": 0,
+      "effect": "spiral",
+      "closing": 0,
+      "targets": 54
+    },
+    {
+      "image": 0,
+      "effect": "spiral",
+      "closing": 1,
+      "targets": 54
+    },
+    {
+      "image": 0,
+      "effect": "fold",
+      "closing": 0,
+      "targets": 164
+    },
+    {
+      "image": 0,
+      "effect": "fold",
+      "closing": 1,
+      "targets": 164
+    },
+    {
+      "image": 0,
+      "effect": "lines",
+      "closing": 0,
+      "targets": 24
+    },
+    {
+      "image": 0,
+      "effect": "lines",
+      "closing": 1,
+      "targets": 24
+    },
+    {
+      "image": 0,
+      "effect": "snake",
+      "closing": 0,
+      "targets": 84
+    },
+    {
+      "image": 0,
+      "effect": "snake",
+      "closing": 1,
+      "targets": 84
+    },
+    {
+      "image": 1,
+      "effect": "instant",
+      "closing": 0,
+      "targets": 5
+    },
+    {
+      "image": 1,
+      "effect": "instant",
+      "closing": 1,
+      "targets": 5
+    },
+    {
+      "image": 1,
+      "effect": "colours",
+      "closing": 0,
+      "targets": 12
+    },
+    {
+      "image": 1,
+      "effect": "colours",
+      "closing": 1,
+      "targets": 12
+    },
+    {
+      "image": 1,
+      "effect": "centre",
+      "closing": 0,
+      "targets": 84
+    },
+    {
+      "image": 1,
+      "effect": "centre",
+      "closing": 1,
+      "targets": 84
+    },
+    {
+      "image": 1,
+      "effect": "smear",
+      "closing": 0,
+      "targets": 164
+    },
+    {
+      "image": 1,
+      "effect": "smear",
+      "closing": 1,
+      "targets": 164
+    },
+    {
+      "image": 1,
+      "effect": "interrows",
+      "closing": 0,
+      "targets": 84
+    },
+    {
+      "image": 1,
+      "effect": "interrows",
+      "closing": 1,
+      "targets": 84
+    },
+    {
+      "image": 1,
+      "effect": "curtaincols",
+      "closing": 0,
+      "targets": 181
+    },
+    {
+      "image": 1,
+      "effect": "curtaincols",
+      "closing": 1,
+      "targets": 181
+    },
+    {
+      "image": 1,
+      "effect": "intercols",
+      "closing": 0,
+      "targets": 181
+    },
+    {
+      "image": 1,
+      "effect": "intercols",
+      "closing": 1,
+      "targets": 181
+    },
+    {
+      "image": 1,
+      "effect": "spiral",
+      "closing": 0,
+      "targets": 54
+    },
+    {
+      "image": 1,
+      "effect": "spiral",
+      "closing": 1,
+      "targets": 54
+    },
+    {
+      "image": 1,
+      "effect": "fold",
+      "closing": 0,
+      "targets": 164
+    },
+    {
+      "image": 1,
+      "effect": "fold",
+      "closing": 1,
+      "targets": 164
+    },
+    {
+      "image": 1,
+      "effect": "lines",
+      "closing": 0,
+      "targets": 24
+    },
+    {
+      "image": 1,
+      "effect": "lines",
+      "closing": 1,
+      "targets": 24
+    },
+    {
+      "image": 1,
+      "effect": "snake",
+      "closing": 0,
+      "targets": 84
+    },
+    {
+      "image": 1,
+      "effect": "snake",
+      "closing": 1,
+      "targets": 84
+    }
+  ],
+  "live_cycles": [
+    {
+      "effect": "spiral",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "fold",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "lines",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "snake",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "instant",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "colours",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "centre",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "smear",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "interrows",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "curtaincols",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    },
+    {
+      "effect": "intercols",
+      "black_both_pages": true,
+      "palette_before_after": true,
+      "final_image_both_pages": true
+    }
+  ],
+  "all_11_modes": true,
+  "palette_stage_checks": true,
+  "pause_and_controls": true,
+  "clean_exit": true,
+  "machine": "STE 68000 8 MHz PAL, 1 MiB, German TOS 1.62",
+  "release_sha256": "44d63c6e879cae8389b7410f51f15843ccbc68cce8faca9076779f23c6d1399a"
+}

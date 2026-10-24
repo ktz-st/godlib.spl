@@ -7,7 +7,7 @@ GODLIB_DIR = ../../godlib
 
 SOURCES_C = lancemod.c
 OBJECTS_C = $(SOURCES_C:.c=.o)
-OBJECTS_S = visual_s.o scope_s.o xy_s.o stereo_s.o
+OBJECTS_S = visual_s.o scope_s.o xy_s.o stereo_s.o dckvis_s.o
 
 DEFS = -DdGODLIB_FADE
 
@@ -28,6 +28,7 @@ LDFLAGS = -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(GODLIB_DIR)
 
 OUT = LANCEMOD.PRG
+DEBUG_OUT ?= /tmp/LMDBG.PRG
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a
 	$(LD) $(LDFLAGS) -s -o $(OUT) $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o \
@@ -39,7 +40,7 @@ $(OBJECTS_C): %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f $(OBJECTS_C) $(OBJECTS_S) $(OUT) analysis/LMDBG.PRG *.map
+	rm -f $(OBJECTS_C) $(OBJECTS_S) $(OUT) $(DEBUG_OUT) *.map
 
 run: $(OUT)
 	hatari -w --machine ste --memsize 1 --monitor rgb --confirm-quit false --fast-boot true $(OUT)
@@ -54,9 +55,9 @@ assets/FRAMES.BIN: prepare.py assets/STF_VU.DAT
 assets/SPANS.BIN assets/PALETTE.BIN: assets/FRAMES.BIN
 	@test -f $@ || python3 prepare.py
 
-debug: $(OUT) analysis/LMDBG.PRG
-analysis/LMDBG.PRG: $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a
-	mkdir -p analysis
+debug: $(OUT) $(DEBUG_OUT)
+$(DEBUG_OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a
+	mkdir -p $(dir $@)
 	$(LD) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o $(OBJECTS_C) $(OBJECTS_S) -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 
 .PHONY: clean run debug
@@ -71,3 +72,7 @@ xy_s.o: xy_s.s
 
 stereo_s.o: stereo_s.s
 	vasmm68k_mot -Felf $< -o $@
+
+dckvis_s.o: dckvis_s.s
+	vasmm68k_mot -Felf $< -o $@
+$(OBJECTS_C): dckvis.h

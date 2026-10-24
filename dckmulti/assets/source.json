@@ -1,0 +1,42 @@
+{
+  "lanes": 6,
+  "y": [
+    32,
+    56,
+    80,
+    104,
+    128,
+    152
+  ],
+  "periods": [
+    2,
+    3,
+    4,
+    2,
+    3,
+    4
+  ],
+  "directions": [
+    1,
+    -1,
+    1,
+    -1,
+    1,
+    -1
+  ],
+  "texts": [
+    "GODLIB AND DCK PRESENT A SIMPLE FULL COLOUR SCROLLER   ",
+    "ATARI ST MULTISCROLL IN SIX INDEPENDENT LANES   ",
+    "ESCALI FONT SIXTEEN BY SIXTEEN IN FOUR BITPLANES   ",
+    "THIS TEXT MOVES TO THE RIGHT WITH ORIGINAL LETTERS   ",
+    "SIX STREAMS EACH WITH ITS OWN TEXT AND SPEED   ",
+    "NO BLITTER NO RASTERS JUST A PLAIN EIGHT MHZ 68000   "
+  ],
+  "source": "DCK disk B FONTES/ESCALI.PC1",
+  "source_sha256": "b258f7d9d830b208482d7229d8dcb805f459df24e2ad742630666f960ed5396a",
+  "glyph_size": [
+    16,
+    16
+  ],
+  "font_bytes": 4736
+}

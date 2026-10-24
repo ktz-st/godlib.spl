@@ -1,0 +1,57 @@
+{
+  "vbl_records": 3072,
+  "palette_mismatches": 0,
+  "cases": [
+    {
+      "vbls_per_palette": 1,
+      "reverse": false,
+      "records": 512,
+      "all_14_phases": true,
+      "main_loop_held": true
+    },
+    {
+      "vbls_per_palette": 1,
+      "reverse": true,
+      "records": 512,
+      "all_14_phases": true,
+      "main_loop_held": true
+    },
+    {
+      "vbls_per_palette": 2,
+      "reverse": false,
+      "records": 512,
+      "all_14_phases": true,
+      "main_loop_held": true
+    },
+    {
+      "vbls_per_palette": 2,
+      "reverse": true,
+      "records": 512,
+      "all_14_phases": true,
+      "main_loop_held": true
+    },
+    {
+      "vbls_per_palette": 4,
+      "reverse": false,
+      "records": 512,
+      "all_14_phases": true,
+      "main_loop_held": true
+    },
+    {
+      "vbls_per_palette": 4,
+      "reverse": true,
+      "records": 512,
+      "all_14_phases": true,
+      "main_loop_held": true
+    }
+  ],
+  "manual_steps": 28,
+  "original_art_preserved": true,
+  "both_pages_static_during_vbl": true,
+  "keyboard_controls": true,
+  "callback_detached": true,
+  "vbl_vector_restored": true,
+  "clean_exit": true,
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "release_sha256": "4c0fc903176c5cd28d6629867e31b1c4b33c59def3948806c2352d93a319f9c0"
+}

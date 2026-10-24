@@ -1,0 +1,329 @@
+{
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "scope": "Only ASM Lw_Render dispatch and active pixel kernel, complete phase with per-page catch-up; includes shared full/row/column kernels and colour stage selection; excludes init/show, C Advance/Publish, header/input, hardware VBL palette writes, Screen_Update and VBL/OS. CPU only, no BLiTTER.",
+  "profiles": [
+    {
+      "effect": "spiral",
+      "direction": "open",
+      "updates": 51,
+      "cycles_per_update": 14153.019607843138,
+      "pal_frame_percent": 8.84563725490196,
+      "ms_at_8mhz": 1.7691274509803923,
+      "cycles_total": 721804,
+      "dispatch_cycles": 3320,
+      "drawing_cycles": 718484
+    },
+    {
+      "effect": "spiral",
+      "direction": "close",
+      "updates": 51,
+      "cycles_per_update": 7626.117647058823,
+      "pal_frame_percent": 4.766323529411765,
+      "ms_at_8mhz": 0.9532647058823529,
+      "cycles_total": 388932,
+      "dispatch_cycles": 3264,
+      "drawing_cycles": 385668
+    },
+    {
+      "effect": "fold",
+      "direction": "open",
+      "updates": 81,
+      "cycles_per_update": 29673.086419753086,
+      "pal_frame_percent": 18.54567901234568,
+      "ms_at_8mhz": 3.709135802469136,
+      "cycles_total": 2403520,
+      "dispatch_cycles": 5236,
+      "drawing_cycles": 2398284
+    },
+    {
+      "effect": "fold",
+      "direction": "close",
+      "updates": 81,
+      "cycles_per_update": 29615.40740740741,
+      "pal_frame_percent": 18.50962962962963,
+      "ms_at_8mhz": 3.7019259259259263,
+      "cycles_total": 2398848,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 2393664
+    },
+    {
+      "effect": "lines",
+      "direction": "open",
+      "updates": 21,
+      "cycles_per_update": 18689.333333333332,
+      "pal_frame_percent": 11.680833333333332,
+      "ms_at_8mhz": 2.3361666666666667,
+      "cycles_total": 392476,
+      "dispatch_cycles": 1344,
+      "drawing_cycles": 391132
+    },
+    {
+      "effect": "lines",
+      "direction": "close",
+      "updates": 21,
+      "cycles_per_update": 17387.809523809523,
+      "pal_frame_percent": 10.867380952380952,
+      "ms_at_8mhz": 2.1734761904761903,
+      "cycles_total": 365144,
+      "dispatch_cycles": 1344,
+      "drawing_cycles": 363800
+    },
+    {
+      "effect": "snake",
+      "direction": "open",
+      "updates": 81,
+      "cycles_per_update": 5293.283950617284,
+      "pal_frame_percent": 3.3083024691358025,
+      "ms_at_8mhz": 0.6616604938271605,
+      "cycles_total": 428756,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 423572
+    },
+    {
+      "effect": "snake",
+      "direction": "close",
+      "updates": 81,
+      "cycles_per_update": 4541.382716049383,
+      "pal_frame_percent": 2.8383641975308644,
+      "ms_at_8mhz": 0.5676728395061729,
+      "cycles_total": 367852,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 362668
+    },
+    {
+      "effect": "instant",
+      "direction": "open",
+      "updates": 2,
+      "cycles_per_update": 130548.0,
+      "pal_frame_percent": 81.5925,
+      "ms_at_8mhz": 16.3185,
+      "cycles_total": 261096,
+      "dispatch_cycles": 128,
+      "drawing_cycles": 260968
+    },
+    {
+      "effect": "instant",
+      "direction": "close",
+      "updates": 2,
+      "cycles_per_update": 65156.0,
+      "pal_frame_percent": 40.7225,
+      "ms_at_8mhz": 8.1445,
+      "cycles_total": 130312,
+      "dispatch_cycles": 128,
+      "drawing_cycles": 130184
+    },
+    {
+      "effect": "colours",
+      "direction": "open",
+      "updates": 41,
+      "cycles_per_update": 6664.682926829269,
+      "pal_frame_percent": 4.165426829268293,
+      "ms_at_8mhz": 0.8330853658536586,
+      "cycles_total": 273252,
+      "dispatch_cycles": 2624,
+      "drawing_cycles": 270628
+    },
+    {
+      "effect": "colours",
+      "direction": "close",
+      "updates": 41,
+      "cycles_per_update": 3476.390243902439,
+      "pal_frame_percent": 2.1727439024390245,
+      "ms_at_8mhz": 0.4345487804878049,
+      "cycles_total": 142532,
+      "dispatch_cycles": 2624,
+      "drawing_cycles": 139908
+    },
+    {
+      "effect": "centre",
+      "direction": "open",
+      "updates": 81,
+      "cycles_per_update": 3918.320987654321,
+      "pal_frame_percent": 2.4489506172839506,
+      "ms_at_8mhz": 0.4897901234567901,
+      "cycles_total": 317384,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 312200
+    },
+    {
+      "effect": "centre",
+      "direction": "close",
+      "updates": 81,
+      "cycles_per_update": 3852.938271604938,
+      "pal_frame_percent": 2.4080864197530865,
+      "ms_at_8mhz": 0.48161728395061726,
+      "cycles_total": 312088,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 306904
+    },
+    {
+      "effect": "smear",
+      "direction": "open",
+      "updates": 81,
+      "cycles_per_update": 39303.851851851854,
+      "pal_frame_percent": 24.564907407407407,
+      "ms_at_8mhz": 4.912981481481482,
+      "cycles_total": 3183612,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 3178428
+    },
+    {
+      "effect": "smear",
+      "direction": "close",
+      "updates": 81,
+      "cycles_per_update": 37663.456790123455,
+      "pal_frame_percent": 23.53966049382716,
+      "ms_at_8mhz": 4.707932098765432,
+      "cycles_total": 3050740,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 3045556
+    },
+    {
+      "effect": "interrows",
+      "direction": "open",
+      "updates": 81,
+      "cycles_per_update": 3888.8888888888887,
+      "pal_frame_percent": 2.4305555555555554,
+      "ms_at_8mhz": 0.4861111111111111,
+      "cycles_total": 315000,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 309816
+    },
+    {
+      "effect": "interrows",
+      "direction": "close",
+      "updates": 81,
+      "cycles_per_update": 3816.938271604938,
+      "pal_frame_percent": 2.3855864197530865,
+      "ms_at_8mhz": 0.47711728395061725,
+      "cycles_total": 309172,
+      "dispatch_cycles": 5184,
+      "drawing_cycles": 303988
+    },
+    {
+      "effect": "curtaincols",
+      "direction": "open",
+      "updates": 161,
+      "cycles_per_update": 76516.91925465838,
+      "pal_frame_percent": 47.823074534161485,
+      "ms_at_8mhz": 9.564614906832297,
+      "cycles_total": 12319224,
+      "dispatch_cycles": 10304,
+      "drawing_cycles": 12308920
+    },
+    {
+      "effect": "curtaincols",
+      "direction": "close",
+      "updates": 161,
+      "cycles_per_update": 29112.72049689441,
+      "pal_frame_percent": 18.195450310559007,
+      "ms_at_8mhz": 3.6390900621118014,
+      "cycles_total": 4687148,
+      "dispatch_cycles": 10360,
+      "drawing_cycles": 4676788
+    },
+    {
+      "effect": "intercols",
+      "direction": "open",
+      "updates": 161,
+      "cycles_per_update": 80466.93167701863,
+      "pal_frame_percent": 50.29183229813664,
+      "ms_at_8mhz": 10.058366459627328,
+      "cycles_total": 12955176,
+      "dispatch_cycles": 10304,
+      "drawing_cycles": 12944872
+    },
+    {
+      "effect": "intercols",
+      "direction": "close",
+      "updates": 161,
+      "cycles_per_update": 30551.652173913044,
+      "pal_frame_percent": 19.094782608695652,
+      "ms_at_8mhz": 3.8189565217391306,
+      "cycles_total": 4918816,
+      "dispatch_cycles": 10412,
+      "drawing_cycles": 4908404
+    }
+  ],
+  "normal_cadence": [
+    {
+      "effect": "spiral",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 920,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "fold",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 932,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "lines",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 902,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "snake",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 926,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "instant",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 924,
+      "missed_vbls": 1,
+      "fps": 49.945945945945944
+    },
+    {
+      "effect": "colours",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 944,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "centre",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 944,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "smear",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 927,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "interrows",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 927,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "curtaincols",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 862,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "effect": "intercols",
+      "completed_cycles": 1,
+      "normal_frames_in_window": 925,
+      "missed_vbls": 0,
+      "fps": 50.0
+    }
+  ],
+  "release_sha256": "44d63c6e879cae8389b7410f51f15843ccbc68cce8faca9076779f23c6d1399a",
+  "debug_sha256": "f935381aebec80b689bc8b0a4e159f4d8745c92031d7db9a317f275fc6b0bf55"
+}

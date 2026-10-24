@@ -7,7 +7,7 @@ GODLIB_DIR = ../../godlib
 
 SOURCES_C = wizzcat.c
 OBJECTS_C = wizzcat.o
-OBJECTS_S = ../lancemod/visual_s.o ../lancemod/scope_s.o ../lancemod/xy_s.o ../lancemod/stereo_s.o
+OBJECTS_S = ../lancemod/visual_s.o ../lancemod/scope_s.o ../lancemod/xy_s.o ../lancemod/stereo_s.o ../lancemod/dckvis_s.o
 
 DEFS = -DdGODLIB_FADE
 
@@ -28,7 +28,7 @@ LDFLAGS = -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(GODLIB_DIR)
 
 OUT = WIZZCAT.PRG
-DEBUG_OUT ?= analysis/WIZDBG.PRG
+DEBUG_OUT ?= /tmp/WIZDBG.PRG
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a
 	$(LD) $(LDFLAGS) -s -o $(OUT) $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o \
@@ -51,7 +51,7 @@ run: $(OUT)
 
 debug: $(OUT) $(DEBUG_OUT)
 $(DEBUG_OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a
-	mkdir -p analysis
+	mkdir -p $(dir $@)
 	$(LD) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o $(OBJECTS_C) $(OBJECTS_S) -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 
 .PHONY: clean run debug
@@ -66,3 +66,7 @@ $(OBJECTS_C): $(GODLIB_DIR)/music/modscope.h
 
 ../lancemod/stereo_s.o: ../lancemod/stereo_s.s
 	$(MAKE) -C ../lancemod stereo_s.o
+
+../lancemod/dckvis_s.o: ../lancemod/dckvis_s.s
+	$(MAKE) -C ../lancemod dckvis_s.o
+$(OBJECTS_C): ../lancemod/dckvis.h

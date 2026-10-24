@@ -2,6 +2,8 @@
  * GodLib Wizzcat sample: channel activity with James Boulton's STF_DEMO VU bars.
  * Wizzcat_GetVisualizer counts retrigger age; these bars do not measure audio amplitude.
  ************************************************************************************/
+#include "../lancemod/dckvis.h"
+#include <godlib/string/string.h>
 #include <godlib/file/file.h>
 #include <godlib/font8x8/font8x8.h>
 #include <godlib/gemdos/gemdos.h>
@@ -26,7 +28,7 @@ S8 gWizzcatVisScope[dMODSCOPE_BYTES],gWizzcatVisScopePrevious[2][dMODSCOPE_BYTES
 extern void XYVis_Draw(void *screen,const S8 *stereo,U16 *previousOffsets);
 S8 gWizzcatVisStereo[dMODSCOPE_STEREO_BYTES];
 U16 gWizzcatVisXYPrevious[2][dMODSCOPE_XY_POINTS*2];
-volatile U16 gWizzcatVisMode; /* 0 bars, 1 four traces, 2 ICE XY, 3 stereo, 4 mono */
+volatile U16 gWizzcatVisMode; /* 0..4 existing modes; 5..9 five DCK bar layouts. */
 U16 gWizzcatVisPageView[2]={0xffff,0xffff};
 U16 gWizzcatVisAge[4],gWizzcatVisLevel[4],gWizzcatVisPrevious[2][4];
 volatile U16 gWizzcatVisReady,gWizzcatVisExited,gWizzcatVisEnabled=1,gWizzcatVisRaster;
@@ -40,8 +42,15 @@ static void DrawScene(U16 initial)
     static const U16 x[4]={48,208,256,96};
     sGraphicCanvas *canvas=Screen_GetpBackGraphic();
     GraphicCanvas_ClearScreen(canvas);
-    Font8x8_PrintColourCanvas("WIZZCAT / QUICKIE.MOD / 25KHZ",canvas,40,8,1);
-    if(gWizzcatVisMode==3) {
+    Font8x8_PrintColourCanvas("WIZZCAT / QUICKIE.MOD / 25KHZ",canvas,40,8,gWizzcatVisMode>=5?15:1);
+    if(gWizzcatVisMode>=5) {
+        static const char *title[5]={"DCK NARROW 32","DCK NARROW 64","DCK WIDE 64","DCK WIDE 128","DCK HORIZONTAL"};
+        const char *name=title[gWizzcatVisMode-5];
+        Font8x8_PrintColourCanvas(name,canvas,(40-String_StrLen(name))/2*8,28,15);
+        for(i=0;i<4;++i){char label[3]={(i==0 || i==3)?'L':'R',(char)('1'+i),0};
+            Font8x8_PrintColourCanvas(label,canvas,gWizzcatVisMode==9?8:(gWizzcatVisMode<7?100:104)+32*i,gWizzcatVisMode==9?58+28*i:176,1<<i);
+        }
+    } else if(gWizzcatVisMode==3) {
         Font8x8_PrintColourCanvas("LEFT",canvas,144,24,4);
         Font8x8_PrintColourCanvas("RIGHT",canvas,144,108,8);
     } else if(gWizzcatVisMode==4) {
@@ -55,12 +64,12 @@ static void DrawScene(U16 initial)
             gWizzcatVisMode?((i==0 || i==3)?60:220):x[i]-12,
             (gWizzcatVisMode && i>=2)?108:24,2);
     }
-    Font8x8_PrintColourCanvas("F1 CPU  O VISUAL V SHOW  ESC EXIT",canvas,32,192,1);
+    Font8x8_PrintColourCanvas("F1 CPU  O VISUAL V SHOW  ESC EXIT",canvas,32,192,gWizzcatVisMode>=5?15:1);
     if(initial) {
         GraphicCanvas_CopyScreen(Screen_GetpLogicGraphic(),Screen_GetpBack());
         GraphicCanvas_CopyScreen(Screen_GetpPhysicGraphic(),Screen_GetpBack());
     }
-    Video_SetPalST(gWizzcatVisMode>=3?gStereoVisPalette:gLanceVisPalette);
+    Video_SetPalST(gWizzcatVisMode>=5?gDckModVisPalette:gWizzcatVisMode>=3?gStereoVisPalette:gLanceVisPalette);
 }
 
 /* Stable debug/test boundary: frame has been rendered, native VBL audio continues. */
@@ -106,7 +115,7 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
             if(key==eIKBDSCAN_2)Wizzcat_Jump(mod->mData[950]);
             if(key==eIKBDSCAN_V)gWizzcatVisEnabled^=1;
             if(key==eIKBDSCAN_O) {
-                gWizzcatVisMode=(gWizzcatVisMode+1)%5;
+                gWizzcatVisMode=(gWizzcatVisMode+1)%10;
                 DrawScene(0);
                 gWizzcatVisPageView[0]=gWizzcatVisPageView[1]=0xffff;
             }
@@ -135,12 +144,14 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
             } else if(view==3) {
                 Wizzcat_GetStereoOscilloscope(gWizzcatVisStereo);
                 XYVis_Draw(gWizzcatVisScreen,gWizzcatVisStereo,gWizzcatVisXYPrevious[gWizzcatVisPage]);
-            } else if(view>=4) {
+            } else if(view==4 || view==5) {
                 Wizzcat_GetStereoOscilloscope(gWizzcatVisStereo);
                 if(view==4)StereoVis_DrawSplit(gWizzcatVisScreen,gWizzcatVisStereo,gWizzcatVisScopePrevious[gWizzcatVisPage]);
                 else StereoVis_DrawMono(gWizzcatVisScreen,gWizzcatVisStereo,gWizzcatVisScopePrevious[gWizzcatVisPage]);
             } else if(view==1) {
                 LanceVis_Draw(gWizzcatVisScreen,gWizzcatVisLevel,gWizzcatVisPrevious[gWizzcatVisPage]);
+            } else if(view>=6 && view<=10) {
+                gDckModVisDraw[view-6](gWizzcatVisScreen,gWizzcatVisLevel,gWizzcatVisPrevious[gWizzcatVisPage]);
             }
         }
         ++gWizzcatVisFrames;

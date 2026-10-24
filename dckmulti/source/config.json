@@ -1,0 +1,35 @@
+{
+  "lanes": 6,
+  "y": [
+    32,
+    56,
+    80,
+    104,
+    128,
+    152
+  ],
+  "periods": [
+    2,
+    3,
+    4,
+    2,
+    3,
+    4
+  ],
+  "directions": [
+    1,
+    -1,
+    1,
+    -1,
+    1,
+    -1
+  ],
+  "texts": [
+    "GODLIB AND DCK PRESENT A SIMPLE FULL COLOUR SCROLLER   ",
+    "ATARI ST MULTISCROLL IN SIX INDEPENDENT LANES   ",
+    "ESCALI FONT SIXTEEN BY SIXTEEN IN FOUR BITPLANES   ",
+    "THIS TEXT MOVES TO THE RIGHT WITH ORIGINAL LETTERS   ",
+    "SIX STREAMS EACH WITH ITS OWN TEXT AND SPEED   ",
+    "NO BLITTER NO RASTERS JUST A PLAIN EIGHT MHZ 68000   "
+  ]
+}

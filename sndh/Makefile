@@ -7,7 +7,7 @@ GODLIB_DIR = ../../godlib
 
 SOURCES_C = sndh.c
 OBJECTS_C = $(SOURCES_C:.c=.o)
-OBJECTS_S = bars_s.o psg_s.o spectrum_s.o extra_s.o organ_s.o
+OBJECTS_S = bars_s.o psg_s.o spectrum_s.o extra_s.o organ_s.o histogram_s.o dckpsg_s.o
 
 DEFS = -DdGODLIB_FADE
 

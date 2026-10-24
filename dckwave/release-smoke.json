@@ -1,0 +1,12 @@
+{
+  "actual_shipped_prg_tested": true,
+  "code_data_matches_external_symbols": true,
+  "machine": "ste",
+  "ram_mib": 1,
+  "all_modes": true,
+  "full_buffer_checks": 12,
+  "pause_step_resume": true,
+  "cpu_stripe": true,
+  "clean_exit": true,
+  "release_sha256": "8aff2d75b4695f1ceadb86254ab02c41264212e90f5622680eb612091f59b261"
+}

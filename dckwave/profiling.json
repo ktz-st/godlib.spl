@@ -1,0 +1,124 @@
+{
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "scope": "ASM Dw_Frame, Dw_Select, Dw_Draw and Dw_Plane; 512 steady updates, two complete phase cycles. Excludes reset/show, header, input, C Target selection, Screen_Update and VBL/OS. CPU only, no BLiTTER.",
+  "profiles": [
+    {
+      "mode": "all",
+      "mask": 15,
+      "paused": false,
+      "frames": 512,
+      "plane_calls": 2048,
+      "cycles_per_update": 123496.6953125,
+      "components_per_update": {
+        "Frame": 88.0,
+        "Select": 84.109375,
+        "Draw": 1394.953125,
+        "Plane": 121929.6328125
+      },
+      "pal_frame_percent": 77.1854345703125,
+      "ms_at_8mhz": 15.4370869140625
+    },
+    {
+      "mode": "all",
+      "mask": 15,
+      "paused": true,
+      "frames": 512,
+      "plane_calls": 0,
+      "cycles_per_update": 264.7890625,
+      "components_per_update": {
+        "Frame": 48.109375,
+        "Select": 84.109375,
+        "Draw": 132.5703125,
+        "Plane": 0.0
+      },
+      "pal_frame_percent": 0.1654931640625,
+      "ms_at_8mhz": 0.0330986328125
+    },
+    {
+      "mode": "one",
+      "mask": 2,
+      "paused": false,
+      "frames": 512,
+      "plane_calls": 512,
+      "cycles_per_update": 31447.640625,
+      "components_per_update": {
+        "Frame": 88.109375,
+        "Select": 84.109375,
+        "Draw": 793.109375,
+        "Plane": 30482.3125
+      },
+      "pal_frame_percent": 19.654775390625,
+      "ms_at_8mhz": 3.930955078125
+    },
+    {
+      "mode": "one",
+      "mask": 2,
+      "paused": true,
+      "frames": 512,
+      "plane_calls": 0,
+      "cycles_per_update": 264.5546875,
+      "components_per_update": {
+        "Frame": 48.109375,
+        "Select": 84.109375,
+        "Draw": 132.3359375,
+        "Plane": 0.0
+      },
+      "pal_frame_percent": 0.1653466796875,
+      "ms_at_8mhz": 0.0330693359375
+    },
+    {
+      "mode": "two",
+      "mask": 5,
+      "paused": false,
+      "frames": 512,
+      "plane_calls": 1024,
+      "cycles_per_update": 62131.6171875,
+      "components_per_update": {
+        "Frame": 88.4453125,
+        "Select": 84.34375,
+        "Draw": 994.2109375,
+        "Plane": 60964.6171875
+      },
+      "pal_frame_percent": 38.8322607421875,
+      "ms_at_8mhz": 7.7664521484375
+    },
+    {
+      "mode": "two",
+      "mask": 5,
+      "paused": true,
+      "frames": 512,
+      "plane_calls": 0,
+      "cycles_per_update": 264.4375,
+      "components_per_update": {
+        "Frame": 48.0,
+        "Select": 84.109375,
+        "Draw": 132.328125,
+        "Plane": 0.0
+      },
+      "pal_frame_percent": 0.1652734375,
+      "ms_at_8mhz": 0.0330546875
+    }
+  ],
+  "normal_cadence": [
+    {
+      "mode": "all",
+      "frames": 1029,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "one",
+      "frames": 1197,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "two",
+      "frames": 1099,
+      "missed_vbls": 0,
+      "fps": 50.0
+    }
+  ],
+  "release_sha256": "8aff2d75b4695f1ceadb86254ab02c41264212e90f5622680eb612091f59b261",
+  "debug_sha256": "93f1ffa9ac01524eb145ee7741cd56dce3ccc25915e28b611db964a6c8028748"
+}

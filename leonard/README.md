@@ -47,7 +47,7 @@ The source notices/hashes are in `../../godlib/music/leonard-source.json`.
 UGH uses Leonard + **TFMX**; this example uses Leonard + **ProTracker** and its
 `mt_Visualizer`. They are different replay frontends.
 
-Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY → stereo L/R → mono; **V** hides/shows the selected
+Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY → stereo L/R → mono → five DCK bar styles; **V** hides/shows the selected
 visualizer. The four 64-point traces use current channel sample position,
 pitch and volume, drawn in ASM with independent history for both screen pages.
 They are read-only source previews, not extracted stereo DMA channels. The
@@ -61,7 +61,7 @@ in the [shared scope documentation](../../godlib/music/modscope.md#ice-delayed-s
 
 Two additional time-domain modes are available: **separate L/R** and a
 **single mono trace**, averaging signed PCM as `(L + R) / 2`. O cycles bars →
-four channel traces → ICE XY → stereo L/R → mono. V hides/shows the selected
+four channel traces → ICE XY → stereo L/R → mono → five DCK styles. V hides/shows the selected
 mode. Each trace has 128 points from native PCM; stereo uses green/cyan and
 mono uses white. Drawing and averaging are ASM and reuse existing PCM/history
 buffers. Audio playback stays stereo.
@@ -75,9 +75,23 @@ callback per VBL, restored USP/SR mask, changing/nonzero mixed PCM, then removal
 of the callback, restored trap #0, stopped DMA and complete RAM recovery.
 The sentinel test is a separate diagnostic PRG, not a control in the player.
 
-The release tests cover all five visualizer modes, hide/show, raster indication,
+The earlier release tests covered the original five visualizer modes, hide/show, raster indication,
 non-silent stereo WAV captures and clean TOS exit. Audio counters continue in
 all modes; no callbacks remain after shutdown. Evidence is in
-`analysis/verification-vbl.json` and per-rate PNG captures. Tests use STE /
+`verification-vbl.json` and per-rate PNG captures. Tests use STE /
 68000 / 8 MHz / 1 MiB / German TOS 1.62 / PAL. WAV checks verify active stereo,
 not subjective sound quality; these tests are not CPU measurements.
+
+## Five additional DCK bar styles
+
+`O` now cycles through **ten modes**. After the original mono scope come
+DCK narrow 32, narrow 64, wide 64, wide 128 and horizontal bars. `V` hides/shows
+any of them. Each native channel has its own colour; labels L1/R2/R3/L4 retain
+the MOD stereo assignment. They use the existing 0..16 retrigger-activity
+levels, not measured audio amplitude or an additional replay hook.
+
+One shared ASM renderer draws only changed rows/blocks on each display page,
+reusing the existing four-word page history. Playback remains under its
+existing VBL owner. No frame cache, new heap buffer or library API is added.
+
+See [DCK styles, verification and CPU](../lancemod/DCK-VISUALIZERS.md).

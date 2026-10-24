@@ -1,0 +1,13 @@
+{
+  "frames": 5261,
+  "missed_vbls": 0,
+  "estimated_fps": 50.0,
+  "controls": {
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "pause_freezes_state": true,
+    "resumed": true,
+    "exit": true
+  }
+}

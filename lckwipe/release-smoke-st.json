@@ -1,0 +1,23 @@
+{
+  "actual_shipped_prg_tested": true,
+  "code_data_matches_external_symbols": true,
+  "machine": "st",
+  "ram_mib": 1,
+  "cycles": [
+    "spiral",
+    "fold",
+    "lines",
+    "snake",
+    "instant",
+    "colours",
+    "centre",
+    "smear",
+    "interrows",
+    "curtaincols",
+    "intercols"
+  ],
+  "both_pages_final_images": true,
+  "pause_at_start": true,
+  "exit_during_transition": true,
+  "release_sha256": "44d63c6e879cae8389b7410f51f15843ccbc68cce8faca9076779f23c6d1399a"
+}

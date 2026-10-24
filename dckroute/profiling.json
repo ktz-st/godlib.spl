@@ -1,0 +1,91 @@
+{
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "scope": "ASM advance, FE/FF decoder, erase and draw. Includes register saves and dispatch; excludes C captions/input, Screen_Update and VBL/OS. CPU only, no BLiTTER. Steady modes use 128 updates; morph is a 128-update window including the remaining settled updates; mode switches are single first frames.",
+  "profiles": [
+    {
+      "case": "curve",
+      "frames": 128,
+      "cycles_per_update": 63580.46875,
+      "components": {
+        "advance_and_decoder": 3727.3125,
+        "erase": 5655.21875,
+        "draw": 54141.46875,
+        "frame_dispatch": 56.46875
+      },
+      "ms_at_8mhz": 7.94755859375,
+      "pal_frame_percent": 39.73779296875
+    },
+    {
+      "case": "horizontal",
+      "frames": 128,
+      "cycles_per_update": 62931.9375,
+      "components": {
+        "advance_and_decoder": 3662.15625,
+        "erase": 5071.78125,
+        "draw": 54141.5625,
+        "frame_dispatch": 56.4375
+      },
+      "ms_at_8mhz": 7.8664921875,
+      "pal_frame_percent": 39.3324609375
+    },
+    {
+      "case": "vertical",
+      "frames": 128,
+      "cycles_per_update": 30389.3125,
+      "components": {
+        "advance_and_decoder": 405.9375,
+        "erase": 385.34375,
+        "draw": 29542.03125,
+        "frame_dispatch": 56.0
+      },
+      "ms_at_8mhz": 3.7986640625,
+      "pal_frame_percent": 18.9933203125
+    },
+    {
+      "case": "curve_morph",
+      "frames": 128,
+      "cycles_per_update": 65062.09375,
+      "components": {
+        "advance_and_decoder": 3873.0625,
+        "erase": 6994.28125,
+        "draw": 54138.75,
+        "frame_dispatch": 56.0
+      },
+      "ms_at_8mhz": 8.13276171875,
+      "pal_frame_percent": 40.66380859375
+    },
+    {
+      "case": "curve_to_vertical",
+      "frames": 1,
+      "cycles_per_update": 93884.0,
+      "components": {
+        "advance_and_decoder": 0.0,
+        "erase": 64284.0,
+        "draw": 29544.0,
+        "frame_dispatch": 56.0
+      },
+      "ms_at_8mhz": 11.7355,
+      "pal_frame_percent": 58.6775
+    },
+    {
+      "case": "vertical_to_curve",
+      "frames": 1,
+      "cycles_per_update": 68108.0,
+      "components": {
+        "advance_and_decoder": 0.0,
+        "erase": 13896.0,
+        "draw": 54156.0,
+        "frame_dispatch": 56.0
+      },
+      "ms_at_8mhz": 8.5135,
+      "pal_frame_percent": 42.5675
+    }
+  ],
+  "normal_cadence": {
+    "frames": 3643,
+    "missed_vbls": 0,
+    "fps": 50.0
+  },
+  "release_sha256": "0bd17cbeb0b1811ab9ed2da02ff26bca00f47097b7c0185cced71d8eeaf4f62a",
+  "debug_sha256": "f3af567b90d771b2d4e40a281e637c3eacef2b07dbb854bc34438463e934b639"
+}

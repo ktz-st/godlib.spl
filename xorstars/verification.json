@@ -1,0 +1,25 @@
+{
+  "frames": 5243,
+  "missed_vbls": 0,
+  "estimated_fps": 50.0,
+  "double_buffer_references": 28,
+  "byte_mismatches": 0,
+  "keys": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "RIGHT",
+    "LEFT",
+    "DOWN",
+    "UP",
+    "5",
+    "6",
+    "7",
+    "5",
+    "7"
+  ],
+  "pause_freezes_state": true,
+  "resumed": true,
+  "exit": true
+}

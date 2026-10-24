@@ -7,7 +7,7 @@ GODLIB_DIR = ../../godlib
 
 SOURCES_C = leonard.c
 OBJECTS_C = leonard$(RATE).o
-OBJECTS_S = ../lancemod/visual_s.o ../lancemod/scope_s.o ../lancemod/xy_s.o ../lancemod/stereo_s.o
+OBJECTS_S = ../lancemod/visual_s.o ../lancemod/scope_s.o ../lancemod/xy_s.o ../lancemod/stereo_s.o ../lancemod/dckvis_s.o
 
 RATE ?= 25
 ifeq ($(RATE),12)
@@ -36,7 +36,7 @@ LDFLAGS = -nostdlib -nostartfiles -nodefaultlibs -static \
           -L$(GODLIB_DIR)
 
 OUT = $(if $(filter 12,$(RATE)),LEO12.PRG,LEONARD.PRG)
-DEBUG_OUT ?= $(if $(filter 12,$(RATE)),analysis/LEO12DBG.PRG,analysis/LEODBG.PRG)
+DEBUG_OUT ?= $(if $(filter 12,$(RATE)),/tmp/LEO12DBG.PRG,/tmp/LEODBG.PRG)
 
 $(OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a | LOSTPARO.MOD
 	$(LD) $(LDFLAGS) -s -o $(OUT) $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o \
@@ -48,7 +48,7 @@ $(OBJECTS_C): leonard.c $(GODLIB_DIR)/music/leonardmod.h
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f leonard.o leonard12.o leonard25.o leonard_s.o $(OUT) analysis/*DBG.PRG LEONARD.PRG LEO12.PRG .rate-* *.map
+	rm -f leonard.o leonard12.o leonard25.o leonard_s.o $(OUT) /tmp/LEO12DBG.PRG /tmp/LEODBG.PRG /tmp/LEOCHECK.PRG LEONARD.PRG LEO12.PRG .rate-* *.map
 
 TOS ?= /Users/kriss/Atari/tos/TOS v1.62 (1990)(Atari Corp)(STE)(De).img
 
@@ -63,7 +63,7 @@ LOSTPARO.MOD: ../lancemod/LOSTPARO.MOD
 
 debug: $(OUT) $(DEBUG_OUT)
 $(DEBUG_OUT): $(OBJECTS_C) $(OBJECTS_S) $(GODLIB_DIR)/libgod.a
-	mkdir -p analysis
+	mkdir -p $(dir $@)
 	$(LD) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o $(OBJECTS_C) $(OBJECTS_S) -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 
 .PHONY: clean run debug
@@ -79,13 +79,17 @@ $(OBJECTS_C): $(GODLIB_DIR)/music/modscope.h
 ../lancemod/stereo_s.o: ../lancemod/stereo_s.s
 	$(MAKE) -C ../lancemod stereo_s.o
 
-analysis/LEOCHECK.PRG: analysis/vbl-check.c $(GODLIB_DIR)/libgod.a
-	mkdir -p analysis
+/tmp/LEOCHECK.PRG: tools/vbl-check.c $(GODLIB_DIR)/libgod.a
+	mkdir -p $(dir $@)
 	$(LD) $(CFLAGS) $(LDFLAGS) -o $@ $(CMINI_DIR)/lib/mshort/mfastcall/crt0.o $< -Wl,--start-group -lgod -lcmini -lgcc -Wl,--end-group
 
 check:
 	$(MAKE) RATE=25 debug
 	$(MAKE) RATE=12 debug
-	$(MAKE) analysis/LEOCHECK.PRG
-	python3 analysis/verify-vbl.py
+	$(MAKE) /tmp/LEOCHECK.PRG
+	python3 tools/verify-vbl.py
 .PHONY: check
+
+../lancemod/dckvis_s.o: ../lancemod/dckvis_s.s
+	$(MAKE) -C ../lancemod dckvis_s.o
+$(OBJECTS_C): ../lancemod/dckvis.h

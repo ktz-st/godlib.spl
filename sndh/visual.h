@@ -24,4 +24,13 @@ void PsgScope_Draw(void *screen,const U16 *params,U16 *previous);
 void PsgCircles_Draw(void *screen,const U16 *ages,U16 *previous);
 void PsgOrgan_Init(void *screen);
 void PsgOrgan_Update(const U16 *levels);
+extern U8 gPsgHistogram[16];
+void PsgHistogram_Reset(void);
+void PsgHistogram_Update(void);
+void PsgHistogram_Draw(void *screen,const U8 *levels,U8 *previous);
+extern U16 gPsgDckLevels[3],gPsgDckPalette[16];
+typedef void (*fPsgDckDraw)(void *,const U16 *,U16 *);
+extern fPsgDckDraw gPsgDckDraw[4];
+void PsgDck_Reset(void);
+void PsgDck_Update(void);
 #endif

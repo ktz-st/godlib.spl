@@ -45,7 +45,7 @@ The replay now allocates its tables/code/DMA workspace for the selected frequenc
 module loading adds guards only for nonempty samples. Shutdown frees the complete
 workspace. See `godlib/music/lancemod.md` for memory accounting.
 
-Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY → stereo L/R → mono; **V** hides/shows the selected
+Oscilloscope mode: **O** cycles bars → four traces → ICE stereo XY → stereo L/R → mono → five DCK bar styles; **V** hides/shows the selected
 visualizer. The four 64-point traces use current channel sample position,
 pitch and volume, drawn in ASM with independent history for both screen pages.
 They are read-only source previews, not extracted stereo DMA channels. The
@@ -59,7 +59,21 @@ in the [shared scope documentation](../../godlib/music/modscope.md#ice-delayed-s
 
 Two additional time-domain modes are available: **separate L/R** and a
 **single mono trace**, averaging signed PCM as `(L + R) / 2`. O cycles bars →
-four channel traces → ICE XY → stereo L/R → mono. V hides/shows the selected
+four channel traces → ICE XY → stereo L/R → mono → five DCK styles. V hides/shows the selected
 mode. Each trace has 128 points from native PCM; stereo uses green/cyan and
 mono uses white. Drawing and averaging are ASM and reuse existing PCM/history
 buffers. Audio playback stays stereo.
+
+## Five additional DCK bar styles
+
+`O` now cycles through **ten modes**. After the original mono scope come
+DCK narrow 32, narrow 64, wide 64, wide 128 and horizontal bars. `V` hides/shows
+any of them. Each native channel has its own colour; labels L1/R2/R3/L4 retain
+the MOD stereo assignment. They use the existing 0..16 retrigger-activity
+levels, not measured audio amplitude or an additional replay hook.
+
+One shared ASM renderer draws only changed rows/blocks on each display page,
+reusing the existing four-word page history. Playback remains under its
+existing VBL owner. No frame cache, new heap buffer or library API is added.
+
+See [DCK styles, verification and CPU](../lancemod/DCK-VISUALIZERS.md).

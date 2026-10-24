@@ -16,8 +16,9 @@ void (*gSndVisPlay)(void);
 volatile U16 gSndVisMode,gSndVisRaster,gSndVisReady,gSndVisExited,gSndVisEnabled=1;
 volatile U32 gSndVisFrames,gSndVisMissedVbl,gSndVisLastVbl;
 U16 gSndVisPageView[2]={0xffff,0xffff},gSndVisBarsOld[2][3];
-U8 gSndVisBandsOld[2][80],gSndVisPianoOld[2][80];
+U8 gSndVisBandsOld[2][80],gSndVisPianoOld[2][80],gSndVisHistogramOld[2][16];
 U16 gSndVisRingOld[2][12],gSndVisScopeOld[2][6];
+static U16 sHistogramPalette[16]={0,0x077,0,0,0,0,0,0,0,0,0,0,0,0,0,0x777};
 static U16 sSpectrumPalette[16]={0,0x077,0x777};
 static U16 sExtraPalette[16]={0,0xfff,0x222,0x444,0,0,0,0,0,0xf00,0x0f0,0xff0,0x00f,0xf0f,0x0ff,0xfff};
 static U16 sOrganPalette[16]={0,0,0,0,0,0,0,0,0,0xf00,0x0f0,0xff0,0x00f,0xf0f,0x0ff,0xfff};
@@ -35,17 +36,34 @@ static void Scene(U16 initial)
  }else if(gSndVisMode==0){
   for(i=0;i<3;++i){char label[2]={'A'+i,0};Font8x8_PrintColourCanvas(label,canvas,120+32*i,24,2);}
  }
- if(gSndVisMode>=2){
-  static const char *title[4]={"PIANO / C1-G7","SYNTHETIC PSG / 10.24 MS","NOTE CHANGES / EXPANDING RINGS","COLOUR ORGAN / RGB"};
+ if(gSndVisMode==6){
+  PsgHistogram_Reset();
+  for(i=0;i<16;++i){char label[3];
+   if(i<10){label[0]='0'+i;label[1]=0;}else{label[0]='1';label[1]='0'+i-10;label[2]=0;}
+   Font8x8_PrintColourCanvas(label,canvas,32+16*i+(i<10?4:0),152,15);
+  }
+ }
+ if(gSndVisMode>=2 && gSndVisMode<7){
+  static const char *title[5]={"PIANO / C1-G7","SYNTHETIC PSG / 10.24 MS","NOTE CHANGES / EXPANDING RINGS","COLOUR ORGAN / RGB","VOLUME DISTRIBUTION / 0..15"};
   Font8x8_PrintColourCanvas(title[gSndVisMode-2],canvas,(40-String_StrLen(title[gSndVisMode-2]))/2*8,32,15);
   if(gSndVisMode==2)PsgPiano_Init(Screen_GetpBack());
   if(gSndVisMode==5)PsgOrgan_Init(Screen_GetpBack());
-  for(i=0;i<3;++i){char label[2]={'A'+i,0};Font8x8_PrintColourCanvas(label,canvas,gSndVisMode==3?8:80+80*i,gSndVisMode==3?60+40*i:152,gSndVisMode==3?(1<<i):9+i+(i==2));}
+  if(gSndVisMode<6)for(i=0;i<3;++i){char label[2]={'A'+i,0};Font8x8_PrintColourCanvas(label,canvas,gSndVisMode==3?8:80+80*i,gSndVisMode==3?60+40*i:152,gSndVisMode==3?(1<<i):9+i+(i==2));}
  }
- Font8x8_PrintColourCanvas("ENV=MAX / FIXED 0..15",canvas,80,184,gSndVisMode>=2?15:2);
+ if(gSndVisMode>=7){
+  static const char *title[4]={"DCK PSG HORIZONTAL","DCK PSG SEGMENTS 16","DCK PSG SEGMENTS 32","DCK PSG SEGMENTS 80"};
+  const char *name=title[gSndVisMode-7];PsgDck_Reset();
+  Font8x8_PrintColourCanvas(name,canvas,(40-String_StrLen(name))/2*8,28,15);
+  for(i=0;i<3;++i){char label[2]={'A'+i,0};
+   U16 x=gSndVisMode==7?8:gSndVisMode==8?124+32*i:gSndVisMode==9?92+64*i:60+96*i;
+   Font8x8_PrintColourCanvas(label,canvas,x,gSndVisMode==7?66+32*i:176,1<<i);
+  }
+ }
+ if(gSndVisMode==6)Font8x8_PrintColourCanvas("RAW PSG 0..15 / ENV NOT SAMPLED",canvas,40,184,15);
+ else Font8x8_PrintColourCanvas("ENV=MAX / FIXED 0..15",canvas,80,184,gSndVisMode>=2?15:2);
  Font8x8_PrintColourCanvas("F1 CPU  O VISUAL V SHOW  ESC EXIT",canvas,32,192,gSndVisMode>=2?15:2);
  if(initial){GraphicCanvas_CopyScreen(Screen_GetpLogicGraphic(),Screen_GetpBack());GraphicCanvas_CopyScreen(Screen_GetpPhysicGraphic(),Screen_GetpBack());}
- Video_SetPalST(gSndVisMode==5?sOrganPalette:gSndVisMode==0?gPsgBarsPalette:gSndVisMode==1?sSpectrumPalette:gSndVisMode==3||gSndVisMode==4?sScopePalette:sExtraPalette);
+ Video_SetPalST(gSndVisMode>=7?gPsgDckPalette:gSndVisMode==6?sHistogramPalette:gSndVisMode==5?sOrganPalette:gSndVisMode==0?gPsgBarsPalette:gSndVisMode==1?sSpectrumPalette:gSndVisMode==3||gSndVisMode==4?sScopePalette:sExtraPalette);
  gSndVisPageView[0]=gSndVisPageView[1]=0xffff;
 }
 static void Idle(void){}
@@ -76,17 +94,18 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
   while(IKBD_GetKbdBytesWaiting()){
    U8 key=IKBD_PopKbdByte();
    if(key==eIKBDSCAN_SPACE || key==eIKBDSCAN_ESC)quit=1;
-   if(key==eIKBDSCAN_O){gSndVisMode=(gSndVisMode+1)%6;Scene(0);}
+   if(key==eIKBDSCAN_O){gSndVisMode=(gSndVisMode+1)%11;Scene(0);}
    if(key==eIKBDSCAN_V)gSndVisEnabled^=1;
    if(key==eIKBDSCAN_F1)gSndVisRaster^=1;
   }
-  PsgVis_Update();PsgExtra_Update();page=Screen_GetLogicIndex();view=gSndVisMode==5?6:gSndVisEnabled?gSndVisMode+1:0;
+  PsgVis_Update();PsgExtra_Update();if(gSndVisMode==6)PsgHistogram_Update();if(gSndVisMode>=7)PsgDck_Update();page=Screen_GetLogicIndex();view=gSndVisMode==5?6:gSndVisEnabled?gSndVisMode+1:0;
   if(view!=gSndVisPageView[page]){
    GraphicCanvas_CopyScreen(Screen_GetpLogicGraphic(),Screen_GetpBack());
    Memory_Clear(sizeof(gSndVisBarsOld[page]),gSndVisBarsOld[page]);
    Memory_Clear(sizeof(gSndVisBandsOld[page]),gSndVisBandsOld[page]);
    Memory_Clear(sizeof(gSndVisPianoOld[page]),gSndVisPianoOld[page]);
    for(i=0;i<6;++i)gSndVisScopeOld[page][i]=0xffff;
+   Memory_Clear(sizeof(gSndVisHistogramOld[page]),gSndVisHistogramOld[page]);
    Memory_Clear(sizeof(gSndVisRingOld[page]),gSndVisRingOld[page]);gSndVisPageView[page]=view;
   }
   if(view==1)PsgBars_Draw(Screen_GetpLogic(),gPsgLevels,gSndVisBarsOld[page]);
@@ -95,6 +114,8 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
   if(view==4){PsgScope_Prepare();PsgScope_Draw(Screen_GetpLogic(),gScopeParams,gSndVisScopeOld[page]);}
   if(view==5)PsgCircles_Draw(Screen_GetpLogic(),gRingAges,gSndVisRingOld[page]);
   if(view==6)PsgOrgan_Update(gSndVisEnabled?gPsgLevels:0);
+  if(view==7)PsgHistogram_Draw(Screen_GetpLogic(),gPsgHistogram,gSndVisHistogramOld[page]);
+  if(view>=8 && view<=11)gPsgDckDraw[view-8](Screen_GetpLogic(),gPsgDckLevels,gSndVisBarsOld[page]);
   ++gSndVisFrames;SndVis_FrameDone();
  }
  Snd_TuneDeInit(&info);Snd_SetpChaserFunc(Idle);Snd_SetpPlayFunc(Idle);Snd_DeInit();

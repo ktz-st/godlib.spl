@@ -2,6 +2,8 @@
  * GodLib LanceMod sample: channel activity with James Boulton's STF_DEMO VU bars.
  * mt_Visualizer counts retrigger age; these bars do not measure audio amplitude.
  ************************************************************************************/
+#include "dckvis.h"
+#include <godlib/string/string.h>
 #include <godlib/file/file.h>
 #include <godlib/font8x8/font8x8.h>
 #include <godlib/gemdos/gemdos.h>
@@ -26,7 +28,7 @@ S8 gLanceVisScope[dMODSCOPE_BYTES],gLanceVisScopePrevious[2][dMODSCOPE_BYTES];
 extern void XYVis_Draw(void *screen,const S8 *stereo,U16 *previousOffsets);
 S8 gLanceVisStereo[dMODSCOPE_STEREO_BYTES];
 U16 gLanceVisXYPrevious[2][dMODSCOPE_XY_POINTS*2];
-volatile U16 gLanceVisMode; /* 0 bars, 1 four traces, 2 ICE XY, 3 stereo, 4 mono */
+volatile U16 gLanceVisMode; /* 0..4 existing modes; 5..9 five DCK bar layouts. */
 U16 gLanceVisPageView[2]={0xffff,0xffff};
 U16 gLanceVisAge[4],gLanceVisLevel[4],gLanceVisPrevious[2][4];
 volatile U16 gLanceVisReady,gLanceVisExited,gLanceVisEnabled=1,gLanceVisRaster;
@@ -40,8 +42,15 @@ static void DrawScene(U16 initial)
     static const U16 x[4]={48,208,256,96};
     sGraphicCanvas *canvas=Screen_GetpBackGraphic();
     GraphicCanvas_ClearScreen(canvas);
-    Font8x8_PrintColourCanvas("LANCEMOD / LOSTPARO.MOD / 25KHZ",canvas,40,8,1);
-    if(gLanceVisMode==3) {
+    Font8x8_PrintColourCanvas("LANCEMOD / LOSTPARO.MOD / 25KHZ",canvas,40,8,gLanceVisMode>=5?15:1);
+    if(gLanceVisMode>=5) {
+        static const char *title[5]={"DCK NARROW 32","DCK NARROW 64","DCK WIDE 64","DCK WIDE 128","DCK HORIZONTAL"};
+        const char *name=title[gLanceVisMode-5];
+        Font8x8_PrintColourCanvas(name,canvas,(40-String_StrLen(name))/2*8,28,15);
+        for(i=0;i<4;++i){char label[3]={(i==0 || i==3)?'L':'R',(char)('1'+i),0};
+            Font8x8_PrintColourCanvas(label,canvas,gLanceVisMode==9?8:(gLanceVisMode<7?100:104)+32*i,gLanceVisMode==9?58+28*i:176,1<<i);
+        }
+    } else if(gLanceVisMode==3) {
         Font8x8_PrintColourCanvas("LEFT",canvas,144,24,4);
         Font8x8_PrintColourCanvas("RIGHT",canvas,144,108,8);
     } else if(gLanceVisMode==4) {
@@ -55,12 +64,12 @@ static void DrawScene(U16 initial)
             gLanceVisMode?((i==0 || i==3)?60:220):x[i]-12,
             (gLanceVisMode && i>=2)?108:24,2);
     }
-    Font8x8_PrintColourCanvas("F1 CPU  O VISUAL V SHOW  ESC EXIT",canvas,32,192,1);
+    Font8x8_PrintColourCanvas("F1 CPU  O VISUAL V SHOW  ESC EXIT",canvas,32,192,gLanceVisMode>=5?15:1);
     if(initial) {
         GraphicCanvas_CopyScreen(Screen_GetpLogicGraphic(),Screen_GetpBack());
         GraphicCanvas_CopyScreen(Screen_GetpPhysicGraphic(),Screen_GetpBack());
     }
-    Video_SetPalST(gLanceVisMode>=3?gStereoVisPalette:gLanceVisPalette);
+    Video_SetPalST(gLanceVisMode>=5?gDckModVisPalette:gLanceVisMode>=3?gStereoVisPalette:gLanceVisPalette);
 }
 
 /* Stable debug/test boundary: frame has been rendered, audio continues in VBL. */
@@ -104,7 +113,7 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
             }
             if(key==eIKBDSCAN_V)gLanceVisEnabled^=1;
             if(key==eIKBDSCAN_O) {
-                gLanceVisMode=(gLanceVisMode+1)%5;
+                gLanceVisMode=(gLanceVisMode+1)%10;
                 DrawScene(0);
                 gLanceVisPageView[0]=gLanceVisPageView[1]=0xffff;
             }
@@ -133,12 +142,14 @@ S16 GodLib_Game_Main(S16 argc,char **argv)
             } else if(view==3) {
                 LanceMod_GetStereoOscilloscope(gLanceVisStereo);
                 XYVis_Draw(gLanceVisScreen,gLanceVisStereo,gLanceVisXYPrevious[gLanceVisPage]);
-            } else if(view>=4) {
+            } else if(view==4 || view==5) {
                 LanceMod_GetStereoOscilloscope(gLanceVisStereo);
                 if(view==4)StereoVis_DrawSplit(gLanceVisScreen,gLanceVisStereo,gLanceVisScopePrevious[gLanceVisPage]);
                 else StereoVis_DrawMono(gLanceVisScreen,gLanceVisStereo,gLanceVisScopePrevious[gLanceVisPage]);
             } else if(view==1) {
                 LanceVis_Draw(gLanceVisScreen,gLanceVisLevel,gLanceVisPrevious[gLanceVisPage]);
+            } else if(view>=6 && view<=10) {
+                gDckModVisDraw[view-6](gLanceVisScreen,gLanceVisLevel,gLanceVisPrevious[gLanceVisPage]);
             }
         }
         ++gLanceVisFrames;

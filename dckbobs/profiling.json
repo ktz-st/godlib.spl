@@ -1,0 +1,280 @@
+{
+  "machine": "STE 68000 8 MHz, 4 MiB, PAL RGB, German TOS 1.62",
+  "scope": "Bobs ASM frame, GodLib sprite drawing, chunk restore/store; BLiTTER HOG stalls included. Excludes scene/reset, input, C Target dispatch, Screen_Update/VBL/OS.",
+  "path": "NOEUD, one complete 360-position cycle per case",
+  "profiles": [
+    {
+      "backend": "cpu",
+      "mode": "restore",
+      "bobs": 1,
+      "frames": 360,
+      "sprite_calls": 360,
+      "cycles_per_frame": {
+        "trajectory": 1125.1,
+        "restore": 5044.266666666666,
+        "draw": 25647.066666666666,
+        "store": 1083.2444444444445,
+        "dispatch": 96.15555555555555
+      },
+      "total_cycles_per_frame": 32995.833333333336,
+      "pal_frame_percent": 20.622395833333336,
+      "ms_at_8mhz": 4.124479166666667
+    },
+    {
+      "backend": "cpu",
+      "mode": "restore",
+      "bobs": 4,
+      "frames": 360,
+      "sprite_calls": 1440,
+      "cycles_per_frame": {
+        "trajectory": 1125.111111111111,
+        "restore": 18851.98888888889,
+        "draw": 101625.34444444445,
+        "store": 3514.011111111111,
+        "dispatch": 96.15555555555555
+      },
+      "total_cycles_per_frame": 125212.61111111111,
+      "pal_frame_percent": 78.25788194444445,
+      "ms_at_8mhz": 15.65157638888889
+    },
+    {
+      "backend": "cpu",
+      "mode": "restore",
+      "bobs": 8,
+      "frames": 360,
+      "sprite_calls": 2880,
+      "cycles_per_frame": {
+        "trajectory": 1126.1888888888889,
+        "restore": 37267.74444444444,
+        "draw": 202928.85555555555,
+        "store": 6752.7,
+        "dispatch": 96.15555555555555
+      },
+      "total_cycles_per_frame": 248171.64444444445,
+      "pal_frame_percent": 155.10727777777777,
+      "ms_at_8mhz": 31.021455555555555
+    },
+    {
+      "backend": "cpu",
+      "mode": "trails",
+      "bobs": 1,
+      "frames": 360,
+      "sprite_calls": 720,
+      "cycles_per_frame": {
+        "trajectory": 1125.5555555555557,
+        "restore": 44.0,
+        "draw": 51055.85555555556,
+        "store": 44.0,
+        "dispatch": 96.31111111111112
+      },
+      "total_cycles_per_frame": 52365.72222222222,
+      "pal_frame_percent": 32.72857638888889,
+      "ms_at_8mhz": 6.545715277777777
+    },
+    {
+      "backend": "cpu",
+      "mode": "trails",
+      "bobs": 4,
+      "frames": 360,
+      "sprite_calls": 2880,
+      "cycles_per_frame": {
+        "trajectory": 1126.0555555555557,
+        "restore": 44.15555555555556,
+        "draw": 203011.76666666666,
+        "store": 44.15555555555556,
+        "dispatch": 96.31111111111112
+      },
+      "total_cycles_per_frame": 204322.44444444444,
+      "pal_frame_percent": 127.70152777777777,
+      "ms_at_8mhz": 25.540305555555555
+    },
+    {
+      "backend": "cpu",
+      "mode": "trails",
+      "bobs": 8,
+      "frames": 360,
+      "sprite_calls": 5760,
+      "cycles_per_frame": {
+        "trajectory": 1126.0333333333333,
+        "restore": 44.0,
+        "draw": 405617.0333333333,
+        "store": 44.0,
+        "dispatch": 96.46666666666667
+      },
+      "total_cycles_per_frame": 406927.5333333333,
+      "pal_frame_percent": 254.32970833333331,
+      "ms_at_8mhz": 50.865941666666664
+    },
+    {
+      "backend": "blitter",
+      "mode": "restore",
+      "bobs": 1,
+      "frames": 360,
+      "sprite_calls": 360,
+      "cycles_per_frame": {
+        "trajectory": 1125.588888888889,
+        "restore": 5044.177777777778,
+        "draw": 9820.455555555556,
+        "store": 1082.3222222222223,
+        "dispatch": 96.31111111111112
+      },
+      "total_cycles_per_frame": 17168.855555555554,
+      "pal_frame_percent": 10.730534722222222,
+      "ms_at_8mhz": 2.146106944444444
+    },
+    {
+      "backend": "blitter",
+      "mode": "restore",
+      "bobs": 4,
+      "frames": 360,
+      "sprite_calls": 1440,
+      "cycles_per_frame": {
+        "trajectory": 1125.7111111111112,
+        "restore": 18851.61111111111,
+        "draw": 38269.444444444445,
+        "store": 3512.6666666666665,
+        "dispatch": 96.15555555555555
+      },
+      "total_cycles_per_frame": 61855.58888888889,
+      "pal_frame_percent": 38.65974305555555,
+      "ms_at_8mhz": 7.731948611111111
+    },
+    {
+      "backend": "blitter",
+      "mode": "restore",
+      "bobs": 8,
+      "frames": 360,
+      "sprite_calls": 2880,
+      "cycles_per_frame": {
+        "trajectory": 1125.7111111111112,
+        "restore": 37267.688888888886,
+        "draw": 76308.71111111112,
+        "store": 6751.811111111111,
+        "dispatch": 96.31111111111112
+      },
+      "total_cycles_per_frame": 121550.23333333334,
+      "pal_frame_percent": 75.96889583333333,
+      "ms_at_8mhz": 15.193779166666667
+    },
+    {
+      "backend": "blitter",
+      "mode": "trails",
+      "bobs": 1,
+      "frames": 360,
+      "sprite_calls": 720,
+      "cycles_per_frame": {
+        "trajectory": 1125.5666666666666,
+        "restore": 44.15555555555556,
+        "draw": 19396.222222222223,
+        "store": 44.15555555555556,
+        "dispatch": 96.46666666666667
+      },
+      "total_cycles_per_frame": 20706.566666666666,
+      "pal_frame_percent": 12.941604166666666,
+      "ms_at_8mhz": 2.5883208333333334
+    },
+    {
+      "backend": "blitter",
+      "mode": "trails",
+      "bobs": 4,
+      "frames": 360,
+      "sprite_calls": 2880,
+      "cycles_per_frame": {
+        "trajectory": 1127.6222222222223,
+        "restore": 44.0,
+        "draw": 76393.62222222223,
+        "store": 44.0,
+        "dispatch": 96.0
+      },
+      "total_cycles_per_frame": 77705.24444444444,
+      "pal_frame_percent": 48.565777777777775,
+      "ms_at_8mhz": 9.713155555555556
+    },
+    {
+      "backend": "blitter",
+      "mode": "trails",
+      "bobs": 8,
+      "frames": 360,
+      "sprite_calls": 5760,
+      "cycles_per_frame": {
+        "trajectory": 1125.5555555555557,
+        "restore": 44.0,
+        "draw": 152338.3777777778,
+        "store": 44.0,
+        "dispatch": 96.31111111111112
+      },
+      "total_cycles_per_frame": 153648.24444444446,
+      "pal_frame_percent": 96.03015277777779,
+      "ms_at_8mhz": 19.206030555555557
+    }
+  ],
+  "normal_cadence": [
+    {
+      "backend": "cpu",
+      "mode": "restore",
+      "bobs": 4,
+      "frames": 1493,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "backend": "cpu",
+      "mode": "trails",
+      "bobs": 4,
+      "frames": 778,
+      "missed_vbls": 779,
+      "fps": 24.98394348105331
+    },
+    {
+      "backend": "blitter",
+      "mode": "restore",
+      "bobs": 4,
+      "frames": 1550,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "backend": "blitter",
+      "mode": "trails",
+      "bobs": 4,
+      "frames": 1478,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "backend": "cpu",
+      "mode": "restore",
+      "bobs": 8,
+      "frames": 763,
+      "missed_vbls": 763,
+      "fps": 25.0
+    },
+    {
+      "backend": "cpu",
+      "mode": "trails",
+      "bobs": 8,
+      "frames": 507,
+      "missed_vbls": 1016,
+      "fps": 16.64478003939593
+    },
+    {
+      "backend": "blitter",
+      "mode": "restore",
+      "bobs": 8,
+      "frames": 1430,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "backend": "blitter",
+      "mode": "trails",
+      "bobs": 8,
+      "frames": 718,
+      "missed_vbls": 666,
+      "fps": 25.939306358381504
+    }
+  ],
+  "release_sha256": "24ae6fddf212ba5afcb1f21e7d551f894961eb7a377a8e0a8a83e55cf17329b5",
+  "debug_sha256": "f87ecfd12a9c58f5303156331634279bf0dab513900bfca8ae0e124fcc2bb0cb",
+  "godlib_archive_sha256": "804a7db1f22ee91b8c68c827d2db33f521d58566f092ef73d2373a239fe981b2"
+}

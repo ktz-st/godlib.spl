@@ -1,0 +1,107 @@
+{
+  "full_frame_xor_references": 25,
+  "byte_mismatches": 0,
+  "all_modes_and_wrap_checked": true,
+  "profiles": [
+    {
+      "mode": "right",
+      "stars": 64,
+      "draws": 32,
+      "cycles_per_update": 17793.5,
+      "ms_8mhz": 2.2241875,
+      "pal_frame_percent": 11.1209375
+    },
+    {
+      "mode": "right",
+      "stars": 128,
+      "draws": 32,
+      "cycles_per_update": 34466.75,
+      "ms_8mhz": 4.30834375,
+      "pal_frame_percent": 21.54171875
+    },
+    {
+      "mode": "right",
+      "stars": 256,
+      "draws": 32,
+      "cycles_per_update": 67810.25,
+      "ms_8mhz": 8.47628125,
+      "pal_frame_percent": 42.38140625
+    },
+    {
+      "mode": "left",
+      "stars": 64,
+      "draws": 32,
+      "cycles_per_update": 17278.125,
+      "ms_8mhz": 2.159765625,
+      "pal_frame_percent": 10.798828125
+    },
+    {
+      "mode": "left",
+      "stars": 128,
+      "draws": 32,
+      "cycles_per_update": 33438.25,
+      "ms_8mhz": 4.17978125,
+      "pal_frame_percent": 20.89890625
+    },
+    {
+      "mode": "left",
+      "stars": 256,
+      "draws": 32,
+      "cycles_per_update": 65757.875,
+      "ms_8mhz": 8.219734375,
+      "pal_frame_percent": 41.098671875
+    },
+    {
+      "mode": "down",
+      "stars": 64,
+      "draws": 32,
+      "cycles_per_update": 18306.25,
+      "ms_8mhz": 2.28828125,
+      "pal_frame_percent": 11.44140625
+    },
+    {
+      "mode": "down",
+      "stars": 128,
+      "draws": 32,
+      "cycles_per_update": 35499.0,
+      "ms_8mhz": 4.437375,
+      "pal_frame_percent": 22.186875
+    },
+    {
+      "mode": "down",
+      "stars": 256,
+      "draws": 32,
+      "cycles_per_update": 69871.625,
+      "ms_8mhz": 8.733953125,
+      "pal_frame_percent": 43.669765625
+    },
+    {
+      "mode": "up",
+      "stars": 64,
+      "draws": 32,
+      "cycles_per_update": 18296.75,
+      "ms_8mhz": 2.28709375,
+      "pal_frame_percent": 11.43546875
+    },
+    {
+      "mode": "up",
+      "stars": 128,
+      "draws": 32,
+      "cycles_per_update": 35476.0,
+      "ms_8mhz": 4.4345,
+      "pal_frame_percent": 22.1725
+    },
+    {
+      "mode": "up",
+      "stars": 256,
+      "draws": 32,
+      "cycles_per_update": 69859.75,
+      "ms_8mhz": 8.73246875,
+      "pal_frame_percent": 43.66234375
+    }
+  ],
+  "machine": "Hatari-HRDB STE, MC68000 8 MHz, PAL RGB, 4 MB, German TOS 1.62",
+  "scope": "32 complete Erase+Advance+Draw calls, ASM only; density primed before profiling; excludes startup/input/waits/interrupt handlers",
+  "debug_sha256": "d29a4b0ee04d2df8bb49efeeca38661fb590c613bb9271784d98b96f74296813",
+  "release_sha256": "59c292b2d7d1fbc6f2b3f0a0e065bd598b5b3a213a11b7bba9fff1dd426ea65f"
+}

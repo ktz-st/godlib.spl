@@ -1,0 +1,22 @@
+{
+  "source": "DCK disk B FONTES/BIG.PC1, lossless PI1",
+  "sha256": "bdad7fd70d08293312a6008e9978dbcd162656a3cc378710679b76e6fc7d8983",
+  "glyph": [
+    40,
+    32
+  ],
+  "row_bytes": 20,
+  "gap_rows": 8,
+  "column_x": [
+    48,
+    144,
+    240
+  ],
+  "window_y": 28,
+  "window_height": 144,
+  "texts": [
+    "GODLIB VERTICAL SCROLLER!   ",
+    "ATARI ST - BIG FONT - FULL COLOUR!   ",
+    "DCK LIVES AGAIN! ASM AND ONE PIXEL PER FRAME!   "
+  ]
+}

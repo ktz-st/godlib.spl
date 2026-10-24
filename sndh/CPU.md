@@ -89,3 +89,61 @@ Native verification checks 43 palette states: every fixed volume, envelope
 flags, mixer/noise gating, geometry of all three discs, and unchanged bytes in
 both display buffers and Back throughout animation and V hide/show. Six-mode
 wraparound and clean TOS exit pass on German TOS 1.62.
+
+## Seventh mode: DCK volume histogram (2026-10-24)
+
+This new mode was measured separately on the seven-mode build with Popcorn,
+using the same 8 MHz PAL STE / German TOS 1.62 / 1 MiB configuration.
+`histogram-results.json` contains instruction counters, 2079 profiled frames,
+96-frame fixture verification and exact build hashes. The earlier six-mode
+results above remain historical measurements of their identified binaries.
+
+| Component | Cycles/frame | PAL frame share |
+|---|---:|---:|
+| Histogram decay/trigger | 902 | 0.56% |
+| Per-page delta drawing | 2021 | 1.26% |
+| New histogram subtotal | 2923 | **1.83%** |
+| Shared snapshot, PSG and animation processing | 7340 | 4.59% |
+| Visualization subtotal | 10264 | **6.41%** |
+| Music separately | 7677 | 4.80% |
+
+Mode-change copies/reset, C dispatch and OS wrappers are excluded. There were
+2634 normal frames around this profiling window with zero missed VBLs. New
+rendering cost depends on how many volume buckets change and on their heights.
+
+The histogram object is 276 bytes of code/constant rows plus 16 bytes of
+counters; C keeps another 32 bytes of page history and a 32-byte palette.
+The shipped PRG grew from 174226 to 174938 bytes in this checkout, including
+mode integration, axis labels and captions. No frame cache or runtime heap
+allocation was introduced. Replay code and all existing renderer objects are
+unchanged; this mode consumes only the existing coherent RAM register snapshot.
+
+## Four DCK PSG bar modes (2026-10-24)
+
+Measured on the eleven-mode build, same 8 MHz PAL STE / German TOS 1.62 /
+1 MiB setup with Popcorn. Instruction-range counts exclude C dispatch, OS
+wrappers, one-time scene copies/reset and labels. Visualization totals include
+the shared snapshot, note/level decoding and existing animation bookkeeping.
+Music is measured separately. All values are song-dependent averages.
+
+| Style | Frames | ASM drawing | Peak update + drawing | Visualization subtotal |
+|---|---:|---:|---:|---:|
+| Horizontal 256×10 | 1723 | 0.92% | 1.10% | 5.67% |
+| Segmented 16 px | 1742 | 0.81% | 0.98% | 5.55% |
+| Segmented 32 px | 1743 | 1.16% | 1.33% | 5.91% |
+| Segmented 80 px | 1742 | 1.90% | 2.08% | 6.65% |
+
+Music costs about 4.8% in each window. Peak update costs about 283 cycles/frame
+(0.18%). All four run at 50 FPS; the measured normal windows total 9216 frames
+with zero missed VBLs. The maximum-level fixture is correctness coverage,
+not a worst-case CPU measurement.
+
+New state is six bytes of peak levels. Existing VU per-page heights are reused;
+there is no new frame cache or heap allocation. The PRG grows from the preceding
+histogram build's 174938 to 175989 bytes. The 80 px variant uses four segments
+per level rather than DCK's six, keeping the full bar clear of the 200-line UI.
+
+`dck-psg-results.json` records hashes, counters, scope and 256 full-buffer fixture
+checks. Live tests also verify both pages' header/footer, clean hide/show,
+eleven-mode wraparound and exit. Native previews decode a complete display page;
+control-debugger stops can interrupt the emulator's on-screen scanout.

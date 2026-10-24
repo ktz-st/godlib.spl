@@ -1,0 +1,11 @@
+{
+  "actual_shipped_prg_tested": true,
+  "code_data_matches_external_symbols": true,
+  "ram_mib": 1,
+  "default_bobs": 4,
+  "default_blitter": true,
+  "frames_start": 6820,
+  "pause_and_controls": true,
+  "clean_exit": true,
+  "release_sha256": "24ae6fddf212ba5afcb1f21e7d551f894961eb7a377a8e0a8a83e55cf17329b5"
+}

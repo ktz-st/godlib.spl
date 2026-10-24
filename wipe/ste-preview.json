@@ -1,0 +1,27 @@
+{
+  "actual_library_renderer": "Wipe_Render_STE from current godlib/libgod.a",
+  "source_archive_sha256": "f106ac8fb4203bda0be7cdb01e4f944eb379d73c02663d24e506a67c564b3b46",
+  "temporary_harness_sha256": "4c2a82a770d4b63ecbb69fc5dbd9d344ea5610e40a340f75e93cf18cc46e36b2",
+  "machine": "Hatari STE, 68000 8 MHz, 1 MiB, German TOS 1.62",
+  "original_mask_frames": 589,
+  "effects_checked": 39,
+  "all_frames_checked_for_effects": [
+    1,
+    3,
+    4,
+    10,
+    21,
+    32
+  ],
+  "other_effects": "middle mask in both directions",
+  "full_buffer_checks": 236,
+  "byte_mismatches": 0,
+  "source_picture": "godlib.spl/wipe/COAST.PI1",
+  "source_picture_sha256": "36b487a57d57fbac6928806de1b0e2a0346f03699ce0400e15cfe9c9cac4ed5e",
+  "call_adapter": "A0=source, A1=destination, A2=address of effect-mask table pointer, D1=current frame; exercises corrected 32-byte legacy frame stride, preserves C ABI registers",
+  "closing": "Source AND complement of cumulative original masks, supplied to the same actual STE masked-copy renderer",
+  "preview": "60-frame normalized 3x2 contact sheet from native emulator buffers, 60 ms per preview frame; added labels outside native 320x200 areas, not recorded wall-clock speed",
+  "busy_cleared": true,
+  "clean_exit_and_restored_vbl": true,
+  "library_or_example_program_modified": false
+}

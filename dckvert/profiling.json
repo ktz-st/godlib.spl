@@ -1,0 +1,31 @@
+{
+  "pixel_mismatches": 0,
+  "profiles": [
+    {
+      "lanes": 1,
+      "draws": 32,
+      "cycles_per_update": 22878.625,
+      "ms_8mhz": 2.859828125,
+      "pal_frame_percent": 14.299140625
+    },
+    {
+      "lanes": 2,
+      "draws": 32,
+      "cycles_per_update": 44327.375,
+      "ms_8mhz": 5.540921875,
+      "pal_frame_percent": 27.704609375
+    },
+    {
+      "lanes": 3,
+      "draws": 32,
+      "cycles_per_update": 65783.875,
+      "ms_8mhz": 8.222984375,
+      "pal_frame_percent": 41.114921875
+    }
+  ],
+  "machine": "Hatari-HRDB STE, MC68000 8 MHz, PAL RGB, 4 MB, German TOS 1.62",
+  "scope": "32 completed ASM Advance+Draw updates, including row copy loops; excluding setup, GodLib input/screen waits and interrupt handlers",
+  "effect_pixels_checked": 17280,
+  "debug_sha256": "c60ab333ff476b2f90fe9ced5e76c85b4d92e645344f1817ad1c08f6c6b6e630",
+  "release_sha256": "1726c9db802461e173d0d495adfbb2bb2a79671da0be3287f20ee917cd5c4e70"
+}

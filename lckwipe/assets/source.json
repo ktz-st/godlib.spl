@@ -1,0 +1,73 @@
+{
+  "pictures": [
+    {
+      "source": "SCENE0.png",
+      "source_sha256": "39e71c0eabe6f6fc77113f164594eb91854f18004607cc32ce57b47603511594",
+      "native_bytes": 25600,
+      "native_sha256": "aad61fd8229dd7a7015741f6b2859ee35fb98e6409cf6b68c9f2acc02f8a5948",
+      "palette_words": [
+        "0x0",
+        "0xc43",
+        "0x122",
+        "0x75a",
+        "0x19",
+        "0xa3a",
+        "0x81",
+        "0xfff",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0xfff"
+      ],
+      "origin": "CRT ABC2 8-colour scene 1, source frame crop Y=24..183 (artwork Y=8..167)"
+    },
+    {
+      "source": "SCENE1.png",
+      "source_sha256": "375da9a7d710e0971ce199c4b4fbaedca8cb9b556ddfdeaa390e72781b91fbe6",
+      "native_bytes": 25600,
+      "native_sha256": "3c57edbcd9b486c8d84ea7738804e476a1aa07d4f03030355cc54d26af899d8d",
+      "palette_words": [
+        "0x0",
+        "0x333",
+        "0x199",
+        "0xec3",
+        "0x92a",
+        "0x81",
+        "0xcb3",
+        "0xfff",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0x0",
+        "0xfff"
+      ],
+      "origin": "CRT ABC2 8-colour scene 2, source frame crop Y=24..183 (artwork Y=8..167)"
+    }
+  ],
+  "image_viewport": [
+    0,
+    24,
+    320,
+    160
+  ],
+  "hud_palette_index": 15,
+  "original_code": "All 7 appear + 7 disappear entries of LCK4/LCK5; full mapping in README.md and DCK/EFFECTS-AUDIT.md",
+  "adaptations": [
+    "320x160 stage with persistent HUD",
+    "spiral quantized to unique 8x8 cells; duplicate visits removed, missed cells appended",
+    "fold height shrinks once per 10 rows instead of 13 for 200-line original; source row = n+2*h+14-j, clamped to 159",
+    "four snake blocks per update; opening counterparts and reversible fold added",
+    "independent progress/row history on both display pages; palette switches on black",
+    "all 14 original entries represented by 11 paired modes; added opposite directions where absent",
+    "centre/curtain bounds symmetrized to 0..159 and 0..319; no original out-of-screen writes",
+    "colour steps use 8 scene colours at 5 VBL each; HUD index 15 remains white",
+    "smear repeats source row 160-progress above the revealed tail, with a reverse closing counterpart"
+  ]
+}

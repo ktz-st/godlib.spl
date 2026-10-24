@@ -1,5 +1,3 @@
 *.o
 *.PRG
-analysis/*.map
-analysis/shots/
-analysis/hatari.log
+__pycache__/

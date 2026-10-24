@@ -1,0 +1,9 @@
+{
+  "blitter_dirty_destination_cases": 2,
+  "opening_replaces_old_pixels": true,
+  "closing_preserves_caller_changes": true,
+  "full_buffer_checks": 2,
+  "byte_mismatches": 0,
+  "abi_preserved": true,
+  "release_sha256": "c2a98c2120c9aeb7f8a3b6ec1331adb4e5b7acf6650876ace35e61d444e169cb"
+}

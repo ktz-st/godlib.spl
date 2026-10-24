@@ -1,0 +1,120 @@
+{
+  "machine": "STE MC68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "profiles": [
+    {
+      "backend": "cpu",
+      "direction": "in",
+      "effects": 39,
+      "updates": 589,
+      "kernel_calls": {
+        "Wipe_Update": 589,
+        "Wipe_In_Render": 589,
+        "Wipe_Out_Render": 0,
+        "Wipe_In_Render_BLT": 0,
+        "Wipe_Out_Render_BLT": 0,
+        "Wipe_BlitFrame": 0,
+        "Wipe_BlitWait": 0
+      },
+      "cycles_per_update": 265929.17487266555,
+      "components_per_update": {
+        "Wipe_Update": 431.5178268251273,
+        "Wipe_In_Render": 265497.6570458404,
+        "Wipe_Out_Render": 0.0,
+        "Wipe_In_Render_BLT": 0.0,
+        "Wipe_Out_Render_BLT": 0.0,
+        "Wipe_BlitFrame": 0.0,
+        "Wipe_BlitWait": 0.0
+      },
+      "pal_frame_percent": 166.20573429541597,
+      "ms_at_8mhz": 33.241146859083194,
+      "scope": "Complete Wipe_Update dispatch + selected renderer + shared blitter setup/wait, including HOG bus stalls. Excludes init/seed, setter, presentation copy, captions, Screen_Update/VBL/OS."
+    },
+    {
+      "backend": "cpu",
+      "direction": "out",
+      "effects": 39,
+      "updates": 589,
+      "kernel_calls": {
+        "Wipe_Update": 589,
+        "Wipe_In_Render": 0,
+        "Wipe_Out_Render": 589,
+        "Wipe_In_Render_BLT": 0,
+        "Wipe_Out_Render_BLT": 0,
+        "Wipe_BlitFrame": 0,
+        "Wipe_BlitWait": 0
+      },
+      "cycles_per_update": 171345.31748726655,
+      "components_per_update": {
+        "Wipe_Update": 416.8760611205433,
+        "Wipe_In_Render": 0.0,
+        "Wipe_Out_Render": 170928.44142614602,
+        "Wipe_In_Render_BLT": 0.0,
+        "Wipe_Out_Render_BLT": 0.0,
+        "Wipe_BlitFrame": 0.0,
+        "Wipe_BlitWait": 0.0
+      },
+      "pal_frame_percent": 107.0908234295416,
+      "ms_at_8mhz": 21.41816468590832,
+      "scope": "Complete Wipe_Update dispatch + selected renderer + shared blitter setup/wait, including HOG bus stalls. Excludes init/seed, setter, presentation copy, captions, Screen_Update/VBL/OS."
+    },
+    {
+      "backend": "blitter",
+      "direction": "in",
+      "effects": 39,
+      "updates": 589,
+      "kernel_calls": {
+        "Wipe_Update": 589,
+        "Wipe_In_Render": 0,
+        "Wipe_Out_Render": 0,
+        "Wipe_In_Render_BLT": 589,
+        "Wipe_Out_Render_BLT": 0,
+        "Wipe_BlitFrame": 589,
+        "Wipe_BlitWait": 1178
+      },
+      "cycles_per_update": 128995.97962648557,
+      "components_per_update": {
+        "Wipe_Update": 446.3497453310696,
+        "Wipe_In_Render": 0.0,
+        "Wipe_Out_Render": 0.0,
+        "Wipe_In_Render_BLT": 140.28522920203736,
+        "Wipe_Out_Render_BLT": 0.0,
+        "Wipe_BlitFrame": 128328.01358234296,
+        "Wipe_BlitWait": 81.33106960950764
+      },
+      "pal_frame_percent": 80.62248726655348,
+      "ms_at_8mhz": 16.124497453310696,
+      "scope": "Complete Wipe_Update dispatch + selected renderer + shared blitter setup/wait, including HOG bus stalls. Excludes init/seed, setter, presentation copy, captions, Screen_Update/VBL/OS."
+    },
+    {
+      "backend": "blitter",
+      "direction": "out",
+      "effects": 39,
+      "updates": 589,
+      "kernel_calls": {
+        "Wipe_Update": 589,
+        "Wipe_In_Render": 0,
+        "Wipe_Out_Render": 0,
+        "Wipe_In_Render_BLT": 0,
+        "Wipe_Out_Render_BLT": 589,
+        "Wipe_BlitFrame": 589,
+        "Wipe_BlitWait": 1178
+      },
+      "cycles_per_update": 129049.29711375212,
+      "components_per_update": {
+        "Wipe_Update": 433.0662139219015,
+        "Wipe_In_Render": 0.0,
+        "Wipe_Out_Render": 0.0,
+        "Wipe_In_Render_BLT": 0.0,
+        "Wipe_Out_Render_BLT": 208.6451612903226,
+        "Wipe_BlitFrame": 128327.01528013582,
+        "Wipe_BlitWait": 80.5704584040747
+      },
+      "pal_frame_percent": 80.65581069609507,
+      "ms_at_8mhz": 16.131162139219015,
+      "scope": "Complete Wipe_Update dispatch + selected renderer + shared blitter setup/wait, including HOG bus stalls. Excludes init/seed, setter, presentation copy, captions, Screen_Update/VBL/OS."
+    }
+  ],
+  "release_sha256": "c2a98c2120c9aeb7f8a3b6ec1331adb4e5b7acf6650876ace35e61d444e169cb",
+  "debug_sha256": "96416b294f516f1703b626d38e95a6598a5e01a03ecd89bb4dd18e5cfeb88c68",
+  "godlib_archive_sha256": "f106ac8fb4203bda0be7cdb01e4f944eb379d73c02663d24e506a67c564b3b46"
+}

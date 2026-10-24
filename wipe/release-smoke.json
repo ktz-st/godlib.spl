@@ -1,0 +1,25 @@
+{
+  "actual_shipped_prg_tested": true,
+  "code_data_matches_external_symbols": true,
+  "machine": "ste",
+  "ram_mib": 1,
+  "hardware_blitter": true,
+  "runs": [
+    {
+      "requested_backend": 0,
+      "actual_backend": 0,
+      "final_image": 1
+    },
+    {
+      "requested_backend": 1,
+      "actual_backend": 1,
+      "final_image": 2
+    }
+  ],
+  "native_images_and_palettes": true,
+  "both_display_pages": true,
+  "keyboard_backend_change_mid_transition": true,
+  "auto_pause_and_stripe": true,
+  "clean_exit_vbl_restored": true,
+  "release_sha256": "c2a98c2120c9aeb7f8a3b6ec1331adb4e5b7acf6650876ace35e61d444e169cb"
+}

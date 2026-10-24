@@ -1,0 +1,55 @@
+{
+  "machine": "Hatari-HRDB STE, MC68000 8 MHz, 1 MiB, PAL RGB, German TOS 1.62",
+  "tune": "popcorn.snd",
+  "mode": 6,
+  "fixture": {
+    "frames": 96,
+    "bytes_compared_per_frame": 32004,
+    "mismatches": 0,
+    "reset_frame": 64
+  },
+  "live": {
+    "frames": 2079,
+    "calls": {
+      "PsgVis_Snapshot": 2077,
+      "PsgVis_Update": 2079,
+      "PsgExtra_Update": 2079,
+      "PsgHistogram_Update": 2079,
+      "PsgHistogram_Draw": 2079
+    },
+    "cycles": {
+      "PsgVis_Snapshot": 1380740,
+      "PsgVis_Update": 9322024,
+      "PsgExtra_Update": 4557760,
+      "PsgHistogram_Update": 1875976,
+      "PsgHistogram_Draw": 4201340,
+      "music": 15960676
+    },
+    "cycles_per_frame": {
+      "PsgVis_Snapshot": 664.1366041366041,
+      "PsgVis_Update": 4483.898027898028,
+      "PsgExtra_Update": 2192.2847522847524,
+      "PsgHistogram_Update": 902.3453583453584,
+      "PsgHistogram_Draw": 2020.8465608465608,
+      "music": 7677.092833092833
+    },
+    "pal_frame_percent": {
+      "PsgVis_Snapshot": 0.41508537758537756,
+      "PsgVis_Update": 2.8024362674362675,
+      "PsgExtra_Update": 1.3701779701779702,
+      "PsgHistogram_Update": 0.563965848965849,
+      "PsgHistogram_Draw": 1.2630291005291006,
+      "music": 4.7981830206830205
+    },
+    "histogram_only_percent": 1.8269949494949496,
+    "visualization_total_percent": 6.414694564694564,
+    "normal_frames_after_profile": 2634,
+    "missed_vbls_in_window": 0,
+    "seven_mode_cycle": true,
+    "hide_both_pages_clean": true,
+    "show_and_exit": true
+  },
+  "release_sha256": "3acd6041255f7a189cb6c0edf2c4f32b8bea4b0f1c58c34d3414a4dcf9c0c2f2",
+  "debug_sha256": "44aa1154a756093328898b0d785016b66c63758c7b3bc657c6d117f52f48ba10",
+  "method": "Per-instruction profiles over 2079 complete frames; new ASM update/draw separated from shared snapshot/note/animation code and loaded SNDH music; startup, C dispatch/page changes and OS wrappers excluded."
+}

@@ -1,0 +1,15 @@
+{
+  "actual_shipped_prg_tested": true,
+  "code_data_matches_external_symbols": true,
+  "direct_asm_vbl_callback_installed": true,
+  "machine": "ste",
+  "ram_mib": 1,
+  "full_buffer_checks": 6,
+  "palette_checks": 28,
+  "all_rates_directions_pause_step_resume": true,
+  "original_picture_preserved": true,
+  "callback_detached": true,
+  "vbl_vector_restored": true,
+  "no_ticks_after_exit": true,
+  "release_sha256": "4c0fc903176c5cd28d6629867e31b1c4b33c59def3948806c2352d93a319f9c0"
+}

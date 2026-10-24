@@ -1,0 +1,35 @@
+{
+  "actual_shipped_prg_tested": true,
+  "external_symbols_code_data_match": true,
+  "machine": "st",
+  "ram_mib": 1,
+  "blitter_enabled": false,
+  "native_frame_checks": [
+    {
+      "mode": 0,
+      "profile": 7,
+      "both_native_pages": true
+    },
+    {
+      "mode": 1,
+      "profile": 7,
+      "both_native_pages": true
+    },
+    {
+      "mode": 2,
+      "profile": 7,
+      "both_native_pages": true
+    },
+    {
+      "mode": 0,
+      "profile": 7,
+      "both_native_pages": true
+    }
+  ],
+  "manual_modes_and_next_pause_stripe_exit": true,
+  "vbl_restored": true,
+  "frames": 2004,
+  "missed_vbls": 0,
+  "fps": 50.0,
+  "sha256": "0bd17cbeb0b1811ab9ed2da02ff26bca00f47097b7c0185cced71d8eeaf4f62a"
+}

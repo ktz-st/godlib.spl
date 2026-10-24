@@ -1,0 +1,385 @@
+{
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "scope": "Db_Frame/Prepare/Execute/Copy and all row kernels. Includes building commands, per-page restoration, movement and register saves; excludes C headers/input, Screen_Update and VBL/OS. 320 updates = two whole 160-step cycles. Strips average actual redraws and unchanged pages; paused modes include two settled pages and intentionally execute no copy commands. CPU only, no BLiTTER.",
+  "profiles": [
+    {
+      "mode": "move",
+      "mask": 15,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 640,
+      "cycles_per_update": 49915.0125,
+      "components": {
+        "Frame": 393.15,
+        "Prepare": 865.4,
+        "Execute": 244.5375,
+        "Copy": 681.05,
+        "row_kernels": 47730.875
+      },
+      "ms_at_8mhz": 6.2393765624999995,
+      "pal_frame_percent": 31.196882812499997
+    },
+    {
+      "mode": "move",
+      "mask": 2,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 640,
+      "cycles_per_update": 26266.712499999998,
+      "components": {
+        "Frame": 392.45,
+        "Prepare": 865.2375,
+        "Execute": 244.5375,
+        "Copy": 617.0625,
+        "row_kernels": 24147.425
+      },
+      "ms_at_8mhz": 3.2833390624999996,
+      "pal_frame_percent": 16.4166953125
+    },
+    {
+      "mode": "move",
+      "mask": 5,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 640,
+      "cycles_per_update": 46785.299999999996,
+      "components": {
+        "Frame": 392.8,
+        "Prepare": 865.6,
+        "Execute": 245.075,
+        "Copy": 617.4375,
+        "row_kernels": 44664.3875
+      },
+      "ms_at_8mhz": 5.848162499999999,
+      "pal_frame_percent": 29.240812499999997
+    },
+    {
+      "mode": "repeat",
+      "mask": 15,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 3200,
+      "cycles_per_update": 135355.0125,
+      "components": {
+        "Frame": 393.15,
+        "Prepare": 2584.6,
+        "Execute": 981.575,
+        "Copy": 3648.0875,
+        "row_kernels": 127747.6
+      },
+      "ms_at_8mhz": 16.919376562500002,
+      "pal_frame_percent": 84.59688281250001
+    },
+    {
+      "mode": "repeat",
+      "mask": 2,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 3200,
+      "cycles_per_update": 76086.8125,
+      "components": {
+        "Frame": 392.45,
+        "Prepare": 2584.775,
+        "Execute": 981.9375,
+        "Copy": 3325.4375,
+        "row_kernels": 68802.2125
+      },
+      "ms_at_8mhz": 9.5108515625,
+      "pal_frame_percent": 47.5542578125
+    },
+    {
+      "mode": "repeat",
+      "mask": 5,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 3200,
+      "cycles_per_update": 140204.78749999998,
+      "components": {
+        "Frame": 392.45,
+        "Prepare": 2584.225,
+        "Execute": 982.9875,
+        "Copy": 3324.6375,
+        "row_kernels": 132920.4875
+      },
+      "ms_at_8mhz": 17.525598437499998,
+      "pal_frame_percent": 87.62799218749998
+    },
+    {
+      "mode": "skip",
+      "mask": 15,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 1280,
+      "cycles_per_update": 131292.225,
+      "components": {
+        "Frame": 392.975,
+        "Prepare": 1358.125,
+        "Execute": 429.05,
+        "Copy": 1458.2875,
+        "row_kernels": 127653.7875
+      },
+      "ms_at_8mhz": 16.411528125,
+      "pal_frame_percent": 82.057640625
+    },
+    {
+      "mode": "skip",
+      "mask": 2,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 1280,
+      "cycles_per_update": 72192.375,
+      "components": {
+        "Frame": 392.6375,
+        "Prepare": 1358.3,
+        "Execute": 429.25,
+        "Copy": 1329.9625,
+        "row_kernels": 68682.225
+      },
+      "ms_at_8mhz": 9.024046875,
+      "pal_frame_percent": 45.120234375
+    },
+    {
+      "mode": "skip",
+      "mask": 5,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 1280,
+      "cycles_per_update": 136307.76249999998,
+      "components": {
+        "Frame": 392.975,
+        "Prepare": 1357.575,
+        "Execute": 429.425,
+        "Copy": 1329.2375,
+        "row_kernels": 132798.55
+      },
+      "ms_at_8mhz": 17.0384703125,
+      "pal_frame_percent": 85.1923515625
+    },
+    {
+      "mode": "flip",
+      "mask": 15,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 638,
+      "cycles_per_update": 130087.17499999999,
+      "components": {
+        "Frame": 392.975,
+        "Prepare": 1105.2625,
+        "Execute": 243.95,
+        "Copy": 727.65,
+        "row_kernels": 127617.3375
+      },
+      "ms_at_8mhz": 16.260896875,
+      "pal_frame_percent": 81.30448437499999
+    },
+    {
+      "mode": "flip",
+      "mask": 2,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 638,
+      "cycles_per_update": 71049.77500000001,
+      "components": {
+        "Frame": 392.625,
+        "Prepare": 1105.2625,
+        "Execute": 243.95,
+        "Copy": 662.825,
+        "row_kernels": 68645.1125
+      },
+      "ms_at_8mhz": 8.881221875000001,
+      "pal_frame_percent": 44.40610937500001
+    },
+    {
+      "mode": "flip",
+      "mask": 5,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 638,
+      "cycles_per_update": 135162.4875,
+      "components": {
+        "Frame": 392.4625,
+        "Prepare": 1105.75,
+        "Execute": 244.125,
+        "Copy": 663.15,
+        "row_kernels": 132757.0
+      },
+      "ms_at_8mhz": 16.8953109375,
+      "pal_frame_percent": 84.4765546875
+    },
+    {
+      "mode": "strips",
+      "mask": 15,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 400,
+      "cycles_per_update": 13565.4375,
+      "components": {
+        "Frame": 393.325,
+        "Prepare": 588.025,
+        "Execute": 161.35,
+        "Copy": 375.35,
+        "row_kernels": 12047.3875
+      },
+      "ms_at_8mhz": 1.6956796875,
+      "pal_frame_percent": 8.4783984375
+    },
+    {
+      "mode": "strips",
+      "mask": 2,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 400,
+      "cycles_per_update": 8335.4125,
+      "components": {
+        "Frame": 392.45,
+        "Prepare": 588.55,
+        "Execute": 161.175,
+        "Copy": 356.575,
+        "row_kernels": 6836.6625
+      },
+      "ms_at_8mhz": 1.0419265625,
+      "pal_frame_percent": 5.209632812500001
+    },
+    {
+      "mode": "strips",
+      "mask": 5,
+      "paused": false,
+      "updates": 320,
+      "copy_commands": 400,
+      "cycles_per_update": 12343.099999999999,
+      "components": {
+        "Frame": 393.0,
+        "Prepare": 588.0625,
+        "Execute": 161.5375,
+        "Copy": 355.8875,
+        "row_kernels": 10844.6125
+      },
+      "ms_at_8mhz": 1.5428874999999997,
+      "pal_frame_percent": 7.714437499999999
+    },
+    {
+      "mode": "move",
+      "mask": 15,
+      "paused": true,
+      "updates": 320,
+      "copy_commands": 0,
+      "cycles_per_update": 613.05,
+      "components": {
+        "Frame": 344.7,
+        "Prepare": 224.175,
+        "Execute": 44.175,
+        "Copy": 0.0,
+        "row_kernels": 0.0
+      },
+      "ms_at_8mhz": 0.07663125,
+      "pal_frame_percent": 0.38315625
+    },
+    {
+      "mode": "repeat",
+      "mask": 15,
+      "paused": true,
+      "updates": 320,
+      "copy_commands": 0,
+      "cycles_per_update": 612.875,
+      "components": {
+        "Frame": 344.7,
+        "Prepare": 224.175,
+        "Execute": 44.0,
+        "Copy": 0.0,
+        "row_kernels": 0.0
+      },
+      "ms_at_8mhz": 0.076609375,
+      "pal_frame_percent": 0.383046875
+    },
+    {
+      "mode": "skip",
+      "mask": 15,
+      "paused": true,
+      "updates": 320,
+      "copy_commands": 0,
+      "cycles_per_update": 613.225,
+      "components": {
+        "Frame": 344.875,
+        "Prepare": 224.35,
+        "Execute": 44.0,
+        "Copy": 0.0,
+        "row_kernels": 0.0
+      },
+      "ms_at_8mhz": 0.076653125,
+      "pal_frame_percent": 0.383265625
+    },
+    {
+      "mode": "flip",
+      "mask": 15,
+      "paused": true,
+      "updates": 320,
+      "copy_commands": 0,
+      "cycles_per_update": 613.225,
+      "components": {
+        "Frame": 344.525,
+        "Prepare": 224.525,
+        "Execute": 44.175,
+        "Copy": 0.0,
+        "row_kernels": 0.0
+      },
+      "ms_at_8mhz": 0.076653125,
+      "pal_frame_percent": 0.383265625
+    },
+    {
+      "mode": "strips",
+      "mask": 15,
+      "paused": true,
+      "updates": 320,
+      "copy_commands": 0,
+      "cycles_per_update": 625.2375,
+      "components": {
+        "Frame": 344.5375,
+        "Prepare": 236.7,
+        "Execute": 44.0,
+        "Copy": 0.0,
+        "row_kernels": 0.0
+      },
+      "ms_at_8mhz": 0.0781546875,
+      "pal_frame_percent": 0.3907734375
+    }
+  ],
+  "normal_cadence": [
+    {
+      "mode": "move",
+      "mask": 15,
+      "frames": 1330,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "repeat",
+      "mask": 15,
+      "frames": 1345,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "skip",
+      "mask": 15,
+      "frames": 1354,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "flip",
+      "mask": 15,
+      "frames": 1378,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "strips",
+      "mask": 15,
+      "frames": 1319,
+      "missed_vbls": 0,
+      "fps": 50.0
+    }
+  ],
+  "release_sha256": "abf5642ef6605801269e5af92d002ca3f38be17909bbfecf3a1d7155e0aee2be",
+  "debug_sha256": "718ed2e7dc132c12667ce379fe7eb15a611c33a0be63596a2937b9d52711b2f1"
+}

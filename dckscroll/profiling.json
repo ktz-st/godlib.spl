@@ -1,0 +1,31 @@
+{
+  "pixel_mismatches": 0,
+  "profiles": [
+    {
+      "lanes": 1,
+      "draws": 32,
+      "cycles_per_update": 48201.875,
+      "ms_8mhz": 6.025234375,
+      "pal_frame_percent": 30.126171875
+    },
+    {
+      "lanes": 2,
+      "draws": 32,
+      "cycles_per_update": 94985.5,
+      "ms_8mhz": 11.8731875,
+      "pal_frame_percent": 59.3659375
+    },
+    {
+      "lanes": 3,
+      "draws": 32,
+      "cycles_per_update": 141741.0,
+      "ms_8mhz": 17.717625,
+      "pal_frame_percent": 88.588125
+    }
+  ],
+  "machine": "Hatari-HRDB STE, MC68000 8 MHz, PAL RGB, 4 MB, German TOS 1.62",
+  "scope": "32 complete Advance+Draw calls per lane count; library/frame wait/input/interrupt handlers excluded; generated instructions included",
+  "note": "ASM unchanged between profiled build and final build; final C adds a VBL snapshot counter.",
+  "final_debug_prg_sha256": "9d7763e2db9899bd51e25591c7a7e05192dc8e0ef9b17e26360bb6da78378cf5",
+  "final_release_prg_sha256": "e848255d5b65b1f74c8ecc3f450f9b6c19079e44f9c33b098a4ebf41a2b0244b"
+}

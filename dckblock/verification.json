@@ -1,0 +1,37 @@
+{
+  "full_buffer_checks": 844,
+  "byte_mismatches": 0,
+  "coverage": [
+    {
+      "mode": "move",
+      "mask": 15,
+      "all_160_phases": true
+    },
+    {
+      "mode": "repeat",
+      "mask": 2,
+      "all_160_phases": true
+    },
+    {
+      "mode": "skip",
+      "mask": 15,
+      "all_160_phases": true
+    },
+    {
+      "mode": "flip",
+      "mask": 5,
+      "all_160_phases": true
+    },
+    {
+      "mode": "strips",
+      "all_10_states_and_idle": true
+    }
+  ],
+  "all_16_masks_and_3_widths": true,
+  "mode_mask_jumps": 48,
+  "source_and_clean_back_unchanged": true,
+  "outside_stage_unchanged": true,
+  "controls_palette_exit": true,
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "release_sha256": "abf5642ef6605801269e5af92d002ca3f38be17909bbfecf3a1d7155e0aee2be"
+}

@@ -1,0 +1,120 @@
+{
+  "actual_shipped_prg_tested": true,
+  "external_symbols_code_data_match": true,
+  "machine": "ste",
+  "ram_mib": 1,
+  "blitter_enabled": false,
+  "all_5_modes_and_3_masks": true,
+  "full_buffer_checks": 60,
+  "pause_step_resume_mask_stripe": true,
+  "palette_and_source_unchanged": true,
+  "clean_exit_vbl_restored": true,
+  "steady_cadence": [
+    {
+      "mode": "move",
+      "mask": 15,
+      "frames": 302,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "move",
+      "mask": 2,
+      "frames": 309,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "move",
+      "mask": 5,
+      "frames": 303,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "repeat",
+      "mask": 15,
+      "frames": 313,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "repeat",
+      "mask": 2,
+      "frames": 294,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "repeat",
+      "mask": 5,
+      "frames": 296,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "skip",
+      "mask": 15,
+      "frames": 317,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "skip",
+      "mask": 2,
+      "frames": 299,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "skip",
+      "mask": 5,
+      "frames": 276,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "flip",
+      "mask": 15,
+      "frames": 325,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "flip",
+      "mask": 2,
+      "frames": 300,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "flip",
+      "mask": 5,
+      "frames": 295,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "strips",
+      "mask": 15,
+      "frames": 311,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "strips",
+      "mask": 2,
+      "frames": 312,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "strips",
+      "mask": 5,
+      "frames": 313,
+      "missed_vbls": 0,
+      "fps": 50.0
+    }
+  ],
+  "release_sha256": "abf5642ef6605801269e5af92d002ca3f38be17909bbfecf3a1d7155e0aee2be"
+}

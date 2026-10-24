@@ -1,0 +1,18 @@
+{
+  "pixel_mismatches": 0,
+  "pixels_checked": 5120,
+  "directions_and_periods_checked": true,
+  "profiles": [
+    {
+      "lanes": 1,
+      "draws": 32,
+      "cycles_per_update": 24944.375,
+      "ms_8mhz": 3.118046875,
+      "pal_frame_percent": 15.590234375
+    }
+  ],
+  "machine": "Hatari-HRDB STE, MC68000 8 MHz, PAL RGB, 4 MB, German TOS 1.62",
+  "scope": "32 completed Advance+Draw calls per case; ASM only, excludes startup/waits/input/interrupt handlers",
+  "debug_sha256": "d6d67965b47dfaa61dc8b98d767f77e01c70ebc80e47ec58314130aea3266c3d",
+  "release_sha256": "1fc12ff50103f94fe22867d634fd306eba638165016c548b9ed13188f8eedf3c"
+}

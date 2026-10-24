@@ -1,7 +1,0 @@
-{
-  "exported_copy_labels": 200,
-  "exported_skip_labels": 200,
-  "tested_profiled_code_and_data_unchanged_after_symbol_export": true,
-  "runtime_bytes_sha256_excluding_embedded_elf_metadata": "88ebc612da6a81943ad3aa5edc2a6b549c01f40b38f86d7f40ccb76471b62be7",
-  "release_bytes": 641055
-}

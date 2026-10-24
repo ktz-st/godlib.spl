@@ -1,0 +1,155 @@
+{
+  "machine": "STE 68000 8 MHz PAL, 1 MiB, German TOS 1.62",
+  "tune": "popcorn.snd",
+  "eleven_mode_cycle": true,
+  "hide_show_both_pages_clean": true,
+  "exit": true,
+  "profiles": [
+    {
+      "mode": 7,
+      "frames": 1723,
+      "draw_calls": 1723,
+      "cycles": {
+        "PsgVis_Snapshot": 1143812,
+        "PsgVis_Update": 7713124,
+        "PsgExtra_Update": 3761292,
+        "PsgDck_Update": 488672,
+        "draw": 2531836,
+        "music": 13216508
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 663.8491004062681,
+        "PsgVis_Update": 4476.566453859547,
+        "PsgExtra_Update": 2182.990133488102,
+        "PsgDck_Update": 283.6169471851422,
+        "draw": 1469.4347069065584,
+        "music": 7670.6372605919905
+      },
+      "pal_frame_percent": {
+        "PsgVis_Snapshot": 0.41490568775391756,
+        "PsgVis_Update": 2.797854033662217,
+        "PsgExtra_Update": 1.3643688334300637,
+        "PsgDck_Update": 0.17726059199071387,
+        "draw": 0.918396691816599,
+        "music": 4.794148287869994
+      },
+      "new_mode_percent": 1.0956572838073129,
+      "visualization_total_percent": 5.672785838653511,
+      "normal_frames": 2277,
+      "missed_vbls": 0
+    },
+    {
+      "mode": 8,
+      "frames": 1742,
+      "draw_calls": 1742,
+      "cycles": {
+        "PsgVis_Snapshot": 1155180,
+        "PsgVis_Update": 7789820,
+        "PsgExtra_Update": 3785344,
+        "PsgDck_Update": 492248,
+        "draw": 2246784,
+        "music": 13375268
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 663.1343283582089,
+        "PsgVis_Update": 4471.768082663605,
+        "PsgExtra_Update": 2172.987370838117,
+        "PsgDck_Update": 282.57634902411024,
+        "draw": 1289.772675086108,
+        "music": 7678.110218140069
+      },
+      "pal_frame_percent": {
+        "PsgVis_Snapshot": 0.41445895522388054,
+        "PsgVis_Update": 2.794855051664753,
+        "PsgExtra_Update": 1.3581171067738231,
+        "PsgDck_Update": 0.17661021814006891,
+        "draw": 0.8061079219288174,
+        "music": 4.798818886337544
+      },
+      "new_mode_percent": 0.9827181400688864,
+      "visualization_total_percent": 5.550149253731344,
+      "normal_frames": 2326,
+      "missed_vbls": 0
+    },
+    {
+      "mode": 9,
+      "frames": 1743,
+      "draw_calls": 1743,
+      "cycles": {
+        "PsgVis_Snapshot": 1155484,
+        "PsgVis_Update": 7799168,
+        "PsgExtra_Update": 3799264,
+        "PsgDck_Update": 491996,
+        "draw": 3228752,
+        "music": 13363864
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 662.9282845668388,
+        "PsgVis_Update": 4474.565691336776,
+        "PsgExtra_Update": 2179.726907630522,
+        "PsgDck_Update": 282.26965002868616,
+        "draw": 1852.4107860011475,
+        "music": 7667.162363740677
+      },
+      "pal_frame_percent": {
+        "PsgVis_Snapshot": 0.41433017785427423,
+        "PsgVis_Update": 2.7966035570854846,
+        "PsgExtra_Update": 1.3623293172690762,
+        "PsgDck_Update": 0.17641853126792884,
+        "draw": 1.1577567412507173,
+        "music": 4.791976477337923
+      },
+      "new_mode_percent": 1.3341752725186462,
+      "visualization_total_percent": 5.907438324727482,
+      "normal_frames": 2298,
+      "missed_vbls": 0
+    },
+    {
+      "mode": 10,
+      "frames": 1742,
+      "draw_calls": 1742,
+      "cycles": {
+        "PsgVis_Snapshot": 1155292,
+        "PsgVis_Update": 7783728,
+        "PsgExtra_Update": 3782264,
+        "PsgDck_Update": 493396,
+        "draw": 5308320,
+        "music": 13371644
+      },
+      "cycles_per_frame": {
+        "PsgVis_Snapshot": 663.1986222732492,
+        "PsgVis_Update": 4468.270952927669,
+        "PsgExtra_Update": 2171.2192881745123,
+        "PsgDck_Update": 283.2353616532721,
+        "draw": 3047.256027554535,
+        "music": 7676.0298507462685
+      },
+      "pal_frame_percent": {
+        "PsgVis_Snapshot": 0.4144991389207807,
+        "PsgVis_Update": 2.7926693455797933,
+        "PsgExtra_Update": 1.35701205510907,
+        "PsgDck_Update": 0.17702210103329505,
+        "draw": 1.9045350172215845,
+        "music": 4.797518656716417
+      },
+      "new_mode_percent": 2.0815571182548793,
+      "visualization_total_percent": 6.645737657864523,
+      "normal_frames": 2315,
+      "missed_vbls": 0
+    }
+  ],
+  "fixture": {
+    "styles": 4,
+    "peak_decay_test": true,
+    "frames": 256,
+    "bytes_compared_per_frame": 32004,
+    "mismatches": 0
+  },
+  "static_header_footer_preserved_both_pages": true,
+  "sha256": {
+    "SNDH.PRG": "d587184a8758c8178219872723f1698915982d843e98a6575e7dfcd073412913",
+    "build/SNDBG.PRG": "4b61b9eb808bfbbecc91a4539b4335d4fbf3b9f4322368a2ed75476330092a75",
+    "dckpsg_s.s": "f63bbec46e93a0e4b1d59a8c1ca482db41ef6f505ccb29f97853d280ee481a3a",
+    "popcorn.snd": "67ca4d6a3ddbd67f6a3a97581b808515dae873fb8ab8bda6381aa841b7b1aaba"
+  }
+}

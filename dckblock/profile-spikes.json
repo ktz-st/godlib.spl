@@ -1,0 +1,73 @@
+{
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "scope": "One ASM Db_Frame including prepare, restore and all copies, paused phase supplied by test. Excludes C header/input and Screen_Update/VBL. These are measured cases, not a maximum over all changes. A >100% frame is a one-time mode/mask transition on each page.",
+  "profiles": [
+    {
+      "case": "strips_redraw",
+      "mode": "strips",
+      "mask": 15,
+      "old_mode": "strips",
+      "old_mask": 15,
+      "copy_commands": 10,
+      "cycles": 103684,
+      "ms_at_8mhz": 12.9605,
+      "pal_frame_percent": 64.8025
+    },
+    {
+      "case": "strips_redraw",
+      "mode": "strips",
+      "mask": 2,
+      "old_mode": "strips",
+      "old_mask": 2,
+      "copy_commands": 10,
+      "cycles": 61924,
+      "ms_at_8mhz": 7.7405,
+      "pal_frame_percent": 38.7025
+    },
+    {
+      "case": "strips_redraw",
+      "mode": "strips",
+      "mask": 5,
+      "old_mode": "strips",
+      "old_mask": 5,
+      "copy_commands": 10,
+      "cycles": 93980,
+      "ms_at_8mhz": 11.7475,
+      "pal_frame_percent": 58.7375
+    },
+    {
+      "case": "full_to_move",
+      "mode": "move",
+      "mask": 15,
+      "old_mode": "flip",
+      "old_mask": 15,
+      "copy_commands": 2,
+      "cycles": 153464,
+      "ms_at_8mhz": 19.183,
+      "pal_frame_percent": 95.915
+    },
+    {
+      "case": "full_to_strips",
+      "mode": "strips",
+      "mask": 15,
+      "old_mode": "flip",
+      "old_mask": 15,
+      "copy_commands": 11,
+      "cycles": 231784,
+      "ms_at_8mhz": 28.973,
+      "pal_frame_percent": 144.865
+    },
+    {
+      "case": "drop_three_planes",
+      "mode": "repeat",
+      "mask": 2,
+      "old_mode": "repeat",
+      "old_mask": 15,
+      "copy_commands": 11,
+      "cycles": 234876,
+      "ms_at_8mhz": 29.3595,
+      "pal_frame_percent": 146.7975
+    }
+  ],
+  "release_sha256": "abf5642ef6605801269e5af92d002ca3f38be17909bbfecf3a1d7155e0aee2be"
+}

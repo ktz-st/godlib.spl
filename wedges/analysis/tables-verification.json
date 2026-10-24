@@ -1,8 +1,0 @@
-{
-  "method": "Actual bg_span/bg_render extracted from SuperHex source, host-compiled with fixed-width original types, original 320x246 output cropped at row 23",
-  "original_functions_sha256": "1148ac7891724a5e2f35909fd3392522d5f72877c6abc731a97f78f21748027f",
-  "frames": 32,
-  "bytes_compared": 256000,
-  "all_equal": true,
-  "frames_sha256": "d52c57fe6a3481e6848ed0ad7298b6b815445cdcaad2ae0738b85df3448e12d7"
-}

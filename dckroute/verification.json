@@ -1,0 +1,103 @@
+{
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "full_frame_comparisons": 293,
+  "fixed_coverage": [
+    [
+      "P",
+      0
+    ],
+    [
+      "P",
+      1
+    ],
+    [
+      "P",
+      2
+    ],
+    [
+      "P",
+      3
+    ],
+    [
+      "P",
+      4
+    ],
+    [
+      "P",
+      5
+    ],
+    [
+      "P",
+      6
+    ],
+    [
+      "P",
+      7
+    ],
+    [
+      "P",
+      8
+    ],
+    [
+      "P",
+      9
+    ],
+    [
+      "mode_change",
+      1
+    ],
+    [
+      "mode_change",
+      2
+    ],
+    [
+      "mode_change",
+      0
+    ],
+    [
+      "mode_change",
+      2
+    ],
+    [
+      "mode_change",
+      1
+    ],
+    [
+      "mode_change",
+      0
+    ]
+  ],
+  "automatic_samples": [
+    [
+      0,
+      0
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      7
+    ],
+    [
+      0,
+      9
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      2,
+      4
+    ]
+  ],
+  "commands_decoded": 40,
+  "checks": "Full native framebuffer vs independent indexed BIG atlas; both page histories, all 10 profiles, every horizontal/vertical phase, mode transitions, live interpolation, actual FE/FF stream, controls and clean exit.",
+  "release_sha256": "0bd17cbeb0b1811ab9ed2da02ff26bca00f47097b7c0185cced71d8eeaf4f62a"
+}

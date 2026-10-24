@@ -1,0 +1,115 @@
+{
+  "actual_shipped_prg_profiled": true,
+  "machine": "STE 68000 8 MHz PAL RGB, 1 MiB, German TOS 1.62",
+  "scope": "Complete ASM Tp_Vbl callback, including phase/control, counters, period helper and all 16 hardware colour writes. Actual VBL calls, no synthetic main-loop batch. Excludes shared GodLib interrupt entry/dispatch/video updater, setup, header, input, Screen_Update and OS. No BLiTTER or HBL.",
+  "profiles": [
+    {
+      "mode": "1 VBL forward",
+      "control": 0,
+      "vbl_calls": 1344,
+      "palette_writes": 1344,
+      "phase_advances": 1344,
+      "cycles_per_vbl": 637.6041666666666,
+      "components_per_vbl": {
+        "control_and_phase": 293.1875,
+        "palette_write": 260.2916666666667,
+        "period_reset": 84.125
+      },
+      "pal_frame_percent": 0.39850260416666666,
+      "microseconds_at_8mhz": 79.70052083333333
+    },
+    {
+      "mode": "2 VBL forward",
+      "control": 4,
+      "vbl_calls": 1356,
+      "palette_writes": 1356,
+      "phase_advances": 678,
+      "cycles_per_vbl": 535.0796460176991,
+      "components_per_vbl": {
+        "control_and_phase": 232.66666666666666,
+        "palette_write": 260.33038348082596,
+        "period_reset": 42.08259587020649
+      },
+      "pal_frame_percent": 0.33442477876106197,
+      "microseconds_at_8mhz": 66.88495575221239
+    },
+    {
+      "mode": "4 VBL forward",
+      "control": 8,
+      "vbl_calls": 1379,
+      "palette_writes": 1379,
+      "phase_advances": 345,
+      "cycles_per_vbl": 483.94198694706307,
+      "components_per_vbl": {
+        "control_and_phase": 202.48005801305294,
+        "palette_write": 260.3654822335025,
+        "period_reset": 21.096446700507613
+      },
+      "pal_frame_percent": 0.30246374184191444,
+      "microseconds_at_8mhz": 60.492748368382884
+    },
+    {
+      "mode": "2 VBL reverse",
+      "control": 6,
+      "vbl_calls": 1361,
+      "palette_writes": 1361,
+      "phase_advances": 680,
+      "cycles_per_vbl": 530.7038941954445,
+      "components_per_vbl": {
+        "control_and_phase": 228.28214548126377,
+        "palette_write": 260.37031594415873,
+        "period_reset": 42.05143277002204
+      },
+      "pal_frame_percent": 0.3316899338721528,
+      "microseconds_at_8mhz": 66.33798677443056
+    },
+    {
+      "mode": "paused",
+      "control": 5,
+      "vbl_calls": 1350,
+      "palette_writes": 1350,
+      "phase_advances": 0,
+      "cycles_per_vbl": 400.58074074074074,
+      "components_per_vbl": {
+        "control_and_phase": 140.2074074074074,
+        "palette_write": 260.37333333333333,
+        "period_reset": 0.0
+      },
+      "pal_frame_percent": 0.25036296296296295,
+      "microseconds_at_8mhz": 50.07259259259259
+    }
+  ],
+  "normal_cadence": [
+    {
+      "mode": "1 VBL forward",
+      "frames": 609,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "2 VBL forward",
+      "frames": 599,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "4 VBL forward",
+      "frames": 624,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "2 VBL reverse",
+      "frames": 633,
+      "missed_vbls": 0,
+      "fps": 50.0
+    },
+    {
+      "mode": "paused",
+      "frames": 633,
+      "missed_vbls": 0,
+      "fps": 50.0
+    }
+  ],
+  "release_sha256": "4c0fc903176c5cd28d6629867e31b1c4b33c59def3948806c2352d93a319f9c0"
+}
