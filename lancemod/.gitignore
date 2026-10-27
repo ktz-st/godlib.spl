@@ -4,3 +4,7 @@ analysis/shots/
 analysis/temp-*.bin
 analysis/*.log
 __pycache__/
+
+# Local comparison modules; not required by the shipped example.
+BOOTUP.MOD
+CANNONFO.MOD
